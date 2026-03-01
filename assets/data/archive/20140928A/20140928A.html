@@ -1,0 +1,27 @@
+<div class="blog-post">
+    <p><h3>블록암호 운용 라이브러리</h3></p>
+    <p class="meta"><b>장 영 완 (Jonas) · 2014.9.28</b></p>
+    <hr>
+    <div class="blog-post-photo-container">
+        <img class="blog-post-photo-medium" src="./assets/data/archive/20140928A/console.png" alt="블록암호 라이브러리">
+    </div>    
+    <p>암호 라이브러리는 Crypto++ 같은 오픈된 좋은 소스들이 있으며 KISA에서도 운용모드에 대한 구현된 소스코드를 배포하는 것으로 확인되었다.</p>
+    <br>
+    <p>KISA 암호활성화 홈페이지 : <a href="http://seed.kisa.or.kr" target="_blank">http://seed.kisa.or.kr</a></p>
+    <br>
+    <p>첨부된 라이브러리 소스코드는 블록암호 5가지 운용방식(ECB, CBC, CFB, OFB, CTR)을 지원하며 SEED256, ARIA, AES256, DES를 지원하며 C++ 템플릿 구조를 사용하여 코드를 작성하였다.</p>
+    <br>
+    <p>빅엔디안 구조 환경에서 사용할수 없으며 INTEL CISC 구조의 리틀엔디안 환경에서 테스트 하였으며 범용 컴퓨팅 환경을 고려하였다...리소스에 제약이 심한 임베디드 환경에서의 사용은 추천하지 않는다.</p>
+    <br>
+    <p>현재 첨부된 파일이 지원하는 것은 다음과 같다.</p>
+    <br>
+    <p>1. ECB, CBC, CFB, OFB, CTR 운영모드</p>
+    <p>2. PKCS7, AnsiX923 패딩</p>
+    <p>3. ECB-CTS, CBC-CTS</p>
+    <p>4. SEED256, AES256, ARIA(128, 192, 256) DES(DES, 2DES, 3DES) 지원</p>
+    <p>5. 고정식 IV, 랜덤 IV, 랜덤 NONCE IV</p>
+    <p>6. 메시지 인증코드 (HMAC)</p>
+    <br>
+    <p>[download] : <a href="/assets/downloads/BlockCipherCrypto_Source_Code.zip" download="BlockCipherCrypto_Source_Code.zip">BlockCipherCrypto Source Code</a></p>
+    <p>[download] : <a href="/assets/downloads/SEED_256_cipher_algorithm_manual.zip" download="SEED_256_cipher_algorithm_manual.zip">SEED 256 cipher algorithm manual</a></p>
+</div>

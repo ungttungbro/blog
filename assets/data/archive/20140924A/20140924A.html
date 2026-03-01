@@ -1,0 +1,16 @@
+<div class="blog-post">
+    <p><h3>의사난수생성기 (Psuedorandom Number Generator)</h3></p>
+    <p class="meta"><b>장 영 완 (Jonas) · 2014.9.24</b></p>
+    <hr>
+    <p>난수를 사용하는 것은 많은 부분에서 필수적이다.</p>
+    <br>
+    <p>실제 난수를 사용하는 것이 좋겠지만 실제 난수를 얻이간 매우 어려우며 이에 결정론적 알고리즘에 시드(Seed)값을 입력해서 의사난수(Psuedo Random Data)를 만들수 있다.</p>
+    <br>
+    <p>첨부파일은 C++기반의 의사난수를 생성하는 알고리즘이 들어 있는데 실용 암호학(닐스 퍼거슨, 브루스 슈나이어, 타다요시 쿄노 저)이라는 책에 소개되어 있는 포르투나 방식의 의사난수 생성기를 응용한 간단한 의사난수 생성기 이다.</p>
+    <br>
+    <p>난수생성기는 특정 시드값을 받아 총 16kb 크기의 랜덤 바이트열을 생성하고 생성된 난수열에서 출력값 만큼의 난수를 랜덤하게 선택해서 가져오는 방식으로 설계되었으며 한번에 출력값으로 1kb 이상 가져오는 것은 추천하지 않는다.</p>
+    <br>
+    <p>해쉬함수는 SHA256, 블록알고리즘은 AES256을 사용하였다.</p>
+    <br>
+    <p>[download] : <a href="/assets/downloads/PRNG.zip" download="PRNG.zip">Psuedorandom Number Generator Source Code</a></p>
+</div>

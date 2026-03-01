@@ -1,0 +1,22 @@
+  {
+    "title" : "links",
+
+    "old_my_web" : {
+       "xthml" : ["https://works.jonas.kr/old-site/works-site-xhtml/index.html", "old homepage"],
+       "html4" : ["https://works.jonas.kr/old-site/works-site-html401", "old old homepage"],
+       "html3" : ["https://works.jonas.kr/old-site/works-site-html320", "old old old homepage"],
+       "html2" : ["https://works.jonas.kr/old-site/works-site-html2", "old old old old homepage"]
+    },
+
+    "thanks_to" : {
+       "validator.kldp.org"     : ["http://validator.kldp.org", "W3C markup validator"],       
+       "scholar.google.co.kr"   : ["https://scholar.google.co.kr", "google scholar"],
+       "flaticon"               : ["https://www.flaticon.com", "flaticon"],
+       "chatgpt"                : ["https://chatgpt.com", "ChatGpt"],
+       "symbl"                  : ["https://symbl.cc", "(◕‿◕) SYMBL"],
+       "kumoh.ac.kr"            : ["https://kumoh.ac.kr", "국립금오공과대학교"],
+       "knou.ac.kr"             : ["https://knou.ac.kr", "한국방송통신대학교"],
+       "kosac.re.kr"            : ["https://kosac.re.kr", "한국과학창의재단"],
+       "codingplus.co.kr"       : ["http://www.codingplus.co.kr", "코딩플러스학원"]
+    }
+  }

@@ -1,0 +1,28 @@
+{
+  "title" : "about",
+
+  "photos": [
+    "/assets/images/about/photo01.jpg",
+    "/assets/images/about/photo02.jpg",
+    "/assets/images/about/photo03.jpg",
+    "/assets/images/about/photo04.jpg",
+    "/assets/images/about/photo05.jpg",
+    "/assets/images/about/photo06.jpg",
+    "/assets/images/about/photo07.jpg",
+    "/assets/images/about/photo08.jpg",
+    "/assets/images/about/photo09.jpg",
+    "/assets/images/about/photo10.jpg"
+  ],
+
+  "specs": {
+    "닉네임": ["조나스 (Jonas)", "/assets/icons/id.png"],
+    "전공": ["소프트웨어공학", "/assets/icons/graduate.png"],
+    "직업": ["직업상담사, 정보교육연구", "/assets/icons/job.png"]
+  },
+  
+  "contacts": {
+    "homepage": ["works.jonas.kr", "https://works.jonas.kr", "assets/icons/homepage.png"],
+    "github": ["github.com/codejonaskr/code", "https://github.com/codejonaskr/code.git", "/assets/icons/github.png"],
+    "email": ["youngwan.jang@gmail.com", "mailto:youngwan.jang@gmail.com", "/assets/icons/email.png"]
+  }
+}

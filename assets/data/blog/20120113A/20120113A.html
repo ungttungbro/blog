@@ -1,0 +1,51 @@
+<div class="blog-post">
+    <p><h3>C++ stream 기반의 파일 복사</h3></p>
+    <p class="meta">장 영 완 (Jonas) · 2012.1.13</p>
+    <hr>
+    <p>fstream을 사용해서 파일 복사 로직을 만들었다.</p>
+    <br>
+    <p>자세히 체크해 보진 않았으나 생각보다 느리지 않은 속도를 보인다.</p>
+    <br>
+    <p>C++의 32비트 포인터 문제로 2GB 이상의 File Pointing이 되지 않음을 확인했다.</p>
+    <br>
+    <p>이를 해결할수 있는 몇몇 방법이 소개되어 있으며 되도록이면 C++의 표준적 방법으로 해결 방안을 모색해보고자 한다.</p>
+    <br>
+    <pre>
+    const size_t BUFSIZE = 512;
+
+    std::ifstream infile ("old.pdf",std::ifstream::binary);
+    std::ofstream outfile ("new.pdf",std::ofstream::binary);
+
+    infile.seekg(0,std::ifstream::end);
+    long size = infile.tellg();
+    infile.seekg(0);
+    size_t lastBlock = size % BUFSIZE;
+
+    char* buf = new char[BUFSIZE];
+    for (long i = 0; i < size; i += BUFSIZE) {
+        /* 버퍼 사이즈만큼의 메모리를 할당하되 마지막 블록은
+            그 크기가 다를 수 있으므로 나머지만큼을 할당한다.
+        */
+            if (i == (size - lastBlock)) {
+            buf = new char[lastBlock];
+        } else {
+            buf = new char[BUFSIZE];
+        }
+            /* 버퍼 크기만큼 읽어서 기록한다
+            */
+        if (!infile.read(buf, BUFSIZE)) {
+            outfile.write(buf, lastBlock);
+        } else {
+            outfile.write(buf, BUFSIZE);
+        }
+    }
+
+    if (buf) {
+        delete[] buf;
+        buf = NULL;
+    }
+
+    infile.close();
+    outfile.close();
+    </pre>
+</div>

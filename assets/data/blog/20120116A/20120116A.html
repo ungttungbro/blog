@@ -1,0 +1,48 @@
+<div class="blog-post">
+    <p><h3>C언어 파일포인터 _fseeki64 (2GB 이상 대용량 파일 엑세스)</h3></p>
+    <p class="meta"><b>장 영 완 (Jonas) · 2012.1.16</b></p>
+    <hr>
+    <p>C++의 파일포인터가 32비트라서 2GB이상의 파일을 엑세스하지 못하는 문제가 있었다.</p>
+    <br>
+    <p>알아보니 C언어의 stdio.h에서 _fseeki64를 지원하는 것을 확인하였다.</p>
+    <br>
+    <p>fseek을 꼭 사용해야 하는 경우 유용할 것 같다.</p>
+    <br>
+    <p>VS2010에서 확인하였다.</p>
+    <br>
+    <pre>
+    const size_t BUFSIZE = 1024;
+
+    FILE* infile = fopen("old.mkv", "rb");
+    FILE* outfile = fopen("new.mkv", "wb");
+
+    _fseeki64(infile, 0L, SEEK_END);
+    _int64 size = _ftelli64(infile); _fseeki64(infile, 0L, SEEK_SET);
+
+    char* buf = new char[BUFSIZE];
+    size_t lastBlock = (size % BUFSIZE);
+
+    for (long i = 0; i < size; i += BUFSIZE) {
+        /* 버퍼 사이즈만큼의 메모리를 할당하되 마지막 블록은
+        그 크기가 다를 수 있으므로 나머지만큼을 할당한다. */   
+        if (i == (size - lastBlock)) {
+        delete[] buf;
+        buf = new char[lastBlock];
+        }
+        /* 버퍼 크기만큼 읽어서 기록한다
+        */
+        if (fread(buf, BUFSIZE, 1, infile) == 0 && feof(infile)) {
+        fwrite(buf, lastBlock, 1, outfile);
+        break;
+        } else {
+        fwrite(buf, BUFSIZE, 1, outfile);
+        }
+    }
+    
+    if (buf)
+    delete[] buf;
+
+    fclose(infile);
+    fclose(outfile);
+    </pre>
+</div>
