@@ -1,0 +1,298 @@
+:root {
+  --base_fonts : -apple-system,
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    나눔고딕,
+    굴림,
+    sans-serif,
+    "Segoe UI Symbol";
+  --base_font_size : 1vw;
+  --base_font_line_height : 1.6;
+  --base_font_light : 1rem;
+  --base_font_medium : 1.25rem;
+  --base_font_large : 1.5rem;
+
+  --base_margin_size_tiny : 0.15rem;
+  --base_margin_size_light : 0.25rem;
+  --base_margin_size_medium : 0.5rem;
+  --base_margin_size_large : 0.75rem;
+
+  --base_small_icon_size : 1rem;
+  --base_medium_icon_size : 1.25rem;
+  --base_large_icon_size : 1.5rem;
+
+  --base_border_radius_light : 0.25rem;
+  --base_border_radius_medium : 0.5rem;
+  --base_border_radius_large : 1rem;
+}
+
+[ data-theme = "light" ] { 
+  --base_background_image: url(/assets/icons/light-mode-img/light-background.gif);
+  --base_task_bar_background_image: url(/assets/icons/light-mode-img/grey-background.gif);
+  --base_footer_background_image: url(/assets/icons/light-mode-img/grey-background.gif);
+
+  --base_viewer_title_bar_background_image: url(/assets/icons/light-mode-img/mid-background.gif);
+  --base_viewer_title_bar_background_active_image: url(/assets/icons/light-mode-img/mid-dark-background.gif);
+  --base_viewer_footer_background_image: url(/assets/icons/light-mode-img/mid-background.gif);
+  --base_viewer_background_image: url(/assets/icons/light-mode-img/light-background.gif);
+
+  --base_clarity_filter_background_image: url(/assets/icons/light-mode-img/grey-background.gif);
+
+  --base_background_size: 5.35rem;
+  --base_background: linear-gradient(to left, #fafafa, #eeeeee);
+
+  --base_font_color: rgba(0, 0, 0, 0.8);
+  --base_font_color_b: #444444;
+  --base_font_color_c: #555555;
+  --base_font_meta_color: #536056;
+  
+  --base_font_weight: 500;
+
+  --base_task_item_background_color : #cccccc;
+  --base_task_item_background_color_b : #dddddd;
+
+  --base_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
+  --base_taskbar_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
+  --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.05);
+  --base_dash_border: 0.075rem dashed #bbbbbb;
+
+  --base_dark_light_toggle_button: url(/assets/icons/light-mode-img/dark-toggle.png);
+
+  --base_box_background_color: #fafafa;
+  --base_section_header_box_background_color: linear-gradient(45deg, #cccccc, #dadada);
+  --base_section_header_box_background_color_b: linear-gradient(45deg, #cacaca, #cccccc);
+  --base_section_header_box_font_color: #333333;
+
+  --base_anchor_tag_hover_color: #0464a4;
+  --base_anchor_tag_hover_color_b: rgba(0, 0, 0, 0.95);
+  --base_anchor_tag_hover_text_decoration: none;
+
+  --base_viewer_overay: none;
+  --base_viewer_active_overay: none;
+  --base_viewer_background_gradient: none;
+  --base_viewer_title_bar_background: none;
+
+  --base_blog_content_panel_hr : rgba(19, 19, 19, 0.15);
+  --base_close_icon_filter_invert : invert(1);
+
+  --base_backdrop_filter: none;
+  --base_footer_background_color: #1a1a1a;
+
+  --base_task_item_close_background_color_b : #111111;
+  --base_viewer_shadow : 
+    0 0 0 0.075rem rgba(255,255,255,0.04),
+    0 0.3rem 0.6rem rgba(0,0,0,0.45);
+
+  --base_task_items_shadow : 
+    0 0 0 0.025rem rgba(255,255,255,0.025),
+    0 0.1rem 0.3rem rgba(0,0,0,0.25);
+}
+
+
+[ data-theme = "dark" ] { 
+  --base_background_image: url(/assets/icons/dark-mode-img/dark-background.png);
+  --base_task_bar_background_image : url(/assets/icons/dark-mode-img/mid-dark-background.gif);
+  --base_footer_background_image: url(/assets/icons/dark-mode-img/mid-dark-background.gif);
+  --base_clarity_filter_background_image: none;
+  --base_viewer_title_bar_background_image: none;
+  --base_viewer_title_bar_background_active_image: none;
+  --base_viewer_footer_background_image: none;
+  --base_viewer_background_image: none;
+  --base_background_size: 12.25rem;
+
+  --base_background: linear-gradient(to left, #000000, #1a1a1a);
+
+  --base_font_color: #eeeeee;
+  --base_font_color_b: #aaaaaa;
+  --base_font_color_c: #888888;
+  --base_font_meta_color: #888888;
+
+  --base_font_weight: 400;  
+
+  --base_border_line: 0.075rem solid  rgba(255, 255, 255, 0.025);
+  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
+  --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.04);
+
+  --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
+
+  --base_box_background_color: linear-gradient(45deg, #444444, #333333);
+  --base_section_header_box_background_color: linear-gradient(45deg, #444444, #333333);
+  --base_section_header_box_background_color_b: linear-gradient(45deg, #555555, #444444);
+  --base_section_header_box_font_color: #cccccc;
+
+  --base_task_item_background_color : #444444;
+  --base_task_item_background_color_b : #555555;
+
+  --base_anchor_tag_hover_color: #ffc900;
+  --base_anchor_tag_hover_color_b: #cdcdcd;
+  --base_anchor_tag_hover_text_decoration: none;
+
+  --base_dash_border : 0.075rem dashed #555555;
+  --base_blog_content_panel_hr : rgba(255,255,255,0.15);
+  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.075);
+ 
+  --base_close_icon_filter_invert : none;
+
+  --base_drop_shadow :  drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));
+  --base_viewer_shadow : 0 25px 60px rgba(0,0,0,0.35),   /* 아래로 깊이 */
+                              0 5px 15px rgba(0,0,0,0.15),    /* 근접 그림자 */
+                              0 0 30px rgba(255,255,255,0.08), /* 은은한 광번짐 */
+                              inset 0 1px 0 rgba(255,255,255,0.4),
+                              inset 0 -1px 0 rgba(255,255,255,0.05);
+  --base_backdrop_filter: blur(10px) saturate(100%) brightness(30%);
+  --base_viewer_overay: none;
+  --base_viewer_active_overay: rgba(0, 0, 0, 0.75);
+  --base_viewer_background_gradient: linear-gradient(
+        to bottom,
+        rgba(200, 210, 220, 0.2), /* 연한 회색 + 파랑 살짝 */
+        rgba(180, 190, 210, 0.1)   /* 조금 더 푸른 회색 */
+    );
+  --base_viewer_title_bar_background: rgba(0, 0, 0, 0.25);
+
+  --base_footer_background_color : #1a1a1a;
+
+  --base_task_item_close_background_color_b : #777777;
+
+  --base_task_items_shadow : 
+    0 0 0 0.025rem rgba(255,255,255,0.025),
+    0 0.1rem 0.3rem rgba(0,0,0,0.25);
+}
+
+
+::-webkit-scrollbar { width: 0px; }
+::-webkit-scrollbar-thumb { background-color: #666666;}
+::-webkit-scrollbar-track { background-color: #333333;}
+
+html {
+  font-size: var(--base_font_size);
+  color: var(--base_font_color);
+  font-weight: var(--base_font_weight);
+
+  background-image: var(--base_task_bar_background_image);
+  background-repeat: repeat;
+  background-size: 5.35rem;
+}
+
+body {
+  background: var(--base_background);
+
+  line-height: var(--base_font_line_height);
+  font-family: var(--base_fonts);
+  
+  user-select: none;
+}
+
+hr {
+  border: var(--base_hr_border);
+  
+  margin-top: 0.3rem;
+  margin-bottom: 0.1rem;
+}
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+  white-space: pre-line;
+}
+
+a:link {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color : var(--base_anchor_tag_hover_color);
+  text-decoration: none;
+  text-underline-offset: 0.3rem;
+  transition-duration: 250ms;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+}
+
+li {
+  list-style: disc;
+}
+
+h1 {
+  display:flex;
+  font-size: var(--base_font_light);
+  font-weight: bold;
+  padding: 0rem;
+  line-height: 1.5rem;
+  padding-bottom : var(--base_margin_size_tiny);
+}
+
+h2 {
+  font-size: var(--base_font_medium);
+  color: var(--base_font_color);
+  font-weight: bold;
+  padding-top : 0rem;
+  padding-bottom : var(--base_margin_size_light);
+}
+
+h3 {
+  font-size: var(--base_font_large);
+  color: var(--base_font_color);
+  font-weight: bold;
+  padding-top : 0rem;
+  line-height: 1.25;
+  padding-bottom : var(--base_margin_size_tiny);
+}
+
+.small-icon {
+  width: var(--base_small_icon_size);
+  height: var(--base_small_icon_size);
+
+  float: left;
+
+  margin-right: 0.1rem;
+  margin-top: 0.25rem;
+}
+
+.medium-icon {
+  width: var(--base_small_icon_size);
+  height: var(--base_small_icon_size);
+
+  margin-right: 0.1rem;
+  margin-left: 0.25rem;
+}
+
+.north-east-arrow {
+  float:right;
+
+  font-size: 0.9rem;
+
+  vertical-align: super;
+}
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+
+  clip: rect(0,0,0,0);
+
+  border: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

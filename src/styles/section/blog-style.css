@@ -1,0 +1,103 @@
+.meta    { font-size: 0.9rem; color: var(--base_font_meta_color); }
+.title   { font-size: 1rem; color: var(--base_font_color); }
+.summary { font-size: 0.95rem; color: var(--base_font_color_b); }
+
+.post-index { line-height: 1; padding: 0.25rem; }
+.post-index .meta { font-size: 0.85rem; color: var(--base_font_color_c); }
+.post-index .title { font-size: 0.95rem; color: var(--base_font_color); line-height: 1.7; }
+.post-index .summary { font-size: 0.9rem; color: var(--base_font_color_b); line-height: 1.5; }
+
+.post-index a:hover .title { color: var(--base_anchor_tag_hover_color); } /*#056081*/
+.post-index a:hover .summary { color: var(--base_font_color); }
+
+.latest-post { line-height: 1.35; }
+.latest-post a:hover .title { color: var(--base_anchor_tag_hover_color); } /*#ffc900*/
+.latest-post a:hover .summary { color: var(--base_anchor_tag_hover_color_b);}
+
+.blog-post {
+  padding: 1rem;
+  line-height: 2;
+
+  font-weight: var(--base_font_weight);
+  font-size: 1rem;
+}
+
+.blog-post-photo-comment { font-size: 0.8rem; color: var(--base_font_color_b); }
+.blog-post .meta { color: var(--base_font_color_c); font-size: 0.9rem; }
+.blog-post hr { 
+  border-color: #777777; 
+}
+.blog-post a:hover { color: #ffc900; }
+
+.blog-content-panel { padding: 0; }
+.blog-content-panel hr { 
+  position: relative;
+  border: none;
+  height: 0.075rem;
+  background: var(--base_blog_content_panel_hr);
+}
+
+.blog-content-panel hr::after {
+  content: "";
+  position: absolute;
+  top: 0.075rem;
+  left: 0;
+  right: 0;
+  height: 0.075rem;
+  background: rgba(0,0,0,0.1);
+  opacity: 0.3;
+}
+
+.blog-post-photo-container {
+  width: 40%;
+  float: left;
+
+  text-align: center;
+ 
+  margin-right: 2rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.blog-post-photo-medium {
+  width: 100%;
+  height:auto;
+
+  border-radius: var(--base_border_radius_large);
+
+  filter: drop-shadow(0 0 1.5rem rgba(96, 94, 87, 0.5));
+}
+
+.lifelog-photo-medium {
+  width: 100%;
+  height:auto;
+}
+
+#blog-writings hr {
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+}
+
+#blog-writings .title {
+  line-height: 2;
+}
+
+#blog-writings .summary {
+  line-height: 1.55;
+}
+
+#blog-archive { margin-top: 0.75rem; }
+
+#blog-lifelog .latest-post, 
+#blog-archive .latest-post {
+  line-height: 1.5;
+}
+
+#blog-reflection .latest-post {
+  line-height: 1.6;
+}
+
+#reflection-content {
+  padding-top: 1rem;
+  text-align: center;
+}

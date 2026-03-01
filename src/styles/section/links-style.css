@@ -1,0 +1,37 @@
+#links .title_box {
+  cursor: default;
+}
+
+#links .title-box-more-button {
+  display: none;
+}
+
+#links .title_box:hover {
+  background: var(--base_section_header_box_background_color);
+}
+
+.links_item_list {
+  display: block;
+
+  font-size: 0.9rem;  
+  text-align: left;
+  color: var(--base_font_color);
+  
+  background: var(--base_box_background_color);
+  border: var(--base_border_line);
+  border-radius: var(--base_border_radius_medium);
+  
+  padding: var(--base_margin_size_medium);
+  margin-top: 0.6rem;
+}
+
+.links_item_list figure {
+  display: flex;
+  align-items: center;
+  margin: 0; /* 기본 margin 제거 중요 */
+}
+
+.links_item_list a:hover {
+  text-decoration: var(--base_anchor_tag_hover_text_decoration);
+  text-underline-offset: 0.3rem;
+}

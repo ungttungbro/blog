@@ -1,0 +1,145 @@
+#taskbar {
+  padding-top: var(--base_margin_size_tiny);
+  padding-bottom: var(--base_margin_size_tiny);  
+  border-bottom: var(--base_taskbar_border_line);
+}
+
+.task-group-items {
+  min-width: 100%;
+  position: absolute;
+
+  border-radius: 0.5rem;
+  
+  background-color: rgba(0, 0, 0, 0.8);
+  background: var(--base_box_background_color);
+
+  margin-top: 0.35rem;
+
+  box-shadow: var(--base_task_items_shadow);
+}
+ 
+.task-group-items .task-bar-item {
+  background-color: transparent;
+  border-radius: 0;
+  border: 0;
+}
+
+.task-group-items .task-bar-item .medium-icon {
+  display: none;
+}
+
+.task-group-items .task-bar-item:hover {
+  color: var(--base_anchor_tag_hover_color);
+}
+
+.task-bar-item,
+.task-bar-group {
+  color: var(--base_font_color);
+  background-color: var(--base_task_item_background_color);
+  border: var( --base_border_line);
+}
+
+.task-bar-item figure,
+.task-bar-group figure {
+  display: flex;
+  align-items: center;
+  margin: 0; /* 기본 margin 제거 중요 */
+}
+
+.task-bar-item:hover,
+.task-bar-group:hover {
+  background-color: var(--base_task_item_background_color_b);
+}
+
+.task-item-close {
+  filter: var(--base_close_icon_filter_invert);
+}
+
+.task-item-close:hover {
+  background-color: var(--base_task_item_close_background_color_b);
+}
+
+#screen-shade-button {
+    width: 2rem;
+    height: 2rem;
+
+    align-self: center;
+
+    background-image: url(/assets/icons/sunny.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#screen-shade-button:hover {
+    cursor: pointer;
+    animation: hover-blink 1000ms ease-in-out 2;
+}
+
+#shade-panel {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    pointer-events: auto;
+
+    backdrop-filter: var(--base_backdrop_filter);
+
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.02) 40%,
+            rgba(255,255,255,0.00) 70%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.02)
+        );
+    
+    background-image: var(--base_clarity_filter_background_image);
+
+    overflow: hidden;
+}
+
+#color-theme {
+    width: 2rem;
+    height: 2rem;
+
+    align-self: center;
+
+    background-image: var(--base_dark_light_toggle_button);
+    background-size: cover;
+    background-position: center;
+}
+
+#logo {
+    height: auto;    
+
+    margin-right: 0.75rem;
+    align-self: stretch;
+
+    cursor: pointer;
+}
+
+#logo:hover {
+    animation: hover-blink 1000ms ease-in-out 1;
+}
+
+#color-theme:hover {
+    margin: 0;
+    cursor: pointer;
+
+    animation: hover-blink 700ms ease-in-out 2;
+}
+
+@keyframes hover-blink {
+  0%   { opacity: 1; }
+  30%  { opacity: 0.5; }
+  55%  { opacity: 0.8; }
+  100% { opacity: 1; }
+}

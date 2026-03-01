@@ -1,0 +1,127 @@
+.viewer {
+  display: flex;
+  
+  box-sizing: border-box;
+  flex-direction: column;
+
+  position:fixed;
+    
+  color: #cdcdcd;  
+
+  border-radius: 0.5rem;
+    
+  touch-action: none;
+  overflow: hidden;
+  overscroll-behavior: none;
+
+  box-shadow:
+    0 0 0 0.075rem rgba(255,255,255,0.04),
+    0 0.3rem 0.6rem rgba(0,0,0,0.45);
+}
+
+.title_bar {  
+  position: relative;  
+    
+  height: 3rem;
+
+  color: #dddddd;
+  font-weight: bold;
+  
+  user-select: none;
+  padding: 0.75rem;  
+  
+  justify-content: center; 
+    
+  white-space: nowrap;      /* 줄바꿈 금지 */
+  overflow: hidden;         /* 넘치는 부분 숨김 */
+  text-overflow: clip;      /* 그냥 잘라냄 */
+   
+  border-bottom: 0.075rem solid rgba(255, 255, 255, 0.1);
+}
+
+#content_area {
+  display: flex;
+
+  flex-direction: column;  
+  flex: 1;
+
+  font-weight: 500;
+  
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+
+  pointer-events: auto;
+
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  scroll-padding-bottom: 0;
+}
+
+.header_panel {
+  user-select: none;  
+  padding : 0.5rem;
+}
+
+.header_panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.header_panel hr {
+  border: 0.075rem solid #bababa;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+} 
+
+.content_panel {
+  color: var(--base_font_color);
+  font-size: 1.1rem;
+
+  line-height: 1.75;
+  text-align: justify;
+  
+  overflow-wrap: anywhere;
+  user-select: none;
+}
+
+.footer_panel {
+  width: 100%;
+  height: 100%;
+  
+  text-align: center;
+  padding: 0.5rem;
+  
+  color: #dddddd;
+  font-weight: bold;
+  margin: auto;
+}
+
+#window_button_container {
+  display: flex;
+
+  float:right;
+  
+  top:0;
+  bottom:0;
+  
+  justify-content: space-between;
+}
+
+.window_button {
+  width:1.5rem;
+  height: 1.5rem;
+
+  padding:0.25rem;  
+  
+  cursor:pointer;
+}
+
+.window_button:hover {
+  background: rgba(200, 200, 200, 0.25);
+  border-radius: 25%;
+  border: 0.075rem solid #cccccc;
+}

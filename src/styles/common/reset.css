@@ -1,0 +1,46 @@
+/* ===== Modern Reset (2026) ===== */
+
+/* box model 통일 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 기본 여백 제거 */
+body {
+  margin: 0;
+  line-height: 1.6;
+}
+
+div, span, h1, h2, h3, h4, h5, h6, p, img, b, u, 
+ol, ul, li, caption, article, aside, canvas, 
+details, figure, figcaption, footer, header { 
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	font-size: 100%; 
+	font: inherit;
+}
+
+/* 리스트 스타일은 필요할 때만 */
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+/* 이미지 & 미디어 */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 폼 요소 폰트 통일 */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* table 안정화 */
+table {
+  border-collapse: collapse;
+}

@@ -1,0 +1,125 @@
+:root {
+    --photolog_thumbnail_width_size: 6.5rem;
+    --photolog_thumbnail_height_size: 4.4rem;
+}
+
+.photolog-thumbnail {
+    width: var(--photolog_thumbnail_width_size);
+    height: var(--photolog_thumbnail_height_size);
+
+    border-radius: var(--base_border_radius_medium);
+    
+    float: left;
+    
+    margin-right: 0.3rem;
+    
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+    
+    z-index: 1;
+}
+
+.teaser-list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.teaser-figure {
+    max-height: calc(1.525rem * 3); /* 3줄 */
+    overflow: hidden;
+
+    word-break: break-all;
+    text-align: justify;
+    cursor: pointer;
+    color: inherit;
+
+    margin-top: 0.3rem;
+    margin-bottom: 0.25rem;
+}
+
+.teaser-figure .figure-title {
+    display: block;
+
+    color: var(--base_font_color);
+    font-size: 1rem;
+    font-weight: var(--base_font_weight);
+
+    line-height: 1.6;
+}
+
+.teaser-figure .figure-content {
+    font-size: 0.95rem;
+    color: var(--base_font_color_b);
+    font-weight: var(--base_font_weight);
+    
+    line-height: 1.5;
+}
+
+/* 마지막 요소만 border 제거 */
+.teaser-figure:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.teaser-figure:hover .figure-title { 
+    color: var(--base_anchor_tag_hover_color); 
+    text-decoration: var(--base_anchor_tag_hover_text_decoration);
+    text-underline-offset: 0.3rem;
+}
+.teaser-figure:hover .figure-content { color: var(--base_anchor_tag_hover_color_b); }
+
+.teaser-figure:hover .photolog-thumbnail {
+    transform: scale(1.0);
+    opacity: 0.8;
+}
+
+.photolog-header-panel {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 3vh;
+
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+    color: var(--base_font_color);
+}
+
+.photolog-photo {
+    width : 100%;
+    height : auto;
+
+    margin: 0;
+
+    scroll-snap-align: end;
+    scroll-snap-stop: always;
+    scroll-margin-bottom: 0;
+    /*scroll-margin-bottom: 6vh;*/
+}
+
+.photolog-footer-panel {
+    scroll-snap-align: end;
+    scroll-margin-bottom: 3vh;
+}
+
+#photolog-index-viewer .teaser-list {
+    margin-top: 0;
+    padding: 0.5rem;
+}
+
+#photolog-index-viewer .figure-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--base_font_color);
+
+    line-height: 1.65;
+}
+
+#photolog-index-viewer .figure-content {
+    font-size: 0.9rem;
+    color: var(--base_font_color_b);
+
+    line-height: 1.4;
+}
+
+#photolog-index-viewer .teaser-figure:hover .figure-title { color: var(--base_anchor_tag_hover_color); }
+#photolog-index-viewer .teaser-figure:hover .figure-content { color: var(--base_anchor_tag_hover_color_b); }
