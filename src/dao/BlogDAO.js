@@ -3,7 +3,7 @@ import { Blog } from "../entities/Blog.js";
 
 export class BlogDAO {
     constructor() {
-        this._BLOG_DATA_PATH = "/assets/data/blog-data.json";        
+        this._BLOG_DATA_PATH = "./assets/data/blog-data.json";        
     }
 
     static async create() {

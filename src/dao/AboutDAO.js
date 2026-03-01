@@ -3,7 +3,7 @@ import { About } from "../entities/About.js";
 
 export class AboutDAO {
     constructor() {
-        this._ABOUT_DATA_PATH = "/assets/data/about-data.json";
+        this._ABOUT_DATA_PATH = "./assets/data/about-data.json";
     }
 
     static async create() {

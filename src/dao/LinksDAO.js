@@ -3,7 +3,7 @@ import { Links } from "../entities/Links.js";
 
 export class LinksDAO {
     constructor() {
-        this._LINKS_DATA_PATH = "/assets/data/links-data.json";        
+        this._LINKS_DATA_PATH = "./assets/data/links-data.json";        
     }
 
     static async create() {

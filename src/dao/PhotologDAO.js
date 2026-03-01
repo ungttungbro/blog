@@ -3,7 +3,7 @@ import { Photolog } from "../entities/Photolog.js";
 
 export class PhotologDAO {
     constructor() {
-        this._PHOTOLOG_DATA_PATH = "/assets/data/photolog-data.json";        
+        this._PHOTOLOG_DATA_PATH = "./assets/data/photolog-data.json";        
     }
 
     static async create() {
