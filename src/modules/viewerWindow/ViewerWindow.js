@@ -321,7 +321,6 @@ export class ViewerWindow {
     generateDragEvent(title_bar) {
         let drag_state = null;
 
-        // 더블 클릭 최대/최소화
         title_bar.addEventListener('dblclick', e => {
             if (!title_bar.isDragging) {
                 SiteLibrary.toggleElementMaximize(this.windowElement, 'taskbar');
@@ -330,7 +329,6 @@ export class ViewerWindow {
             }
         });
 
-        // 드래그 시작
         title_bar.addEventListener('pointerdown', e => {
             if (this.isMaximized) return;
             if (e.target.closest('.window_button')) return;
@@ -343,45 +341,56 @@ export class ViewerWindow {
 
             const rect = window_element.getBoundingClientRect();
 
+            window_element.style.transform = '';
+
             drag_state = {
                 pointerId: e.pointerId,
+
+                // 마우스 시작 좌표
                 startX: e.clientX,
                 startY: e.clientY,
-                offsetX: e.clientX - rect.left,
-                offsetY: e.clientY - rect.top,
+
+                // 현재 창의 실제 위치
+                initialLeft: rect.left,
+                initialTop: rect.top,
+
                 dragging: false
             };
+
+            // pointer capture
+            title_bar.setPointerCapture(e.pointerId);
         });
 
-        // 드래그 이동
         document.addEventListener('pointermove', e => {
             if (!drag_state || e.pointerId !== drag_state.pointerId) return;
 
-            const dx = Math.abs(e.clientX - drag_state.startX);
-            const dy = Math.abs(e.clientY - drag_state.startY);
-
-            // 드래그 임계값
-            if (!drag_state.dragging && (dx > 5 || dy > 5)) {
-                drag_state.dragging = true;
-                title_bar.isDragging = true;
-                e.preventDefault();
-            }
-
-            if (!drag_state.dragging) return;
-
             const window_element = this.windowElement;
-            window_element.style.left = (e.clientX - drag_state.offsetX) + 'px';
-            window_element.style.top  = (e.clientY - drag_state.offsetY) + 'px';
+
+            const deltaX = e.clientX - drag_state.startX;
+            const deltaY = e.clientY - drag_state.startY;
+
+            window_element.style.transform = 
+                `translate(${deltaX}px, ${deltaY}px)`;
         });
 
-        // 드래그 종료
         document.addEventListener('pointerup', e => {
             if (!drag_state || e.pointerId !== drag_state.pointerId) return;
 
-            this.windowElement.style.pointerEvents = 'auto';
+            const window_element = this.windowElement;
 
+            const deltaX = e.clientX - drag_state.startX;
+            const deltaY = e.clientY - drag_state.startY;
+
+            // transform 제거
+            window_element.style.transform = '';
+
+            // 실제 위치 확정
+            window_element.style.left = (drag_state.initialLeft + deltaX) + 'px';
+            window_element.style.top  = (drag_state.initialTop + deltaY) + 'px';
+
+            this.windowElement.style.pointerEvents = 'auto';
             ViewerStateManager.stateLog(this.windowElement);
-            
+
             title_bar.isDragging = false;
             drag_state = null;
         });
