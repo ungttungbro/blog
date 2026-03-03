@@ -59,11 +59,11 @@
   --base_dark_light_toggle_button: url(/assets/icons/light-mode-img/dark-toggle.png);
 
   --base_box_background_color: #fafafa;
-  --base_section_header_box_background_color: linear-gradient(45deg, #cccccc, #dadada);
+  --base_section_header_box_background_color: linear-gradient(45deg, #cdcdcd, #dcdcdc);
   --base_section_header_box_background_color_b: linear-gradient(45deg, #cacaca, #cccccc);
   --base_section_header_box_font_color: #333333;
 
-  --base_anchor_tag_hover_color: #0464a4;
+  --base_anchor_tag_hover_color: #d1651e;
   --base_anchor_tag_hover_color_b: rgba(0, 0, 0, 0.95);
   --base_anchor_tag_hover_text_decoration: none;
 
@@ -115,8 +115,8 @@
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
 
-  --base_box_background_color: linear-gradient(45deg, #444444, #333333);
-  --base_section_header_box_background_color: linear-gradient(45deg, #444444, #333333);
+  --base_box_background_color: linear-gradient(45deg, #333333, #444444);
+  --base_section_header_box_background_color: linear-gradient(45deg, #333333, #444444);
   --base_section_header_box_background_color_b: linear-gradient(45deg, #555555, #444444);
   --base_section_header_box_font_color: #cccccc;
 
