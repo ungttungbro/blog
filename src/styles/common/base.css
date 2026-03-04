@@ -129,7 +129,7 @@
 
   --base_dash_border : 0.075rem dashed #555555;
   --base_blog_content_panel_hr : rgba(255,255,255,0.15);
-  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.075);
+  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.15);
  
   --base_close_icon_filter_invert : none;
 
@@ -139,15 +139,18 @@
                               0 0 30px rgba(255,255,255,0.08), /* 은은한 광번짐 */
                               inset 0 1px 0 rgba(255,255,255,0.4),
                               inset 0 -1px 0 rgba(255,255,255,0.05);
-  --base_backdrop_filter: blur(10px) saturate(100%) brightness(30%);
+  --base_backdrop_filter: none;/*blur(0px) saturate(70%) brightness(30%);*/
   --base_viewer_overay: none;
-  --base_viewer_active_overay: rgba(0, 0, 0, 0.75);
-  --base_viewer_background_gradient: linear-gradient(
+  --base_viewer_active_overay: rgba(0, 0, 0, 0.5);
+  /*--base_viewer_background_gradient: linear-gradient(
         to bottom,
-        rgba(200, 210, 220, 0.2), /* 연한 회색 + 파랑 살짝 */
-        rgba(180, 190, 210, 0.1)   /* 조금 더 푸른 회색 */
-    );
-  --base_viewer_title_bar_background: rgba(0, 0, 0, 0.25);
+        rgba(200, 210, 220, 0.2),
+        rgba(180, 190, 210, 0.15)  
+    );*/
+
+  --base_viewer_background_gradient: linear-gradient(45deg, #222222, #333333);
+
+  --base_viewer_title_bar_background: rgba(0, 0, 0, 0.15);
 
   --base_footer_background_color : #1a1a1a;
 
