@@ -193,7 +193,7 @@ export class ViewerWindow {
         });
     }
 
-    resizeWindow() {        
+    resizeWindow() {
         const resizeDirection = (e) => {
             const EDGE = 8; // 모서리 감지 영역(px)
 
@@ -231,35 +231,45 @@ export class ViewerWindow {
 
             let newWidth  = this.startWidth;
             let newHeight = this.startHeight;
-            let newLeft   = this.startLeft;
-            let newTop    = this.startTop;
+            let newTranslateX = this.startTranslateX;
+            let newTranslateY = this.startTranslateY;
 
+            // 오른쪽(e) resize
             if (this.resizeDirection.includes('e')) {
                 newWidth = this.startWidth + dx;
             }
+
+            // 아래(s) resize
             if (this.resizeDirection.includes('s')) {
                 newHeight = this.startHeight + dy;
             }
+
+            // 왼쪽(w) resize
             if (this.resizeDirection.includes('w')) {
                 newWidth = this.startWidth - dx;
-                newLeft  = this.startLeft + dx;
+                newTranslateX = this.startTranslateX + dx;
             }
+
+            // 위쪽(n) resize
             if (this.resizeDirection.includes('n')) {
                 newHeight = this.startHeight - dy;
-                newTop    = this.startTop + dy;
+                newTranslateY = this.startTranslateY + dy;
             }
 
             this.windowElement.style.width  = newWidth + 'px';
             this.windowElement.style.height = newHeight + 'px';
-            this.windowElement.style.left = newLeft + 'px';
-            this.windowElement.style.top = newTop + 'px';
+            this.windowElement.style.transform = `translate(${newTranslateX}px, ${newTranslateY}px)`;
         };
 
         this.onResizeEnd = () => {
             this.isResizing = false;
 
-            this.beforeWidth = this.windowElement.style.width;
-            this.beforeHeight = this.windowElement.style.height;
+            const style = window.getComputedStyle(this.windowElement);
+            const matrix = new DOMMatrixReadOnly(style.transform || 'matrix(1,0,0,1,0,0)');
+
+            // ← 여기서 transform 기준 누적 좌표 갱신
+            this.startTranslateX = matrix.m41;
+            this.startTranslateY = matrix.m42;
 
             document.removeEventListener('pointermove', this.onResizeMove);
             document.removeEventListener('pointerup', this.onResizeEnd);
@@ -268,12 +278,18 @@ export class ViewerWindow {
         };
 
         this.windowElement.addEventListener('pointerdown', e => {
-            if (this.isTouchDevice) return; // 터치면 resize 무시
+            if (this.isTouchDevice) return;
 
             const direction = resizeDirection(e);
             if (!direction) return;
 
             const rect = this.windowElement.getBoundingClientRect();
+
+            // 현재 transform 값 읽어오기 (없으면 0)
+            const style = window.getComputedStyle(this.windowElement);
+            const matrix = new DOMMatrixReadOnly(style.transform);
+            this.startTranslateX = matrix.m41 || 0;
+            this.startTranslateY = matrix.m42 || 0;
 
             this.isResizing = true;
             this.resizeDirection = direction;
@@ -283,8 +299,6 @@ export class ViewerWindow {
 
             this.startWidth  = rect.width;
             this.startHeight = rect.height;
-            this.startLeft   = rect.left;
-            this.startTop    = rect.top;
 
             document.addEventListener('pointermove', this.onResizeMove);
             document.addEventListener('pointerup', this.onResizeEnd);
@@ -318,7 +332,7 @@ export class ViewerWindow {
         this.generateDragEvent(title_bar);
     }
 
-    generateDragEvent(title_bar) {
+    generateDragEvent(title_bar) {      
         let drag_state = null;
 
         title_bar.addEventListener('dblclick', e => {
@@ -339,21 +353,15 @@ export class ViewerWindow {
             window_element.style.zIndex = ViewerStateManager.maxZIndex() + 1; 
             ViewerStateManager.stateLog(window_element);
 
-            const rect = window_element.getBoundingClientRect();
-
-            window_element.style.transform = '';
+            const style = window.getComputedStyle(window_element);
+            const matrix = new DOMMatrixReadOnly(style.transform || 'matrix(1,0,0,1,0,0)');
 
             drag_state = {
                 pointerId: e.pointerId,
-
-                // 마우스 시작 좌표
                 startX: e.clientX,
                 startY: e.clientY,
-
-                // 현재 창의 실제 위치
-                initialLeft: rect.left,
-                initialTop: rect.top,
-
+                startTranslateX: matrix.m41, // transform 기준 X
+                startTranslateY: matrix.m42, // transform 기준 Y
                 dragging: false
             };
 
@@ -366,11 +374,11 @@ export class ViewerWindow {
 
             const window_element = this.windowElement;
 
-            const deltaX = e.clientX - drag_state.startX;
-            const deltaY = e.clientY - drag_state.startY;
+            const dx = e.clientX - drag_state.startX;
+            const dy = e.clientY - drag_state.startY;
 
             window_element.style.transform = 
-                `translate(${deltaX}px, ${deltaY}px)`;
+                    `translate(${drag_state.startTranslateX + dx}px, ${drag_state.startTranslateY + dy}px)`;
         });
 
         document.addEventListener('pointerup', e => {
@@ -380,9 +388,6 @@ export class ViewerWindow {
 
             const deltaX = e.clientX - drag_state.startX;
             const deltaY = e.clientY - drag_state.startY;
-
-            // transform 제거
-            window_element.style.transform = '';
 
             // 실제 위치 확정
             window_element.style.left = (drag_state.initialLeft + deltaX) + 'px';
