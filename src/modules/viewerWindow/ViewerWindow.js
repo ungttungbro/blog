@@ -1,11 +1,10 @@
 'use strict';
 
-import { SiteLibrary } from "../common/SiteLibrary.js";
 import { ViewerStateManager } from "./ViewerStateManager.js";
 import { ViewerWindowProcessRegistry } from "./ViewerWindowProcessRegistry.js";
 
 const CONSTANTS = Object.freeze({
-    TITLE_ICON_TYPE: 'medium-icon',
+    TITLE_ICON_TYPE: 'small-icon',
     CLOSE_BUTTON_ICON_PATH: './assets/icons/close.png',
     MAXIMIZE_BUTTON_ICON_PATH: './assets/icons/screen.png',
     MINIMIZE_BUTTON_ICON_PATH: './assets/icons/minimize.png',
@@ -114,11 +113,8 @@ export class ViewerWindow {
     }
 
     createTitleIcon() {
-        const icon = document.createElement('img');
-        icon.className = 'small-icon';
-        icon.src =  this.titleIconPath;
-
-        const title_figure = SiteLibrary.createImgCaption(icon, null, SiteLibrary.truncateText(this.titleText, 45));
+        const icon = this.createImgElement(CONSTANTS.TITLE_ICON_TYPE, '',  this.titleIconPath, 'viewer title icon');
+        const title_figure = this.createImgCaption(icon, null, this.titleText);
         title_figure.style.float = 'left';        
 
         return title_figure;
@@ -128,21 +124,21 @@ export class ViewerWindow {
         const window_buttons = document.createElement('div');
         window_buttons.id = 'window_button_container';
 
-        const close_button = SiteLibrary.createImgElement(
+        const close_button = this.createImgElement(
             CONSTANTS.WINDOW_BUTTON_NAME, 
-            '', 
+            'viewer-close-button', 
             CONSTANTS.CLOSE_BUTTON_ICON_PATH, 
             'close button'
         );
 
-        const maximize_button = SiteLibrary.createImgElement(
+        const maximize_button = this.createImgElement(
             CONSTANTS.WINDOW_BUTTON_NAME,
             'viewer-maximize-button', 
             CONSTANTS.MAXIMIZE_BUTTON_ICON_PATH, 
             'maximize button'
         );
 
-        const minimize_button = SiteLibrary.createImgElement(
+        const minimize_button = this.createImgElement(
             CONSTANTS.WINDOW_BUTTON_NAME, 
             'viewer-minimize-button', 
             CONSTANTS.MINIMIZE_BUTTON_ICON_PATH, 
@@ -161,26 +157,25 @@ export class ViewerWindow {
     generateWindowsButtonsEvent(minimize_button, maximize_button, close_button) {
         const window_element = this.windowElement;
 
-        minimize_button.addEventListener('click', e => {
-            e.stopPropagation();
-            SiteLibrary.elementVisibility(this.viewerId);
+        window_element.style.zIndex = ViewerStateManager.maxZIndex() + 1; 
 
-            window_element.style.zIndex = ViewerStateManager.maxZIndex() + 1; 
+        minimize_button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            ViewerStateManager.elementVisibility(window_element);            
             ViewerStateManager.stateLog(window_element);
         });
 
-        maximize_button.addEventListener('click', e => {
+        maximize_button.addEventListener('click', (e) => {
             e.stopPropagation();
 
-            SiteLibrary.toggleElementMaximize(window_element, 'taskbar');
+            ViewerStateManager.toggleElementMaximize(window_element, 'taskbar');
             if (this.isMaximized) this.isMaximized = false;
             else this.isMaximized = true;
-
-            window_element.style.zIndex = ViewerStateManager.maxZIndex() + 1; 
+ 
             ViewerStateManager.stateLog(window_element);
         });
 
-        close_button.addEventListener('click', e => {
+        close_button.addEventListener('click', (e) => {
             e.stopPropagation();
             
             ViewerWindowProcessRegistry.get('unmount', 'function')?.(
@@ -277,7 +272,7 @@ export class ViewerWindow {
             ViewerStateManager.stateLog(this.windowElement);
         };
 
-        this.windowElement.addEventListener('pointerdown', e => {
+        this.windowElement.addEventListener('pointerdown', (e) => {
             if (this.isTouchDevice) return;
 
             const direction = resizeDirection(e);
@@ -304,7 +299,7 @@ export class ViewerWindow {
             document.addEventListener('pointerup', this.onResizeEnd);
         });
 
-        this.windowElement.addEventListener('pointermove', e => {            
+        this.windowElement.addEventListener('pointermove', (e) => {            
             const direction = resizeDirection(e);
             const cursorMap = {
                 e: 'e-resize',
@@ -335,15 +330,15 @@ export class ViewerWindow {
     generateDragEvent(title_bar) {      
         let drag_state = null;
 
-        title_bar.addEventListener('dblclick', e => {
+        title_bar.addEventListener('dblclick', () => {
             if (!title_bar.isDragging) {
-                SiteLibrary.toggleElementMaximize(this.windowElement, 'taskbar');
+                ViewerStateManager.toggleElementMaximize(this.windowElement, 'taskbar');
                 if (this.isMaximized) this.isMaximized = false;
                 else this.isMaximized = true;
             }
         });
 
-        title_bar.addEventListener('pointerdown', e => {
+        title_bar.addEventListener('pointerdown', (e) => {
             if (this.isMaximized) return;
             if (e.target.closest('.window_button')) return;
 
@@ -369,7 +364,7 @@ export class ViewerWindow {
             title_bar.setPointerCapture(e.pointerId);
         });
 
-        document.addEventListener('pointermove', e => {
+        document.addEventListener('pointermove', (e) => {
             if (!drag_state || e.pointerId !== drag_state.pointerId) return;
 
             const window_element = this.windowElement;
@@ -381,7 +376,7 @@ export class ViewerWindow {
                     `translate(${drag_state.startTranslateX + dx}px, ${drag_state.startTranslateY + dy}px)`;
         });
 
-        document.addEventListener('pointerup', e => {
+        document.addEventListener('pointerup', (e) => {
             if (!drag_state || e.pointerId !== drag_state.pointerId) return;
 
             const window_element = this.windowElement;
@@ -406,7 +401,6 @@ export class ViewerWindow {
         });
     }
 
-
     configureWindow(
         id, width, height, top, left,
         class_name, content_name, 
@@ -425,5 +419,28 @@ export class ViewerWindow {
         this.headerContents = header_contents;
         this.mainContents = main_contents;
         this.footerContents = footer_contents;
+    }
+
+    createImgElement(class_name, id, src, alt) {
+        const img = document.createElement('img');
+        
+        img.className = class_name;
+        img.id = id;
+        img.src =  src;
+        img.alt = alt;
+        
+        return img;
+    }
+
+    createImgCaption(image_element, caption_id, caption_text) {
+        const caption = document.createElement('figcaption');
+        caption.id = caption_id;
+        caption.innerHTML = '&nbsp;' + caption_text;
+
+        const figure = document.createElement('figure');
+        figure.appendChild(image_element);
+        figure.appendChild(caption);
+
+        return figure;
     }
 }

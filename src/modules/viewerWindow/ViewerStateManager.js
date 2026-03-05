@@ -107,4 +107,73 @@ export class ViewerStateManager {
 
         this.stateLog(element);
     }
+
+    static elementVisibility(element) {
+        if (element) {
+            if (element.style.visibility == 'hidden') {
+                element.style.visibility = 'visible';
+            } else {
+                element.style.visibility = 'hidden';
+            }
+        }
+    }
+
+    static toggleElementMaximize(element, offset_element_id) {
+        if (element.isDragging) return;
+
+        const isMaximized = element.classList.contains('is-maximized');
+
+        const elementRect = element.getBoundingClientRect();
+        const targetRect = document.getElementById(offset_element_id).getBoundingClientRect();
+        const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+
+        const targetTop = targetRect.bottom;
+        const targetLeft = 0;
+        const targetWidth = window.innerWidth;
+        const targetHeight = viewportHeight - targetRect.bottom;
+
+        // 현재 transform에서 translate 값 추출
+        const style = window.getComputedStyle(element);
+        const matrix = new DOMMatrixReadOnly(style.transform);
+        const currentTranslateX = matrix.m41;
+        const currentTranslateY = matrix.m42;
+
+        if (isMaximized) {
+
+            const prev = element._prevState;
+
+            element.classList.remove('is-maximized');
+
+            element.style.width = prev.width + 'px';
+            element.style.height = prev.height + 'px';
+
+            element.style.transform =
+                `translate(${prev.translateX}px, ${prev.translateY}px)`;
+
+            element.style.borderRadius = '0.5rem';
+        } else {
+            element._prevState = {
+                width: element.offsetWidth,
+                height: element.offsetHeight,
+                translateX: currentTranslateX,
+                translateY: currentTranslateY
+            };
+
+            const deltaX = targetLeft - elementRect.left;
+            const deltaY = targetTop - elementRect.top;
+
+            const newTranslateX = currentTranslateX + deltaX;
+            const newTranslateY = currentTranslateY + deltaY;
+
+            element.classList.add('is-maximized');
+
+            element.style.transform =
+                `translate(${newTranslateX}px, ${newTranslateY}px)`;
+
+            element.style.width = targetWidth + 'px';
+            element.style.height = targetHeight + 'px';
+
+            element.style.borderRadius = '0';
+        }
+    }
 }

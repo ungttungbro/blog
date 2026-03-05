@@ -13,10 +13,6 @@
   touch-action: none;
   overflow: hidden;
   overscroll-behavior: none;
-
-  box-shadow:
-    0 0 0 0.075rem rgba(255,255,255,0.04),
-    0 0.3rem 0.6rem rgba(0,0,0,0.45);
 }
 
 .title_bar {  
@@ -35,8 +31,6 @@
   white-space: nowrap;      /* 줄바꿈 금지 */
   overflow: hidden;         /* 넘치는 부분 숨김 */
   text-overflow: clip;      /* 그냥 잘라냄 */
-   
-  /*border-bottom: 0.075rem solid rgba(255, 255, 255, 0.1);*/
 }
 
 #content_area {
@@ -123,5 +117,6 @@
 .window_button:hover {
   background: rgba(200, 200, 200, 0.25);
   border-radius: 25%;
+
   border: 0.075rem solid #cccccc;
 }
