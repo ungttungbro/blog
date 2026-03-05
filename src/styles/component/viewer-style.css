@@ -1,5 +1,6 @@
 .viewer {
-  animation: fadeIn 500ms ease forwards;
+  animation: fadeIn 250ms ease forwards;
+  transition: height 250ms ease;
 
   overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
 
