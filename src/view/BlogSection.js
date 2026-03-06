@@ -9,6 +9,7 @@ import { Templates } from "../modules/site/Templates.js";
 import { taskbar } from "../modules/taskbar/TaskBar.js";
 import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
 import { ViewerWindowProcessRegistry } from "../modules/viewerWindow/ViewerWindowProcessRegistry.js";
+import { viewerConfig } from "../modules/viewerWindow/viewerConfig.js";
 
 export class BlogSection {
     constructor(blog_service) {
@@ -73,10 +74,6 @@ export class BlogSection {
         return section_header;
     }
 
-    showViewer() {
-        
-    }
-
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
@@ -87,21 +84,24 @@ export class BlogSection {
             return; 
         }
 
-        const width = window.innerWidth * VIEWER.LIST_RATIO_MIDDLE;        
-        const left = Math.min(window.innerWidth - width, window.innerWidth); // 화면 안쪽으로 제한
-
         try {
+            const configure = structuredClone(viewerConfig);
+
+            configure.element.elementId = contents_id;
+            configure.element.className = 'viewer';
+
+            configure.layout.width = 22 + 'rem';
+            configure.layout.height = 38 + 'rem';
+            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem';
+            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem';
+
+            configure.meta.contentType = 'blog';
+            configure.meta.titleIconPath = section_icon;
+            configure.meta.titleText = SiteLibrary.truncateText(title, 16);
+
             const viewer = new ViewerWindow();
             viewer.configureWindow(
-                contents_id,
-                22 + 'rem',
-                38 + 'rem',
-                SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem',
-                SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem',
-                'viewer',
-                'blog',
-                section_icon,
-                title,
+                configure,
                 Templates.createContentPanel('blog-header-panel', header),
                 contents,
                 Templates.createContentPanel('blog-footer-panel', footer)
@@ -261,17 +261,23 @@ export class BlogSection {
         }
 
         try {
+            const configure = structuredClone(viewerConfig);
+
+            configure.element.elementId = contents_id;
+            configure.element.className = 'viewer';
+
+            configure.layout.width = viewer_width;
+            configure.layout.height = '36rem';
+            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
+            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('36')) / 2)) + 'rem';
+
+            configure.meta.contentType = 'blog';
+            configure.meta.titleIconPath = section_icon;
+            configure.meta.titleText = SiteLibrary.truncateText(title, 24);
+
             const viewer = new ViewerWindow();
             viewer.configureWindow(
-                contents_id,
-                viewer_width,
-                '36rem',
-                SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('36')) / 2)) + 'rem',
-                SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem',
-                'viewer',
-                'blog',
-                section_icon,
-                SiteLibrary.truncateText(title, 24),
+                configure,
                 header,
                 Templates.createContentPanel(
                     'blog-content-panel', 

@@ -8,6 +8,7 @@ import { ELEMENT_TYPE, COMMON } from "../modules/common/Constants.js"
 import { siteMeta } from "../modules/site/siteMeta.js";
 import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
 import { ViewerWindowProcessRegistry } from "../modules/viewerWindow/ViewerWindowProcessRegistry.js";
+import { viewerConfig } from "../modules/viewerWindow/viewerConfig.js";
 
 export class PhotologSection {
     constructor(photolog_service) {
@@ -81,25 +82,24 @@ export class PhotologSection {
             return; 
         }
 
-        const height_offset = taskbar.taskBarElement.getBoundingClientRect().bottom;
-
-        const width = window.innerWidth / 4;
-        const height = window.innerHeight - height_offset;
-        const top = height_offset;
-        const left = Math.min(window.innerWidth - width, window.innerWidth); // 화면 안쪽으로 제한
-
         try {
+            const configure = structuredClone(viewerConfig);
+
+            configure.element.elementId = contents_id;
+            configure.element.className = 'viewer';
+
+            configure.layout.width = '22rem';
+            configure.layout.height = '38rem';
+            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem';
+            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem';
+
+            configure.meta.contentType = 'photolog';
+            configure.meta.titleIconPath = section_icon;
+            configure.meta.titleText = SiteLibrary.truncateText(title, 24);
+
             const viewer = new ViewerWindow();
             viewer.configureWindow(
-                contents_id,
-                22 + 'rem',
-                38 + 'rem',
-                SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem',
-                SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem',
-                'viewer',
-                'photolog',
-                section_icon,
-                title,
+                configure,
                 Templates.createContentPanel('photolog-header-panel', header),
                 Templates.createContentPanel('photolog-content-panel', contents),                
                 Templates.createContentPanel('photolog-footer-panel', footer)
@@ -222,20 +222,24 @@ export class PhotologSection {
             return; 
         }
 
-        //const height_offset = taskbar.taskBarElement.getBoundingClientRect().bottom;
-
         try {
+            const configure = structuredClone(viewerConfig);
+
+            configure.element.elementId = contents_id;
+            configure.element.className = 'viewer';
+
+            configure.layout.width = '44rem';
+            configure.layout.height = '32rem';
+            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
+            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('32')) / 2)) + 'rem';
+
+            configure.meta.contentType = 'photolog_photo';
+            configure.meta.titleIconPath = siteMeta.photolog.sectionHeaderIcon;
+            configure.meta.titleText = SiteLibrary.truncateText(title, 24);
+
             const viewer = new ViewerWindow();
             viewer.configureWindow (
-                contents_id,
-                '44rem'/*(window.innerWidth - ((window.innerWidth / 4) * 1.5)) + 'px'*/,
-                '32rem'/*(window.innerHeight - (height_offset * 3)) + 'px'*/,
-                SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('32')) / 2)) + 'rem',
-                SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem',
-                'viewer',
-                'photolog_photo',
-                siteMeta.photolog.sectionHeaderIcon,
-                title,
+                configure,
                 Templates.createContentPanel('photolog-header-panel', header_contents),
                 Templates.createContentPanel('photolog-content-panel', this.createPhotoContents(main_contents)),
                 Templates.createContentPanel('photolog-footer-panel', footer_contents)
