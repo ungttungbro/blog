@@ -139,7 +139,6 @@ export class ViewerStateManager {
         const currentTranslateY = matrix.m42;
 
         if (isMaximized) {
-
             const prev = element._prevState;
 
             element.classList.remove('is-maximized');
@@ -167,11 +166,12 @@ export class ViewerStateManager {
 
             element.classList.add('is-maximized');
 
+            // +1의 이유는 1px이 비는 문제가 발생하여 임의 조정함 (scroll시) 추후 개선 요망
             element.style.transform =
-                `translate(${newTranslateX}px, ${newTranslateY}px)`;
+                `translate(${newTranslateX}px, ${newTranslateY - 1}px)`;
 
             element.style.width = targetWidth + 'px';
-            element.style.height = targetHeight + 'px';
+            element.style.height = targetHeight + 1 + 'px';
 
             element.style.borderRadius = '0';
         }

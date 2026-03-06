@@ -14,20 +14,15 @@ const CONSTANTS = Object.freeze({
 export class ViewerWindow {
     constructor () {
         this.targetId = null;
-        this.viewerId = null;        
+        this.id = null;
+        this.className = null;        
         this.windowElement = null;
         this.isMaximized = false;
         this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     }
 
-    /*  this 멤버필드
-        id, width, height, className, contentClassName, titleIconPath,
-        titleText, headerContents, mainContents, footerContents
-    */
     show() {
-        this.viewerId = this.id;
-
-        const is_viewer = document.querySelector(`#${CSS.escape(this.viewerId)}`);
+        const is_viewer = document.querySelector(`#${CSS.escape(this.id)}`);
         if (is_viewer) { return; }
 
         this.windowElement = this.createWindowElement();
@@ -55,7 +50,6 @@ export class ViewerWindow {
         element.style.width = this.width;
         element.style.height = this.height;
         element.style.position = 'fixed';
-        element.style.transform = 'none';
         element.style.left = this.left;
         element.style.top = this.top;
         element.style.zIndex = ViewerStateManager.maxZIndex() + 1;
@@ -181,7 +175,7 @@ export class ViewerWindow {
             ViewerWindowProcessRegistry.get('unmount', 'function')?.(
                 window_element.dataset.group, 
                 this.targetId,
-                this.viewerId
+                this.id
             );
 
             if (e.state) { history.back(); }
@@ -401,21 +395,19 @@ export class ViewerWindow {
         });
     }
 
-    configureWindow(
-        id, width, height, top, left,
-        class_name, content_name, 
-        title_icon_path, title_text, 
-        header_contents, main_contents, footer_contents
-    ) {        
-        this.id = id;
-        this.width = width;
-        this.height = height;
-        this.top = top;
-        this.left = left;
-        this.className = class_name;
-        this.contentClassName = content_name;
-        this.titleIconPath = title_icon_path;
-        this.titleText = title_text;
+    configureWindow(configure, header_contents, main_contents, footer_contents) {
+        this.id = configure.element.elementId;
+        this.className = configure.element.className;
+
+        this.width = configure.layout.width;
+        this.height = configure.layout.height;
+        this.left = configure.layout.left;
+        this.top = configure.layout.top;        
+        
+        this.contentClassName = configure.meta.contentType;
+        this.titleIconPath = configure.meta.titleIconPath;
+        this.titleText = configure.meta.titleText;
+
         this.headerContents = header_contents;
         this.mainContents = main_contents;
         this.footerContents = footer_contents;
