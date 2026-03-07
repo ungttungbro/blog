@@ -82,9 +82,9 @@ export class PhotologSection {
         const viewer = new ViewerWindow();
         viewer.configureWindow(
             viewer_config,
-            Templates.createContentPanel('blog-header-panel', header),
-            Templates.createContentPanel('blog-content-panel', contents),
-            Templates.createContentPanel('blog-footer-panel', footer)
+            Templates.createContentPanel('photolog-header-panel', header),
+            Templates.createContentPanel('photolog-content-panel', contents),
+            Templates.createContentPanel('photolog-footer-panel', footer)
         );
 
         viewer.targetId = task_id;        
@@ -244,11 +244,6 @@ export class PhotologSection {
             config.meta.titleText = SiteLibrary.truncateText(title, 24);
 
             this.mountContents(config, task_id, header_contents, this.createPhotoContents(main_contents), footer_contents);
-
-            const maximizeButton = document.body.querySelector('#viewer-maximize-button');
-            if (maximizeButton) {
-                maximizeButton.style.display = 'none';
-            }            
         } catch (error) {
             console.log('Blog Post Event : ', error);
         } finally {
