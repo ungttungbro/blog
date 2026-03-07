@@ -395,18 +395,18 @@ export class ViewerWindow {
         });
     }
 
-    configureWindow(configure, header_contents, main_contents, footer_contents) {
-        this.id = configure.element.elementId;
-        this.className = configure.element.className;
+    configureWindow(config, header_contents, main_contents, footer_contents) {
+        this.id = config.element.elementId;
+        this.className = config.element.className;
 
-        this.width = configure.layout.width;
-        this.height = configure.layout.height;
-        this.left = configure.layout.left;
-        this.top = configure.layout.top;        
+        this.width = config.layout.width;
+        this.height = config.layout.height;
+        this.left = config.layout.left;
+        this.top = config.layout.top;        
         
-        this.contentClassName = configure.meta.contentType;
-        this.titleIconPath = configure.meta.titleIconPath;
-        this.titleText = configure.meta.titleText;
+        this.contentClassName = config.meta.contentType;
+        this.titleIconPath = config.meta.titleIconPath;
+        this.titleText = config.meta.titleText;
 
         this.headerContents = header_contents;
         this.mainContents = main_contents;
