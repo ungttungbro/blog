@@ -58,7 +58,6 @@
 /* 마지막 요소만 border 제거 */
 .teaser-figure:last-child {
     border-bottom: none;
-    margin-bottom: 0;
 }
 
 .teaser-figure:hover .figure-title { 
@@ -74,14 +73,14 @@
 }
 
 .photolog-header-panel {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scroll-margin-top: 3vh;
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
+    scroll-margin-top: 0;
 
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+    padding: 1rem;
 
     color: var(--base_font_color);
+    font-weight: var(--base_font_weight);
 }
 
 .photolog-photo {
@@ -90,36 +89,44 @@
 
     margin: 0;
 
-    scroll-snap-align: end;
-    scroll-snap-stop: always;
-    scroll-margin-bottom: 0;
-    /*scroll-margin-bottom: 6vh;*/
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
 }
 
 .photolog-footer-panel {
-    scroll-snap-align: end;
+    scroll-snap-align: unset;
     scroll-margin-bottom: 3vh;
 }
 
-#photolog-index-viewer .teaser-list {
-    margin-top: 0;
-    padding: 0.5rem;
-}
-
-#photolog-index-viewer .figure-title {
-    font-size: 0.95rem;
-    font-weight: bold;
+#viewer-content-photolog-index-viewer .figure-title {
+    font-size: 1rem;
+    font-weight: var(--base_font_weight);
     color: var(--base_font_color);
 
-    line-height: 1.65;
+    line-height: 1.6;
 }
 
-#photolog-index-viewer .figure-content {
+#viewer-content-photolog-index-viewer .figure-content {
     font-size: 0.9rem;
     color: var(--base_font_color_b);
 
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
-#photolog-index-viewer .teaser-figure:hover .figure-title { color: var(--base_anchor_tag_hover_color); }
-#photolog-index-viewer .teaser-figure:hover .figure-content { color: var(--base_anchor_tag_hover_color_b); }
+#viewer-content-photolog-index-viewer .photolog-header-panel  {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+#viewer-content-photolog-index-viewer .photolog-header-panel,
+#viewer-content-photolog-index-viewer .photolog-content-panel,
+#viewer-content-photolog-index-viewer .photolog-footer-panel  {
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
+    scroll-margin-top: unset;
+}
+
+#viewer-content-photolog-index-viewer .teaser-figure:hover .figure-title { color: var(--base_anchor_tag_hover_color); }
+#viewer-content-photolog-index-viewer .teaser-figure:hover .figure-content { color: var(--base_anchor_tag_hover_color_b); }
