@@ -9,6 +9,7 @@ import { siteMeta } from "../modules/site/siteMeta.js";
 import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
 import { ViewerWindowProcessRegistry } from "../modules/viewerWindow/ViewerWindowProcessRegistry.js";
 import { viewerConfig } from "../modules/viewerWindow/viewerConfig.js";
+import { shell } from "../modules/shell/Shell.js";
 
 export class PhotologSection {
     constructor(photolog_service) {
@@ -72,66 +73,76 @@ export class PhotologSection {
         return section_header;
     }
 
-    onSectionHeaderClick(e, id, section_icon, title, header, contents, footer) {
-        e.preventDefault();
-
-        const contents_id = COMMON.VIEWER_PREFIX + id;
-       
-        if (document.getElementById(contents_id)) {
-            ViewerStateManager.bringToFront(document.getElementById(contents_id));
+    mountContents(viewer_config, task_id, header, contents, footer) {        
+        if (document.getElementById(viewer_config.element.elementId)) {
+            ViewerStateManager.bringToFront(document.getElementById(viewer_config.element.elementId));
             return; 
         }
 
+        const viewer = new ViewerWindow();
+        viewer.configureWindow(
+            viewer_config,
+            Templates.createContentPanel('blog-header-panel', header),
+            Templates.createContentPanel('blog-content-panel', contents),
+            Templates.createContentPanel('blog-footer-panel', footer)
+        );
+
+        viewer.targetId = task_id;        
+        viewer.show();
+
+        if (taskbar.taskBarElement.dataset.column < 3) {
+            SiteLibrary.toggleElementMaximize(viewer.windowElement, 'taskbar');
+            if (viewer.isMaximized) viewer.isMaximized = false;
+            else viewer.isMaximized = true;
+
+            history.pushState({ list: viewer.id }, '', '');
+            window.addEventListener('popstate', (e) => {
+                if (!e.state) return;
+                if (!e.state?.list) {
+                    ViewerWindowProcessRegistry.get('unmount', 'function')?.(
+                        viewer.windowElement.dataset.group,
+                        viewer.targetId,
+                        viewer.id
+                    );
+                }
+            });
+        }
+
+        shell.mountTaskItem(
+            viewer_config.meta.contentType, 
+            viewer.targetId, 
+            viewer.id, 
+            viewer_config.meta.titleIconPath, 
+            viewer_config.meta.titleText
+        );
+    }
+
+    onSectionHeaderClick(e, id, section_icon, title, header, contents, footer) {
+        e.preventDefault();
+
+        const viewer_id = COMMON.VIEWER_PREFIX + id;
+        const task_id = COMMON.TASKBAR_PREFIX + id;
+        const config = structuredClone(viewerConfig);
+       
         try {
-            const configure = structuredClone(viewerConfig);
+            config.element.elementId = viewer_id;
+            config.element.className = 'viewer';
 
-            configure.element.elementId = contents_id;
-            configure.element.className = 'viewer';
+            config.layout.width = '22rem';
+            config.layout.height = '38rem';
+            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem';
+            config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem';
 
-            configure.layout.width = '22rem';
-            configure.layout.height = '38rem';
-            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem';
-            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem';
+            config.meta.contentType = 'photolog';
+            config.meta.titleIconPath = section_icon;
+            config.meta.titleText = SiteLibrary.truncateText(title, 24);
 
-            configure.meta.contentType = 'photolog';
-            configure.meta.titleIconPath = section_icon;
-            configure.meta.titleText = SiteLibrary.truncateText(title, 24);
-
-            const viewer = new ViewerWindow();
-            viewer.configureWindow(
-                configure,
-                Templates.createContentPanel('photolog-header-panel', header),
-                Templates.createContentPanel('photolog-content-panel', contents),                
-                Templates.createContentPanel('photolog-footer-panel', footer)
-            );
-
-            viewer.targetId = COMMON.TASKBAR_PREFIX + id;
-            viewer.show();
-
-            if (taskbar.taskBarElement.dataset.column < 3) {
-                SiteLibrary.toggleElementMaximize(viewer.windowElement, 'taskbar');
-                if (viewer.isMaximized) viewer.isMaximized = false;
-                else viewer.isMaximized = true;
-
-                history.pushState({ list: viewer.id }, '', '');
-                window.addEventListener('popstate', (e) => {
-                    if (!e.state) return;
-                    if (!e.state?.list) {
-                        ViewerWindowProcessRegistry.get('unmount', 'function')?.(
-                            viewer.windowElement.dataset.group,
-                            viewer.targetId,
-                            viewer.id
-                        );
-                    }
-                });
-            }
-            
-            taskbar.mount('photolog', viewer.targetId, viewer.id, section_icon, title);
+            this.mountContents(config, task_id, header, contents, footer);
         } catch(error) {
             console.log('Section Header Event : ', error);
         } finally {
-            const element = document.getElementById(contents_id);
-            element.dataset.group = 'photolog';
+            const element = document.getElementById(viewer_id);
+            element.dataset.group = config.meta.contentType;
 
             ViewerStateManager.stateLog(element);
         }
@@ -215,67 +226,33 @@ export class PhotologSection {
     }
 
     openPhotologContent(id, title, header_contents, main_contents, footer_contents) {
-        const contents_id = COMMON.VIEWER_PREFIX + id;
-       
-        if (document.getElementById(contents_id)) {
-            ViewerStateManager.bringToFront(document.getElementById(contents_id));
-            return; 
-        }
+        const viewer_id = COMMON.VIEWER_PREFIX + id;
+        const task_id = COMMON.TASKBAR_PREFIX + id;
+        const config = structuredClone(viewerConfig);
 
         try {
-            const configure = structuredClone(viewerConfig);
+            config.element.elementId = viewer_id;
+            config.element.className = 'viewer';
 
-            configure.element.elementId = contents_id;
-            configure.element.className = 'viewer';
+            config.layout.width = '44rem';
+            config.layout.height = '32rem';
+            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
+            config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('32')) / 2)) + 'rem';
 
-            configure.layout.width = '44rem';
-            configure.layout.height = '32rem';
-            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
-            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('32')) / 2)) + 'rem';
+            config.meta.contentType = 'photolog_photo';
+            config.meta.titleIconPath = siteMeta.photolog.sectionHeaderIcon;
+            config.meta.titleText = SiteLibrary.truncateText(title, 24);
 
-            configure.meta.contentType = 'photolog_photo';
-            configure.meta.titleIconPath = siteMeta.photolog.sectionHeaderIcon;
-            configure.meta.titleText = SiteLibrary.truncateText(title, 24);
+            this.mountContents(config, task_id, header_contents, this.createPhotoContents(main_contents), footer_contents);
 
-            const viewer = new ViewerWindow();
-            viewer.configureWindow (
-                configure,
-                Templates.createContentPanel('photolog-header-panel', header_contents),
-                Templates.createContentPanel('photolog-content-panel', this.createPhotoContents(main_contents)),
-                Templates.createContentPanel('photolog-footer-panel', footer_contents)
-            );
-
-            viewer.targetId = COMMON.TASKBAR_PREFIX + id;
-            viewer.show();
-
-            const maximizeButton = viewer.windowElement.querySelector('#viewer-maximize-button');
+            const maximizeButton = document.body.querySelector('#viewer-maximize-button');
             if (maximizeButton) {
                 maximizeButton.style.display = 'none';
-            }
-
-            if (taskbar.taskBarElement.dataset.column < 3) {
-                SiteLibrary.toggleElementMaximize(viewer.windowElement, 'taskbar');
-                if (viewer.isMaximized) viewer.isMaximized = false;
-                else viewer.isMaximized = true;
-
-                history.pushState({ modal: viewer.id }, '', '');
-                window.addEventListener('popstate', (e) => {
-                    if (!e.state) return;
-                    if (!e.state?.modal) {
-                        ViewerWindowProcessRegistry.get('unmount', 'function')?.(
-                            viewer.windowElement.dataset.group,
-                            viewer.targetId,
-                            viewer.id
-                        );
-                    }
-                });                
-            }
-
-            taskbar.mount('photolog', viewer.targetId, viewer.id, siteMeta.photolog.sectionHeaderIcon, title);            
+            }            
         } catch (error) {
             console.log('Blog Post Event : ', error);
         } finally {
-            const element = document.getElementById(contents_id);
+            const element = document.getElementById(viewer_id);
             element.dataset.group = 'photolog';
 
             ViewerStateManager.stateLog(element);

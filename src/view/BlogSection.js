@@ -74,66 +74,76 @@ export class BlogSection {
         return section_header;
     }
 
-    onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
-        e.preventDefault();
-
-        const contents_id = COMMON.VIEWER_PREFIX + id;
-       
-        if (document.getElementById(contents_id)) {
-            ViewerStateManager.bringToFront(document.getElementById(contents_id));
+    mountContents(viewer_config, task_id, header, contents, footer) {        
+        if (document.getElementById(viewer_config.element.elementId)) {
+            ViewerStateManager.bringToFront(document.getElementById(viewer_config.element.elementId));
             return; 
         }
 
+        const viewer = new ViewerWindow();
+        viewer.configureWindow(
+            viewer_config,
+            Templates.createContentPanel('blog-header-panel', header),
+            Templates.createContentPanel('blog-content-panel', contents),
+            Templates.createContentPanel('blog-footer-panel', footer)
+        );
+
+        viewer.targetId = task_id;        
+        viewer.show();
+
+        if (taskbar.taskBarElement.dataset.column < 3) {
+            SiteLibrary.toggleElementMaximize(viewer.windowElement, 'taskbar');
+            if (viewer.isMaximized) viewer.isMaximized = false;
+            else viewer.isMaximized = true;
+
+            history.pushState({ list: viewer.id }, '', '');
+            window.addEventListener('popstate', (e) => {
+                if (!e.state) return;
+                if (!e.state?.list) {
+                    ViewerWindowProcessRegistry.get('unmount', 'function')?.(
+                        viewer.windowElement.dataset.group,
+                        viewer.targetId,
+                        viewer.id
+                    );
+                }
+            });
+        }
+
+        shell.mountTaskItem(
+            viewer_config.meta.contentType, 
+            viewer.targetId, 
+            viewer.id, 
+            viewer_config.meta.titleIconPath, 
+            viewer_config.meta.titleText
+        );
+    }
+
+    onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
+        e.preventDefault();
+
+        const viewer_id = COMMON.VIEWER_PREFIX + id;
+        const task_id = COMMON.TASKBAR_PREFIX + id;
+        const config = structuredClone(viewerConfig);
+
         try {
-            const configure = structuredClone(viewerConfig);
+            config.element.elementId = viewer_id;
+            config.element.className = 'viewer';
 
-            configure.element.elementId = contents_id;
-            configure.element.className = 'viewer';
+            config.layout.width = 22 + 'rem';
+            config.layout.height = 38 + 'rem';
+            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem';
+            config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem';
 
-            configure.layout.width = 22 + 'rem';
-            configure.layout.height = 38 + 'rem';
-            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('22')) / 2)) + 'rem';
-            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('38')) / 2)) + 'rem';
-
-            configure.meta.contentType = 'blog';
-            configure.meta.titleIconPath = section_icon;
-            configure.meta.titleText = SiteLibrary.truncateText(title, 16);
-
-            const viewer = new ViewerWindow();
-            viewer.configureWindow(
-                configure,
-                Templates.createContentPanel('blog-header-panel', header),
-                contents,
-                Templates.createContentPanel('blog-footer-panel', footer)
-            );
-
-            viewer.targetId = COMMON.TASKBAR_PREFIX + id;
-            viewer.show();
-
-            if (taskbar.taskBarElement.dataset.column < 3) {
-                SiteLibrary.toggleElementMaximize(viewer.windowElement, 'taskbar');
-                if (viewer.isMaximized) viewer.isMaximized = false;
-                else viewer.isMaximized = true;
-
-                history.pushState({ list: viewer.id }, '', '');
-                window.addEventListener('popstate', (e) => {
-                    if (!e.state) return;
-                    if (!e.state?.list) {
-                        ViewerWindowProcessRegistry.get('unmount', 'function')?.(
-                            viewer.windowElement.dataset.group,
-                            viewer.targetId,
-                            viewer.id
-                        );
-                    }
-                });
-            }
+            config.meta.contentType = blog_type;
+            config.meta.titleIconPath = section_icon;
+            config.meta.titleText = SiteLibrary.truncateText(title, 16);
             
-            shell.mountTaskItem(blog_type, viewer.targetId, viewer.id, section_icon, title);
+            this.mountContents(config, task_id, header, contents, footer);
         } catch(error) {
             console.warn('Section Header Event : ', error);
         } finally {
-            const element = document.getElementById(contents_id);
-            element.dataset.group = blog_type;
+            const element = document.getElementById(viewer_id);
+            element.dataset.group = config.meta.contentType;
 
             ViewerStateManager.stateLog(element);
         }
@@ -245,75 +255,30 @@ export class BlogSection {
     async onPostClick(e, id, blog_type, viewer_width, section_icon, title, header, content_path, footer) {
         e.preventDefault();
 
-        const contents_id = COMMON.VIEWER_PREFIX + id;
-       
-        if (document.getElementById(contents_id)) {
-            ViewerStateManager.bringToFront(document.getElementById(contents_id));
-            return; 
-        }
-
-        let left = (window.innerWidth * VIEWER.LIST_RATIO_MIDDLE);
-        if (blog_type === 'lifelog') {
-            left = (window.innerWidth 
-                - ((window.innerWidth * VIEWER.LIST_RATIO_MIDDLE) 
-                + (SiteLibrary.remToPx(viewer_width))
-            ));
-        }
+        const viewer_id = COMMON.VIEWER_PREFIX + id;
+        const task_id = COMMON.TASKBAR_PREFIX + id;
+        const config = structuredClone(viewerConfig);
 
         try {
-            const configure = structuredClone(viewerConfig);
+            config.element.elementId = viewer_id;
+            config.element.className = 'viewer';
 
-            configure.element.elementId = contents_id;
-            configure.element.className = 'viewer';
+            config.layout.width = viewer_width;
+            config.layout.height = '36rem';
+            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
+            config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('36')) / 2)) + 'rem';
 
-            configure.layout.width = viewer_width;
-            configure.layout.height = '36rem';
-            configure.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
-            configure.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('36')) / 2)) + 'rem';
+            config.meta.contentType = blog_type;
+            config.meta.titleIconPath = section_icon;
+            config.meta.titleText = SiteLibrary.truncateText(title, 24);
 
-            configure.meta.contentType = 'blog';
-            configure.meta.titleIconPath = section_icon;
-            configure.meta.titleText = SiteLibrary.truncateText(title, 24);
-
-            const viewer = new ViewerWindow();
-            viewer.configureWindow(
-                configure,
-                header,
-                Templates.createContentPanel(
-                    'blog-content-panel', 
-                    await this.blogService.loadContentData(content_path)
-                ),
-                Templates.createContentPanel('blog-footer-panel', footer)
-            );
-
-            viewer.targetId = COMMON.TASKBAR_PREFIX + id;
-            viewer.show();
-            
-            if (taskbar.taskBarElement.dataset.column < 3) {
-                SiteLibrary.toggleElementMaximize(viewer.windowElement, 'taskbar');
-
-                if (viewer.isMaximized) viewer.isMaximized = false;
-                else viewer.isMaximized = true;
-
-                history.pushState({ modal: viewer.id }, '', '');
-                window.addEventListener('popstate', (e) => {
-                    if (!e.state) return;
-                    if (!e.state?.modal) {
-                        ViewerWindowProcessRegistry.get('unmount', 'function')?.(
-                            viewer.windowElement.dataset.group,
-                            viewer.targetId,
-                            viewer.id
-                        );
-                    }
-                });
-            }
-
-            shell.mountTaskItem(blog_type, viewer.targetId, viewer.id, section_icon, title);
+            this.mountContents(config, task_id, 
+                header, await this.blogService.loadContentData(content_path), footer);
         } catch(error) {
             console.warn('Blog Post Event : ', error);
         } finally {
-            const element = document.getElementById(contents_id);
-            element.dataset.group = blog_type;
+            const element = document.getElementById(viewer_id);
+            element.dataset.group = config.meta.contentType;
 
             ViewerStateManager.stateLog(element);
         }
