@@ -5,8 +5,6 @@
   flex-direction: column;
 
   position:fixed;
-    
-  color: #cdcdcd;  
 
   border-radius: 0.5rem;
     
@@ -53,8 +51,7 @@
 }
 
 .header_panel {
-  user-select: none;  
-  padding : 0.5rem;
+  user-select: none;
 }
 
 .header_panel::before {
