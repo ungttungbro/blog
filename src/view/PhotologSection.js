@@ -239,7 +239,7 @@ export class PhotologSection {
             config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
             config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('32')) / 2)) + 'rem';
 
-            config.meta.contentType = 'photolog_photo';
+            config.meta.contentType = 'photolog';
             config.meta.titleIconPath = siteMeta.photolog.sectionHeaderIcon;
             config.meta.titleText = SiteLibrary.truncateText(title, 24);
 
@@ -253,7 +253,7 @@ export class PhotologSection {
             console.log('Blog Post Event : ', error);
         } finally {
             const element = document.getElementById(viewer_id);
-            element.dataset.group = 'photolog';
+            element.dataset.group = config.meta.contentType;
 
             ViewerStateManager.stateLog(element);
         }
