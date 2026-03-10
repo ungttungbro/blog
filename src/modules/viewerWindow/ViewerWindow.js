@@ -8,7 +8,8 @@ const CONSTANTS = Object.freeze({
     CLOSE_BUTTON_ICON_PATH: './assets/icons/close.png',
     MAXIMIZE_BUTTON_ICON_PATH: './assets/icons/screen.png',
     MINIMIZE_BUTTON_ICON_PATH: './assets/icons/minimize.png',
-    WINDOW_BUTTON_NAME: 'window_button'
+    WINDOW_BUTTON_NAME: 'window_button',
+    TITLE_BAR_CLASS_NAME: '.title-bar'
 });
 
 export class ViewerWindow {
@@ -38,7 +39,7 @@ export class ViewerWindow {
         this.dragWindow();
         this.resizeWindow();
 
-        ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(this.windowElement.querySelector('.title_bar'));
+        ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(this.windowElement.querySelector(CONSTANTS.TITLE_BAR_CLASS_NAME));
         ViewerStateManager.stateLog(this.windowElement);
     }
 
@@ -62,7 +63,7 @@ export class ViewerWindow {
         });
         
         element.addEventListener('pointerenter', () => {
-            ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(element.querySelector('.title_bar'));
+            ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(element.querySelector(CONSTANTS.TITLE_BAR_CLASS_NAME));
         });
 
         return element;
@@ -95,7 +96,7 @@ export class ViewerWindow {
 
     createTitleBar() {
         const title_bar = document.createElement('div');
-        title_bar.className = 'title_bar';
+        title_bar.className = 'title-bar';
         
         title_bar.appendChild(this.createTitleIcon());
         title_bar.appendChild(this.createWindowButtons());
@@ -171,13 +172,22 @@ export class ViewerWindow {
 
         close_button.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
+            if (!this.targetId) {
+                window_element.remove();
+                window_element = null;
+
+                if (e.state) { history.back(); }
+
+                return;
+            }
+                         
             ViewerWindowProcessRegistry.get('unmount', 'function')?.(
-                window_element.dataset.group, 
+                window_element.dataset.group,
                 this.targetId,
                 this.id
             );
-
+            
             if (e.state) { history.back(); }
         });
     }
@@ -316,7 +326,7 @@ export class ViewerWindow {
 
     dragWindow() {
         const window_element = this.windowElement;
-        const title_bar = window_element.querySelector('.title_bar');
+        const title_bar = window_element.querySelector(CONSTANTS.TITLE_BAR_CLASS_NAME);
 
         this.generateDragEvent(title_bar);
     }
