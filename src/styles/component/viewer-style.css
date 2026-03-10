@@ -16,6 +16,9 @@
   border-bottom: 0.075rem solid rgba(255, 255, 255, 0.15);
   background: var(--base_viewer_title_bar_background); 
   background-image: var(--base_viewer_title_bar_background_image);
+
+  color: #dddddd;
+  font-weight: bold;
 }
 
 .title-bar.active {
@@ -23,7 +26,7 @@
   background-image: var(--base_viewer_title_bar_background_active_image);
 }
 
-.footer_panel {
+.footer-panel {
   position: relative;
 
   background: rgba(0,0,0,0.5);
@@ -31,14 +34,14 @@
   border-top: 0.075rem solid rgba(255, 255, 255, 0.1);
 }
 
-.header_panel hr {
+.header-panel hr {
   position: relative;
   border: none;
   height: 0.075rem;
   background: var(--base_blog_content_panel_hr);
 }
 
-.header_panel hr::after {
+.header-panel hr::after {
   content: "";
   position: absolute;
   top: 0.075rem;
@@ -49,8 +52,8 @@
   opacity: 0.3;
 }
 
-.viewer .header_panel,
-.viewer .content_panel {
+.viewer .header-panel,
+.viewer .content-panel {
   background-image: var(--base_viewer_background_image);
   background-size: var(--base_background_size);
   background-repeat: repeat;
