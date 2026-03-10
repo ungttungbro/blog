@@ -9,7 +9,10 @@ const CONSTANTS = Object.freeze({
     MAXIMIZE_BUTTON_ICON_PATH: './assets/icons/screen.png',
     MINIMIZE_BUTTON_ICON_PATH: './assets/icons/minimize.png',
     WINDOW_BUTTON_NAME: 'window_button',
-    TITLE_BAR_CLASS_NAME: '.title-bar'
+    TITLE_BAR_CLASS_NAME: '.title-bar',
+    HEADER_PANEL: 'header-panel',
+    CONTENT_PANEL: 'content-panel',
+    FOOTER_PANEL: 'footer-panel'
 });
 
 export class ViewerWindow {
@@ -74,21 +77,24 @@ export class ViewerWindow {
         contents.id = 'content_area';
 
         if(this.headerContents !== null) {
-            const header_panel = document.createElement('div'); header_panel.className = 'header_panel';
+            const header_panel = document.createElement('div'); 
+            header_panel.className = CONSTANTS.HEADER_PANEL;
             header_panel.appendChild(this.headerContents);
-            contents.appendChild(header_panel); 
+            contents.appendChild(header_panel);
         }      
                
         if (this.mainContents !== null) {
-            const contents_panel = document.createElement('div'); contents_panel.className = 'content_panel';
+            const contents_panel = document.createElement('div'); 
+            contents_panel.className = CONSTANTS.CONTENT_PANEL;
             contents_panel.appendChild(this.mainContents);
             contents.appendChild(contents_panel);
         } 
 
         if (this.footerContents !== null) {
-            const footer_panel = document.createElement('div'); footer_panel.className = 'footer_panel';
+            const footer_panel = document.createElement('div'); 
+            footer_panel.className = CONSTANTS.FOOTER_PANEL;
             footer_panel.appendChild(this.footerContents);
-            contents.appendChild(footer_panel); 
+            contents.appendChild(footer_panel);
         } 
         
         return contents;

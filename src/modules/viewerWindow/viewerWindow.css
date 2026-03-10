@@ -13,13 +13,10 @@
   overscroll-behavior: none;
 }
 
-.title-bar {  
+.title-bar {
   position: relative;  
     
   height: 3rem;
-
-  color: #dddddd;
-  font-weight: bold;
   
   user-select: none;
   padding: 0.75rem;  
@@ -50,11 +47,11 @@
   scroll-padding-bottom: 0;
 }
 
-.header_panel {
+.header-panel {
   user-select: none;
 }
 
-.header_panel::before {
+.header-panel::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -62,13 +59,13 @@
   pointer-events: none;
 }
 
-.header_panel hr {
+.header-panel hr {
   border: 0.075rem solid #bababa;
   margin-top: 0.4rem;
   margin-bottom: 0.4rem;
 } 
 
-.content_panel {
+.content-panel {
   color: var(--base_font_color);
   font-size: 1.1rem;
 
@@ -79,7 +76,7 @@
   user-select: none;
 }
 
-.footer_panel {
+.footer-panel {
   width: 100%;
   height: 100%;
   
