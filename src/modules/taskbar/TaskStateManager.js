@@ -55,7 +55,7 @@ export class TaskStateManager {
         for (const taskMap of group_map.values()) {
             for (const taskData of taskMap.values()) {
                 const mounted_element = document.getElementById(taskData.targetId);
-                mounted_element.querySelector('.title_bar').classList.remove(class_name);
+                mounted_element.querySelector('.title-bar').classList.remove(class_name);
             }
         }
 
