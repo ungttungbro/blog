@@ -236,8 +236,8 @@ export class PhotologSection {
 
             config.layout.width = '44rem';
             config.layout.height = '32rem';
-            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
-            config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('32')) / 2)) + 'rem';
+            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('48')) / 2)) + 'rem';
+            config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('36')) / 2)) + 'rem';
 
             config.meta.contentType = 'photolog';
             config.meta.titleIconPath = siteMeta.photolog.sectionHeaderIcon;
