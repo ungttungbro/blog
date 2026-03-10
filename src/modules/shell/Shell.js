@@ -272,7 +272,7 @@ export class Shell {
                 }
                
                 ViewerStateManager.bringToFront(viewer);
-                TaskStateManager.enforceSingle('active', viewer.querySelector('.title_bar'));
+                TaskStateManager.enforceSingle('active', viewer.querySelector('.title-bar'));
                 ViewerStateManager.stateLog(viewer);
             }
         };
