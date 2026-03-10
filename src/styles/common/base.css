@@ -91,9 +91,10 @@
 
 [ data-theme = "dark" ] { 
   --base_background_image: url(/assets/icons/dark-mode-img/dark-background.png);
+
   --base_task_bar_background_image : url(/assets/icons/dark-mode-img/mid-dark-background.gif);
   --base_footer_background_image: url(/assets/icons/dark-mode-img/mid-dark-background.gif);
-  --base_clarity_filter_background_image: none;
+  --base_clarity_filter_background_image: url(/assets/icons/dark-mode-img/dark-background.png);
   --base_viewer_title_bar_background_image: none;
   --base_viewer_title_bar_background_active_image: none;
   --base_viewer_footer_background_image: none;
@@ -134,12 +135,12 @@
   --base_close_icon_filter_invert : none;
 
   --base_drop_shadow :  drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));
-  --base_viewer_shadow : 0 25px 60px rgba(0,0,0,0.35),   /* 아래로 깊이 */
-                              0 5px 15px rgba(0,0,0,0.15),    /* 근접 그림자 */
-                              0 0 30px rgba(255,255,255,0.08), /* 은은한 광번짐 */
-                              inset 0 1px 0 rgba(255,255,255,0.4),
-                              inset 0 -1px 0 rgba(255,255,255,0.05);
-  --base_backdrop_filter: none;/*blur(0px) saturate(70%) brightness(30%);*/
+  --base_viewer_shadow : 0 25px 60px rgba(0,0,0,0.35),      /* 아래로 깊이 */
+                          0 5px 15px rgba(0,0,0,0.15),      /* 근접 그림자 */
+                          0 0 30px rgba(255,255,255,0.08),  /* 은은한 광번짐 */
+                          inset 0 1px 0 rgba(255,255,255,0.4),
+                          inset 0 -1px 0 rgba(255,255,255,0.05);
+  --base_backdrop_filter: none;
   --base_viewer_overay: none;
   --base_viewer_active_overay: rgba(0, 0, 0, 0.5);
   /*--base_viewer_background_gradient: linear-gradient(
