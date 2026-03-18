@@ -1,3 +1,19 @@
+/**
+ * ViewerWindow
+ * 
+ * 모달리스 뷰어 창을 관리하는 클래스.
+ * 
+ * 역할
+ * - 뷰어 창 DOM 생성
+ * - 드래그 이동
+ * - 리사이즈 처리
+ * - 태스크바와 상태 동기화 (option)
+ * 
+ * 설계 규칙
+ * - ViewerWindow 인스턴스 하나는 창 하나를 의미한다.
+ * - 모든 창의 상태는 ViewerWindow 내부에서 관리된다.
+ */
+
 'use strict';
 
 import { ViewerStateManager } from "./ViewerStateManager.js";
@@ -9,15 +25,18 @@ const CONSTANTS = Object.freeze({
     MAXIMIZE_BUTTON_ICON_PATH: './assets/icons/screen.png',
     MINIMIZE_BUTTON_ICON_PATH: './assets/icons/minimize.png',
     WINDOW_BUTTON_NAME: 'window_button',
-    TITLE_BAR_CLASS_NAME: '.title-bar',
+
+    TITLE_BAR_CLASS_NAME: 'title-bar',
     HEADER_PANEL: 'header-panel',
     CONTENT_PANEL: 'content-panel',
-    FOOTER_PANEL: 'footer-panel'
+    FOOTER_PANEL: 'footer-panel',
+    CONTENT_AREA: 'content-area'
 });
 
 export class ViewerWindow {
     constructor () {
         this.targetId = null;
+        this.offsetElementId = null;
         this.id = null;
         this.className = null;        
         this.windowElement = null;
@@ -42,7 +61,10 @@ export class ViewerWindow {
         this.dragWindow();
         this.resizeWindow();
 
-        ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(this.windowElement.querySelector(CONSTANTS.TITLE_BAR_CLASS_NAME));
+        ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(
+            this.windowElement.querySelector('.' + CONSTANTS.TITLE_BAR_CLASS_NAME)
+        );
+
         ViewerStateManager.stateLog(this.windowElement);
     }
 
@@ -66,7 +88,9 @@ export class ViewerWindow {
         });
         
         element.addEventListener('pointerenter', () => {
-            ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(element.querySelector(CONSTANTS.TITLE_BAR_CLASS_NAME));
+            ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(
+                element.querySelector('.' + CONSTANTS.TITLE_BAR_CLASS_NAME)
+            );
         });
 
         return element;
@@ -74,7 +98,7 @@ export class ViewerWindow {
 
     createContentArea() {
         const contents = document.createElement('div');
-        contents.id = 'content_area';
+        contents.id = CONSTANTS.CONTENT_AREA;
 
         if(this.headerContents !== null) {
             const header_panel = document.createElement('div'); 
@@ -102,7 +126,7 @@ export class ViewerWindow {
 
     createTitleBar() {
         const title_bar = document.createElement('div');
-        title_bar.className = 'title-bar';
+        title_bar.className = CONSTANTS.TITLE_BAR_CLASS_NAME;
         
         title_bar.appendChild(this.createTitleIcon());
         title_bar.appendChild(this.createWindowButtons());
@@ -114,7 +138,12 @@ export class ViewerWindow {
     }
 
     createTitleIcon() {
-        const icon = this.createImgElement(CONSTANTS.TITLE_ICON_TYPE, '',  this.titleIconPath, 'viewer title icon');
+        const icon = this.createImgElement(
+            CONSTANTS.TITLE_ICON_TYPE, '',  
+            this.titleIconPath, 
+            'viewer title icon'
+        );
+
         const title_figure = this.createImgCaption(icon, null, this.titleText);
         title_figure.style.float = 'left';        
 
@@ -169,7 +198,7 @@ export class ViewerWindow {
         maximize_button.addEventListener('click', (e) => {
             e.stopPropagation();
 
-            ViewerStateManager.toggleElementMaximize(window_element, 'taskbar');
+            ViewerStateManager.toggleElementMaximize(window_element, this.offsetElementId);
             if (this.isMaximized) this.isMaximized = false;
             else this.isMaximized = true;
  
@@ -331,10 +360,7 @@ export class ViewerWindow {
     }
 
     dragWindow() {
-        const window_element = this.windowElement;
-        const title_bar = window_element.querySelector(CONSTANTS.TITLE_BAR_CLASS_NAME);
-
-        this.generateDragEvent(title_bar);
+        this.generateDragEvent(this.windowElement.querySelector('.' + CONSTANTS.TITLE_BAR_CLASS_NAME));
     }
 
     generateDragEvent(title_bar) {      
@@ -342,7 +368,7 @@ export class ViewerWindow {
 
         title_bar.addEventListener('dblclick', () => {
             if (!title_bar.isDragging) {
-                ViewerStateManager.toggleElementMaximize(this.windowElement, 'taskbar');
+                ViewerStateManager.toggleElementMaximize(this.windowElement, this.offsetElementId);
                 if (this.isMaximized) this.isMaximized = false;
                 else this.isMaximized = true;
             }
@@ -350,7 +376,7 @@ export class ViewerWindow {
 
         title_bar.addEventListener('pointerdown', (e) => {
             if (this.isMaximized) return;
-            if (e.target.closest('.window_button')) return;
+            if (e.target.closest('.' + CONSTANTS.WINDOW_BUTTON_NAME)) return;
 
             const window_element = this.windowElement;
             if (window_element.classList.contains(window_element.id)) return;
@@ -413,6 +439,7 @@ export class ViewerWindow {
 
     configureWindow(config, header_contents, main_contents, footer_contents) {
         this.id = config.element.elementId;
+        this.offsetElementId = config.element.offsetElementId;
         this.className = config.element.className;
 
         this.width = config.layout.width;

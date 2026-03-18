@@ -1,6 +1,7 @@
 export const viewerConfig = Object.freeze({
     element: {
         elementId: null,
+        offsetElementId: null,
         className: null
     },
 
