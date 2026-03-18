@@ -14,7 +14,7 @@ export class Templates {
             'medium-icon', 
             img_id,
             caption_id,
-            icon_path, 
+            icon_path,
             text, 
             icon_alt
         );
