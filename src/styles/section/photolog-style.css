@@ -110,7 +110,12 @@
     font-size: 0.9rem;
     color: var(--base_font_color_b);
 
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+#viewer-content-photolog-index-viewer hr {
+    margin-top: 0.2rem;
+    margin-bottom: 0.4rem;
 }
 
 #viewer-content-photolog-index-viewer .photolog-header-panel  {
