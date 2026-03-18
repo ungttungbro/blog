@@ -1,6 +1,6 @@
 'use strict';
 
-import { ELEMENT_TYPE, COMMON, VIEWER } from "../modules/common/Constants.js";
+import { ELEMENT_TYPE, COMMON } from "../modules/common/Constants.js";
 import { siteMeta } from "../modules/site/siteMeta.js";
 import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 import { ViewerWindow } from "../modules/viewerWindow/ViewerWindow.js";
@@ -127,6 +127,7 @@ export class BlogSection {
 
         try {
             config.element.elementId = viewer_id;
+            config.element.offsetElementId = 'taskbar';
             config.element.className = 'viewer';
 
             config.layout.width = 22 + 'rem';
@@ -136,7 +137,7 @@ export class BlogSection {
 
             config.meta.contentType = blog_type;
             config.meta.titleIconPath = section_icon;
-            config.meta.titleText = SiteLibrary.truncateText(title, 16);
+            config.meta.titleText = SiteLibrary.truncateText(title, 18);
             
             this.mountContents(config, task_id, header, contents, footer);
         } catch(error) {
@@ -230,7 +231,7 @@ export class BlogSection {
     generatePostEvent(type, data, element, id, section_icon, title, header, content_path, footer) {
         element.addEventListener('mouseenter', e => { this.prefetchPost(element, content_path); }); 
         element.addEventListener('click',  e => {
-            let viewer_width = '44rem';
+            let viewer_width = '48rem';
             if (type === 'lifelog') { viewer_width = data.get(id)['width']; }
 
             this.onPostClick (
@@ -261,11 +262,12 @@ export class BlogSection {
 
         try {
             config.element.elementId = viewer_id;
+            config.element.offsetElementId = 'taskbar';
             config.element.className = 'viewer';
 
             config.layout.width = viewer_width;
             config.layout.height = '36rem';
-            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('44')) / 2)) + 'rem';
+            config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx('48')) / 2)) + 'rem';
             config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx('36')) / 2)) + 'rem';
 
             config.meta.contentType = blog_type;

@@ -126,6 +126,7 @@ export class PhotologSection {
        
         try {
             config.element.elementId = viewer_id;
+            config.element.offsetElementId = 'taskbar';
             config.element.className = 'viewer';
 
             config.layout.width = '22rem';
@@ -232,6 +233,7 @@ export class PhotologSection {
 
         try {
             config.element.elementId = viewer_id;
+            config.element.offsetElementId = 'taskbar';
             config.element.className = 'viewer';
 
             config.layout.width = '44rem';
