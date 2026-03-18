@@ -143,6 +143,10 @@ footer {
   cursor: pointer;
 }
 
+/*.title_box figure img {
+  display: none;
+}*/
+
 .title_box figure {
   display: flex;
   align-items: center;
