@@ -39,7 +39,7 @@
   --base_clarity_filter_background_image: url(/assets/icons/light-mode-img/grey-background.gif);
 
   --base_background_size: 5.35rem;
-  --base_background: linear-gradient(to left, #fafafa, #eeeeee);
+  --base_background: linear-gradient(to left, #ececec, #dfdfdf);
 
   --base_font_color: rgba(0, 0, 0, 0.8);
   --base_font_color_b: #444444;
@@ -48,6 +48,7 @@
   
   --base_font_weight: 500;
 
+  --base_task_bar_background_color: #ababab;
   --base_task_item_background_color : #cccccc;
   --base_task_item_background_color_b : #dddddd;
 
@@ -68,9 +69,9 @@
   --base_anchor_tag_hover_text_decoration: none;
 
   --base_viewer_overay: none;
-  --base_viewer_active_overay: none;
-  --base_viewer_background_gradient: none;
-  --base_viewer_title_bar_background: none;
+  --base_viewer_active_overay: #333333;
+  --base_viewer_background_gradient: linear-gradient(45deg, #eaeaea, #dadada);
+  --base_viewer_title_bar_background: #555555;
 
   --base_blog_content_panel_hr : rgba(19, 19, 19, 0.15);
   --base_close_icon_filter_invert : invert(1);
@@ -101,7 +102,7 @@
   --base_viewer_background_image: none;
   --base_background_size: 12.25rem;
 
-  --base_background: linear-gradient(to left, #000000, #1a1a1a);
+  --base_background: linear-gradient(to left, #0a0a0a, #1e1e1e);
 
   --base_font_color: #eeeeee;
   --base_font_color_b: #aaaaaa;
@@ -121,6 +122,7 @@
   --base_section_header_box_background_color_b: linear-gradient(45deg, #555555, #444444);
   --base_section_header_box_font_color: #cccccc;
 
+  --base_task_bar_background_color: #2a2a2a;
   --base_task_item_background_color : #444444;
   --base_task_item_background_color_b : #555555;
 
@@ -172,9 +174,9 @@ html {
   color: var(--base_font_color);
   font-weight: var(--base_font_weight);
 
-  background-image: var(--base_task_bar_background_image);
+  /*background-image: var(--base_task_bar_background_image);
   background-repeat: repeat;
-  background-size: 5.35rem;
+  background-size: 5.35rem;*/
 }
 
 body {
