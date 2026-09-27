@@ -141,7 +141,7 @@ export class ArchiveSection extends BaseView {
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 22, 38, blog_type, section_icon, title, 18);
+        const config = this.main_service.buildViewerConfig(id, 30, 38, blog_type, section_icon, title, 18);
 
         try {
             super.mountContents(

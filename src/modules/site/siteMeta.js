@@ -100,9 +100,9 @@ export const siteMeta = Object.freeze({
         lifelogListSummaryCharLength: 0,
         lifelogListTitleCharLength: 26,
         archiveListSummaryCharLength: 0,
-        archiveListTitleCharLength: 26,
-        reflectionSummaryListCharLength: 24,
-        reflectionTitleListCharLength: 24,
+        archiveListTitleCharLength: 34,
+        reflectionSummaryListCharLength: 30,
+        reflectionTitleListCharLength: 34,
         
         writingsListViewerId: 'blog_post_list_all_viewer',
         lifelogListViewerId: 'lifelog_post_list_all_viewer',

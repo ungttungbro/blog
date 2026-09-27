@@ -58,7 +58,7 @@ export class Shell {
 
         if (window.innerWidth <= 540) {
             this.applyLayout(1);
-        } else if (isPortrait || window.innerWidth <= 1252) {     
+        } else if (isPortrait || window.innerWidth <= 1152) {     
             this.applyLayout(2);
         } else {
             this.applyLayout(3);
