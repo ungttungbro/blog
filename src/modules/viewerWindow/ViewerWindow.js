@@ -27,6 +27,7 @@ const CONSTANTS = Object.freeze({
     WINDOW_BUTTON_NAME: 'window_button',
 
     TITLE_BAR_CLASS_NAME: 'title-bar',
+    FOOTER_CLASS_NAME: 'footer',
     HEADER_PANEL: 'header-panel',
     CONTENT_PANEL: 'content-panel',
     FOOTER_PANEL: 'footer-panel',
@@ -55,6 +56,9 @@ export class ViewerWindow {
 
         const contents = this.createContentArea();
         this.windowElement.appendChild(contents);
+
+        const footer = this.createFooter();
+        this.windowElement.appendChild(footer);
 
         document.body.appendChild(this.windowElement);
 
@@ -114,12 +118,12 @@ export class ViewerWindow {
             contents.appendChild(contents_panel);
         } 
 
-        if (this.footerContents !== null) {
+        /*if (this.footerContents !== null) {
             const footer_panel = document.createElement('div'); 
             footer_panel.className = CONSTANTS.FOOTER_PANEL;
             footer_panel.appendChild(this.footerContents);
             contents.appendChild(footer_panel);
-        } 
+        }*/
         
         return contents;
     }
@@ -135,6 +139,14 @@ export class ViewerWindow {
         title_bar.addEventListener('pointerup', e => { title_bar.style.cursor = ''; });
 
         return title_bar;
+    }
+
+    createFooter() {
+        const footer = document.createElement('div');
+        footer.className = CONSTANTS.FOOTER_CLASS_NAME;
+        footer.innerHTML = '&copy; Jonas';
+
+        return footer;
     }
 
     createTitleIcon() {

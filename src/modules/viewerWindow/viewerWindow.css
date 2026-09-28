@@ -28,6 +28,28 @@
   text-overflow: clip;      /* 그냥 잘라냄 */
 }
 
+.footer {
+  background-color: #111111;
+
+  position: relative;
+    
+  height: 2.8rem;
+  
+  color: #dddddd;
+
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5rem;
+
+  user-select: none;
+  
+  justify-content: center; 
+    
+  white-space: nowrap;      /* 줄바꿈 금지 */
+  overflow: hidden;         /* 넘치는 부분 숨김 */
+  text-overflow: clip;      /* 그냥 잘라냄 */
+}
+
 #content-area {
   display: flex;
 

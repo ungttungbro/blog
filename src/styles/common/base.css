@@ -133,7 +133,7 @@
 
   --base_dash_border : 0.075rem dashed #555555;
   --base_blog_content_panel_hr : rgba(255,255,255,0.15);
-  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.15);
+  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.1);
  
   --base_close_icon_filter_invert : none;
 
