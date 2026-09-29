@@ -16,10 +16,11 @@
 
 .blog-post {
   padding: 1rem;
-  line-height: 2;
+  line-height: 2.1;
 
   font-weight: var(--base_font_weight);
-  font-size: 1rem;
+  /*font-weight: 300;*/
+  font-size: 1.1rem;
 }
 
 .blog-post-photo-comment { font-size: 0.8rem; color: var(--base_font_color_b); }
@@ -99,5 +100,5 @@
 
 #reflection-content {
   padding-top: 1rem;
-  text-align: center;
+  /*text-align: center;*/
 }

@@ -28,7 +28,7 @@
   text-overflow: clip;      /* 그냥 잘라냄 */
 }
 
-.footer {
+/*.footer {
   background-color: #111111;
 
   position: relative;
@@ -45,10 +45,10 @@
   
   justify-content: center; 
     
-  white-space: nowrap;      /* 줄바꿈 금지 */
-  overflow: hidden;         /* 넘치는 부분 숨김 */
-  text-overflow: clip;      /* 그냥 잘라냄 */
-}
+  white-space: nowrap;      
+  overflow: hidden;         
+  text-overflow: clip;      
+}*/
 
 #content-area {
   display: flex;

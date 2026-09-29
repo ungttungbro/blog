@@ -57,8 +57,8 @@ export class ViewerWindow {
         const contents = this.createContentArea();
         this.windowElement.appendChild(contents);
 
-        const footer = this.createFooter();
-        this.windowElement.appendChild(footer);
+        //const footer = this.createFooter();
+        //this.windowElement.appendChild(footer);
 
         document.body.appendChild(this.windowElement);
 
@@ -118,12 +118,12 @@ export class ViewerWindow {
             contents.appendChild(contents_panel);
         } 
 
-        /*if (this.footerContents !== null) {
+        if (this.footerContents !== null) {
             const footer_panel = document.createElement('div'); 
             footer_panel.className = CONSTANTS.FOOTER_PANEL;
             footer_panel.appendChild(this.footerContents);
             contents.appendChild(footer_panel);
-        }*/
+        }
         
         return contents;
     }
@@ -141,13 +141,13 @@ export class ViewerWindow {
         return title_bar;
     }
 
-    createFooter() {
+    /*createFooter() {
         const footer = document.createElement('div');
         footer.className = CONSTANTS.FOOTER_CLASS_NAME;
         footer.innerHTML = '&copy; Jonas';
 
         return footer;
-    }
+    }*/
 
     createTitleIcon() {
         const icon = this.createImgElement(

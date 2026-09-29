@@ -140,14 +140,18 @@ export class PhotologSection extends BaseView {
         );
 
         try {
+            const photo_container_el = this.createPhotoContents(contents);
+
             super.mountContents(
                 'photolog',
                 config, 
                 COMMON.TASKBAR_PREFIX + id,
                 header, 
-                this.createPhotoContents(contents), 
+                photo_container_el, 
                 footer
             );
+
+            this.generatePhotoScrollEvent(photo_container_el.parentElement.parentElement.parentElement, photo_container_el);
         } catch(error) {
             console.warn('Phtolog Teaser Event : ', error);
         } finally {
@@ -213,4 +217,75 @@ export class PhotologSection extends BaseView {
         
         return photo_container;
     }
+
+    generatePhotoScrollEvent(parent_el, target_el) {
+        parent_el.addEventListener('wheel', (event) => {
+            const atBottom =
+                parent_el.scrollTop + parent_el.clientHeight >=
+                parent_el.scrollHeight - 1;
+
+            const atLeft =
+                target_el.scrollLeft <= 0;
+
+            const atRight =
+                target_el.scrollLeft + target_el.clientWidth >=
+                target_el.scrollWidth - 1;
+
+
+            // 부모가 맨 아래이고, 아래로 스크롤
+            if (atBottom && event.deltaY > 0 && !atRight) {
+
+                target_el.scrollLeft += event.deltaY;
+                event.preventDefault();
+
+            }
+
+            // 부모가 맨 아래이고, 위로 스크롤
+            else if (atBottom && event.deltaY < 0) {
+
+                // 사진이 아직 왼쪽으로 갈 수 있음
+                if (!atLeft) {
+
+                    target_el.scrollLeft += event.deltaY;
+                    event.preventDefault();
+
+                // 사진이 이미 맨 왼쪽이면 부모를 위로
+                } else {
+
+                    parent_el.scrollTop += event.deltaY;
+                    event.preventDefault();
+                }
+            }
+        });
+    }
+
+    /*
+    parent.addEventListener('wheel', (event) => {
+
+    const rect = photoContainer.getBoundingClientRect();
+
+    // photo-container가 화면의 아래쪽에 도달했는지
+    const reachedPhoto =
+        rect.bottom <= parent.clientHeight;
+
+    const atLeft =
+        photoContainer.scrollLeft <= 0;
+
+    const atRight =
+        photoContainer.scrollLeft + photoContainer.clientWidth >=
+        photoContainer.scrollWidth;
+
+    // 사진 영역에 도달했고 아래로 스크롤
+    if (reachedPhoto && event.deltaY > 0 && !atRight) {
+        photoContainer.scrollLeft += event.deltaY;
+        event.preventDefault();
+    }
+
+    // 사진이 맨 왼쪽이고 위로 스크롤
+    else if (atLeft && event.deltaY < 0) {
+        parent.scrollTop += event.deltaY;
+        event.preventDefault();
+    }
+});
+    */
 }

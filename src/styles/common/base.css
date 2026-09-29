@@ -24,6 +24,8 @@
   --base_border_radius_light : 0.25rem;
   --base_border_radius_medium : 0.5rem;
   --base_border_radius_large : 1rem;
+
+  --base_border_line: 1rem solid rgba(179, 174, 174, 0.1);
 }
 
 [ data-theme = "light" ] { 
@@ -53,7 +55,7 @@
   --base_task_item_background_color : #eeeeee;
   --base_task_item_background_color_b : #ffffff;
 
-  --base_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
+  --base_border_line: 0.075rem solid rgba(179, 174, 174, 0.1);
   --base_taskbar_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
   --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.05);
   --base_dash_border: 0.075rem dashed #bbbbbb;
@@ -114,6 +116,7 @@
 
   --base_border_line: 0.075rem solid  rgba(255, 255, 255, 0.025);
   --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
+  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
   --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.04);
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
