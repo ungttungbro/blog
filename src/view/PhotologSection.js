@@ -151,7 +151,21 @@ export class PhotologSection extends BaseView {
                 footer
             );
 
-            this.generatePhotoScrollEvent(photo_container_el.parentElement.parentElement.parentElement, photo_container_el);
+            const photo_container_parent = photo_container_el.closest('#content-area');;
+
+            photo_container_el.style.height =
+                `${photo_container_parent.clientHeight}px`;
+
+            const observer = new ResizeObserver(() => {
+                requestAnimationFrame(() => {
+                    photo_container_el.style.height =
+                        `${photo_container_parent.clientHeight}px`;
+                });
+            });
+
+            observer.observe(photo_container_parent);
+
+            this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
         } catch(error) {
             console.warn('Phtolog Teaser Event : ', error);
         } finally {
@@ -220,6 +234,8 @@ export class PhotologSection extends BaseView {
 
     generatePhotoScrollEvent(parent_el, target_el) {
         parent_el.addEventListener('wheel', (event) => {
+            //target_el.style.height = `${parent_el.clientHeight}px`;
+
             const atBottom =
                 parent_el.scrollTop + parent_el.clientHeight >=
                 parent_el.scrollHeight - 1;
@@ -258,34 +274,4 @@ export class PhotologSection extends BaseView {
             }
         });
     }
-
-    /*
-    parent.addEventListener('wheel', (event) => {
-
-    const rect = photoContainer.getBoundingClientRect();
-
-    // photo-container가 화면의 아래쪽에 도달했는지
-    const reachedPhoto =
-        rect.bottom <= parent.clientHeight;
-
-    const atLeft =
-        photoContainer.scrollLeft <= 0;
-
-    const atRight =
-        photoContainer.scrollLeft + photoContainer.clientWidth >=
-        photoContainer.scrollWidth;
-
-    // 사진 영역에 도달했고 아래로 스크롤
-    if (reachedPhoto && event.deltaY > 0 && !atRight) {
-        photoContainer.scrollLeft += event.deltaY;
-        event.preventDefault();
-    }
-
-    // 사진이 맨 왼쪽이고 위로 스크롤
-    else if (atLeft && event.deltaY < 0) {
-        parent.scrollTop += event.deltaY;
-        event.preventDefault();
-    }
-});
-    */
 }
