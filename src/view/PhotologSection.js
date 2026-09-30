@@ -5,6 +5,7 @@ import { Templates } from "../modules/site/Templates.js";
 import { ELEMENT_TYPE, COMMON } from "../modules/common/Constants.js"
 import { siteMeta } from "../modules/site/siteMeta.js";
 import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
+import { taskbar } from "../modules/taskbar/TaskBar.js";
 import { BaseView } from "./base/BaseView.js";
 
 export class PhotologSection extends BaseView {
@@ -151,19 +152,21 @@ export class PhotologSection extends BaseView {
                 footer
             );
 
-            const photo_container_parent = photo_container_el.closest('#content-area');;
+            const photo_container_parent = photo_container_el.closest('#content-area');
 
-            photo_container_el.style.height =
+            if (taskbar.taskBarElement.dataset.column > 2) {
+                photo_container_el.style.height =
                 `${photo_container_parent.clientHeight}px`;
 
-            const observer = new ResizeObserver(() => {
-                requestAnimationFrame(() => {
-                    photo_container_el.style.height =
-                        `${photo_container_parent.clientHeight}px`;
+                const observer = new ResizeObserver(() => {
+                    requestAnimationFrame(() => {
+                        photo_container_el.style.height =
+                            `${photo_container_parent.clientHeight}px`;
+                    });
                 });
-            });
 
-            observer.observe(photo_container_parent);
+                observer.observe(photo_container_parent);
+            }
 
             this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
         } catch(error) {
@@ -234,7 +237,7 @@ export class PhotologSection extends BaseView {
 
     generatePhotoScrollEvent(parent_el, target_el) {
         parent_el.addEventListener('wheel', (event) => {
-            //target_el.style.height = `${parent_el.clientHeight}px`;
+            passive: false;
 
             const atBottom =
                 parent_el.scrollTop + parent_el.clientHeight >=
