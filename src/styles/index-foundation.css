@@ -150,7 +150,7 @@ footer {
 /* 세로 모드 2단 (portrait) */
 @media (orientation: portrait), (max-width: 1152px) {
   html {
-    font-size: 2vw;
+    font-size: 2.07vw;
   }
 
   .blog-post-photo-container {
@@ -231,7 +231,7 @@ footer {
 /* 세로 모드 1단 (portrait) */
 @media (orientation: portrait) and (max-width: 541px) {
   html {
-    font-size: 4vw;
+    font-size: 4.3vw;
   }
 
   .blog-post-photo-container {
