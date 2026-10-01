@@ -1,12 +1,14 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 :root {
   --base_fonts : -apple-system,
     "Apple SD Gothic Neo",
-    "Noto Sans KR",
+    /*"Noto Sans KR"*/"Pretendard",
     나눔고딕,
     굴림,
     sans-serif,
     "Segoe UI Symbol";
-  --base_font_size : 1vw;
+  --base_font_size : 1.07vw;
   --base_font_line_height : 1.6;
   --base_font_light : 1rem;
   --base_font_medium : 1.25rem;
@@ -41,7 +43,7 @@
   --base_clarity_filter_background_image: url(/assets/icons/light-mode-img/grey-background.gif);
 
   --base_background_size: 5.35rem;
-  --base_background: #ffffff;
+  --base_background: #e5e6e8;
 
 
   --base_font_color: rgba(0, 0, 0, 0.8);
@@ -50,31 +52,33 @@
   --base_font_meta_color: #777777;
   
   --base_font_weight: 500;
+  --base_viewer_font_weight: 500;
 
-  --base_task_bar_background_color: #cfcfcf;
+  --base_task_bar_background_color: #dbdcdf;
   --base_task_item_background_color : #eeeeee;
   --base_task_item_background_color_b : #ffffff;
 
-  --base_border_line: 0.075rem solid rgba(179, 174, 174, 0.1);
+  --base_border_line: 0.075rem solid rgba(12, 12, 12, 0.1);
   --base_taskbar_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
+  --base_footer_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
   --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.05);
   --base_dash_border: 0.075rem dashed #bbbbbb;
 
   --base_dark_light_toggle_button: url(/assets/icons/light-mode-img/dark-toggle.png);
 
-  --base_box_background_color: #f2f2f2;
-  --base_section_header_box_background_color: #f2f2f2;
-  --base_section_header_box_background_color_b: #e5e5e5;
+  --base_box_background_color: #dbdcdf;
+  --base_section_header_box_background_color: #dbdcdf;
+  --base_section_header_box_background_color_b: #cccdcf;
   --base_section_header_box_font_color: #333333;
 
-  --base_anchor_tag_hover_color: #0080ff;
+  --base_anchor_tag_hover_color: #e25e0b;
   --base_anchor_tag_hover_color_b: rgba(0, 0, 0, 0.95);
   --base_anchor_tag_hover_text_decoration: none;
 
   --base_viewer_overay: none;
-  --base_viewer_active_overay: #333333;
-  --base_viewer_background_gradient: #f4f4f4;
-  --base_viewer_title_bar_background: #555555;
+  --base_viewer_active_overay: #7b7c7f;
+  --base_viewer_background_gradient: #e5e6e8;
+  --base_viewer_title_bar_background: #abacaf;
 
   --base_blog_content_panel_hr : rgba(19, 19, 19, 0.15);
   --base_close_icon_filter_invert : invert(1);
@@ -112,7 +116,8 @@
   --base_font_color_c: #bbbbbb;
   --base_font_meta_color: #999999;
 
-  --base_font_weight: 400;  
+  --base_font_weight: 400;
+  --base_viewer_font_weight: 400;
 
   --base_border_line: 0.075rem solid  rgba(255, 255, 255, 0.025);
   --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
