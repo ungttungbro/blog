@@ -20,8 +20,8 @@ export const siteMeta = Object.freeze({
         blogCaptionText: '라이팅스 (writings)',
         blogSectionHeaderIcon: './assets/icons/blog.png',
         blogSectionHeaderIconAlt: 'blog Section Header Icon',
-        writingsTitleCharLength: 35,
-        writingsSummaryCharLength: 110,
+        writingsTitleCharLength: 33,
+        writingsSummaryCharLength: 106,
         writingsSubjectListRowCount: 4,
 
         lifelogBlogTypeName: 'lifelog',
