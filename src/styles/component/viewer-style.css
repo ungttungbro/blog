@@ -32,6 +32,7 @@
   /*background: rgba(0,0,0,0.5);
   background-image: var(--base_viewer_footer_background_image);*/
   border-top: 0.075rem solid rgba(255, 255, 255, 0.1);
+  color: var(--base_viewer_title_bar_font_color);
 }
 
 .header-panel hr {
@@ -51,6 +52,12 @@
   background: rgba(0,0,0,0.1);
   opacity: 0.3;
 }
+
+.window_button {
+  filter : var(--base_window_button_filter_invert);
+}
+
+
 
 /*.viewer .header-panel,
 .viewer .content-panel {

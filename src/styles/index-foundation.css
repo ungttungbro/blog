@@ -18,7 +18,8 @@
 
 header {
   position:fixed;
-  background: var(--base_task_bar_background_color);
+  /*background: var(--base_task_bar_background_color);*/
+  background: var(--base_background);
 
   /*background-image: var(--base_task_bar_background_image);
   background-repeat: repeat;
@@ -146,11 +147,34 @@ footer {
   background: var(--base_section_header_box_background_color_b);
 }
 
+.title-bar {
+  position: relative;
+  border-bottom: 0.075rem solid rgba(255, 255, 255, 0.15);
+  background: var(--base_viewer_title_bar_background); 
+  /*background-image: var(--base_viewer_title_bar_background_image);*/
+
+  color: var(--base_viewer_title_bar_font_color);
+  font-weight: bold;
+}
+
+.title-bar.active {
+  background: var(--base_viewer_active_overay);
+  /*background-image: var(--base_viewer_title_bar_background_active_image);*/
+  color: var(--base_viewer_title_bar_font_color);
+}
 
 /* 세로 모드 2단 (portrait) */
 @media (orientation: portrait), (max-width: 1152px) {
   html {
     font-size: 2.07vw;
+  }
+
+  .blog-post {
+    padding: 1.5rem;
+    line-height: 2.2;
+
+    font-weight: var(--base_viewer_font_weight);
+    font-size: 1.1rem;
   }
 
   .blog-post-photo-container {
@@ -232,6 +256,26 @@ footer {
 @media (orientation: portrait) and (max-width: 541px) {
   html {
     font-size: 4.3vw;
+  }
+
+  .blog-post {
+    padding: 1rem;
+    line-height: 2.2;
+
+    font-weight: var(--base_viewer_font_weight);
+    font-size: 1.1rem;
+  }
+
+  .photolog-header-panel {
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
+    scroll-margin-top: 0;
+
+    padding: 1rem;
+    line-height: 2.2;
+
+    font-weight: var(--base_viewer_font_weight);
+    font-size: 1.1rem;
   }
 
   .blog-post-photo-container {

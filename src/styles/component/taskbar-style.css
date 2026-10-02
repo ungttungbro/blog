@@ -2,6 +2,8 @@
   padding-top: var(--base_margin_size_tiny);
   padding-bottom: var(--base_margin_size_tiny);  
   border-bottom: var(--base_taskbar_border_line);
+
+  background: var(--base_task_bar_background_color);
 }
 
 .task-group-items {

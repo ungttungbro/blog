@@ -43,32 +43,34 @@
   --base_clarity_filter_background_image: url(/assets/icons/light-mode-img/grey-background.gif);
 
   --base_background_size: 5.35rem;
-  --base_background: #e5e6e8;
+  --base_background: #fafcfe;
 
 
-  --base_font_color: rgba(0, 0, 0, 0.8);
-  --base_font_color_b: #666666;
-  --base_font_color_c: #777777;
-  --base_font_meta_color: #777777;
+  --base_font_color: #3a3c3e;
+  --base_font_color_b: #6a6c6e;
+  --base_font_color_c: #7b7d7f;
+  --base_font_meta_color: #7a7c7e;
   
-  --base_font_weight: 500;
-  --base_viewer_font_weight: 500;
+  --base_viewer_title_bar_font_color: #333333;
 
-  --base_task_bar_background_color: #dbdcdf;
+  --base_font_weight: 600;
+  --base_viewer_font_weight: 600;
+
+  --base_task_bar_background_color: #eaecef;
   --base_task_item_background_color : #eeeeee;
   --base_task_item_background_color_b : #ffffff;
 
-  --base_border_line: 0.075rem solid rgba(12, 12, 12, 0.1);
-  --base_taskbar_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
-  --base_footer_border_line: 0.075rem solid rgba(0, 0, 0, 0.1);
+  --base_border_line: 0.01rem solid rgba(180, 180, 180, 0.75);
+  --base_taskbar_border_line: 0.075rem solid rgba(180, 180, 180, 0.75);
+  --base_footer_border_line: 0.075rem solid rgba(180, 180, 180, 0.75);
   --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.05);
   --base_dash_border: 0.075rem dashed #bbbbbb;
 
   --base_dark_light_toggle_button: url(/assets/icons/light-mode-img/dark-toggle.png);
 
-  --base_box_background_color: #dbdcdf;
-  --base_section_header_box_background_color: #dbdcdf;
-  --base_section_header_box_background_color_b: #cccdcf;
+  --base_box_background_color: #fafcfe;
+  --base_section_header_box_background_color: #fafcfe;
+  --base_section_header_box_background_color_b: #eaecef;
   --base_section_header_box_font_color: #333333;
 
   --base_anchor_tag_hover_color: #e25e0b;
@@ -76,9 +78,10 @@
   --base_anchor_tag_hover_text_decoration: none;
 
   --base_viewer_overay: none;
-  --base_viewer_active_overay: #7b7c7f;
-  --base_viewer_background_gradient: #e5e6e8;
-  --base_viewer_title_bar_background: #abacaf;
+  --base_viewer_active_overay: #caccce;
+  --base_viewer_background_gradient: #fafcfe;
+  --base_viewer_title_bar_background: #eaecee;
+  --base_window_button_filter_invert: invert(1);
 
   --base_blog_content_panel_hr : rgba(19, 19, 19, 0.15);
   --base_close_icon_filter_invert : invert(1);
@@ -111,10 +114,12 @@
 
   --base_background: #111111;
 
-  --base_font_color: #e0e0e0;
-  --base_font_color_b: #aaaaaa;
-  --base_font_color_c: #bbbbbb;
-  --base_font_meta_color: #999999;
+  --base_font_color: #dadcde;
+  --base_font_color_b: #abadaf;
+  --base_font_color_c: #babcbe;
+  --base_font_meta_color: #9a9c9e;
+
+  --base_viewer_title_bar_font_color: #babcbe;
 
   --base_font_weight: 400;
   --base_viewer_font_weight: 400;
@@ -126,14 +131,14 @@
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
 
-  --base_box_background_color: #252525;
-  --base_section_header_box_background_color: #252525;
-  --base_section_header_box_background_color_b: #2f2f2f;
-  --base_section_header_box_font_color: #cccccc;
+  --base_box_background_color: #1b1d1f;
+  --base_section_header_box_background_color: #1b1d1f;
+  --base_section_header_box_background_color_b: #2b2d2f;
+  --base_section_header_box_font_color: #babcbe;
 
-  --base_task_bar_background_color: #202020;
-  --base_task_item_background_color : #333333;
-  --base_task_item_background_color_b : #444444;
+  --base_task_bar_background_color: #1a1c1e;
+  --base_task_item_background_color : #3a3c3e;
+  --base_task_item_background_color_b : #4b4d4f;
 
   --base_anchor_tag_hover_color: #ffc900;
   --base_anchor_tag_hover_color_b: #cdcdcd;
@@ -150,6 +155,7 @@
   --base_backdrop_filter: none;
   --base_viewer_overay: none;
   --base_viewer_active_overay: rgba(0, 0, 0, 0.5);
+  --base_window_button_filter_invert: invert(0);
   /*--base_viewer_background_gradient: linear-gradient(
         to bottom,
         rgba(200, 210, 220, 0.2),
@@ -157,11 +163,11 @@
     );*/
 
   /*--base_viewer_background_gradient: linear-gradient(45deg, #222222, #333333);*/
-  --base_viewer_background_gradient: #232323;
+  --base_viewer_background_gradient: #2a2c2e;
 
   --base_viewer_title_bar_background: rgba(0, 0, 0, 0.15);
 
-  --base_footer_background_color : #1a1a1a;
+  --base_footer_background_color : #111111;
 
   --base_task_item_close_background_color_b : #777777;
 
