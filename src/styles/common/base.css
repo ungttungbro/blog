@@ -63,7 +63,7 @@
   --base_border_line: 0.01rem solid rgba(180, 180, 180, 0.75);
   --base_taskbar_border_line: 0.075rem solid rgba(180, 180, 180, 0.75);
   --base_footer_border_line: 0.075rem solid rgba(180, 180, 180, 0.75);
-  --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.05);
+  --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.04);
   --base_dash_border: 0.075rem dashed #bbbbbb;
 
   --base_dark_light_toggle_button: url(/assets/icons/light-mode-img/dark-toggle.png);
@@ -71,7 +71,7 @@
   --base_box_background_color: #fafcfe;
   --base_section_header_box_background_color: #fafcfe;
   --base_section_header_box_background_color_b: #eaecef;
-  --base_section_header_box_font_color: #333333;
+  --base_section_header_box_font_color: #4a4c4e;
 
   --base_anchor_tag_hover_color: #e25e0b;
   --base_anchor_tag_hover_color_b: rgba(0, 0, 0, 0.95);
@@ -116,7 +116,7 @@
 
   --base_font_color: #dadcde;
   --base_font_color_b: #abadaf;
-  --base_font_color_c: #babcbe;
+  --base_font_color_c: #9b9d9f;
   --base_font_meta_color: #9a9c9e;
 
   --base_viewer_title_bar_font_color: #babcbe;
@@ -124,21 +124,21 @@
   --base_font_weight: 400;
   --base_viewer_font_weight: 400;
 
-  --base_border_line: 0.075rem solid  rgba(255, 255, 255, 0.025);
-  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.025);
-  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.025);
+  --base_border_line: 0.01rem solid  rgba(255, 255, 255, 0.075);
+  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
+  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
   --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.04);
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
 
-  --base_box_background_color: #1a1c1e;
-  --base_section_header_box_background_color: #1a1c1e;
-  --base_section_header_box_background_color_b: #2b2d2f;
+  --base_box_background_color: #121314;
+  --base_section_header_box_background_color: #121314;
+  --base_section_header_box_background_color_b: #222324;
   --base_section_header_box_font_color: #babcbe;
 
-  --base_task_bar_background_color: #1b1d1f;
-  --base_task_item_background_color : #2a2c2e;
-  --base_task_item_background_color_b : #3b3d3f;
+  --base_task_bar_background_color: #131415;
+  --base_task_item_background_color : #222324;
+  --base_task_item_background_color_b : #2b2d2f;
 
   --base_anchor_tag_hover_color: #ffc900;
   --base_anchor_tag_hover_color_b: #cdcdcd;
@@ -163,9 +163,9 @@
     );*/
 
   /*--base_viewer_background_gradient: linear-gradient(45deg, #222222, #333333);*/
-  --base_viewer_background_gradient: #2a2c2e;
+  --base_viewer_background_gradient: #1d1e1f;
 
-  --base_viewer_title_bar_background: rgba(0, 0, 0, 0.15);
+  --base_viewer_title_bar_background: rgba(0, 0, 0, 0.2);
 
   --base_footer_background_color : #111111;
 

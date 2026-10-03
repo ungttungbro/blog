@@ -132,8 +132,8 @@ export class PhotologSection extends BaseView {
 
         const config = this.main_service.buildViewerConfig(
             COMMON.VIEWER_PREFIX + id, 
-            56, 
-            40,
+            50, 
+            37,
             blog_type, 
             section_icon, 
             title, 
@@ -184,8 +184,8 @@ export class PhotologSection extends BaseView {
 
         const config = this.main_service.buildViewerConfig(
             COMMON.VIEWER_PREFIX + id, 
-            44, 
-            38,
+            42, 
+            35,
             blog_type, 
             section_icon, 
             title, 

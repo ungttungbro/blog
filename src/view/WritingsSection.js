@@ -152,7 +152,7 @@ export class WritingsSection extends BaseView {
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 46, 38, blog_type, section_icon, title, 18);
+        const config = this.main_service.buildViewerConfig(id, 42, 35, blog_type, section_icon, title, 18);
 
         try {
             super.mountContents(
@@ -176,7 +176,7 @@ export class WritingsSection extends BaseView {
     async onPostClick(e, id, blog_type, section_icon, title, header, content_path, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 56, 40, blog_type, section_icon, title, 24);
+        const config = this.main_service.buildViewerConfig(id, 50, 36, blog_type, section_icon, title, 24);
 
         try {
             super.mountContents(
