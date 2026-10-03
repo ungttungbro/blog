@@ -2,7 +2,7 @@
 .title   { font-size: 1rem; color: var(--base_font_color); }
 .summary { font-size: 0.95rem; color: var(--base_font_color_b); }
 
-.post-index { line-height: 1; padding: 0.5rem  0.75rem 0.75rem 0.75rem;}
+.post-index { line-height: 1; padding: 1rem;}
 .post-index .meta { font-size: 0.9rem; color: var(--base_font_color_c); }
 .post-index .title { font-size: 1rem; color: var(--base_font_color); line-height: 1.7; }
 .post-index .summary { font-size: 0.95rem; color: var(--base_font_color_b); line-height: 1.4; }
@@ -99,5 +99,6 @@
 
 #reflection-content {
   padding-top: 1rem;
+  color: var(--base_font_color);
   /*text-align: center;*/
 }

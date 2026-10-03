@@ -102,7 +102,7 @@ export class ReflectionSection extends BaseView {
         for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
                 value.content_id,
-                Templates.symbol(value.type) + key,
+                /*Templates.symbol(value.type) + */key,
                 value.title,
                 title_char_max_length,
                 value.summary,

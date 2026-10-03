@@ -57,7 +57,7 @@
   --base_viewer_font_weight: 600;
 
   --base_task_bar_background_color: #eaecef;
-  --base_task_item_background_color : #eeeeee;
+  --base_task_item_background_color : #f2f2f2;
   --base_task_item_background_color_b : #ffffff;
 
   --base_border_line: 0.01rem solid rgba(180, 180, 180, 0.75);
@@ -125,20 +125,20 @@
   --base_viewer_font_weight: 400;
 
   --base_border_line: 0.075rem solid  rgba(255, 255, 255, 0.025);
-  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
-  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
+  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.025);
+  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.025);
   --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.04);
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
 
-  --base_box_background_color: #1b1d1f;
-  --base_section_header_box_background_color: #1b1d1f;
+  --base_box_background_color: #1a1c1e;
+  --base_section_header_box_background_color: #1a1c1e;
   --base_section_header_box_background_color_b: #2b2d2f;
   --base_section_header_box_font_color: #babcbe;
 
-  --base_task_bar_background_color: #1a1c1e;
-  --base_task_item_background_color : #3a3c3e;
-  --base_task_item_background_color_b : #4b4d4f;
+  --base_task_bar_background_color: #1b1d1f;
+  --base_task_item_background_color : #2a2c2e;
+  --base_task_item_background_color_b : #3b3d3f;
 
   --base_anchor_tag_hover_color: #ffc900;
   --base_anchor_tag_hover_color_b: #cdcdcd;

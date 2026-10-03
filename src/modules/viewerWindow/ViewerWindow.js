@@ -57,9 +57,6 @@ export class ViewerWindow {
         const contents = this.createContentArea();
         this.windowElement.appendChild(contents);
 
-        //const footer = this.createFooter();
-        //this.windowElement.appendChild(footer);
-
         document.body.appendChild(this.windowElement);
 
         this.dragWindow();
@@ -140,14 +137,6 @@ export class ViewerWindow {
 
         return title_bar;
     }
-
-    /*createFooter() {
-        const footer = document.createElement('div');
-        footer.className = CONSTANTS.FOOTER_CLASS_NAME;
-        footer.innerHTML = '&copy; Jonas';
-
-        return footer;
-    }*/
 
     createTitleIcon() {
         const icon = this.createImgElement(

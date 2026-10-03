@@ -70,6 +70,8 @@
     background-image: url(/assets/icons/sunny.png);
     background-size: cover;
     background-position: center;
+
+    visibility: hidden;
 }
 
 #screen-shade-button:hover {
