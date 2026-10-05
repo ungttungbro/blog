@@ -117,9 +117,9 @@ export class PhotologSection extends BaseView {
 
             frag.appendChild(sectionItemElement);
 
-            if (++index < data.size) {
+            /*if (++index < data.size) {
                 frag.appendChild(document.createElement('hr'));
-            }      
+            } */     
         }
 
         element.appendChild(frag);

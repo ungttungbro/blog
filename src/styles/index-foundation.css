@@ -41,7 +41,7 @@ main {
   width: 100%;
   
   text-align: initial;
-  padding: 4rem 1rem 1rem 1rem;
+  padding: 4.4rem 1rem 1rem 1rem;
   margin: auto;
   
   position: relative; /* pseudo-element 기준 */
@@ -54,6 +54,7 @@ footer {
   left : 0;
   right : 0;
   bottom : 0;
+
 
   background: var(--base_task_bar_background_color);
   border-top: var(--base_footer_border_line);

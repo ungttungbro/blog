@@ -86,6 +86,8 @@
   --base_blog_content_panel_hr : rgba(19, 19, 19, 0.15);
   --base_close_icon_filter_invert : invert(1);
 
+  --base_drop_shadow : none;
+
   --base_backdrop_filter: none;
   --base_footer_background_color: #1a1a1a;
 
@@ -124,10 +126,10 @@
   --base_font_weight: 400;
   --base_viewer_font_weight: 400;
 
-  --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.13);
+  --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.15);
   --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
   --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
-  --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.04);
+  --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.045);
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
 
@@ -136,8 +138,8 @@
   --base_section_header_box_background_color_b: #212223;
   --base_section_header_box_font_color: #caccce;
 
-  --base_task_bar_background_color: #151617;
-  --base_task_item_background_color : #222324;
+  --base_task_bar_background_color: #171819;
+  --base_task_item_background_color : #1c1d1f;
   --base_task_item_background_color_b : #2b2d2f;
 
   --base_anchor_tag_hover_color: #ffc900;
