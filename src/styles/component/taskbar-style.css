@@ -77,7 +77,7 @@
     background-size: cover;
     background-position: center;
 
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 
 #screen-shade-button:hover {
