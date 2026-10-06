@@ -13,24 +13,24 @@ export class BlogDAO {
 
     async initialize() {}
 
-    async findPostList() {
+    async findWritings() {
         const data = await SiteLibrary.loadJson(`${this._BLOG_DATA_PATH}writings/writings-data.json`);
-        return data.entries;
+        return data;
     }
 
     async findArchive() {
         const data = await SiteLibrary.loadJson(`${this._BLOG_DATA_PATH}archive/archive-data.json`);
-        return data.entries;
+        return data;
     }
 
     async findLifelog() {
         const data = await SiteLibrary.loadJson(`${this._BLOG_DATA_PATH}lifelog/lifelog-data.json`);
-        return data.entries;
+        return data;
     }
 
     async findReflection() {
         const data = await SiteLibrary.loadJson(`${this._BLOG_DATA_PATH}reflection/reflection-data.json`);
-        return data.entries;
+        return data;
     }
 
     /*photolog 관련 메서드*/

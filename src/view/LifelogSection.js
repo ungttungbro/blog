@@ -15,7 +15,7 @@ export class LifelogSection extends BaseView {
         this.blog_service = BlogService;
         this.initialize();
 
-        this._BASE_PATH = "/assets/data/blog/";
+        this._BASE_PATH = "/assets/data/blog/lifelog/";
     }
 
     async initialize() { }
@@ -101,12 +101,12 @@ export class LifelogSection extends BaseView {
         let index = 0;
         for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
-                value.content_id,
+                value.id,
                 value.width,
-                Templates.symbol(value.type) + key + ' (' + value.region + ')',
-                value.title,
+                Templates.symbol(value.type) + value.date + ' (' + value.location + ')',
+                value.tags.join(", "),
                 title_char_max_length,
-                value.content_path
+                key + '/' + value.contentUrl
             );
 
             frag.appendChild(sectionItemElement);

@@ -135,10 +135,10 @@
 
   --base_box_background_color: #111111;
   --base_section_header_box_background_color: #111111;
-  --base_section_header_box_background_color_b: #212223;
+  --base_section_header_box_background_color_b: #1f1f1f;
   --base_section_header_box_font_color: #caccce;
 
-  --base_task_bar_background_color: #171819;
+  --base_task_bar_background_color: #181818;
   --base_task_item_background_color : #1c1d1f;
   --base_task_item_background_color_b : #2b2d2f;
 
@@ -165,13 +165,17 @@
     );*/
 
   /*--base_viewer_background_gradient: linear-gradient(45deg, #222222, #333333);*/
-  --base_viewer_background_gradient: #1d1e1f;
+  --base_viewer_background_gradient: #1f1f1f;
 
   --base_viewer_title_bar_background: rgba(0, 0, 0, 0.2);
 
   --base_footer_background_color : #111111;
 
   --base_task_item_close_background_color_b : #777777;
+
+  --base_viewer_shadow : 
+    0 0 0 0.075rem rgba(0, 0, 0, 0.5),
+    0 0.3rem 0.6rem rgba(0,0,0,0.45);
 
   --base_task_items_shadow : 
     0 0 0 0.025rem rgba(255,255,255,0.025),

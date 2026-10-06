@@ -15,7 +15,7 @@ export class ReflectionSection extends BaseView {
         this.blog_service = BlogService;
         this.initialize();
 
-        this._BASE_PATH = "/assets/data/blog/";
+        this._BASE_PATH = "/assets/data/blog/reflection/";
     }
 
     async initialize() { }
@@ -99,15 +99,15 @@ export class ReflectionSection extends BaseView {
         }
 
         let index = 0;
-        for (const [key, value] of data) {
+        for (const [key ,value] of data) {
             const sectionItemElement = this.createSectionItem(
-                value.content_id,
-                /*Templates.symbol(value.type) + */key,
+                value.id,
+                value.date,
                 value.title,
                 title_char_max_length,
-                value.summary,
+                value.description,
                 summary_char_max_length,
-                value.content_path
+                key + '/' + value.contentUrl
             );
 
             frag.appendChild(sectionItemElement);
@@ -177,6 +177,8 @@ export class ReflectionSection extends BaseView {
         e.preventDefault();
 
         const config = this.main_service.buildViewerConfig(id, 50, 36, blog_type, section_icon, title, 24);
+
+        console.log(content_path);
 
         try {
             super.mountContents(

@@ -15,9 +15,15 @@
   background-color: rgba(0, 0, 0, 0.8);
   background: var(--base_box_background_color);
 
+  font-size: 0.85rem;
+
+  line-height: 1rem;
+
   margin-top: 0.35rem;
 
   box-shadow: var(--base_task_items_shadow);
+
+  border: var( --base_border_line);
 }
  
 .task-group-items .task-bar-item {
@@ -71,7 +77,7 @@
     background-size: cover;
     background-position: center;
 
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 
 #screen-shade-button:hover {

@@ -15,7 +15,7 @@ export class ArchiveSection extends BaseView {
         this.blog_service = BlogService;
         this.initialize();
 
-        this._BASE_PATH = "/assets/data/blog/";
+        this._BASE_PATH = "/assets/data/blog/archive/";
     }
 
     async initialize() { }
@@ -92,11 +92,11 @@ export class ArchiveSection extends BaseView {
         let index = 0;
         for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
-                value.content_id,
-                Templates.symbol(value.type) + key,
+                value.id,
+                Templates.symbol(value.type) + value.date,
                 value.title,
                 title_char_max_length,
-                value.content_path
+                key + '/' + value.contentUrl
             );
 
             frag.appendChild(sectionItemElement);

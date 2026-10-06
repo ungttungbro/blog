@@ -15,22 +15,22 @@ export class BlogService extends BaseService {
 
     async buildReflectionListData() {
         const records = await this.dao.findReflection();
-        return super.metaData(records);
+        return super.metaData(records.entries);
     }
 
     async buildLifelogListData() {
         const records = await this.dao.findLifelog();
-        return super.metaData(records);
+        return super.metaData(records.entries);
     }
 
     async buildArchiveListData() {
         const records = await this.dao.findArchive();
-        return super.metaData(records);
+        return super.metaData(records.entries);
     }
 
-    async buildPostListData() {
-        const records = await this.dao.findPostList();
-        return super.metaData(records);
+    async buildWritingsListData() {
+        const records = await this.dao.findWritings();
+        return super.metaData(records.entries);
     }
 
     async buildPhotologData() {

@@ -34,10 +34,10 @@ export class MainService extends BaseService {
             ] = await Promise.all([
                 this.buildAboutData(),
                 this.buildLinksData(),
-                super.metaData(this.dao.findWritings()),
-                super.metaData(this.dao.findReflection()),
-                super.metaData(this.dao.findLifelog()),
-                super.metaData(this.dao.findArchive()),
+                super.metaData(this.dao.findWritings().entries),
+                super.metaData(this.dao.findReflection().entries),
+                super.metaData(this.dao.findLifelog().entries),
+                super.metaData(this.dao.findArchive().entries),
                 this.buildPhotologData()
             ]);
         } catch (error) {
@@ -91,17 +91,17 @@ export class MainService extends BaseService {
 
     buildLinksData() { 
         const Links = {
-            oldMyWeb: super.toPostMap(this.dao.findOldMyWeb()),
-            thanksTo: super.toPostMap(this.dao.findThanksTo())
+            oldMyWeb: super.toSectionMap(this.dao.findOldMyWeb()),
+            thanksTo: super.toSectionMap(this.dao.findThanksTo())
         };
 
         return Links;
     }
 
     async buildPhotologData() {
-        const contents_records = super.toPostMap(this.dao.findPhotolog());
-        const thumbnail_records = super.toPostMap(this.dao.findPhotologThumbnails());
-        const photo_records = super.toPostMap(this.dao.findPhotologPhotos());
+        const contents_records = super.toSectionMap(this.dao.findPhotolog());
+        const thumbnail_records = super.toSectionMap(this.dao.findPhotologThumbnails());
+        const photo_records =  super.toSectionMap(this.dao.findPhotologPhotos());
         
         const dtoMap = new Map();
         for (const [key, value] of contents_records) {

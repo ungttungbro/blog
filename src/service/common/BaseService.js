@@ -5,7 +5,7 @@ import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 export class BaseService {
     constructor() {}
 
-    toPostMap(data) {
+    toSectionMap(data) {
         const dtoMap = new Map();
 
         for (const [key, value] of Object.entries(data)) {
@@ -16,18 +16,19 @@ export class BaseService {
     }
 
     async metaData(data) {
-        const dtoData = this.toPostMap(data);
+        const dtoMap = new Map();
 
-        const dtoMap = new Map();        
-        for (const [key, value] of dtoData) {
+        for (const [key, value] of Object.entries(data)) {
             const blog = {
-                content_id: await SiteLibrary.hashString(key + value[1] + value[2]),
-                region: value[0],
-                type: value[1],
-                title: value[2],
-                summary: value[3],
-                content_path: value[4],
-                width: value[5]
+                date : value.date,
+                id: await SiteLibrary.hashString(key),
+                location: value.location,
+                type: value.type,
+                title: value.title,
+                tags: value.tags,
+                description: value.description,
+                contentUrl: value.contentUrl,
+                width: value.width
             };
 
             dtoMap.set(key, blog);

@@ -15,7 +15,7 @@ export class WritingsSection extends BaseView {
         this.blog_service = BlogService;
         this.initialize();
 
-        this._BASE_PATH = "/assets/data/blog/";
+        this._BASE_PATH = "/assets/data/blog/writings/";
     }
 
     async initialize(){}
@@ -99,15 +99,15 @@ export class WritingsSection extends BaseView {
         }
 
         let index = 0;
-        for (const [key, value] of data) {
+        for (const [key ,value] of data) {
             const sectionItemElement = this.createSectionItem(
-                value.content_id,
-                Templates.symbol(value.type) + key,
+                value.id,
+                value.type + ' · ' + value.date,
                 value.title,
                 title_char_max_length,
-                value.summary,
+                value.description,
                 summary_char_max_length,
-                value.content_path
+                key + '/' + value.contentUrl
             );
 
             frag.appendChild(sectionItemElement);
@@ -140,7 +140,7 @@ export class WritingsSection extends BaseView {
                 config.listViewerId, 
                 config.sectionHeaderIcon, 
                 config.sectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildPostListData(), config),
+                this.generateSectionItems('header', await this.blog_service.buildWritingsListData(), config),
                 null,
                 COMMON.COPYRIGHT
             );
@@ -195,5 +195,9 @@ export class WritingsSection extends BaseView {
 
             ViewerStateManager.stateLog(element);
         }
+    }
+
+    async loadContentByParams(id) {
+        const data = await this.blog_service.buildWritingsListData();
     }
 }

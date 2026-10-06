@@ -53,19 +53,19 @@ export class MainDAO {
     }
 
     findWritings() {
-        return this.writingsRecords.entries;
+        return this.writingsRecords;
     }
 
     findReflection() {
-        return this.reflectionRecords.entries;
+        return this.reflectionRecords;
     }
 
     findLifelog() {
-        return this.lifelogRecords.entries;
+        return this.lifelogRecords;
     }
 
     findArchive() {
-        return this.archiveRecords.entries;
+        return this.archiveRecords;
     }
 
     /*photolog 관련 메서드*/
