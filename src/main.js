@@ -71,10 +71,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       ['photolog', photolog_section]
   ]);
 
-  console.log(section_type);
+  /*console.log(section_type);
   console.log(content_id);
-  console.log(path);
-
-
+  console.log(path);*/
 });
 

@@ -54,6 +54,14 @@ export class LifelogSection extends BaseView {
         a.appendChild(document.createElement('br'));
 
         const section_config = siteMeta.selectSectionConfig('lifelog');
+
+        const footer_span = document.createElement('span');
+        footer_span.className = 'footer';
+        footer_span.innerHTML = "<p align='right' style='font-size:0.75rem; font-weight:400; font-style:italic;'>" 
+                                + meta_data 
+                                + "</p>";
+        footer_span.innerHTML += COMMON.COPYRIGHT;
+
         this.generatePostEvent(
             section_config.blogTypeName, 
             COMMON.VIEWER_PREFIX + id, 
@@ -62,8 +70,8 @@ export class LifelogSection extends BaseView {
             section_config.sectionHeaderIcon, 
             title, 
             null,
-            this._BASE_PATH + content_path, 
-            COMMON.COPYRIGHT
+            this._BASE_PATH + content_path,
+            footer_span
         );
 
         element.appendChild(a);

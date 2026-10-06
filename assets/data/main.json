@@ -145,7 +145,7 @@
                 "#크리스마스, #트리", 
                 "", 
                 "lifelog/20241216A/20241216A.html", 
-                "39"
+                "37"
             ],
             "2022.02.12." : [
                 "서울 성수동", 
@@ -153,7 +153,7 @@
                 "#쇼팽, #클래식, #음악회", 
                 "", 
                 "lifelog/20220212A/20220212A.html", 
-                "39"
+                "37"
             ],
             "2019.10.18." : [
                 "서울 장승배기 교육장", 
@@ -161,7 +161,7 @@
                 "#제자, #게임", 
                 "", 
                 "lifelog/20191018A/20191018A.html", 
-                "44"
+                "42"
             ],
             "2019.02.03." : [
                 "경기 가평", 
@@ -209,98 +209,98 @@
         "title" : "photolog",
 
         "entries" : {
-            "20260131_photolog" : { "전쟁기념관" : "<p>용산에 약속이 있어 오랜만에 전쟁기념관을 둘러 보았다.<br>행사도 많고 편의시설도 많아져서 예전과 다르게 즐길꺼리가 정말 많아졌더라...<br>전쟁과 관련한 무기들도 꼼꼼하게 전시되어 있어서 보기가 좋았다.</p><br><p>2026년 1월 31일 [ Samsung XCover5로 촬영 ]</p>" },
-            "20241127_photolog" : { "남산골 한옥마을" : "<p>직업상담사 자격증 관련하여 현장실습을 충무로로 가게 되었다.<br>충무로에는 남산골 한옥마을이 있는데, 불것도 많고 산책하기 좋은 곳이다.<br>한옥마을을 산책하면서 사색에 잠겼던 하루였다.</p><br><p>2024년 11월 27일 충무로 [ Samsung XCover5로 촬영 ]</p>" },
-            "20140810_photolog" : { "경마장에 갔다" : "<p>아끼는 후배들과, 조교선생님이 서울에 놀러 왔다.<br>경마장도가고 연극도보고 즐거운 하루를 보냈다.<br>거기다가 오늘은 내 생일 이어서 생일파티도 덤으로...ㅎㅎㅎ<br>힘들었던 2014년 이었는데 힘이난다.</p> <br>2014년 8월 10일 경마장에서[ Canon EOS 550D로 촬영 ]" },
-            "20050101_photolog" : { "전국여행" : "<p>새해를 맞아서 전국여행을 계획하였다.<br>서울에서 출발하여 오이도를 거쳐 해안선을 따라서 왜목마을, 삽교, 해남, 부산, 정동진, 설악산등을 방문하였다.<br>중간중간 좋은 사람들도 만났고, 혼자서 하는 여행도 좋은 추억이 되었다.<br>겨울 여행은 좋은 기억이 이었다.</p> <br>2005년 1월 1일부터 [ Nikon Coolpix3100으로 촬영 ]" },
-            "20040405_photolog" : { "강화도에 놀러갔다" : "<p>같이 일하던 친구들과 함께 강화도에 놀러갔다. <br>바닷가와 마니산을 방문하여 좋은 추억을 남겼다.<br>땀이 조금 날 정도의 봄날씨와 함께 행복한 시간 이었음을 이제는 안다.<br>참 즐거웠어..^^ </p><br>2004년 4월 5일 강화도 마니산에서 [ Nikon Coolpix3100으로 촬영 ]" }
+            "20260131_photolog" : { "전쟁기념관" : "<p>용산에 약속이 있어 오랜만에 전쟁기념관을 둘러 보았다.<br>행사도 많고 편의시설도 많아져서 예전과 다르게 즐길꺼리가 정말 많아졌더라</p>" },
+            "20241127_photolog" : { "남산골 한옥마을" : "<p>직업상담사 자격증 관련하여 현장실습을 충무로로 가게 되었다.<br>충무로에는 남산골 한옥마을이 있는데, 불것도 많고 산책하기 좋은 곳이다.</p>" },
+            "20140810_photolog" : { "경마장에 갔다" : "<p>아끼는 후배들과, 조교선생님이 서울에 놀러 왔다.<br>경마장도가고 연극도보고 즐거운 하루를 보냈다.<br>거기다가 오늘은 내 생일 이어서 생일파티도 덤으로...ㅎㅎㅎ</p>" },
+            "20050101_photolog" : { "전국여행" : "<p>새해를 맞아서 전국여행을 계획하였다.<br>서울에서 출발하여 오이도를 거쳐 해안선을 따라서 왜목마을, 삽교, 해남, 부산, 정동진, 설악산등을 방문하였다.</p>" },
+            "20040405_photolog" : { "강화도에 놀러갔다" : "<p>같이 일하던 친구들과 함께 강화도에 놀러갔다. <br>바닷가와 마니산을 방문하여 좋은 추억을 남겼다.</p>" }
         },
 
         "thumbnails" : {
-            "20260131_photolog" :  "thumbnails/20260131_photolog.jpg",
-            "20241127_photolog" :  "thumbnails/20241127_photolog.jpg",
-            "20140810_photolog" :  "thumbnails/20140810_photolog.jpg", 
-            "20050101_photolog" :  "thumbnails/20050101_photolog.jpg", 
-            "20040405_photolog" :  "thumbnails/20040405_photolog.jpg" 
+            "20260131_photolog" : "thumbnails/20260131_photolog.jpg",
+            "20241127_photolog" : "thumbnails/20241127_photolog.jpg",
+            "20140810_photolog" : "thumbnails/20140810_photolog.jpg", 
+            "20050101_photolog" : "thumbnails/20050101_photolog.jpg", 
+            "20040405_photolog" : "thumbnails/20040405_photolog.jpg" 
         },
 
         "photos" : {
             "20260131_photolog" : [
-                "20260131_photolog/20260131_photo01.jpg",
-                "20260131_photolog/20260131_photo02.jpg",
-                "20260131_photolog/20260131_photo03.jpg",
-                "20260131_photolog/20260131_photo04.jpg",
-                "20260131_photolog/20260131_photo05.jpg",
-                "20260131_photolog/20260131_photo06.jpg",
-                "20260131_photolog/20260131_photo07.jpg",
-                "20260131_photolog/20260131_photo08.jpg",
-                "20260131_photolog/20260131_photo09.jpg",
-                "20260131_photolog/20260131_photo10.jpg",
-                "20260131_photolog/20260131_photo11.jpg"
+                "20260131_photo01.jpg",
+                "20260131_photo02.jpg",
+                "20260131_photo03.jpg",
+                "20260131_photo04.jpg",
+                "20260131_photo05.jpg",
+                "20260131_photo06.jpg",
+                "20260131_photo07.jpg",
+                "20260131_photo08.jpg",
+                "20260131_photo09.jpg",
+                "20260131_photo10.jpg",
+                "20260131_photo11.jpg"
             ],
 
             "20241127_photolog" : [
-                "20241127_photolog/20241127_photo01.jpg",
-                "20241127_photolog/20241127_photo02.jpg",
-                "20241127_photolog/20241127_photo03.jpg",
-                "20241127_photolog/20241127_photo04.jpg",
-                "20241127_photolog/20241127_photo05.jpg",
-                "20241127_photolog/20241127_photo06.jpg"
+                "20241127_photo01.jpg",
+                "20241127_photo02.jpg",
+                "20241127_photo03.jpg",
+                "20241127_photo04.jpg",
+                "20241127_photo05.jpg",
+                "20241127_photo06.jpg"
             ],
 
             "20140810_photolog" : [
-                "20140810_photolog/20140810_photo01.jpg",
-                "20140810_photolog/20140810_photo02.jpg",
-                "20140810_photolog/20140810_photo03.jpg",
-                "20140810_photolog/20140810_photo04.jpg",
-                "20140810_photolog/20140810_photo05.jpg",
-                "20140810_photolog/20140810_photo06.jpg",
-                "20140810_photolog/20140810_photo07.jpg"
+                "20140810_photo01.jpg",
+                "20140810_photo02.jpg",
+                "20140810_photo03.jpg",
+                "20140810_photo04.jpg",
+                "20140810_photo05.jpg",
+                "20140810_photo06.jpg",
+                "20140810_photo07.jpg"
             ],
 
             "20050101_photolog" : [
-                "20050101_photolog/20050101_photo01.jpg",
-                "20050101_photolog/20050101_photo02.jpg",
-                "20050101_photolog/20050101_photo03.jpg",
-                "20050101_photolog/20050101_photo04.jpg",
-                "20050101_photolog/20050101_photo05.jpg",
-                "20050101_photolog/20050101_photo06.jpg",
-                "20050101_photolog/20050101_photo07.jpg",
-                "20050101_photolog/20050101_photo08.jpg",
-                "20050101_photolog/20050101_photo09.jpg",
-                "20050101_photolog/20050101_photo10.jpg",
-                "20050101_photolog/20050101_photo11.jpg",
-                "20050101_photolog/20050101_photo12.jpg",
-                "20050101_photolog/20050101_photo13.jpg",
-                "20050101_photolog/20050101_photo14.jpg",
-                "20050101_photolog/20050101_photo15.jpg",
-                "20050101_photolog/20050101_photo16.jpg",
-                "20050101_photolog/20050101_photo17.jpg",
-                "20050101_photolog/20050101_photo18.jpg",
-                "20050101_photolog/20050101_photo19.jpg",
-                "20050101_photolog/20050101_photo20.jpg",
-                "20050101_photolog/20050101_photo21.jpg",
-                "20050101_photolog/20050101_photo22.jpg",
-                "20050101_photolog/20050101_photo23.jpg",
-                "20050101_photolog/20050101_photo24.jpg",
-                "20050101_photolog/20050101_photo25.jpg",
-                "20050101_photolog/20050101_photo26.jpg",
-                "20050101_photolog/20050101_photo27.jpg"
+                "20050101_photo01.jpg",
+                "20050101_photo02.jpg",
+                "20050101_photo03.jpg",
+                "20050101_photo04.jpg",
+                "20050101_photo05.jpg",
+                "20050101_photo06.jpg",
+                "20050101_photo07.jpg",
+                "20050101_photo08.jpg",
+                "20050101_photo09.jpg",
+                "20050101_photo10.jpg",
+                "20050101_photo11.jpg",
+                "20050101_photo12.jpg",
+                "20050101_photo13.jpg",
+                "20050101_photo14.jpg",
+                "20050101_photo15.jpg",
+                "20050101_photo16.jpg",
+                "20050101_photo17.jpg",
+                "20050101_photo18.jpg",
+                "20050101_photo19.jpg",
+                "20050101_photo20.jpg",
+                "20050101_photo21.jpg",
+                "20050101_photo22.jpg",
+                "20050101_photo23.jpg",
+                "20050101_photo24.jpg",
+                "20050101_photo25.jpg",
+                "20050101_photo26.jpg",
+                "20050101_photo27.jpg"
             ],
 
             "20040405_photolog" : [
-                "20040405_photolog/20040405_photo01.jpg",
-                "20040405_photolog/20040405_photo02.jpg",
-                "20040405_photolog/20040405_photo03.jpg",
-                "20040405_photolog/20040405_photo04.jpg",
-                "20040405_photolog/20040405_photo05.jpg",
-                "20040405_photolog/20040405_photo06.jpg",
-                "20040405_photolog/20040405_photo07.jpg",
-                "20040405_photolog/20040405_photo08.jpg",
-                "20040405_photolog/20040405_photo09.jpg",
-                "20040405_photolog/20040405_photo10.jpg",
-                "20040405_photolog/20040405_photo11.jpg",
-                "20040405_photolog/20040405_photo12.jpg"
+                "20040405_photo01.jpg",
+                "20040405_photo02.jpg",
+                "20040405_photo03.jpg",
+                "20040405_photo04.jpg",
+                "20040405_photo05.jpg",
+                "20040405_photo06.jpg",
+                "20040405_photo07.jpg",
+                "20040405_photo08.jpg",
+                "20040405_photo09.jpg",
+                "20040405_photo10.jpg",
+                "20040405_photo11.jpg",
+                "20040405_photo12.jpg"
             ]
         }
     }
