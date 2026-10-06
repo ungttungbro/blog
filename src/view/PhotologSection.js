@@ -6,7 +6,7 @@ import { ELEMENT_TYPE, COMMON } from "../modules/common/Constants.js"
 import { siteMeta } from "../modules/site/siteMeta.js";
 import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
 import { taskbar } from "../modules/taskbar/TaskBar.js";
-import { BaseView } from "./base/BaseView.js";
+import { BaseView } from "./common/BaseView.js";
 
 export class PhotologSection extends BaseView {
     constructor(MainService, BlogService) {
@@ -16,7 +16,7 @@ export class PhotologSection extends BaseView {
         this.blog_service = BlogService;
         this.initialize();
 
-        this._BASE_PATH = "./assets/data/blog/photolog/";
+        this._BASE_PATH = "/assets/data/blog/photolog/";
     }
 
     async initialize() { }

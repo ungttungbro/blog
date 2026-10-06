@@ -19,7 +19,7 @@ export class BaseService {
         const dtoData = this.toPostMap(data);
 
         const dtoMap = new Map();        
-        for (const [key, value] of dtoData) {            
+        for (const [key, value] of dtoData) {
             const blog = {
                 content_id: await SiteLibrary.hashString(key + value[1] + value[2]),
                 region: value[0],

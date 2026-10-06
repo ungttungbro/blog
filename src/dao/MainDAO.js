@@ -2,7 +2,7 @@ import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 
 export class MainDAO {
     constructor() {
-        this._ABOUT_DATA_PATH = "./assets/data/main.json";
+        this._ABOUT_DATA_PATH = "/assets/data/main.json";
     }
 
     static async create() {

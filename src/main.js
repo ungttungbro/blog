@@ -14,6 +14,9 @@ import { PhotologSection } from './view/PhotologSection.js';
 import { LinksSection } from './view/LinksSection.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  /**
+   * Service Initialization
+   */
   const blog_service = new BlogService();
   const main_service = new MainService();
  
@@ -23,18 +26,55 @@ document.addEventListener('DOMContentLoaded', async () => {
     blog_service.initialize(),
     main_service.initialize(),   
     shell.initialize(taskbar_element)
-  ]);
-   
+  ]);   
+
+  /**
+   * View Section Initialization
+   */
+  const about_section = new AboutSection(main_service);
+  const links_section = new LinksSection(main_service);
+  const writings_section = new WritingsSection(main_service, blog_service);
+  const reflection_section = new ReflectionSection(main_service, blog_service);
+  const lifelog_section = new LifelogSection(main_service, blog_service);
+  const archive_section = new ArchiveSection(main_service, blog_service);
+  const photolog_section = new PhotologSection(main_service, blog_service);
+
   await Promise.all([
-    new AboutSection(main_service).show(),
-    new LinksSection(main_service).show(),
-    new WritingsSection(main_service, blog_service).show(),
-    new ReflectionSection(main_service, blog_service).show(),
-    new LifelogSection(main_service, blog_service).show(),
-    new ArchiveSection(main_service, blog_service).show(),
-    new PhotologSection(main_service, blog_service).show()
+      about_section.show(),
+      links_section.show(),
+      writings_section.show(),
+      reflection_section.show(),
+      lifelog_section.show(),
+      archive_section.show(),
+      photolog_section.show()
   ]);
-   
+
   shell.initLayoutMemory();
   shell.updateLayout();
+
+
+  /*for (const [key, value] of main_service.handleDeepLink()) {
+      console.log(key, value);
+  }*/
+  const params = main_service.handleDeepLink();
+  const section_type = params.get('section');
+  const content_id = params.get('id');
+  const path = section_type + params.get('path');
+
+  const section_map = new Map([
+      ['about', about_section],
+      ['links', links_section],
+      ['writings', writings_section],
+      ['reflection', reflection_section],
+      ['lifelog', lifelog_section],
+      ['archive', archive_section],
+      ['photolog', photolog_section]
+  ]);
+
+  console.log(section_type);
+  console.log(content_id);
+  console.log(path);
+
+
 });
+

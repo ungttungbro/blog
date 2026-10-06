@@ -5,7 +5,7 @@ import { siteMeta } from "../modules/site/siteMeta.js";
 import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 import { Templates } from "../modules/site/Templates.js";
 import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
-import { BaseView } from "./base/BaseView.js";
+import { BaseView } from "./common/BaseView.js";
 
 export class ArchiveSection extends BaseView {
     constructor(MainService, BlogService) {
@@ -15,7 +15,7 @@ export class ArchiveSection extends BaseView {
         this.blog_service = BlogService;
         this.initialize();
 
-        this._BASE_PATH = "./assets/data/blog/";
+        this._BASE_PATH = "/assets/data/blog/";
     }
 
     async initialize() { }

@@ -136,4 +136,9 @@ export class MainService extends BaseService {
 
         return config;
     }
+
+    handleDeepLink() {
+        const params = new URLSearchParams(location.search);
+        return params;
+    }
 }

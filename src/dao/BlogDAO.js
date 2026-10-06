@@ -2,7 +2,7 @@ import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 
 export class BlogDAO {
     constructor() {
-        this._BLOG_DATA_PATH = "./assets/data/blog/";        
+        this._BLOG_DATA_PATH = "/assets/data/blog/";
     }
 
     static async create() {
