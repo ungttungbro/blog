@@ -11,7 +11,7 @@ import { ViewerStateManager } from "../../modules/viewerWindow/ViewerStateManage
 export class BaseView {
     constructor(){}
 
-    mountContents(type, viewer_config, task_id, header, contents, footer) {        
+    mountContents(type, viewer_config, task_id, header, contents, footer) {
         if (document.getElementById(viewer_config.element.elementId)) {
             ViewerStateManager.bringToFront(document.getElementById(viewer_config.element.elementId));
             return; 

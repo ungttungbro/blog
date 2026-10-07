@@ -70,7 +70,7 @@ export class MainDAO {
 
     /*photolog 관련 메서드*/
     findPhotolog() {
-        return this.photologRecords.entries;
+        return this.photologRecords;
     }
 
     findPhotologPhotos() {

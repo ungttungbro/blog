@@ -129,7 +129,7 @@ export class ArchiveSection extends BaseView {
                 config.listViewerId, 
                 config.sectionHeaderIcon, 
                 config.sectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildArchiveListData(), config),
+                this.generateSectionItems('header', await this.blog_service.buildArchiveList(), config),
                 null,
                 COMMON.COPYRIGHT
             );

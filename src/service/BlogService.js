@@ -1,8 +1,7 @@
 'use strict';
 
-import { BlogDAO } from '../dao/BlogDAO.js';
-import { SiteLibrary } from '../modules/common/SiteLibrary.js';
 import { BaseService } from "./common/BaseService.js";
+import { BlogDAO } from '../dao/BlogDAO.js';
 
 export class BlogService extends BaseService {
     constructor() {
@@ -13,41 +12,41 @@ export class BlogService extends BaseService {
         this.dao = await BlogDAO.create();
     }
 
-    async buildReflectionListData() {
+    async buildReflectionList() {
         const records = await this.dao.findReflection();
         return super.metaData(records.entries);
     }
 
-    async buildLifelogListData() {
+    async buildLifelogList() {
         const records = await this.dao.findLifelog();
         return super.metaData(records.entries);
     }
 
-    async buildArchiveListData() {
+    async buildArchiveList() {
         const records = await this.dao.findArchive();
         return super.metaData(records.entries);
     }
 
-    async buildWritingsListData() {
+    async buildWritingsList() {
         const records = await this.dao.findWritings();
         return super.metaData(records.entries);
     }
 
-    async buildPhotologData() {
+    async buildPhotologList() {
         const records = await this.dao.findPhotolog();
-        
-        const dtoMap = new Map();        
-        for (const [key, value] of Object.entries(records.entries)) {
-            const photolog = {
-                content_id: await SiteLibrary.hashString(key),
-                content: value,
-                thumbnail: records.thumbnails[key],
-                photos: records.photos[key]
-            };
-            
-            dtoMap.set(key, photolog);
-        }
+        return super.metaData(records.entries);
+    }
 
-        return dtoMap;
+
+    async handleDeepLink() {
+        const params = new URLSearchParams(location.search);
+
+        if (params.size <= 0) return;
+        
+
+        const data = await this.buildWritingsList();       
+        const record = data.get(id);
+
+        return params;
     }
 }

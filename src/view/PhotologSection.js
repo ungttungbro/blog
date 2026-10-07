@@ -34,7 +34,7 @@ export class PhotologSection extends BaseView {
         photolog.appendChild(super.createSection('photolog', 'photolog-items', this.main_service.photolog));
     }
 
-    createSectionItem(id, thumbnail_path, title, text, date, photos_path) {
+    createSectionItem(id, thumbnail_path, title, text, key, photos_path) {
         const thumbnail = SiteLibrary.createImgElement(
             siteMeta.photolog.thumbnailClassName,
             null,
@@ -44,8 +44,8 @@ export class PhotologSection extends BaseView {
 
         const teaser = SiteLibrary.createImgTitleCaption(
             thumbnail,
-            SiteLibrary.truncateText(title[0], 16),
-            SiteLibrary.truncateText(text[0], 70)
+            SiteLibrary.truncateText(title, 16),
+            SiteLibrary.truncateText(text, 70)
         );
         
         teaser.className = siteMeta.photolog.teaserClassName;
@@ -55,10 +55,10 @@ export class PhotologSection extends BaseView {
             section_config.typeName,
             teaser, 
             id,
-            date,
+            key,
             section_config.sectionHeaderIcon,
             title, 
-            text.toString(), 
+            text, 
             photos_path,
             COMMON.COPYRIGHT
         );
@@ -66,9 +66,9 @@ export class PhotologSection extends BaseView {
         return teaser;
     }
 
-    generateTeaserEvent(type, element, id, date, section_icon, title, header_contents, main_contents, footer_contents) {        
+    generateTeaserEvent(type, element, id, key, section_icon, title, header_contents, main_contents, footer_contents) {        
         element.addEventListener('click', e => {
-            this.onTeaserClick(e, type, id, date, section_icon, title, header_contents, main_contents, footer_contents);            
+            this.onTeaserClick(e, type, id, key, section_icon, title, header_contents, main_contents, footer_contents);            
         });
     }
 
@@ -90,7 +90,7 @@ export class PhotologSection extends BaseView {
                 config.photologListViewerId,
                 config.sectionHeaderIcon,
                 config.photologSectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildPhotologData(), config),
+                this.generateSectionItems('header', await this.blog_service.buildPhotologList(), config),
                 null,
                 COMMON.COPYRIGHT
             );
@@ -108,19 +108,21 @@ export class PhotologSection extends BaseView {
         let index = 0;
         for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
-                value.content_id,
-                this._BASE_PATH + value.thumbnail,
-                Object.keys(value.content),
-                Object.values(value.content),
+                value.id,
+                this._BASE_PATH + "thumbnails/" + value.thumbnails,
+                value.title,
+                value.description +
+                            "<br>" +
+                            "<p style=\"font-size:0.85rem; color:var(--base_anchor_tag_hover_color);\">" +
+                            "&#128247;&nbsp;&nbsp" +
+                            value.date + " · " +
+                            value.tags.map(tag => '#' + tag).join(" · ") +
+                            "</p>",
                 key,
-                value.photos
+                value.files
             );
 
-            frag.appendChild(sectionItemElement);
-
-            /*if (++index < data.size) {
-                frag.appendChild(document.createElement('hr'));
-            } */     
+            frag.appendChild(sectionItemElement);   
         }
 
         element.appendChild(frag);
@@ -128,7 +130,7 @@ export class PhotologSection extends BaseView {
         return element;
     }
 
-    async onTeaserClick(e, blog_type, id, date, section_icon, title, header, contents, footer) {
+    async onTeaserClick(e, blog_type, id, key, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
         const config = this.main_service.buildViewerConfig(
@@ -142,7 +144,7 @@ export class PhotologSection extends BaseView {
         );
 
         try {
-            const photo_container_el = this.createPhotoContents(date, contents);
+            const photo_container_el = this.createPhotoContents(key, contents);
 
             super.mountContents(
                 'photolog',
@@ -212,7 +214,7 @@ export class PhotologSection extends BaseView {
         }
     }
 
-    createPhotoContents(date, data) {
+    createPhotoContents(key, data) {
         const photo_container = document.createElement(ELEMENT_TYPE.DIV);
         photo_container.className = 'photo-container';
 
@@ -222,7 +224,7 @@ export class PhotologSection extends BaseView {
             const image = SiteLibrary.createImgElement(
                 siteMeta.photolog.photoClassName,
                 '',
-                this._BASE_PATH + date + '/' + content,
+                this._BASE_PATH + key + '/' + content,
                 siteMeta.photolog.photoImgAlt
             );
 

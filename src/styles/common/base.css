@@ -129,7 +129,8 @@
   --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.15);
   --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
   --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
-  --base_hr_border: 0.075rem solid rgba(255, 255, 255, 0.045);
+  --base_hr_border: 1px solid rgba(255, 255, 255, 0.04);
+  
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
 

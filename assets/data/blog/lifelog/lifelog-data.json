@@ -6,7 +6,7 @@
             "date": "2024.12.16.",
             "location": "충남 천안시",
             "type": "photo",
-            "tags": ["#크리스마스", "#장식"],
+            "tags": ["크리스마스", "장식"],
             "contentUrl": "20241216A.html",
             "width": 37
         },
@@ -15,7 +15,7 @@
             "date": "2024.09.01.",
             "location": "경기 가평군",
             "type": "photo",
-            "tags": ["#커피나무", "#새싹"],
+            "tags": ["커피나무", "새싹"],
             "contentUrl": "20240901A.html",
             "width": 21
         },
@@ -24,7 +24,7 @@
             "date": "2024.03.04.",
             "location": "경기 가평군",
             "type": "photo",
-            "tags": ["#기타반", "#수업"],
+            "tags": ["기타반", "수업"],
             "contentUrl": "20240304A.html",
             "width": 37
         },
@@ -33,7 +33,7 @@
             "date": "2022.02.12.",
             "location": "서울 성수동",
             "type": "photo",
-            "tags": ["#쇼팽", "#클래식", "#음악회"],
+            "tags": ["쇼팽", "클래식", "음악회"],
             "contentUrl": "20220212A.html",
             "width": 37
         },
@@ -42,7 +42,7 @@
             "date": "2019.10.18.",
             "location": "서울 장승배기",
             "type": "video",
-            "tags": ["#제자", "#개발", "#게임"],
+            "tags": ["제자", "개발", "게임"],
             "contentUrl": "20191018A.html",
             "width": 41
         },
@@ -51,7 +51,7 @@
             "date": "2019.08.05.",
             "location": "서울 약수동",
             "type": "photo",
-            "tags": ["#아버지", "#대장암", "#수술"],
+            "tags": ["아버지", "대장암", "수술"],
             "contentUrl": "20190805A.html",
             "width": 37
         },
@@ -60,7 +60,7 @@
             "date": "2019.04.10.",
             "location": "서울 길동",
             "type": "photo",
-            "tags": ["#친할머니", "#소천"],
+            "tags": ["친할머니", "소천"],
             "contentUrl": "20190410A.html",
             "width": 43
         },
@@ -69,7 +69,7 @@
             "date": "2019.04.01.",
             "location": "서울 장승배기",
             "type": "photo",
-            "tags": ["#타자왕", "#대회"],
+            "tags": ["타자왕", "대회"],
             "contentUrl": "20190401A.html",
             "width": 21
         },
@@ -78,7 +78,7 @@
             "date": "2019.03.15.",
             "location": "서울",
             "type": "photo",
-            "tags": ["#외할머니", "#소천"],
+            "tags": ["외할머니", "소천"],
             "contentUrl": "20190315A.html",
             "width": 25
         },
@@ -87,7 +87,7 @@
             "date": "2019.02.03.",
             "location": "경기 가평",
             "type": "photo",
-            "tags": ["#막내동생", "#덕구"],
+            "tags": ["막내동생", "덕구"],
             "contentUrl": "20190203A.html",
             "width": 25
         },
@@ -96,7 +96,7 @@
             "date": "2018.12.05.",
             "location": "서울 장승배기",
             "type": "photo",
-            "tags": ["#칠판", "#캐릭터"],
+            "tags": ["칠판", "캐릭터"],
             "contentUrl": "20181205A.html",
             "width": 37
         },
@@ -105,7 +105,7 @@
             "date": "2018.08.23.",
             "location": "경기 가평",
             "type": "photo",
-            "tags": ["#덕구", "#강아지"],
+            "tags": ["덕구", "강아지"],
             "contentUrl": "20180823A.html",
             "width": 25
         },
@@ -114,7 +114,7 @@
             "date": "2018.02.13.",
             "location": "강원 춘천",
             "type": "photo",
-            "tags": ["#실업급여", "#교육일"],
+            "tags": ["실업급여", "교육일"],
             "contentUrl": "20180213A.html",
             "width": 37
         },
@@ -123,7 +123,7 @@
             "date": "2017.10.29.",
             "location": "서울 암사동",
             "type": "text",
-            "tags": ["#입주", "#점검"],
+            "tags": ["입주", "점검"],
             "contentUrl": "20171029A.html",
             "width": 30
         },
@@ -132,7 +132,7 @@
             "date": "2013.06.27.",
             "location": "제주도",
             "type": "photo",
-            "tags": ["#우수논문상"],
+            "tags": ["우수논문상"],
             "contentUrl": "20130627A.html",
             "width": 21
         },
@@ -141,7 +141,7 @@
             "date": "2012.10.06.",
             "location": "경북 구미",
             "type": "photo",
-            "tags": ["#달걀", "#산책"],
+            "tags": ["달걀", "산책"],
             "contentUrl": "20121006A.html",
             "width": 37
         },
@@ -150,7 +150,7 @@
             "date": "2011.12.02.",
             "location": "서울 양재동",
             "type": "photo",
-            "tags": ["#심층수", "#사무실"],
+            "tags": ["심층수", "사무실"],
             "contentUrl": "20111202A.html",
             "width": 37
         },
@@ -159,7 +159,7 @@
             "date": "2010.11.09.",
             "location": "경북 구미",
             "type": "photo",
-            "tags": ["#소공실", "#공부"],
+            "tags": ["소공실", "공부"],
             "contentUrl": "20101109A.html",
             "width": 37
         }

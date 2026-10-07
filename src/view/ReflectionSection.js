@@ -140,7 +140,7 @@ export class ReflectionSection extends BaseView {
                 config.listViewerId, 
                 config.sectionHeaderIcon, 
                 config.sectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildReflectionListData(), config),
+                this.generateSectionItems('header', await this.blog_service.buildReflectionList(), config),
                 null,
                 COMMON.COPYRIGHT
             );

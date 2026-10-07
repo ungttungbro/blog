@@ -140,7 +140,7 @@ export class WritingsSection extends BaseView {
                 config.listViewerId, 
                 config.sectionHeaderIcon, 
                 config.sectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildWritingsListData(), config),
+                this.generateSectionItems('header', await this.blog_service.buildWritingsList(), config),
                 null,
                 COMMON.COPYRIGHT
             );
@@ -198,6 +198,35 @@ export class WritingsSection extends BaseView {
     }
 
     async loadContentByParams(id) {
-        const data = await this.blog_service.buildWritingsListData();
+        const data = await this.blog_service.buildWritingsList();       
+        const record = data.get(id);
+
+        const config = this.main_service.buildViewerConfig(
+            COMMON.VIEWER_PREFIX + record.id,
+            50,
+            36, 
+            'writings',
+            '', //section icon 
+            record.title, 
+            24
+        );
+
+        try {
+            super.mountContents(
+                'blog',
+                config, 
+                COMMON.TASKBAR_PREFIX + record.id, 
+                null, 
+                await SiteLibrary.loadText(this._BASE_PATH + id + '/' + record.contentUrl), 
+                COMMON.COPYRIGHT
+            );
+        } catch(error) {
+            console.warn('Blog Post Event : ', error);
+        } finally {
+            /*const element = document.getElementById(id);
+            element.dataset.group = config.meta.contentType;
+
+            ViewerStateManager.stateLog(element);*/
+        }
     }
 }

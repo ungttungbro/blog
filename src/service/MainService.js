@@ -38,7 +38,7 @@ export class MainService extends BaseService {
                 super.metaData(this.dao.findReflection().entries),
                 super.metaData(this.dao.findLifelog().entries),
                 super.metaData(this.dao.findArchive().entries),
-                this.buildPhotologData()
+                super.metaData(this.dao.findPhotolog().entries)
             ]);
         } catch (error) {
             console.log ('Main Service : ', error);
@@ -135,10 +135,5 @@ export class MainService extends BaseService {
         config.meta.titleText = SiteLibrary.truncateText(title, title_truncate_length);
 
         return config;
-    }
-
-    handleDeepLink() {
-        const params = new URLSearchParams(location.search);
-        return params;
     }
 }

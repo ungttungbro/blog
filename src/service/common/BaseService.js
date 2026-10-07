@@ -20,14 +20,16 @@ export class BaseService {
 
         for (const [key, value] of Object.entries(data)) {
             const blog = {
-                date : value.date,
+                date: value.date,
                 id: await SiteLibrary.hashString(key),
                 location: value.location,
                 type: value.type,
                 title: value.title,
+                thumbnails: value.thumbnails,
                 tags: value.tags,
                 description: value.description,
                 contentUrl: value.contentUrl,
+                files: value.files,
                 width: value.width
             };
 

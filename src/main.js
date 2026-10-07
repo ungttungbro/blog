@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   await Promise.all([
     blog_service.initialize(),
-    main_service.initialize(),   
+    main_service.initialize(),
     shell.initialize(taskbar_element)
   ]);   
 
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   /*for (const [key, value] of main_service.handleDeepLink()) {
       console.log(key, value);
   }*/
-  const params = main_service.handleDeepLink();
+  /*const params = main_service.handleDeepLink();
   const section_type = params.get('section');
   const content_id = params.get('id');
   const path = section_type + params.get('path');
@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       ['archive', archive_section],
       ['photolog', photolog_section]
   ]);
+
+  section_map.get("writings").loadContentByParams("20160630A");*/
 
   /*console.log(section_type);
   console.log(content_id);

@@ -57,7 +57,7 @@ export class LifelogSection extends BaseView {
 
         const footer_span = document.createElement('span');
         footer_span.className = 'footer';
-        footer_span.innerHTML = "<p align='right' style='font-size:0.75rem; font-weight:400; font-style:italic;'>" 
+        footer_span.innerHTML = "<p align='right' style='font-size:0.85rem; font-weight:400;'>" 
                                 + meta_data 
                                 + "</p>";
         footer_span.innerHTML += COMMON.COPYRIGHT;
@@ -104,7 +104,7 @@ export class LifelogSection extends BaseView {
                 value.id,
                 value.width,
                 Templates.symbol(value.type) + value.date + ' (' + value.location + ')',
-                value.tags.join(", "),
+                value.tags.map(tag => '#' + tag).join(" · "),
                 title_char_max_length,
                 key + '/' + value.contentUrl
             );
@@ -139,7 +139,7 @@ export class LifelogSection extends BaseView {
                 config.listViewerId, 
                 config.sectionHeaderIcon, 
                 config.sectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildLifelogListData(), config),
+                this.generateSectionItems('header', await this.blog_service.buildLifelogList(), config),
                 null,
                 COMMON.COPYRIGHT
             );
