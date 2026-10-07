@@ -30,7 +30,24 @@ export class ArchiveSection extends BaseView {
 
     render() {
         const archive = document.getElementById('archive');
-        archive.appendChild(super.createSection('archive', 'blog-archive', this.main_service.archive));
+        archive.appendChild(this.createSection('archive', 'blog-archive', this.main_service.archive));
+    }
+
+    createSection(type, section_id, data) {        
+        const section_meta_data = siteMeta.selectSectionConfig(type);
+        if(!section_meta_data) return;
+
+        const element = document.createElement(ELEMENT_TYPE.DIV); element.id = section_id;
+        const section_header = this.generateSectionHeader(section_meta_data);
+
+        Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
+
+        element.appendChild(section_header);
+
+        const items = this.generateSectionItems('contents', data, section_meta_data);
+        element.appendChild(items);
+
+        return element;
     }
 
     createSectionItem(id, meta_data, title, title_char_max_length, content_path) {
@@ -72,8 +89,18 @@ export class ArchiveSection extends BaseView {
 
     generatePostEvent(type, id, element, section_icon, title, header, content_path, footer) {
         element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_path); }); 
-        element.addEventListener('click',  e => {
-            this.onPostClick (e, id, type, section_icon, title, header, content_path, footer);
+        element.addEventListener('click', e => {
+            e.preventDefault();
+
+            this.openPost(
+                id,
+                type,
+                section_icon,
+                title,
+                header,
+                content_path,
+                footer
+            );
         });
     }
 
@@ -141,7 +168,7 @@ export class ArchiveSection extends BaseView {
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 27, 35, blog_type, section_icon, title, 18);
+        const config = this.blog_service.buildViewerConfig(id, 27, 35, blog_type, section_icon, title, 18);
 
         try {
             super.mountContents(
@@ -161,11 +188,8 @@ export class ArchiveSection extends BaseView {
             ViewerStateManager.stateLog(element);
         }
     }
-    
-    async onPostClick(e, id, blog_type, section_icon, title, header, content_path, footer) {
-        e.preventDefault();
-
-        const config = this.main_service.buildViewerConfig(id, 44, 34, blog_type, section_icon, title, 24);
+    async openPost(id, section_name, section_icon, title, header, content_url, footer) {
+        const config = this.blog_service.buildViewerConfig(id, 44, 34, section_name, section_icon, title, 24);
 
         try {
             super.mountContents(
@@ -173,7 +197,7 @@ export class ArchiveSection extends BaseView {
                 config, 
                 COMMON.TASKBAR_PREFIX + id,
                 header, 
-                await SiteLibrary.loadText(content_path), 
+                await SiteLibrary.loadText(content_url), 
                 footer
             );
         } catch(error) {

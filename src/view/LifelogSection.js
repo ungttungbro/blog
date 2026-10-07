@@ -30,7 +30,24 @@ export class LifelogSection extends BaseView {
 
     render() {
         const lifelog = document.getElementById('lifelog');
-        lifelog.appendChild(super.createSection('lifelog', 'blog-lifelog', this.main_service.lifelog));
+        lifelog.appendChild(this.createSection('lifelog', 'blog-lifelog', this.main_service.lifelog));
+    }
+
+    createSection(type, section_id, data) {        
+        const section_meta_data = siteMeta.selectSectionConfig(type);
+        if(!section_meta_data) return;
+
+        const element = document.createElement(ELEMENT_TYPE.DIV); element.id = section_id;
+        const section_header = this.generateSectionHeader(section_meta_data);
+
+        Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
+
+        element.appendChild(section_header);
+
+        const items = this.generateSectionItems('contents', data, section_meta_data);
+        element.appendChild(items);
+
+        return element;
     }
 
     createSectionItem(id, width, meta_data, title, title_char_max_length, content_path) {
@@ -79,10 +96,22 @@ export class LifelogSection extends BaseView {
         return element;
     }
 
-    generatePostEvent(type, id, width, element, section_icon, title, header, content_path, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_path); }); 
-        element.addEventListener('click',  e => {
-            this.onPostClick (e, id, width, type, section_icon, title, header, content_path, footer);
+    generatePostEvent(section_name, id, width, element, section_icon, title, header, content_url, footer) {
+        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_url); });
+
+        element.addEventListener('click', e => {
+            e.preventDefault();
+
+            this.openPost(
+                id,
+                width,
+                section_name,
+                section_icon,
+                title,
+                header,
+                content_url,
+                footer
+            );
         });
     }
 
@@ -151,7 +180,7 @@ export class LifelogSection extends BaseView {
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 27, 35, blog_type, section_icon, title, 18);
+        const config = this.blog_service.buildViewerConfig(id, 27, 35, blog_type, section_icon, title, 18);
 
         try {
             super.mountContents(
@@ -172,10 +201,8 @@ export class LifelogSection extends BaseView {
         }
     }
     
-    async onPostClick(e, id, width, blog_type, section_icon, title, header, content_path, footer) {
-        e.preventDefault();
-
-        const config = this.main_service.buildViewerConfig(id, width, 35, blog_type, section_icon, title, 24);
+    async openPost(id, width, section_name, section_icon, title, header, content_url, footer) {
+        const config = this.blog_service.buildViewerConfig(id, width, 35, section_name, section_icon, title, 24);
 
         try {
             super.mountContents(
@@ -183,7 +210,7 @@ export class LifelogSection extends BaseView {
                 config, 
                 COMMON.TASKBAR_PREFIX + id,
                 header, 
-                await SiteLibrary.loadText(content_path), 
+                await SiteLibrary.loadText(content_url), 
                 footer
             );
         } catch(error) {

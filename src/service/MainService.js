@@ -1,7 +1,6 @@
 'use strict';
 
 import { SiteLibrary } from "../modules/common/SiteLibrary.js";
-import { viewerConfig } from "../modules/viewerWindow/viewerConfig.js";
 import { MainDAO } from '../dao/MainDAO.js';
 import { BaseService } from "./common/BaseService.js";
 
@@ -116,24 +115,5 @@ export class MainService extends BaseService {
         }
 
         return dtoMap;
-    }
-
-    buildViewerConfig(viewer_id, width, height, content_type, section_icon, title, title_truncate_length) {        
-        const config = structuredClone(viewerConfig);    
-       
-        config.element.elementId = viewer_id;
-        config.element.offsetElementId = 'taskbar';
-        config.element.className = 'viewer';
-
-        config.layout.width = width + 'rem';
-        config.layout.height = height + 'rem';
-        config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx(width)) / 2)) + 'rem';
-        config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx(height)) / 2)) + 'rem';
-
-        config.meta.contentType = content_type;
-        config.meta.titleIconPath = section_icon;
-        config.meta.titleText = SiteLibrary.truncateText(title, title_truncate_length);
-
-        return config;
     }
 }

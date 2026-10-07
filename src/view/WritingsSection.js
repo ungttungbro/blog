@@ -30,7 +30,24 @@ export class WritingsSection extends BaseView {
 
     render() {
         const writings = document.getElementById('writings');
-        writings.appendChild(super.createSection('writings', 'blog-writings', this.main_service.writings));
+        writings.appendChild(this.createSection('writings', 'blog-writings', this.main_service.writings));
+    }
+
+    createSection(type, section_id, data) {        
+        const section_meta_data = siteMeta.selectSectionConfig(type);
+        if(!section_meta_data) return;
+
+        const element = document.createElement(ELEMENT_TYPE.DIV); element.id = section_id;
+        const section_header = this.generateSectionHeader(section_meta_data);
+
+        Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
+
+        element.appendChild(section_header);
+
+        const items = this.generateSectionItems('contents', data, section_meta_data);
+        element.appendChild(items);
+
+        return element;
     }
 
     createSectionItem(id, meta_data, title, title_char_max_length, summary, summary_char_max_length, content_path) {
@@ -77,8 +94,18 @@ export class WritingsSection extends BaseView {
 
     generatePostEvent(type, id, element, section_icon, title, header, content_path, footer) {
         element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_path); }); 
-        element.addEventListener('click',  e => {
-            this.onPostClick (e, id, type, section_icon, title, header, content_path, footer);
+        element.addEventListener('click', e => {
+            e.preventDefault();
+
+            this.openPost(
+                id,
+                type,
+                section_icon,
+                title,
+                header,
+                content_path,
+                footer
+            );
         });
     }
 
@@ -152,7 +179,7 @@ export class WritingsSection extends BaseView {
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 42, 35, blog_type, section_icon, title, 18);
+        const config = this.blog_service.buildViewerConfig(id, 42, 35, blog_type, section_icon, title, 18);
 
         try {
             super.mountContents(
@@ -172,19 +199,17 @@ export class WritingsSection extends BaseView {
             ViewerStateManager.stateLog(element);
         }
     }
-    
-    async onPostClick(e, id, blog_type, section_icon, title, header, content_path, footer) {
-        e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(id, 50, 36, blog_type, section_icon, title, 24);
-
+    async openPost(id, section_name, section_icon, title, header, content_url, footer) {
+        const config = this.blog_service.buildViewerConfig(id, 50, 36, section_name, section_icon, title, 24);
+        
         try {
             super.mountContents(
                 'blog',
                 config, 
                 COMMON.TASKBAR_PREFIX + id, 
                 header, 
-                await SiteLibrary.loadText(content_path), 
+                await SiteLibrary.loadText(content_url), 
                 footer
             );
         } catch(error) {
@@ -194,39 +219,6 @@ export class WritingsSection extends BaseView {
             element.dataset.group = config.meta.contentType;
 
             ViewerStateManager.stateLog(element);
-        }
-    }
-
-    async loadContentByParams(id) {
-        const data = await this.blog_service.buildWritingsList();       
-        const record = data.get(id);
-
-        const config = this.main_service.buildViewerConfig(
-            COMMON.VIEWER_PREFIX + record.id,
-            50,
-            36, 
-            'writings',
-            '', //section icon 
-            record.title, 
-            24
-        );
-
-        try {
-            super.mountContents(
-                'blog',
-                config, 
-                COMMON.TASKBAR_PREFIX + record.id, 
-                null, 
-                await SiteLibrary.loadText(this._BASE_PATH + id + '/' + record.contentUrl), 
-                COMMON.COPYRIGHT
-            );
-        } catch(error) {
-            console.warn('Blog Post Event : ', error);
-        } finally {
-            /*const element = document.getElementById(id);
-            element.dataset.group = config.meta.contentType;
-
-            ViewerStateManager.stateLog(element);*/
         }
     }
 }

@@ -2,6 +2,8 @@
 
 import { BaseService } from "./common/BaseService.js";
 import { BlogDAO } from '../dao/BlogDAO.js';
+import { viewerConfig } from "../modules/viewerWindow/viewerConfig.js";
+import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 
 export class BlogService extends BaseService {
     constructor() {
@@ -37,16 +39,39 @@ export class BlogService extends BaseService {
         return super.metaData(records.entries);
     }
 
+    buildViewerConfig(viewer_id, width, height, content_type, section_icon, title, title_truncate_length) {        
+        const config = structuredClone(viewerConfig);    
+       
+        config.element.elementId = viewer_id;
+        config.element.offsetElementId = 'taskbar';
+        config.element.className = 'viewer';
 
-    async handleDeepLink() {
-        const params = new URLSearchParams(location.search);
+        config.layout.width = width + 'rem';
+        config.layout.height = height + 'rem';
+        config.layout.left = SiteLibrary.pxToRem(((window.innerWidth - SiteLibrary.remToPx(width)) / 2)) + 'rem';
+        config.layout.top = SiteLibrary.pxToRem(((window.innerHeight - SiteLibrary.remToPx(height)) / 2)) + 'rem';
 
-        if (params.size <= 0) return;
-        
+        config.meta.contentType = content_type;
+        config.meta.titleIconPath = section_icon;
+        config.meta.titleText = SiteLibrary.truncateText(title, title_truncate_length);
 
-        const data = await this.buildWritingsList();       
+        return config;
+    }
+
+    async getContentByParams(section, id) {        
+        let data = null;
+
+        switch(section) {
+            case 'writings' : data = await this.buildWritingsList(); break;
+            case 'lifelog' : data = await this.buildLifelogList(); break;
+            case 'archive' : data = await this.buildArchiveList(); break;
+            case 'reflection' : data = await this.buildReflectionList(); break;
+            case 'photolog' : data = await this.buildPhotologList(); break;
+            default : return;
+        }
+
         const record = data.get(id);
 
-        return params;
+        return record;
     }
 }

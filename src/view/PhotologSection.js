@@ -31,7 +31,24 @@ export class PhotologSection extends BaseView {
 
     render() {
         const photolog = document.getElementById('photolog');
-        photolog.appendChild(super.createSection('photolog', 'photolog-items', this.main_service.photolog));
+        photolog.appendChild(this.createSection('photolog', 'photolog-items', this.main_service.photolog));
+    }
+
+    createSection(type, section_id, data) {        
+        const section_meta_data = siteMeta.selectSectionConfig(type);
+        if(!section_meta_data) return;
+
+        const element = document.createElement(ELEMENT_TYPE.DIV); element.id = section_id;
+        const section_header = this.generateSectionHeader(section_meta_data);
+
+        Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
+
+        element.appendChild(section_header);
+
+        const items = this.generateSectionItems(data, section_meta_data);
+        element.appendChild(items);
+
+        return element;
     }
 
     createSectionItem(id, thumbnail_path, title, text, key, photos_path) {
@@ -66,9 +83,10 @@ export class PhotologSection extends BaseView {
         return teaser;
     }
 
-    generateTeaserEvent(type, element, id, key, section_icon, title, header_contents, main_contents, footer_contents) {        
+    generateTeaserEvent(section_name, element, id, key, section_icon, title, header_contents, main_contents, footer_contents) {        
         element.addEventListener('click', e => {
-            this.onTeaserClick(e, type, id, key, section_icon, title, header_contents, main_contents, footer_contents);            
+            e.preventDefault();
+            this.openPost(id, section_name, key, section_icon, title, header_contents, main_contents, footer_contents);
         });
     }
 
@@ -84,13 +102,17 @@ export class PhotologSection extends BaseView {
         );
 
         section_header.addEventListener('click',  async e => {
-            this.onSectionHeaderClick (
+            const data = await this.blog_service.buildPhotologList();
+            
+            const items = this.generateSectionItems(data, config);
+
+            this.onSectionHeaderClick(
                 e, 
                 config.typeName, 
                 config.photologListViewerId,
                 config.sectionHeaderIcon,
                 config.photologSectionListName,
-                this.generateSectionItems('header', await this.blog_service.buildPhotologList(), config),
+                items,
                 null,
                 COMMON.COPYRIGHT
             );
@@ -99,7 +121,7 @@ export class PhotologSection extends BaseView {
         return section_header;
     }
     
-    generateSectionItems(type, data, config) {
+    generateSectionItems(data, config) {
         const frag = document.createDocumentFragment();
 
         const element = document.createElement(ELEMENT_TYPE.DIV);
@@ -130,14 +152,12 @@ export class PhotologSection extends BaseView {
         return element;
     }
 
-    async onTeaserClick(e, blog_type, id, key, section_icon, title, header, contents, footer) {
-        e.preventDefault();
-
-        const config = this.main_service.buildViewerConfig(
+    async openPost(id, section_name, key, section_icon, title, header, contents, footer) {
+        const config = this.blog_service.buildViewerConfig(
             COMMON.VIEWER_PREFIX + id, 
             50, 
             37,
-            blog_type, 
+            section_name, 
             section_icon, 
             title, 
             24
@@ -185,7 +205,7 @@ export class PhotologSection extends BaseView {
     onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
-        const config = this.main_service.buildViewerConfig(
+        const config = this.blog_service.buildViewerConfig(
             COMMON.VIEWER_PREFIX + id, 
             42, 
             35,

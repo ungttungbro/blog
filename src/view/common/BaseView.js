@@ -1,10 +1,8 @@
 'use strict';
 
-import { ELEMENT_TYPE } from "../../modules/common/Constants.js";
 import { ViewerWindow } from "../../modules/viewerWindow/ViewerWindow.js";
 import { shell } from "../../modules/shell/Shell.js";
 import { Templates } from "../../modules/site/Templates.js";
-import { siteMeta } from "../../modules/site/siteMeta.js";
 import { taskbar } from "../../modules/taskbar/TaskBar.js";
 import { ViewerStateManager } from "../../modules/viewerWindow/ViewerStateManager.js";
 
@@ -37,22 +35,5 @@ export class BaseView {
             viewer_config.meta.titleIconPath, 
             viewer_config.meta.titleText
         );
-    }
-
-    createSection(type, section_id, data) {        
-        const section_meta_data = siteMeta.selectSectionConfig(type);
-        if(!section_meta_data) return;
-
-        const element = document.createElement(ELEMENT_TYPE.DIV); element.id = section_id;
-        const section_header = this.generateSectionHeader(section_meta_data);
-
-        Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
-
-        element.appendChild(section_header);
-
-        const items = this.generateSectionItems('contents',data, section_meta_data);
-        element.appendChild(items);
-
-        return element;
     }
 }

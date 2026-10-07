@@ -346,7 +346,7 @@ footer {
 
 @media (orientation: landscape) and (max-width: 768px) {
   html {
-    font-size: 1.5vw;
+    font-size: 2vw;
   }
 }
 
