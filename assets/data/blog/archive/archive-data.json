@@ -6,6 +6,7 @@
             "date" : "2018.09.28.", 
             "type" : "lecture-note", 
             "title" : "C언어 기초 강의교안 (실습)",
+            "orientation" : "landscape",
             "contentUrl" : "20180928A.html"
         },
 
@@ -13,6 +14,7 @@
             "date" : "2014.09.28.", 
             "type" : "code", 
             "title" : "블록암호 운용 라이브러리", 
+            "orientation" : "landscape",
             "contentUrl" : "20140928A.html"
         },
 
@@ -20,13 +22,15 @@
             "date" : "2014.09.24.", 
             "type" : "code", 
             "title" : "의사난수생성기 (Psuedorandom Number Generator)", 
+            "orientation" : "landscape",
             "contentUrl" : "20140924A.html"
         },
         
         "20140827A" : {
             "date" : "2014.08.27.",
             "type" : "code", 
-            "title" : "파일 암호화 라이브러리",           
+            "title" : "파일 암호화 라이브러리",   
+            "orientation" : "landscape",        
             "contentUrl" : "20140827A.html"
         }
     }

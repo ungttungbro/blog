@@ -9,6 +9,7 @@
             "thumbnails" : "20260131_photolog.jpg",
             "description" : "용산에 약속이 있어 오랜만에 전쟁기념관을 둘러 보았다.<br>행사도 많고 편의시설도 많아져서 시간을 보내기가 좋았다.<br>전쟁과 관련한 무기들도 꼼꼼하게 전시되어 있었다." ,
             "tags" : ["전쟁기념관", "Samsung XCover5"],
+            "orientation" : "landscape",
             "files" : [
                 "20260131_photo01.jpg",
                 "20260131_photo02.jpg",
@@ -32,6 +33,7 @@
             "thumbnails" : "20241127_photolog.jpg",
             "description" :"직업상담사 자격증 관련하여 현장실습을 충무로로 가게 되었다.<br>충무로에는 남산골 한옥마을이 있는데, 불것도 많고 산책하기 좋은 곳이다.<br>한옥마을을 산책하면서 사색에 잠겼던 하루였다.",
             "tags" : ["남산골 한옥마을", "Samsung XCover5"],
+            "orientation" : "landscape",
             "files" : [
                 "20241127_photo01.jpg",
                 "20241127_photo02.jpg",
@@ -50,6 +52,7 @@
             "thumbnails" : "20150315_photolog.jpg",
             "description" : "랩실 식구들, 후배들이 서울에 놀러 왔다.<br>연극도 보고 즐거운 하루였다.",
             "tags" : ["혜화동", "Canon EOS 550D"],
+            "orientation" : "landscape",
             "files" : [
                 "20150315_photo01.jpg",
                 "20150315_photo02.jpg",
@@ -67,6 +70,7 @@
             "thumbnails" : "20140810_photolog.jpg",
             "description" : "아끼는 후배들과, 조교선생님이 서울에 놀러 왔다.<br>경마장도가고 연극도보고 즐거운 하루를 보냈다.<br>힘들었던 2014년 이었는데 힘이난다.",
             "tags" : ["경마장", "Canon EOS 550D"],
+            "orientation" : "landscape",
             "files" : [
                 "20140810_photo01.jpg",
                 "20140810_photo02.jpg",
@@ -86,6 +90,7 @@
             "thumbnails" : "20070421_photolog.jpg",
             "description" : "다니던 회사에서 야유회를 갔다.<br>하루 종일 술을 마셔 머리도 아프고, 하루 종일 먹어서 배도 몹시 부른 하루 였다.<br>사람들은 고삐풀린 망아지 처럼 놀았고, 먹었고, 마셨다.<br>오늘 하루 웃음이 떠나질 않는다.",
             "tags" : ["야유회", "계곡", "Canon EOS 300D"],
+            "orientation" : "landscape",
             "files" : [
                 "20070421_photo01.jpg",
                 "20070421_photo02.jpg",
@@ -115,6 +120,7 @@
             "thumbnails" : "20050101_photolog.jpg",
             "description" : "새해를 맞아서 전국여행을 계획하였다.<br>서울에서 출발하여 오이도를 거쳐 해안선을 따라서 왜목마을, 삽교, 해남, 부산, 정동진, 설악산등을 방문하였다.<br>중간중간 좋은 사람들도 만났고, 겨울 여행은 좋은 추억이 되었다.",
             "tags" : ["전국여행", "Nikon Coolpix3100"],
+            "orientation" : "landscape",
             "files" : [
                 "20050101_photo01.jpg",
                 "20050101_photo02.jpg",
@@ -154,6 +160,7 @@
             "thumbnails" : "20040405_photolog.jpg",
             "description" : "같이 일하던 친구들과 함께 강화도에 놀러갔다.<br>바닷가와 마니산을 방문하여 좋은 추억을 남겼다.<br>땀이 조금 날 정도의 봄날씨와 함께 행복한 시간 이었다.",
             "tags" : ["강화도", "마니산", "여행", "Nikon Coolpix3100"],
+            "orientation" : "landscape",
             "files" : [
                 "20040405_photo01.jpg",
                 "20040405_photo02.jpg",
@@ -178,6 +185,7 @@
             "thumbnails" : "20030816_photolog.jpg",
             "description" : "다니던 교회에서 소년부 아이들과 함께 여름 수련회를 다녀왔다.<br>아이들과 함께 놀고, 캠프파이어도 하고 정말 즐거운 시간이었다.<br>함께했던 친구들 모두 건강하고 행복하길....",
             "tags" : ["여름수련회", "경기도검천", "Kodak DC3200"],
+            "orientation" : "landscape",
             "files" : [
                 "20030816_photo01.jpg",
                 "20030816_photo02.jpg",

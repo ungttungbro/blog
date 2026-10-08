@@ -50,7 +50,7 @@ export class WritingsSection extends BaseView {
         return element;
     }
 
-    createSectionItem(id, meta_data, title, title_char_max_length, summary, summary_char_max_length, content_path) {
+    createSectionItem(id, orientation, meta_data, title, title_char_max_length, summary, summary_char_max_length, content_path) {
         const element = document.createElement(ELEMENT_TYPE.DIV);
         element.className = 'writings-section-item-panel';
 
@@ -79,6 +79,7 @@ export class WritingsSection extends BaseView {
         this.generatePostEvent(
             section_config.blogTypeName, 
             COMMON.VIEWER_PREFIX + id, 
+            orientation,
             a, 
             section_config.sectionHeaderIcon, 
             title, 
@@ -92,13 +93,14 @@ export class WritingsSection extends BaseView {
         return element;
     }
 
-    generatePostEvent(type, id, element, section_icon, title, header, content_path, footer) {
+    generatePostEvent(type, id, orientation, element, section_icon, title, header, content_path, footer) {
         element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_path); }); 
         element.addEventListener('click', e => {
             e.preventDefault();
 
             this.openPost(
                 id,
+                orientation,
                 type,
                 section_icon,
                 title,
@@ -129,6 +131,7 @@ export class WritingsSection extends BaseView {
         for (const [key ,value] of data) {
             const sectionItemElement = this.createSectionItem(
                 value.id,
+                value.orientation,
                 value.type + ' · ' + value.date,
                 value.title,
                 title_char_max_length,
@@ -200,8 +203,17 @@ export class WritingsSection extends BaseView {
         }
     }
 
-    async openPost(id, section_name, section_icon, title, header, content_url, footer) {
-        const config = this.blog_service.buildViewerConfig(id, 50, 36, section_name, section_icon, title, 24);
+    async openPost(id, orientation, section_name, section_icon, title, header, content_url, footer) {
+        const content_size = SiteLibrary.calculateContentSize('#writings', orientation, 1, 0.8, 0, 0);
+        const config = this.blog_service.buildViewerConfig(
+            id, 
+            content_size.width, 
+            content_size.height, 
+            section_name, 
+            section_icon, 
+            title, 
+            24
+        );
         
         try {
             super.mountContents(

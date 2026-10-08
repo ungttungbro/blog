@@ -68,9 +68,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 const params = new URLSearchParams(location.search);
 
-if (params.size === 2) {
+if (params.size === 3) {
     const section = params.get('section');
     const id = params.get('id');
+    const orientation = params.get('orientation');
 
     const record = await blog_service.getContentByParams(section, id);
 
@@ -85,6 +86,7 @@ if (params.size === 2) {
       if (section === "photolog") {
         section_view.openPost(
           await SiteLibrary.hashString(id),
+          orientation,
           section,
           id,
           section_icon,
@@ -109,7 +111,7 @@ if (params.size === 2) {
               
          section_view.openPost(
           'viewer-content-' + await SiteLibrary.hashString(id),
-          record.width,
+          orientation,
           section,
           section_icon,
           record.tags,
@@ -120,6 +122,7 @@ if (params.size === 2) {
       } else {
         section_view.openPost(
           'viewer-content-' + await SiteLibrary.hashString(id),
+          orientation,
           section,
           section_icon,
           record.title,

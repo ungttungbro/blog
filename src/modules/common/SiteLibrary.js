@@ -342,14 +342,40 @@ export class SiteLibrary {
   }
 
   static prefetch(element, href) {
-      if (element.dataset.prefetched) return;
+    if (element.dataset.prefetched) return;
 
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = href;
-      link.as = 'document';
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = href;
+    link.as = 'document';
 
-      document.head.appendChild(link);
-      element.dataset.prefetched = 'true';
+    document.head.appendChild(link);
+    element.dataset.prefetched = 'true';
+  }
+
+  static calculateContentSize(
+    element_id,
+    orientation,
+    landscape_width_weight, 
+    landscape_height_weight, 
+    portrait_width_weight, 
+    portrait_height_weight
+  ) {
+    const element = document.querySelector(element_id);
+    const content_size = element.getBoundingClientRect();
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+    let width = 0;
+    let height = 0;    
+
+    if (orientation === 'portrait') {
+        width = ((content_size.width / fontSize) * portrait_width_weight);
+        height = ((content_size.width / fontSize) * portrait_height_weight);
+    } else {
+        width = ((content_size.width / fontSize) * landscape_width_weight);
+        height = ((content_size.width / fontSize) * landscape_height_weight);
+    }
+      
+    return { width, height };
   }
 }

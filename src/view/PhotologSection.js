@@ -51,7 +51,7 @@ export class PhotologSection extends BaseView {
         return element;
     }
 
-    createSectionItem(id, thumbnail_path, title, text, key, photos_path) {
+    createSectionItem(id, orientation, thumbnail_path, title, text, key, photos_path) {
         const thumbnail = SiteLibrary.createImgElement(
             siteMeta.photolog.thumbnailClassName,
             null,
@@ -72,6 +72,7 @@ export class PhotologSection extends BaseView {
             section_config.typeName,
             teaser, 
             id,
+            orientation,
             key,
             section_config.sectionHeaderIcon,
             title, 
@@ -83,10 +84,10 @@ export class PhotologSection extends BaseView {
         return teaser;
     }
 
-    generateTeaserEvent(section_name, element, id, key, section_icon, title, header_contents, main_contents, footer_contents) {        
+    generateTeaserEvent(section_name, element, id, orientation, key, section_icon, title, header_contents, main_contents, footer_contents) {        
         element.addEventListener('click', e => {
             e.preventDefault();
-            this.openPost(id, section_name, key, section_icon, title, header_contents, main_contents, footer_contents);
+            this.openPost(id, orientation, section_name, key, section_icon, title, header_contents, main_contents, footer_contents);
         });
     }
 
@@ -131,6 +132,7 @@ export class PhotologSection extends BaseView {
         for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
                 value.id,
+                value.orientation,
                 this._BASE_PATH + "thumbnails/" + value.thumbnails,
                 value.title,
                 value.description +
@@ -152,11 +154,12 @@ export class PhotologSection extends BaseView {
         return element;
     }
 
-    async openPost(id, section_name, key, section_icon, title, header, contents, footer) {
+    async openPost(id, orientation, section_name, key, section_icon, title, header, contents, footer) {
+        const content_size = SiteLibrary.calculateContentSize('#photolog', orientation, 1, 0.7, 0, 0);
         const config = this.blog_service.buildViewerConfig(
             COMMON.VIEWER_PREFIX + id, 
-            50, 
-            37,
+            content_size.width, 
+            content_size.height,
             section_name, 
             section_icon, 
             title, 

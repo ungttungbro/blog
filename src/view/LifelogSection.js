@@ -50,7 +50,7 @@ export class LifelogSection extends BaseView {
         return element;
     }
 
-    createSectionItem(id, width, meta_data, title, title_char_max_length, content_path) {
+    createSectionItem(id, orientation, meta_data, title, title_char_max_length, content_path) {
         const element = document.createElement(ELEMENT_TYPE.DIV);
         element.className = 'lifelog-section-item-panel';
 
@@ -82,7 +82,7 @@ export class LifelogSection extends BaseView {
         this.generatePostEvent(
             section_config.blogTypeName, 
             COMMON.VIEWER_PREFIX + id, 
-            width,
+            orientation,
             a, 
             section_config.sectionHeaderIcon, 
             title, 
@@ -96,7 +96,7 @@ export class LifelogSection extends BaseView {
         return element;
     }
 
-    generatePostEvent(section_name, id, width, element, section_icon, title, header, content_url, footer) {
+    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, content_url, footer) {
         element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_url); });
 
         element.addEventListener('click', e => {
@@ -104,7 +104,7 @@ export class LifelogSection extends BaseView {
 
             this.openPost(
                 id,
-                width,
+                orientation,
                 section_name,
                 section_icon,
                 title,
@@ -131,7 +131,7 @@ export class LifelogSection extends BaseView {
         for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
                 value.id,
-                value.width,
+                value.orientation,
                 Templates.symbol(value.type) + value.date + ' (' + value.location + ')',
                 value.tags.map(tag => '#' + tag).join(" · "),
                 title_char_max_length,
@@ -201,8 +201,17 @@ export class LifelogSection extends BaseView {
         }
     }
     
-    async openPost(id, width, section_name, section_icon, title, header, content_url, footer) {
-        const config = this.blog_service.buildViewerConfig(id, width, 35, section_name, section_icon, title, 24);
+    async openPost(id, orientation, section_name, section_icon, title, header, content_url, footer) {
+        const content_size = SiteLibrary.calculateContentSize('#lifelog', orientation, 1, 1.01, 0.7, 1);
+        const config = this.blog_service.buildViewerConfig(
+            id, 
+            content_size.width, 
+            content_size.height, 
+            section_name, 
+            section_icon, 
+            title, 
+            24
+        );
 
         try {
             super.mountContents(

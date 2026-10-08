@@ -30,7 +30,7 @@ export class BaseService {
                 description: value.description,
                 contentUrl: value.contentUrl,
                 files: value.files,
-                width: value.width
+                orientation: value.orientation
             };
 
             dtoMap.set(key, blog);

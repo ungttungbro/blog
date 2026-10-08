@@ -62,6 +62,7 @@
                 "type" : "column",
                 "title" : "세상은 소프트웨어로 통한다",
                 "description" : "대한민국의 소프트웨어산업진흥법에서는 소프트웨어를 '컴퓨터·통신·자동화 등의 장비와 그 주변장치에 대하여 명령·제어·입력·처리·저장·출력·상호 작용이 가능하도록 만드는 지시·명령(음성이나 영상정보를 포함한다)의 집합과 이를 작성하기 위하여 사용된 기술서 기타 관련 자료를",
+                "orientation" : "landscape",
                 "contentUrl" : "20160630A.html"
             },
 
@@ -70,6 +71,7 @@
                 "type" : "tech-note",
                 "title" : "C언어 파일포인터 _fseeki64 (2GB 이상 대용량 파일 엑세스)",
                 "description" : "파일 암복호화의경우 SEED 256 기반의 CBC-CTS 모드를 사용 3.4GB 사이즈의 mp4파일을 암호화 하였다가 복호화 해본 결과 정상동작",
+                "orientation" : "landscape",
                 "contentUrl" : "20120116A.html"
             },
 
@@ -78,6 +80,7 @@
                 "type" : "tech-note",
                 "title" : "C++ stream 기반의 파일 복사",
                 "description" : "C++의 32비트 포인터 문제로 2GB 이상의 File Pointing이 되지 않음을 확인했다. 이를 해결할수 있는 몇몇 방법이 소개되어 있으며 되도록이면 C++의 표준적 방법으로 해결 방안을 모색해보고자 한다.",
+                "orientation" : "landscape",
                 "contentUrl" : "20120113A.html"
             },
 
@@ -86,6 +89,7 @@
                 "type" : "tech-note",
                 "title" : "블록암호 (Block Cipher)",
                 "description" : "블록 암호(block cipher)란 기밀성있는 정보를 정해진 블록 단위로 암호화 하는 대칭키 암호 시스템이다. 만약 암호화하려는 정보가 블록 길이보다 길 경우에는 특정한 운용 모드가 사용된다.(예, ECB, CBC, OFB, CFB, CTR)",
+                "orientation" : "landscape",
                 "contentUrl" : "20110325A.html"
             }
         }
@@ -98,7 +102,8 @@
             "20260301A" : {
                 "date" : "2026.03.01.", 
                 "title" : "첫 직장", 
-                "description" : "나는 전문대학을 졸업한 뒤, 26살 겨울에 사회인으로서 첫 직업을 갖게 되었다. SW 개발자 포지션을 제안받았고, 어렵게 회사에 입사하게 되었다.",
+                "description" : "나는 전문대학을 졸업한 뒤, 26살 겨울에 사회인으로서 첫 직업을 갖게 되었다.",
+                "orientation" : "landscape",
                 "contentUrl" : "20260301A.html"
             },
 
@@ -106,6 +111,7 @@
                 "date" : "2026.02.28.", 
                 "title" : "덕수정보산업고등학교", 
                 "description" : "나는 덕수정보산업고등학교라는 학교를 나왔다.", 
+                "orientation" : "landscape",
                 "contentUrl" : "20260228A.html"
             },
 
@@ -113,6 +119,7 @@
                 "date" : "2026.02.19.", 
                 "title" : "진격의 연일전자", 
                 "description" : "나는 대학교 1학년을 마치고 휴학한뒤 군대를 가기로 했다.", 
+                "orientation" : "landscape",
                 "contentUrl" : "20260219A.html"
             },
 
@@ -120,6 +127,7 @@
                 "date" : "2026.02.19.", 
                 "title" :  "근태형", 
                 "description" : "내가 근태형을 알게 된 건 2004년 여름 천호동에 있는 2001 Outlet에서 보안요원 아르바이트를 시작하면서였다.", 
+                "orientation" : "landscape",
                 "contentUrl" : "20260115A.html"
             },
             
@@ -127,6 +135,7 @@
                 "date" : "2026.02.19.", 
                 "title" : "바보 조나스", 
                 "description" : "얼마 전 『바보 빅터』라는 책을 읽다가 문득 어린 시절의 내가 떠올랐다.", 
+                "orientation" : "landscape",
                 "contentUrl" : "20260101A.html"
             }
         }
@@ -142,7 +151,7 @@
                 "type" : "photo", 
                 "tags" : ["크리스마스", "트리"], 
                 "contentUrl" : "20241216A.html",
-                "width" : "37"
+                "orientation" : "landscape"
             },
 
             "20220212A" : {
@@ -151,7 +160,7 @@
                 "type" : "photo", 
                 "tags" : ["쇼팽", "클래식", "음악회"],
                 "contentUrl" : "20220212A.html", 
-                "width" : "37"
+                "orientation" : "landscape"
             },
 
             "20191018A" : {
@@ -160,7 +169,7 @@
                 "type" : "video", 
                 "tags" : ["제자", "게임"], 
                 "contentUrl" : "20191018A.html", 
-                "width" : "42"
+                "orientation" : "landscape"
             },
 
             "20190203A" : {
@@ -169,7 +178,7 @@
                 "type" : "photo", 
                 "tags" : ["막내동생", "덕구"],
                 "contentUrl" : "20190203A.html", 
-                "width" : "25"
+                "orientation" : "portrait"
             }
         }
     },
@@ -182,6 +191,7 @@
                 "date" : "2018.09.28.", 
                 "type" : "lecture-note", 
                 "title" : "C언어 기초 강의교안 (실습)",
+                "orientation" : "landscape",
                 "contentUrl" : "20180928A.html"
             },
 
@@ -189,13 +199,15 @@
                 "date" : "2014.09.28.", 
                 "type" : "code", 
                 "title" : "블록암호 운용 라이브러리", 
+                "orientation" : "landscape",
                 "contentUrl" : "20140928A.html"
             },
 
             "20140924A" : {
                 "date" : "2014.09.24.", 
                 "type" : "code", 
-                "title" : "의사난수생성기 (Psuedorandom Number Generator)", 
+                "title" : "의사난수생성기 (Psuedorandom Number Generator)",
+                "orientation" : "landscape", 
                 "contentUrl" : "20140924A.html"
             }
         }
@@ -212,6 +224,7 @@
                 "thumbnails" : "20260131_photolog.jpg",
                 "description" : "용산에 약속이 있어 오랜만에 전쟁기념관을 둘러 보았다.<br>행사도 많고 편의시설도 많아져서 시간을 보내기가 좋았다.<br>전쟁과 관련한 무기들도 꼼꼼하게 전시되어 있었다." ,
                 "tags" : ["전쟁기념관", "Samsung XCover5"],
+                "orientation" : "landscape",
                 "files" : [
                     "20260131_photo01.jpg",
                     "20260131_photo02.jpg",
@@ -235,6 +248,7 @@
                 "thumbnails" : "20241127_photolog.jpg",
                 "description" :"직업상담사 자격증 관련하여 현장실습을 충무로로 가게 되었다.<br>충무로에는 남산골 한옥마을이 있는데, 불것도 많고 산책하기 좋은 곳이다.<br>한옥마을을 산책하면서 사색에 잠겼던 하루였다.",
                 "tags" : ["남산골 한옥마을", "Samsung XCover5"],
+                "orientation" : "landscape",
                 "files" : [
                     "20241127_photo01.jpg",
                     "20241127_photo02.jpg",
@@ -253,6 +267,7 @@
                 "thumbnails" : "20140810_photolog.jpg",
                 "description" : "아끼는 후배들과, 조교선생님이 서울에 놀러 왔다.<br>경마장도가고 연극도보고 즐거운 하루를 보냈다.<br>힘들었던 2014년 이었는데 힘이난다.",
                 "tags" : ["경마장", "Canon EOS 550D"],
+                "orientation" : "landscape",
                 "files" : [
                     "20140810_photo01.jpg",
                     "20140810_photo02.jpg",
@@ -272,6 +287,7 @@
                 "thumbnails" : "20050101_photolog.jpg",
                 "description" : "새해를 맞아서 전국여행을 계획하였다.<br>서울에서 출발하여 오이도를 거쳐 해안선을 따라서 왜목마을, 삽교, 해남, 부산, 정동진, 설악산등을 방문하였다.<br>중간중간 좋은 사람들도 만났고, 겨울 여행은 좋은 추억이 되었다.",
                 "tags" : ["전국여행", "Nikon Coolpix3100"],
+                "orientation" : "landscape",
                 "files" : [
                     "20050101_photo01.jpg",
                     "20050101_photo02.jpg",
@@ -311,6 +327,7 @@
                 "thumbnails" : "20040405_photolog.jpg",
                 "description" : "같이 일하던 친구들과 함께 강화도에 놀러갔다.<br>바닷가와 마니산을 방문하여 좋은 추억을 남겼다.<br>땀이 조금 날 정도의 봄날씨와 함께 행복한 시간 이었다.",
                 "tags" : ["강화도", "마니산", "여행", "Nikon Coolpix3100"],
+                "orientation" : "landscape",
                 "files" : [
                     "20040405_photo01.jpg",
                     "20040405_photo02.jpg",

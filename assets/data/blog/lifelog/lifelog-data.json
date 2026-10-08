@@ -8,7 +8,7 @@
             "type": "photo",
             "tags": ["크리스마스", "장식"],
             "contentUrl": "20241216A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20240901A": {
@@ -17,7 +17,7 @@
             "type": "photo",
             "tags": ["커피나무", "새싹"],
             "contentUrl": "20240901A.html",
-            "width": 21
+            "orientation" : "portrait"
         },
 
         "20240304A": {
@@ -26,7 +26,7 @@
             "type": "photo",
             "tags": ["기타반", "수업"],
             "contentUrl": "20240304A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20220212A": {
@@ -35,7 +35,7 @@
             "type": "photo",
             "tags": ["쇼팽", "클래식", "음악회"],
             "contentUrl": "20220212A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20191018A": {
@@ -44,7 +44,7 @@
             "type": "video",
             "tags": ["제자", "개발", "게임"],
             "contentUrl": "20191018A.html",
-            "width": 41
+            "orientation" : "landscape"
         },
 
         "20190805A": {
@@ -53,7 +53,7 @@
             "type": "photo",
             "tags": ["아버지", "대장암", "수술"],
             "contentUrl": "20190805A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20190410A": {
@@ -62,7 +62,7 @@
             "type": "photo",
             "tags": ["친할머니", "소천"],
             "contentUrl": "20190410A.html",
-            "width": 43
+            "orientation" : "landscape"
         },
 
         "20190401A": {
@@ -71,7 +71,7 @@
             "type": "photo",
             "tags": ["타자왕", "대회"],
             "contentUrl": "20190401A.html",
-            "width": 21
+            "orientation" : "portrait"
         },
 
         "20190315A": {
@@ -80,7 +80,7 @@
             "type": "photo",
             "tags": ["외할머니", "소천"],
             "contentUrl": "20190315A.html",
-            "width": 25
+            "orientation" : "portrait"
         },
 
         "20190203A": {
@@ -89,7 +89,7 @@
             "type": "photo",
             "tags": ["막내동생", "덕구"],
             "contentUrl": "20190203A.html",
-            "width": 25
+            "orientation" : "portrait"
         },
 
         "20181205A": {
@@ -98,7 +98,7 @@
             "type": "photo",
             "tags": ["칠판", "캐릭터"],
             "contentUrl": "20181205A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20180823A": {
@@ -107,7 +107,7 @@
             "type": "photo",
             "tags": ["덕구", "강아지"],
             "contentUrl": "20180823A.html",
-            "width": 25
+            "orientation" : "portrait"
         },
 
         "20180213A": {
@@ -116,7 +116,7 @@
             "type": "photo",
             "tags": ["실업급여", "교육일"],
             "contentUrl": "20180213A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20171029A": {
@@ -125,7 +125,7 @@
             "type": "text",
             "tags": ["입주", "점검"],
             "contentUrl": "20171029A.html",
-            "width": 30
+            "orientation" : "landscape"
         },
 
         "20130627A": {
@@ -134,7 +134,7 @@
             "type": "photo",
             "tags": ["우수논문상"],
             "contentUrl": "20130627A.html",
-            "width": 21
+            "orientation" : "portrait"
         },
 
         "20121006A": {
@@ -143,7 +143,7 @@
             "type": "photo",
             "tags": ["달걀", "산책"],
             "contentUrl": "20121006A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20111202A": {
@@ -152,7 +152,7 @@
             "type": "photo",
             "tags": ["심층수", "사무실"],
             "contentUrl": "20111202A.html",
-            "width": 37
+            "orientation" : "landscape"
         },
 
         "20101109A": {
@@ -161,7 +161,7 @@
             "type": "photo",
             "tags": ["소공실", "공부"],
             "contentUrl": "20101109A.html",
-            "width": 37
+            "orientation" : "landscape"
         }
     }
 }

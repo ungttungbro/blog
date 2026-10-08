@@ -83,7 +83,7 @@
   --base_viewer_title_bar_background: #eaecee;
   --base_window_button_filter_invert: invert(1);
 
-  --base_blog_content_panel_hr : rgba(19, 19, 19, 0.15);
+  --base_blog_content_panel_hr : rgba(19, 19, 19, 0.05);
   --base_close_icon_filter_invert : invert(1);
 
   --base_drop_shadow : none;
@@ -126,9 +126,9 @@
   --base_font_weight: 400;
   --base_viewer_font_weight: 400;
 
-  --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.15);
-  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
-  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.075);
+  --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.2);
+  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
+  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
   --base_hr_border: 1px solid rgba(255, 255, 255, 0.04);
   
 
@@ -148,8 +148,8 @@
   --base_anchor_tag_hover_text_decoration: none;
 
   --base_dash_border : 0.075rem dashed #555555;
-  --base_blog_content_panel_hr : rgba(255,255,255,0.15);
-  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.1);
+  --base_blog_content_panel_hr : rgba(255,255,255,0.05);
+  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.05);
  
   --base_close_icon_filter_invert : none;
 
