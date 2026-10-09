@@ -13,7 +13,7 @@
   border-radius: 0.5rem;
   
   background-color: rgba(0, 0, 0, 0.8);
-  background: var(--base_box_background_color);
+  background: var(--base_task_box_background_color);
 
   font-size: 0.85rem;
 

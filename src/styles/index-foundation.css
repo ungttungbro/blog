@@ -55,6 +55,7 @@ footer {
   right : 0;
   bottom : 0;
 
+  color: var(--base_footer_font_color);
   background: var(--base_task_bar_background_color);
   border-top: var(--base_footer_border_line);
 }
@@ -91,7 +92,7 @@ footer {
   
   height: 3rem;
   
-  color: var(--base_font_color);
+  color: var(--base_footer_font_color);
   font-weight: bold;
   
   justify-content: center;
@@ -103,7 +104,7 @@ footer {
 }
 
 #site-copyright a:hover {
-  color: var(--base_font_color);
+  color: var(--base_footer_font_color);
 }
 
 .title_box {

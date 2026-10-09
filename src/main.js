@@ -66,6 +66,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     ['photolog',  [photolog_section, '/assets/icons/photographer.png']]
   ]);
 
+ /* const view_size_map = {
+    writings: {
+        landscape: { width: 0.7, height: 0.8 },
+        portrait:  { width: 0.5, height: 0.8 }
+    },
+    photolog: {
+        landscape: { width: 0.8, height: 0.7 },
+        portrait:  { width: 0.6, height: 0.8 }
+    }
+};*/
+
 
   const params = new URLSearchParams(location.search);
 
