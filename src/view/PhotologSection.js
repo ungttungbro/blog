@@ -111,6 +111,7 @@ export class PhotologSection extends BaseView {
                 e, 
                 config.typeName, 
                 config.photologListViewerId,
+                'landscape',
                 config.sectionHeaderIcon,
                 config.photologSectionListName,
                 items,
@@ -205,13 +206,14 @@ export class PhotologSection extends BaseView {
         }
     }
 
-    onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
+    onSectionHeaderClick(e, blog_type, id, orientation, section_icon, title, header, contents, footer) {
         e.preventDefault();
 
+        const content_size = SiteLibrary.calculateContentSize('#photolog', orientation, 0.85, 0.85, 0, 0);
         const config = this.blog_service.buildViewerConfig(
             COMMON.VIEWER_PREFIX + id, 
-            42, 
-            35,
+            content_size.width, 
+            content_size.height,
             blog_type, 
             section_icon, 
             title, 
@@ -232,6 +234,8 @@ export class PhotologSection extends BaseView {
         } finally {
             const element = document.getElementById(COMMON.VIEWER_PREFIX + id);
             element.dataset.group = config.meta.contentType;
+
+            element.querySelector('#viewer-maximize-button').style.display = 'none';
 
             ViewerStateManager.stateLog(element);
         }

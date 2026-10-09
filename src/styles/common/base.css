@@ -61,8 +61,8 @@
   --base_task_item_background_color_b : #ffffff;
 
   --base_border_line: 0.01rem solid rgba(180, 180, 180, 0.75);
-  --base_taskbar_border_line: 0.075rem solid rgba(180, 180, 180, 0.75);
-  --base_footer_border_line: 0.075rem solid rgba(180, 180, 180, 0.75);
+  --base_taskbar_border_line: 0.075rem solid rgba(180, 180, 180, 0.25);
+  --base_footer_border_line: 0.075rem solid rgba(180, 180, 180, 0.25);
   --base_hr_border: 0.075rem solid rgba(0, 0, 0, 0.04);
   --base_dash_border: 0.075rem dashed #bbbbbb;
 
@@ -127,8 +127,8 @@
   --base_viewer_font_weight: 400;
 
   --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.2);
-  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
-  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.1);
+  --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.06);
+  --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.06);
   --base_hr_border: 1px solid rgba(255, 255, 255, 0.04);
   
 
@@ -149,7 +149,7 @@
 
   --base_dash_border : 0.075rem dashed #555555;
   --base_blog_content_panel_hr : rgba(255,255,255,0.05);
-  --base_viewer_border : 0.075rem solid rgba(255,255,255,0.05);
+  --base_viewer_border : 0.025rem solid rgba(255,255,255,0.2);
  
   --base_close_icon_filter_invert : none;
 
@@ -157,7 +157,7 @@
   --base_viewer_shadow : none;
   --base_backdrop_filter: none;
   --base_viewer_overay: none;
-  --base_viewer_active_overay: rgba(0, 0, 0, 0.5);
+  --base_viewer_active_overay: rgba(0, 0, 0, 0.7);
   --base_window_button_filter_invert: invert(0);
   /*--base_viewer_background_gradient: linear-gradient(
         to bottom,

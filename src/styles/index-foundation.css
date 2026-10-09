@@ -55,7 +55,6 @@ footer {
   right : 0;
   bottom : 0;
 
-
   background: var(--base_task_bar_background_color);
   border-top: var(--base_footer_border_line);
 }
@@ -150,7 +149,6 @@ footer {
 
 .title-bar {
   position: relative;
-  border-bottom: 0.075rem solid rgba(255, 255, 255, 0.15);
   background: var(--base_viewer_title_bar_background); 
   /*background-image: var(--base_viewer_title_bar_background_image);*/
 
@@ -168,6 +166,14 @@ footer {
 @media (orientation: portrait), (max-width: 1152px) {
   html {
     font-size: 2.07vw;
+  }
+
+  .viewer { 
+    border: none;
+  }
+
+  footer {
+    border: none
   }
 
   .blog-post {
@@ -206,6 +212,7 @@ footer {
 
   #taskbar {
     grid-template-columns: 1fr 2.5rem 2rem;
+    border: none;
   }
 
   #task-items {

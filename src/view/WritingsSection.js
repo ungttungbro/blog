@@ -93,20 +93,17 @@ export class WritingsSection extends BaseView {
         return element;
     }
 
-    generatePostEvent(type, id, orientation, element, section_icon, title, header, content_path, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_path); }); 
+    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, content_url, footer) {
+        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_url); }); 
         element.addEventListener('click', e => {
             e.preventDefault();
-
-            this.openPost(
+            super.openPost(
                 id,
-                orientation,
-                type,
+                section_name,                 
                 section_icon,
                 title,
-                header,
-                content_path,
-                footer
+                orientation, 1, 0.8, 0, 0,
+                header, content_url, footer
             );
         });
     }
@@ -161,76 +158,25 @@ export class WritingsSection extends BaseView {
             config.sectionHeaderIcon, 
             config.captionText, 
             config.sectionHeaderIconAlt
-        );        
+        );
 
         section_header.addEventListener('click',  async e => {
-            this.onSectionHeaderClick (
-                e, 
-                config.blogTypeName, 
-                config.listViewerId, 
-                config.sectionHeaderIcon, 
+            e.preventDefault();
+            super.openPost(
+                config.listViewerId,
+                config.blogTypeName,
+                config.sectionHeaderIcon,
                 config.sectionListName,
+                'portrait', 0, 0, 0.7, 0.8,
                 this.generateSectionItems('header', await this.blog_service.buildWritingsList(), config),
                 null,
                 COMMON.COPYRIGHT
             );
+
+            const element = document.getElementById(config.listViewerId);
+            element.querySelector('#viewer-maximize-button').style.display = 'none';
         });
 
         return section_header;
-    }    
-
-    onSectionHeaderClick(e, blog_type, id, section_icon, title, header, contents, footer) {
-        e.preventDefault();
-
-        const config = this.blog_service.buildViewerConfig(id, 42, 35, blog_type, section_icon, title, 18);
-
-        try {
-            super.mountContents(
-                'blog',
-                config, 
-                COMMON.TASKBAR_PREFIX + id,
-                header, 
-                contents, 
-                footer
-            );
-        } catch(error) {
-            console.warn('Section Header Event : ', error);
-        } finally {
-            const element = document.getElementById(id);
-            element.dataset.group = config.meta.contentType;
-
-            ViewerStateManager.stateLog(element);
-        }
-    }
-
-    async openPost(id, orientation, section_name, section_icon, title, header, content_url, footer) {
-        const content_size = SiteLibrary.calculateContentSize('#writings', orientation, 1, 0.8, 0, 0);
-        const config = this.blog_service.buildViewerConfig(
-            id, 
-            content_size.width, 
-            content_size.height, 
-            section_name, 
-            section_icon, 
-            title, 
-            24
-        );
-        
-        try {
-            super.mountContents(
-                'blog',
-                config, 
-                COMMON.TASKBAR_PREFIX + id, 
-                header, 
-                await SiteLibrary.loadText(content_url), 
-                footer
-            );
-        } catch(error) {
-            console.warn('Blog Post Event : ', error);
-        } finally {
-            const element = document.getElementById(id);
-            element.dataset.group = config.meta.contentType;
-
-            ViewerStateManager.stateLog(element);
-        }
     }
 }

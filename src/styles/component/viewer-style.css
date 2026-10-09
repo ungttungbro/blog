@@ -13,7 +13,6 @@
 
 .title-bar {
   position: relative;
-  border-bottom: 0.075rem solid rgba(255, 255, 255, 0.15);
   background: var(--base_viewer_title_bar_background); 
   /*background-image: var(--base_viewer_title_bar_background_image);*/
 

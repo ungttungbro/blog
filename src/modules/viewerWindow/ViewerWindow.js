@@ -20,18 +20,21 @@ import { ViewerStateManager } from "./ViewerStateManager.js";
 import { ViewerWindowProcessRegistry } from "./ViewerWindowProcessRegistry.js";
 
 const CONSTANTS = Object.freeze({
-    TITLE_ICON_TYPE: 'small-icon',
     CLOSE_BUTTON_ICON_PATH: './assets/icons/close.png',
     MAXIMIZE_BUTTON_ICON_PATH: './assets/icons/screen.png',
     MINIMIZE_BUTTON_ICON_PATH: './assets/icons/minimize.png',
-    WINDOW_BUTTON_NAME: 'window_button',
 
     TITLE_BAR_CLASS_NAME: 'title-bar',
+    TITLE_FIGURE_CLASS_NAME: 'title-figure',
+    TITLE_ICON_TYPE: 'small-icon',
+    TITLE_TEXT: 'title-text',
+    WINDOW_BUTTON_NAME: 'window_button',
+    
     FOOTER_CLASS_NAME: 'footer',
     HEADER_PANEL: 'header-panel',
     CONTENT_PANEL: 'content-panel',
     FOOTER_PANEL: 'footer-panel',
-    CONTENT_AREA: 'content-area'
+    CONTENT_AREA: 'content-area',
 });
 
 export class ViewerWindow {
@@ -145,8 +148,8 @@ export class ViewerWindow {
             'viewer title icon'
         );
 
-        const title_figure = this.createImgCaption(icon, null, this.titleText);
-        title_figure.style.float = 'left';        
+        const title_figure = this.createImgCaption(icon, CONSTANTS.TITLE_TEXT, this.titleText);
+        title_figure.className = CONSTANTS.TITLE_FIGURE_CLASS_NAME;
 
         return title_figure;
     }
@@ -468,9 +471,9 @@ export class ViewerWindow {
         return img;
     }
 
-    createImgCaption(image_element, caption_id, caption_text) {
+    createImgCaption(image_element, caption_class_name, caption_text) {
         const caption = document.createElement('figcaption');
-        caption.id = caption_id;
+        caption.className = caption_class_name;
         caption.innerHTML = '&nbsp;' + caption_text;
 
         const figure = document.createElement('figure');
