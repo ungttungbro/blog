@@ -84,10 +84,39 @@ export class PhotologSection extends BaseView {
         return teaser;
     }
 
-    generateTeaserEvent(section_name, element, id, orientation, key, section_icon, title, header_contents, main_contents, footer_contents) {        
+    generateTeaserEvent(section_name, element, id, orientation, key, section_icon, title, header, contents, footer) {        
         element.addEventListener('click', e => {
             e.preventDefault();
-            this.openPost(id, orientation, section_name, key, section_icon, title, header_contents, main_contents, footer_contents);
+
+            const photo_container_el = this.createPhotoContents(key, contents);
+
+            super.openPost(
+                id,
+                section_name,                 
+                section_icon,
+                title,
+                orientation, 1.35, 0.6, 0, 0,
+                header, photo_container_el, footer
+            );
+
+            const photo_container_parent = photo_container_el.closest('#content-area');
+            const footer_panel = photo_container_parent.querySelector('.photolog-footer-panel');
+
+            if (taskbar.taskBarElement.dataset.column > 2) {
+                photo_container_el.style.height =
+                `${photo_container_parent.clientHeight}px`;
+
+                const observer = new ResizeObserver(() => {
+                    requestAnimationFrame(() => {
+                        photo_container_el.style.height =
+                            `${photo_container_parent.clientHeight - footer_panel.clientHeight}px`;
+                    });
+                });
+
+                observer.observe(photo_container_parent);
+            }
+
+            this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
         });
     }
 
@@ -103,21 +132,24 @@ export class PhotologSection extends BaseView {
         );
 
         section_header.addEventListener('click',  async e => {
-            const data = await this.blog_service.buildPhotologList();
-            
+            e.preventDefault();
+
+            const data = await this.blog_service.buildPhotologList();            
             const items = this.generateSectionItems(data, config);
 
-            this.onSectionHeaderClick(
-                e, 
-                config.typeName, 
+            super.openPost(
                 config.photologListViewerId,
-                'landscape',
+                config.typeName,
                 config.sectionHeaderIcon,
                 config.photologSectionListName,
+                'landscape', 0.9, 0.8, 0, 0,
                 items,
                 null,
                 COMMON.COPYRIGHT
             );
+
+            const element = document.getElementById(config.photologListViewerId);
+            element.querySelector('#viewer-maximize-button').style.display = 'none';
         });
 
         return section_header;
@@ -153,92 +185,6 @@ export class PhotologSection extends BaseView {
         element.appendChild(frag);
 
         return element;
-    }
-
-    async openPost(id, orientation, section_name, key, section_icon, title, header, contents, footer) {
-        const content_size = SiteLibrary.calculateContentSize('#photolog', orientation, 1, 0.7, 0, 0);
-        const config = this.blog_service.buildViewerConfig(
-            COMMON.VIEWER_PREFIX + id, 
-            content_size.width, 
-            content_size.height,
-            section_name, 
-            section_icon, 
-            title, 
-            24
-        );
-
-        try {
-            const photo_container_el = this.createPhotoContents(key, contents);
-
-            super.mountContents(
-                'photolog',
-                config, 
-                COMMON.TASKBAR_PREFIX + id,
-                header, 
-                photo_container_el, 
-                footer
-            );
-
-            const photo_container_parent = photo_container_el.closest('#content-area');
-
-            if (taskbar.taskBarElement.dataset.column > 2) {
-                photo_container_el.style.height =
-                `${photo_container_parent.clientHeight}px`;
-
-                const observer = new ResizeObserver(() => {
-                    requestAnimationFrame(() => {
-                        photo_container_el.style.height =
-                            `${photo_container_parent.clientHeight}px`;
-                    });
-                });
-
-                observer.observe(photo_container_parent);
-            }
-
-            this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
-        } catch(error) {
-            console.warn('Phtolog Teaser Event : ', error);
-        } finally {
-            const element = document.getElementById(COMMON.VIEWER_PREFIX + id);
-            element.dataset.group = config.meta.contentType;
-
-            ViewerStateManager.stateLog(element);
-        }
-    }
-
-    onSectionHeaderClick(e, blog_type, id, orientation, section_icon, title, header, contents, footer) {
-        e.preventDefault();
-
-        const content_size = SiteLibrary.calculateContentSize('#photolog', orientation, 0.85, 0.85, 0, 0);
-        const config = this.blog_service.buildViewerConfig(
-            COMMON.VIEWER_PREFIX + id, 
-            content_size.width, 
-            content_size.height,
-            blog_type, 
-            section_icon, 
-            title, 
-            18
-        );
-
-        try {
-            super.mountContents(
-                'photolog',
-                config, 
-                COMMON.TASKBAR_PREFIX + id,
-                header, 
-                contents, 
-                footer
-            );
-        } catch(error) {
-            console.warn('Section Header Event : ', error);
-        } finally {
-            const element = document.getElementById(COMMON.VIEWER_PREFIX + id);
-            element.dataset.group = config.meta.contentType;
-
-            element.querySelector('#viewer-maximize-button').style.display = 'none';
-
-            ViewerStateManager.stateLog(element);
-        }
     }
 
     createPhotoContents(key, data) {

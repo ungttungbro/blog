@@ -25,12 +25,17 @@
 .blog-post-photo-comment { font-size: 0.8rem; color: var(--base_font_color_b); }
 .blog-post .meta { color: var(--base_font_color_c); font-size: 0.9rem; }
 .blog-post hr { 
-  border-color: #777777; 
+  border-color: #777777;
 }
 .blog-post a:hover { color: #ffc900; }
 
 .blog-content-panel { padding: 0; }
-.blog-content-panel hr { 
+
+.blog-content-panel hr,
+.writings-content-panel hr,
+.reflection-content-panel hr,
+.lifelog-content-panel hr,
+.archive-content-panel hr { 
   position: relative;
   border: none;
   height: 0.075rem;

@@ -4,7 +4,6 @@ import { ELEMENT_TYPE, COMMON } from "../modules/common/Constants.js";
 import { siteMeta } from "../modules/site/siteMeta.js";
 import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 import { Templates } from "../modules/site/Templates.js";
-import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
 import { BaseView } from "./common/BaseView.js";
 
 export class LifelogSection extends BaseView {

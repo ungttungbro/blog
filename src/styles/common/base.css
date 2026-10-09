@@ -129,7 +129,7 @@
   --base_border_line: 0.025rem solid  rgba(255, 255, 255, 0.2);
   --base_taskbar_border_line: 0.075rem solid rgba(255, 255, 255, 0.06);
   --base_footer_border_line: 0.075rem solid rgba(255, 255, 255, 0.06);
-  --base_hr_border: 1px solid rgba(255, 255, 255, 0.04);
+  --base_hr_border: 1px solid rgba(255, 255, 255, 0.02);
   
 
   --base_dark_light_toggle_button: url(/assets/icons/dark-mode-img/light-toggle.png);
@@ -148,7 +148,7 @@
   --base_anchor_tag_hover_text_decoration: none;
 
   --base_dash_border : 0.075rem dashed #555555;
-  --base_blog_content_panel_hr : rgba(255,255,255,0.05);
+  --base_blog_content_panel_hr : rgba(255,255,255,0.1);
   --base_viewer_border : 0.025rem solid rgba(255,255,255,0.2);
  
   --base_close_icon_filter_invert : none;

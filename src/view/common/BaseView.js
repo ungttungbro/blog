@@ -80,14 +80,14 @@ export class BaseView {
             title, 
             (content_size.width * 0.6)
         );
-
+        
         try {
             this.mountContents(
-                'blog',
-                config, 
+                section_name,
+                config,
                 COMMON.TASKBAR_PREFIX + id,
-                header, 
-                content_url ? await SiteLibrary.loadText(content_url) : null, 
+                header,
+                typeof content_url === 'string' ? await SiteLibrary.loadText(content_url) : content_url,
                 footer
             );
 

@@ -64,11 +64,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     ['lifelog',   [lifelog_section, '/assets/icons/lifelog.png']],
     ['archive',   [archive_section, '/assets/icons/archive.png']],
     ['photolog',  [photolog_section, '/assets/icons/photographer.png']]
-]);
+  ]);
 
-const params = new URLSearchParams(location.search);
 
-if (params.size === 3) {
+  const params = new URLSearchParams(location.search);
+
+  if (params.size === 3) {
     const section = params.get('section');
     const id = params.get('id');
     const orientation = params.get('orientation');
@@ -81,58 +82,46 @@ if (params.size === 3) {
       const section_view = section_data[0];
       const section_icon = section_data[1];
 
-      const contentUrl = section_view._BASE_PATH + id + '/' + record.contentUrl;
+      const contentUrl = section_view._BASE_PATH + id + '/';
+
+      let header = null;
+      let footer = '&copy; Jonas';
+      let title = record.title;
+      let contents = contentUrl + record.contentUrl;
 
       if (section === "photolog") {
-        section_view.openPost(
-          await SiteLibrary.hashString(id),
-          orientation,
-          section,
-          id,
-          section_icon,
-          record.title,
-          record.description +
-                  "<br>" +
-                  "<p style=\"font-size:0.85rem; color:var(--base_anchor_tag_hover_color);\">" +
-                    "&#128247;&nbsp;&nbsp" +
-                    record.date + " · " +
-                    record.tags.map(tag => '#' + tag).join(" · ") +
-                  "</p>",
-          record.files,
-          '&copy; Jonas'
-        );
-      } else if (section === "lifelog") {
-        const footer_span = document.createElement('span');
-              footer_span.className = 'footer';
-              footer_span.innerHTML = "<p align='right' style='font-size:0.85rem; font-weight:400;'>" 
-                                      + Templates.symbol(record.type) + record.date + ' (' + record.location + ')'
-                                      + "</p>";
-              footer_span.innerHTML += '&copy; Jonas';
-              
-         section_view.openPost(
-          'viewer-content-' + await SiteLibrary.hashString(id),
-          orientation,
-          section,
-          section_icon,
-          record.tags,
-          null,
-          contentUrl,
-          footer_span          
-        );
-      } else {
-        section_view.openPost(
-          'viewer-content-' + await SiteLibrary.hashString(id),
-          orientation,
-          section,
-          section_icon,
-          record.title,
-          null,
-          contentUrl,
-          '&copy; Jonas'
-        );
+        header = "<br>" +
+          "<p style=\"font-size:0.85rem; color:var(--base_anchor_tag_hover_color);\">" +
+            "&#128247;&nbsp;&nbsp" +
+            record.date + " · " +
+            record.tags.map(tag => '#' + tag).join(" · ") +
+          "</p>";
+
+        contents = record.files;
+      } 
+      
+      if (section === "lifelog") {
+          footer = document.createElement('span');
+          footer.className = 'footer';
+          footer.innerHTML = "<p align='right' style='font-size:0.85rem; font-weight:400;'>" 
+                              + Templates.symbol(record.type) + record.date + ' (' + record.location + ')'
+                              + "</p>";
+          footer.innerHTML += '&copy; Jonas';              
+         
+          title = record.tags;         
       }
+
+      section_view.openPost(
+        'viewer-content-' + await SiteLibrary.hashString(id),
+        section,
+        section_icon,
+        title,
+        orientation, 1.35, 0.6, 0, 0,
+        header,
+        contents,
+        footer
+      );
     }
   }
-
 });
 

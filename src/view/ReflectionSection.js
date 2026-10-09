@@ -4,7 +4,6 @@ import { ELEMENT_TYPE, COMMON } from "../modules/common/Constants.js";
 import { siteMeta } from "../modules/site/siteMeta.js";
 import { SiteLibrary } from "../modules/common/SiteLibrary.js";
 import { Templates } from "../modules/site/Templates.js";
-import { ViewerStateManager } from "../modules/viewerWindow/ViewerStateManager.js";
 import { BaseView } from "./common/BaseView.js";
 
 export class ReflectionSection extends BaseView {
@@ -94,7 +93,7 @@ export class ReflectionSection extends BaseView {
     }
 
     generatePostEvent(section_name, id, orientation, element, section_icon, title, header, content_url, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_path); }); 
+        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_url); }); 
         element.addEventListener('click', e => {
             e.preventDefault();
             super.openPost(
