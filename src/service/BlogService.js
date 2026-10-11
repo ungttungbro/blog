@@ -41,11 +41,11 @@ export class BlogService extends BaseService {
         let data = null;
 
         switch(section) {
-            case 'writings' : data = await this.buildWritingsList(); break;
-            case 'lifelog' : data = await this.buildLifelogList(); break;
-            case 'archive' : data = await this.buildArchiveList(); break;
-            case 'reflection' : data = await this.buildReflectionList(); break;
-            case 'photolog' : data = await this.buildPhotologList(); break;
+            case 'writings' : data = await this.getWritings(); break;
+            case 'lifelog' : data = await this.getLifelog(); break;
+            case 'archive' : data = await this.getArchive(); break;
+            case 'reflection' : data = await this.getReflection(); break;
+            case 'photolog' : data = await this.getPhotolog(); break;
             default : return;
         }
 

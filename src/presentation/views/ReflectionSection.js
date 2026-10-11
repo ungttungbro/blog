@@ -96,22 +96,25 @@ export class ReflectionSection {
         return element;
     }
 
-    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, content_url, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, content_url); }); 
-        element.addEventListener('click', async e => {
+    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, contents, footer) {
+        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
+        element.addEventListener('click', e => {
             e.preventDefault();
-
-            const data = await SiteLibrary.loadText(content_url);
-
-            Templates.openPost(
-                id,
-                section_name,                 
-                section_icon,
-                title,
-                orientation, 1.5, 1.25, 0, 0,
-                header, data, footer
-            );
+            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
         });
+    }
+
+    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
+        const data = await SiteLibrary.loadText(contents);
+
+        Templates.openPost(
+            id,
+            section_name,                 
+            section_icon,
+            title,
+            orientation, 1.5, 1.25, 0, 0,
+            header, data, footer
+        );
     }
 
     generateSectionItems(type, data, config) {

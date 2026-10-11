@@ -2,7 +2,6 @@
 
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
-import { ViewerStateManager } from "../../modules/viewerWindow/ViewerStateManager.js";
 
 import { taskbar } from "../../modules/taskbar/TaskBar.js";
 
@@ -57,7 +56,7 @@ export class PhotologSection {
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, thumbnail_path, title, text, key, photos_path) {
+    createSectionItem(id, orientation, thumbnail_path, title, text, photos_path) {
         const thumbnail = SiteLibrary.createImgElement(
             siteMeta.photolog.thumbnailClassName,
             null,
@@ -79,7 +78,6 @@ export class PhotologSection {
             teaser, 
             id,
             orientation,
-            key,
             section_config.sectionHeaderIcon,
             title, 
             text, 
@@ -169,7 +167,6 @@ export class PhotologSection {
                             value.date + " · " +
                             value.tags.map(tag => '#' + tag).join(" · ") +
                             "</p>",
-                key,
                 this._BASE_PATH + key + '/' + value.contentUrl
             );
 
@@ -181,43 +178,46 @@ export class PhotologSection {
         return element;
     }
 
-    generateTeaserEvent(section_name, element, id, orientation, key, section_icon, title, header, contents, footer) {        
-        element.addEventListener('click', async e => {
+    generateTeaserEvent(section_name, element, id, orientation, section_icon, title, header, contents, footer) {        
+        element.addEventListener('click', e => {
             e.preventDefault();
-
-            const data = await SiteLibrary.loadText(contents);
-
-            Templates.openPost(
-                id,
-                section_name,                 
-                section_icon,
-                title,
-                orientation, 1, 0.6, 0, 0,
-                header, data, footer
-            );
-
-            const photo_container_el = document.getElementById(id).querySelector('.photo-container');
-            const photo_container_parent = photo_container_el.closest('#content-area');
-            const footer_panel = photo_container_parent.querySelector('.photolog-footer-panel');
-
-            if (taskbar.taskBarElement.dataset.column > 2) {
-                photo_container_el.style.height =
-                `${photo_container_parent.clientHeight}px`;
-
-                const observer = new ResizeObserver(() => {
-                    requestAnimationFrame(() => {
-                        photo_container_el.style.height =
-                            `${photo_container_parent.clientHeight - footer_panel.clientHeight}px`;
-                    });
-                });
-
-                observer.observe(photo_container_parent);
-            }
-
-            this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
-           
+            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
         });
     }
+
+    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
+        const data = await SiteLibrary.loadText(contents);
+
+        Templates.openPost(
+            id,
+            section_name,                 
+            section_icon,
+            title,
+            orientation, 1, 0.6, 0, 0,
+            header, data, footer
+        );
+
+        const photo_container_el = document.getElementById(id).querySelector('.photo-container');
+        const photo_container_parent = photo_container_el.closest('#content-area');
+        const footer_panel = photo_container_parent.querySelector('.photolog-footer-panel');
+
+        if (taskbar.taskBarElement.dataset.column > 2) {
+            photo_container_el.style.height =
+            `${photo_container_parent.clientHeight}px`;
+
+            const observer = new ResizeObserver(() => {
+                requestAnimationFrame(() => {
+                    photo_container_el.style.height =
+                        `${photo_container_parent.clientHeight - footer_panel.clientHeight}px`;
+                });
+            });
+
+            observer.observe(photo_container_parent);
+        }
+
+        this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
+    }
+
 
     generatePhotoScrollEvent(parent_el, target_el) {
         parent_el.addEventListener('wheel', (event) => {

@@ -122,6 +122,7 @@ export class Templates {
         orientation, landscape_width_weight, landscape_height_weight,portrait_width_weight, portrait_height_height,   
         header, contents, footer
     ) {
+         
         const content_size = SiteLibrary.calculateContentSize(
             '#' + section_name,
             orientation, 
@@ -135,6 +136,8 @@ export class Templates {
             section_name, section_icon, title, 
             (content_size.width * 0.6)
         );
+
+        
         
         try {
             this.mountViewerContents(

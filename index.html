@@ -81,7 +81,16 @@
       </div>
     </footer>
     
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="/src/Main.js"></script>
+    <script type="module">
+        import Main from '/src/Main.js';
+
+        const main = new Main();        
+        
+        await main.initialize();        
+        main.display();
+        main.handleDeepLink();
+    </script>
 
   </body>
 
