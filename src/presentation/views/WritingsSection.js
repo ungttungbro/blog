@@ -53,16 +53,7 @@ export class WritingsSection {
         el.appendChild(items);
     }
 
-    createSectionItem(
-        id, 
-        orientation, 
-        meta_data, 
-        title, 
-        title_char_max_length, 
-        summary, 
-        summary_char_max_length, 
-        content_path
-    ) {
+    createSectionItem(id, orientation, meta_data, title, summary, content_path) {
         const element = document.createElement(ELEMENT_TYPE.DIV);
         element.className = 'writings-section-item-panel';
 
@@ -75,16 +66,15 @@ export class WritingsSection {
 
         const title_span = document.createElement('span');
         title_span.className = 'title';
-        title_span.textContent = SiteLibrary.truncateText(title, title_char_max_length);
+        title_span.textContent = title;
 
         const summary_span = document.createElement('span');
         summary_span.className = 'summary';
-        summary_span.textContent = SiteLibrary.truncateText(summary, summary_char_max_length);
+        summary_span.textContent = summary;
 
         const a =  document.createElement('a');
         a.href = '#';
         a.appendChild(title_span);
-        a.appendChild(document.createElement('br'));
         a.appendChild(summary_span);
 
         const section_config = siteMeta.selectSectionConfig('writings');
@@ -130,16 +120,11 @@ export class WritingsSection {
         const frag = document.createDocumentFragment();
 
         const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = config.postIndexClassName;
-
-        let title_char_max_length = config.listTitleCharLength;
-        let summary_char_max_length = config.listSummaryCharLength;
 
         if (type === 'contents') {
             element.className = config.latestPostClassName;
-
-            title_char_max_length = config.titleCharLength;
-            summary_char_max_length = config.summaryCharLength;
+        } else {
+            element.className = config.postIndexClassName;
         }
 
         let index = 0;
@@ -148,10 +133,8 @@ export class WritingsSection {
                 value.id,
                 value.orientation,
                 value.type + ' · ' + value.date,
-                value.title,
-                title_char_max_length,
-                value.description,
-                summary_char_max_length,
+                value.title,                
+                value.description,               
                 key + '/' + value.contentUrl
             );
 
@@ -169,7 +152,6 @@ export class WritingsSection {
 
     generateSectionHeader(config) {
         const section_header = Templates.createSectionHeader(
-            config.sectionHeaderId, 
             config.captionImgId, 
             config.captionId,
             config.className, 

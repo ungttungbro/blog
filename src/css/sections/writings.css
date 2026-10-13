@@ -1,0 +1,27 @@
+#writings .title {
+    font-weight: bold;
+    line-height: 2;
+
+    overflow: hidden;
+}
+
+#writings .summary, 
+.post-index .summary {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    overflow: hidden;
+}
+
+#writings a:hover .title {
+    color: var(--base-anchor-hover-color-A);
+}
+
+#writings a:hover .summary {
+    color: var(--base-anchor-hover-color-B);
+}
+
+.viewer .post-index {
+    padding-bottom: 0.75rem;
+}

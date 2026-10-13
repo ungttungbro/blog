@@ -1,0 +1,21 @@
+#reflection .title {
+    font-weight: bold;
+}
+
+#reflection a:hover .title {
+    color: var(--base-anchor-hover-color-A);
+    
+}
+
+#reflection .summary,
+.reflection-header-panel .summary {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+    overflow: hidden;
+}
+
+#reflection a:hover .summary {
+    color: var(--base-anchor-hover-color-B);   
+}

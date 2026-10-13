@@ -1,0 +1,81 @@
+:root {
+    --section-font-meta-color : #7a7c7e;
+    --section-font-description-color : #6a6c6e;
+}
+
+.meta { 
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--section-font-meta-color);
+}
+
+.title   { 
+    font-size:1rem; 
+    color: var(--base-font-color);
+    font-weight: bold;
+}
+
+.summary { 
+    font-size: 0.95rem; 
+    font-weight : bold;
+    color: var(--section-font-description-color);
+}
+
+.curation-post {
+  display: flex;
+  flex: 1;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 0;
+
+  padding-left: 0.25rem; 
+  padding-right: 0.25rem;
+}
+
+.curation-post  hr {
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  border-top-style: dashed;
+}
+
+.section-header {
+  display: flex;
+
+  width: 100%;
+
+  border: var(--base-border-line-medium-bold);
+  border-radius: var(--base-border-radius-light-medium);
+  
+  font-size : 1.05rem;
+  font-weight: bold;
+  
+  margin: 0;
+  margin-bottom: var(--base-margin-size-tiny);
+  padding: var(--base-margin-size-light);
+
+  justify-content: space-between;
+  align-items: center;
+    
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.section-header figure {
+  display: flex;
+  align-items: center;
+  margin: 0; /* 기본 margin 제거 중요 */
+}
+
+.section-header:hover {
+  background-color: #eeeeee;
+}
+
+.more-options {
+  font-weight: bold;
+  letter-spacing: 0.025rem;
+  margin-right: 0.25rem;
+}

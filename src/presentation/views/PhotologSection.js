@@ -67,7 +67,7 @@ export class PhotologSection {
         const teaser = SiteLibrary.createImgTitleCaption(
             thumbnail,
             SiteLibrary.truncateText(title, 16),
-            SiteLibrary.truncateText(text, 70)
+            text
         );
         
         teaser.className = siteMeta.photolog.teaserClassName;
@@ -114,7 +114,6 @@ export class PhotologSection {
 
     generateSectionHeader(config) {
         const section_header = Templates.createSectionHeader(
-            config.sectionHeaderId, 
             config.captionImgId, 
             config.captionId,
             config.className, 
@@ -162,7 +161,7 @@ export class PhotologSection {
                 value.title,
                 value.description +
                             "<br>" +
-                            "<p style=\"font-size:0.85rem; color:var(--base_anchor_tag_hover_color);\">" +
+                            "<p style=\"font-size:0.9rem; color:var(--base-anchor-hover-color-A); line-height: 3;\">" +
                             "&#128247;&nbsp;&nbsp" +
                             value.date + " · " +
                             value.tags.map(tag => '#' + tag).join(" · ") +
@@ -170,7 +169,11 @@ export class PhotologSection {
                 this._BASE_PATH + key + '/' + value.contentUrl
             );
 
-            frag.appendChild(sectionItemElement);   
+            frag.appendChild(sectionItemElement);
+            
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }    
         }
 
         element.appendChild(frag);
@@ -193,7 +196,7 @@ export class PhotologSection {
             section_name,                 
             section_icon,
             title,
-            orientation, 1, 0.6, 0, 0,
+            orientation, 1, 0.7, 0, 0,
             header, data, footer
         );
 

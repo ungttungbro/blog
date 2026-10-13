@@ -25,7 +25,6 @@ export class LinksSection {
 
     renderLinks() {
         const links_section_header = Templates.createSectionHeader(
-            siteMeta.links.sectionHeaderId,
             siteMeta.links.captionImgId,
             siteMeta.links.captionId,
             siteMeta.links.className,

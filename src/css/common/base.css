@@ -1,0 +1,198 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+  --base-fonts : sans-serif;
+  --base-font-size : 1vw;
+  --base-font-line-height : 1.6;
+
+  --base-font-light : 0.9rem;
+  --base-font-light-medium : 0.95rem;
+  --base-font-medium : 1rem;
+  --base-font-large : 1.2rem;
+
+  --base-font-weight-medium : 400;
+  --base-font-weight-bold : 600;
+  --base-font-color : #3a3c3e;
+  --base-font-hover-color : #e25e0b;
+
+  --base-margin-size-tiny : 0.25rem;
+  --base-margin-size-light : 0.5rem;
+  --base-margin-size-medium : 1rem;
+  --base-margin-size-large : 1.5rem;
+
+  --base-small-icon-size : 1rem;
+  --base-medium-icon-size : 1.5rem;
+  --base-large-icon-size : 2rem;
+
+  --base-border-radius-light : 0.25rem;
+  --base-border-radius-light-medium : 0.5rem;
+  --base-border-radius-medium : 0.75rem;
+  --base-border-radius-large : 1rem;
+
+  --base-border-line-normal : 1px solid #dddddd;
+  --base-border-line-medium-bold : 2px solid #dddddd;
+
+  --base-anchor-hover-color-A : #e25e0b;
+  --base-anchor-hover-color-B : #000000;
+
+}
+
+::-webkit-scrollbar { width: 0px; }
+::-webkit-scrollbar-thumb { background-color: #666666;}
+::-webkit-scrollbar-track { background-color: #333333;}
+
+html {
+  font-size: var(--base-font-size);
+  font-family: var(--base-fonts);
+
+  line-height: var(--base-font-line-height);
+}
+
+body {
+  background-color: #fafcfe;
+  color: var(--base-font-color); 
+
+  user-select: none; /* 모달리스 드래그시 배경선택이 되지 않도록 반드시 none*/  
+}
+
+header {
+  position:fixed;
+
+  background-color: #eaecef;
+    
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding : 0.15rem;
+
+  z-index: 99999;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  
+  text-align: initial;
+  padding: 4.75rem 1.25rem 0rem 1.25rem;
+  margin: auto;
+  
+  position: relative; /* pseudo-element 기준 */
+  
+  border: 0;
+
+  z-index: 0;
+}
+
+footer {
+  background: #eaecef;
+
+  left : 0;
+  right : 0;
+  bottom : 0;
+
+  font-weight: bold;
+  text-align: center;
+
+  padding : 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  white-space: pre-line;
+}
+
+a:link {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+
+  text-decoration: none;
+  text-underline-offset: 0.3rem;
+  transition-duration: 250ms;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+}
+
+li {
+  list-style: disc;
+}
+
+h1 {
+  display:flex;
+  font-size: var(--base-font-light);
+  font-weight: bold;
+  padding: 0rem;
+  line-height: 1.5rem;
+  padding-bottom : var(--base-margin-size-tiny);
+}
+
+h2 {
+  font-size: var(--base-font-medium);
+  color: var(--base-font-color);
+  font-weight: bold;
+  padding-top : 0rem;
+  padding-bottom : var(--base-margin-size-light);
+}
+
+h3 {
+  font-size: var(--base-font-large);
+  color: var(--base-font-color);
+  font-weight: bold;
+  padding-top : 0rem;
+  line-height: 1.25;
+  padding-bottom : var(--base-margin-size-tiny);
+}
+
+hr {
+  border: 1px dashed #dfdfdf;
+  
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.small-icon {
+  width: var(--base-small-icon-size);
+  height: var(--base-small-icon-size);
+
+  float: left;
+
+  margin-right: 0.1rem;
+  margin-top: 0.25rem;
+}
+
+.medium-icon {
+  width: var(--base-medium-icon-size);
+  height: var(--base-medium-icon-size);
+
+  margin-right: 0.1rem;
+  margin-left: 0.25rem;
+}
+
+.north-east-arrow {
+  float:right;
+  font-size: var(--base-font-light);
+  vertical-align: super;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

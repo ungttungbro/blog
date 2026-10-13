@@ -53,7 +53,7 @@ export class LifelogSection {
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, meta_data, title, title_char_max_length, content_path) {
+    createSectionItem(id, orientation, meta_data, title, content_path) {
         const element = document.createElement(ELEMENT_TYPE.DIV);
         element.className = 'lifelog-section-item-panel';
 
@@ -66,12 +66,11 @@ export class LifelogSection {
 
         const title_span = document.createElement('span');
         title_span.className = 'title';
-        title_span.textContent = SiteLibrary.truncateText(title, title_char_max_length);
+        title_span.textContent = title;
 
         const a =  document.createElement('a');
         a.href = '#';
         a.appendChild(title_span);
-        a.appendChild(document.createElement('br'));
 
         const section_config = siteMeta.selectSectionConfig('lifelog');
 
@@ -124,12 +123,11 @@ export class LifelogSection {
         const frag = document.createDocumentFragment();
 
         const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = config.postIndexClassName;
-
-        let title_char_max_length = config.listTitleCharLength;
+        
         if (type === 'contents') {
-            element.className = config.latestPostClassName;
-            title_char_max_length = config.titleCharLength;
+            element.className = config.latestPostClassName;         
+        } else {
+            element.className = config.postIndexClassName;
         }
 
         let index = 0;
@@ -139,7 +137,6 @@ export class LifelogSection {
                 value.orientation,
                 Templates.symbol(value.type) + value.date + ' (' + value.location + ')',
                 value.tags.map(tag => '#' + tag).join(" · "),
-                title_char_max_length,
                 key + '/' + value.contentUrl
             );
 
@@ -157,7 +154,6 @@ export class LifelogSection {
 
     generateSectionHeader(config) {
         const section_header = Templates.createSectionHeader(
-            config.sectionHeaderId, 
             config.captionImgId, 
             config.captionId,
             config.className, 

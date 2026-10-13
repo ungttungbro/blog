@@ -1,0 +1,36 @@
+#links .section-header {
+  cursor: default;
+}
+
+#links .more-options {
+  display: none;
+}
+
+#links .section-header:hover {
+  background: none;
+}
+
+#links .links_item_list {
+  display: block;
+
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  color: var(--base-font-color);
+  
+  border: var(--base-border-line-medium-bold);
+  border-radius: var(--base-border-radius-light-medium);
+  
+  padding: var(--base-margin-size-light);
+  margin-top: var(--base-margin-size-light);
+}
+
+.links_item_list figure {
+  display: flex;
+  align-items: center;
+  margin: 0; /* 기본 margin 제거 중요 */
+}
+
+.links_item_list a:hover {
+  color: var(--base-anchor-hover-color-A);
+}

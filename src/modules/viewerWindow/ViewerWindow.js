@@ -26,7 +26,7 @@ const CONSTANTS = Object.freeze({
 
     TITLE_BAR_CLASS_NAME: 'title-bar',
     TITLE_FIGURE_CLASS_NAME: 'title-figure',
-    TITLE_ICON_TYPE: 'small-icon',
+    TITLE_ICON_TYPE: 'medium-icon',
     TITLE_TEXT: 'title-text',
     WINDOW_BUTTON_NAME: 'window_button',
     

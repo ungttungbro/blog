@@ -53,7 +53,7 @@ export class ArchiveSection {
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, meta_data, title, title_char_max_length, content_path) {
+    createSectionItem(id, orientation, meta_data, title, content_path) {
         const element = document.createElement(ELEMENT_TYPE.DIV);
         element.className = 'archive-section-item-panel';
 
@@ -66,12 +66,11 @@ export class ArchiveSection {
 
         const title_span = document.createElement('span');
         title_span.className = 'title';
-        title_span.textContent = SiteLibrary.truncateText(title, title_char_max_length);
+        title_span.textContent = title;
 
         const a =  document.createElement('a');
         a.href = '#';
         a.appendChild(title_span);
-        a.appendChild(document.createElement('br'));
 
         const section_config = siteMeta.selectSectionConfig('archive');
         this.generatePostEvent(
@@ -115,13 +114,12 @@ export class ArchiveSection {
     generateSectionItems(type, data, config) {
         const frag = document.createDocumentFragment();
 
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = config.postIndexClassName;
+        const element = document.createElement(ELEMENT_TYPE.DIV);        
 
-        let title_char_max_length = config.listTitleCharLength;
         if (type === 'contents') {
             element.className = config.latestPostClassName;
-            title_char_max_length = config.titleCharLength;
+        } else {
+            element.className = config.postIndexClassName;
         }
 
         let index = 0;
@@ -131,7 +129,6 @@ export class ArchiveSection {
                 value.orientation,
                 Templates.symbol(value.type) + value.date,
                 value.title,
-                title_char_max_length,
                 key + '/' + value.contentUrl
             );
 
@@ -149,7 +146,6 @@ export class ArchiveSection {
 
     generateSectionHeader(config) {
         const section_header = Templates.createSectionHeader(
-            config.sectionHeaderId, 
             config.captionImgId, 
             config.captionId,
             config.className, 

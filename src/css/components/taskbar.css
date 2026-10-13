@@ -1,0 +1,186 @@
+#taskbar {
+  display: grid;
+  grid-template-columns: 6rem 1fr 2.5rem 2rem;
+  
+  min-height: 3rem;
+  box-sizing: border-box;
+
+  padding-left: 0.5rem;
+  padding-right: 0.75rem;
+  
+  align-items: stretch;
+}
+
+#taskbar #task-items {
+    display: flex;
+    flex-direction: row;
+
+    align-self: center;
+
+    margin-top: 0;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+}
+
+#taskbar .task-bar-item,
+#taskbar .task-bar-group {
+  display: flex;
+  position: relative;
+
+  width: auto;
+  height: auto;
+  
+  border-radius: 0.5rem;
+  border: var(--base-border-line-medium-bold);
+
+  padding: 0.6rem;
+
+  color: var(--base-font-color);
+  font-weight: bold;
+
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  background-color: #f2f2f2;
+  
+  margin-left: 0.1rem;
+  
+  user-select: none;
+}
+
+#taskbar .task-group-items {
+  min-width: 100%;
+
+  position: absolute;
+
+  border-radius: 0.5rem;
+  
+  background-color: #f2f2f2;
+
+  font-size: 0.85rem;
+
+  line-height: 1rem;
+
+  margin-top: 0.35rem;
+
+  box-shadow: 0 0 0 0.025rem rgba(255,255,255,0.025),
+              0 0.1rem 0.3rem rgba(0,0,0,0.25);;
+
+  left: 0;
+  top: 100%;
+
+  overflow: hidden;
+  visibility: hidden;
+}
+ 
+#taskbar .task-group-items .task-bar-item {
+  background-color: transparent;
+  border-radius: 0;
+  border: 0;
+}
+
+/*그룹 아이템에서 아이콘을 제거함.*/
+#taskbar .task-group-items .task-bar-item .medium-icon {
+  display: none;
+}
+
+#taskbar .task-bar-group .task-group-items .task-bar-item {
+  color: var(--base-font-color);
+
+  padding-left: 0.5rem;
+  padding-right: 0.4rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+#taskbar .task-bar-group .task-group-items .task-bar-item:hover {
+  color : var(--base-anchor-hover-color-A);
+}
+
+#taskbar .task-bar-group .task-bar-item .medium_icon {
+    width: 0.8rem;
+    height: auto;
+}
+
+#taskbar .task-bar-item figure,
+#taskbar .task-bar-group figure {
+  display: flex;
+  align-items: center;
+  margin: 0; /* 기본 margin 제거 중요 */
+}
+
+#taskbar .task-bar-item:hover,
+#taskbar .task-bar-group:hover {
+  background-color: #ffffff;
+
+  color: var(--base-font-color);
+
+  transition: background-color 0.3s;
+
+  cursor: pointer;
+}
+
+#taskbar .task-item-close {
+  display: flex;
+
+  padding: 0.25rem;    
+  margin-left: 0.5rem;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  filter: invert(1);
+
+  border-radius: 0.25rem;
+
+  flex-shrink: 0;
+}
+
+#taskbar .task-item-close:hover {
+  background-color: #0a0c0e;
+  transition: background-color 0.3s;
+}
+
+#color-theme {
+    width: 2rem;
+    height: 2rem;
+
+    align-self: center;
+
+    /*background-image: var(--base-theme-toggle-button);*/
+    background-size: cover;
+    background-position: center;
+}
+
+#color-theme:hover {
+    margin: 0;
+    cursor: pointer;
+
+    animation: hover-blink 700ms ease-in-out 2;
+}
+
+#logo {
+    width: 6rem;
+    height: auto;
+
+    margin-right: 0.75rem;
+    align-self: center;
+
+    object-fit: contain;
+    cursor: pointer;
+}
+
+#logo:hover {
+    animation: hover-blink 1000ms ease-in-out 1;
+}
+
+@keyframes hover-blink {
+  0%   { opacity: 1; }
+  30%  { opacity: 0.5; }
+  55%  { opacity: 0.8; }
+  100% { opacity: 1; }
+}

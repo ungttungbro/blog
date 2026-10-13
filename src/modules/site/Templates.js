@@ -14,9 +14,8 @@ export class Templates {
     constructor() {}
     async initialize() {}
 
-    static createSectionHeader(section_header_id, img_id, caption_id, class_name, icon_path, text, icon_alt) {
+    static createSectionHeader(img_id, caption_id, class_name, icon_path, text, icon_alt) {
         const section_header_box = document.createElement('div');
-        section_header_box.id = section_header_id;
         section_header_box.className = class_name;
 
         const section_img_caption = SiteLibrary.createImgTitle(
@@ -28,12 +27,12 @@ export class Templates {
             icon_alt
         );
 
-        const more_button = document.createElement('div');
-        more_button.className = 'title-box-more-button';
-        more_button.textContent = '···';
+        const more_option = document.createElement('div');
+        more_option.className = 'more-options';
+        more_option.textContent = '···';
 
         section_header_box.appendChild(section_img_caption);
-        section_header_box.appendChild(more_button);
+        section_header_box.appendChild(more_option);
 
         return section_header_box;
     }

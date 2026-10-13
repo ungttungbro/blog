@@ -21,7 +21,7 @@ export const siteMeta = Object.freeze({
         blogSectionHeaderIcon: '/assets/icons/blog.png',
         blogSectionHeaderIconAlt: 'blog Section Header Icon',
         writingsTitleCharLength: 33,
-        writingsSummaryCharLength: 106,
+        writingsSummaryCharLength: 120,
         writingsSubjectListRowCount: 4,
 
         lifelogBlogTypeName: 'lifelog',
@@ -57,9 +57,9 @@ export const siteMeta = Object.freeze({
         reflectionSummaryCharLength: 34,
         reflectionSubjectListRowCount: 5,
         
-        latestPostClassName: 'latest-post',
+        latestPostClassName: 'curation-post',
         postIndexClassName: 'post-index',
-        className: 'title_box',
+        className: 'section-header',
         sectionHeaderItemListRowCount: 0
     }),
 
@@ -71,9 +71,9 @@ export const siteMeta = Object.freeze({
         sectionHeaderIconAlt: 'Photolog Icon',
         captionImgId: 'photolog-caption-img',
         captionId: 'photolog-caption-text',
-        className: 'title_box',
+        className: 'section-header',
         text: '포토로그 (photolog)',
-        teaserListClassName: 'teaser-list',
+        teaserListClassName: 'curation-post',
         teaserClassName: 'teaser-figure',
         thumbnailClassName: 'photolog-thumbnail',
         thumbnailImgAlt: 'photolog-thumbnail-image',
@@ -88,7 +88,7 @@ export const siteMeta = Object.freeze({
         sectionHeaderIconAlt: 'links Title Icon',
         captionId: 'links-caption-text',
         captionImgId: 'links-caption-img', 
-        className: 'title_box',
+        className: 'section-header',
         text: '링크 (references)',
         linkListId: 'links_list',
         linkItemListClassName: 'links_item_list'

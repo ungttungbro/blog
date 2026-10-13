@@ -1,0 +1,24 @@
+#archive .title,
+.viewer .title {
+    display: block;
+    width: 100%;
+
+    box-sizing: border-box;
+    font-weight: bold;
+
+    line-height: 1.8;
+    
+    white-space: nowrap;
+    
+    overflow: hidden;
+    
+    text-overflow: ellipsis;
+}
+
+#archive a:hover .title {
+    color: var(--base-anchor-hover-color-A);
+}
+
+#archive a:hover .summary {
+    color: var(--base-anchor-hover-color-B);
+}
