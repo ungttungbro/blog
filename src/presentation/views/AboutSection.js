@@ -74,7 +74,7 @@ export class AboutSection {
 
     const data = this.aboutService.aboutData.specs;
     for (const [key, value] of data) {
-      const img = SiteLibrary.createImgElement('small-icon', '',  value[1], '');
+      const img = SiteLibrary.createImgElement('medium-icon', '',  value[1], '');
       const figure = SiteLibrary.createImgCaption(img, null, value[0]);
       specs_element.appendChild(figure);
     }

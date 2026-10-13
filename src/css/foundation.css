@@ -15,9 +15,13 @@
 @import "./sections/photolog.css";
 @import "./sections/links.css";
 
+/*@import "./theme/light.css";
+@import "./theme/dark.css";
+@import "./theme/theme.css";*/
+
 #content-primary {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 22rem;
+  grid-template-columns: 1.7fr 1fr 21rem;
   gap: 1.25rem;
   
   align-items: stretch;
@@ -27,7 +31,7 @@
 
 #content-secondary {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 22rem;
+  grid-template-columns: 1fr 1.7fr 21rem;
   align-items: stretch;
 
   gap: 1.25rem;
@@ -37,7 +41,7 @@
 
 #content-tertiary {
   display: none;
-  grid-template-columns: 1fr 1fr 22rem;
+  grid-template-columns: 1fr 1fr 21rem;
   align-items: stretch;
 
   gap: 1.25rem;
@@ -50,6 +54,7 @@
   justify-content: space-between;
 }
 
+
 /* 세로 모드 2단 (portrait) */
 @media (orientation: portrait), (max-width: 1152px) {
   html {
@@ -57,7 +62,7 @@
   }
 
   main {
-    padding: 4.5rem 1rem 1rem 1rem;
+    padding: 4.2rem 1rem 1rem 1rem;
   }
 
   footer {
@@ -105,7 +110,7 @@
   }
 
   #taskbar {
-    grid-template-columns: 1fr 0rem 2.5rem 2rem;
+    grid-template-columns: 1fr 2.5rem 2rem;
     height: 3rem;
     border: none;
   }

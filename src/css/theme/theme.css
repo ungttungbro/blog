@@ -1,0 +1,73 @@
+html {
+    background-color: var(--background-color);
+
+    font-style: var(--base-fonts);
+    font-weight: var(--font-weight);
+
+    color: var(--font-color);
+}
+
+footer {
+    font-weight: bold;
+}
+
+header { background-color: var(--header-background-color); }
+footer { background-color: var(--footer-background-color); }
+hr { border: var(--curation-page-hr); }
+
+.meta, .title, .summary { font-weight: var(--font-weight); }
+.meta { color: var(--font-color-meta); }
+.summary { color: var(--font-color-description); }
+
+.section-header {
+    background-color: var(--section-header-background-color);
+    padding: 0.5rem;
+    border: var(--section-header-border);
+}
+
+.section-header:hover {
+    background-color: var(--section-header-background-hover-color);
+}
+
+#about #profile, #links .links_item_list { 
+    background-color: var(--section-box-background-color);
+    border: var(--section-box-border);
+}
+
+#photolog .figure-content { color: var(--font-color-description); }
+#photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A); }
+
+
+.links_item_list a:hover { color: var(--font-color-anchor-color-A); }
+#about a:hover { color: var(--font-color-anchor-color-A); }
+#writings a:hover .title, 
+#lifelog a:hover .title, 
+#reflection a:hover .title, 
+#archive a:hover .title { 
+    color: var(--font-color-anchor-color-A); 
+}
+
+#writings a:hover .summary,
+#reflection a:hover .summary,
+#photolog .teaser-figure:hover .figure-content {
+    color: var(--font-color-anchor-color-B);
+}
+
+#taskbar .task-bar-item,
+#taskbar .task-bar-group {
+    background-color: var(--taskbar-task-item-background-color);
+    border: var(--taskbar-task-item-border);
+    color: var(--font-color);
+}
+
+#taskbar .task-bar-item:hover,
+#taskbar .task-bar-group:hover {
+    background-color: var(--taskbar-task-item-background-hover-color);
+    border: var(--taskbar-task-item-border);
+    color: var(--font-color);
+}
+
+#taskbar .task-item-close { filter: var(--taskbar-task-item-close); }
+#taskbar .task-item-close:hover {
+    background-color: var(--taskbar_task-item-close-background-hover-color);
+}

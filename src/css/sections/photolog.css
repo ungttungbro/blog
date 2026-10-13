@@ -3,7 +3,6 @@
     --photolog-thumbnail-height-size: 4.4rem;
 }
 
-
 #photolog .curation-post {
     margin-top: 0.5rem;
 }
@@ -39,10 +38,7 @@
 
 .figure-title {
     display: block;
-
-    color: var(--base-font-color);
     font-size: 1rem;
-    font-weight: bold;
 }
 
 .figure-content {
@@ -50,8 +46,6 @@
     color: var(--section-font-description-color);
 
     line-height: 1.5;
-
-    font-weight : bold;
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -78,7 +72,6 @@
     padding: 1rem;
     padding-bottom: 0.25rem;
 
-    font-weight: bold;
     font-size: 1rem;
 }
 
@@ -86,7 +79,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    /*max-height: 45rem;*/
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -116,36 +108,34 @@
 }
 
 
-
 /*
     photolog content viewer style
 */
 
-#viewer-content-photolog-index-viewer .figure-title {
+#photolog-post-list-all-viewer .figure-title {
     font-size: 1rem;
-    font-weight: bold;
     color: var(--base-font-color);
 }
 
-#viewer-content-photolog-index-viewer .figure-content {
+#photolog-post-list-all-viewer .figure-content {
     font-size: 0.95rem;
     color: var(--base-font-color);
 }
 
-#viewer-content-photolog-index-viewer .photolog-header-panel  {
+#photolog-post-list-all-viewer .photolog-header-panel  {
     padding-left: 0.5rem;
     padding-right: 0.75rem;
     padding-top: 0.5rem;
     padding-bottom: 0.25rem;
 }
 
-#viewer-content-photolog-index-viewer .photolog-header-panel,
-#viewer-content-photolog-index-viewer .photolog-content-panel,
-#viewer-content-photolog-index-viewer .photolog-footer-panel  {
+#photolog-post-list-all-viewer .photolog-header-panel,
+#photolog-post-list-all-viewer .photolog-content-panel,
+#photolog-post-list-all-viewer .photolog-footer-panel  {
     scroll-snap-align: unset;
     scroll-snap-stop: unset;
     scroll-margin-top: unset;
 }
 
-#viewer-content-photolog-index-viewer .teaser-figure:hover .figure-title { color: var(--base-anchor-hover-color-A); }
-#viewer-content-photolog-index-viewer .teaser-figure:hover .figure-content { color: var(--base-anchor-hover-color-B); }
+#photolog-post-list-all-viewer .teaser-figure:hover .figure-title { color: var(--base-anchor-hover-color-A); }
+#photolog-post-list-all-viewer .teaser-figure:hover .figure-content { color: var(--base-anchor-hover-color-B); }

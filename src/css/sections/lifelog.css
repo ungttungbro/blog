@@ -2,10 +2,6 @@
     margin-bottom: 0.5rem;
 }
 
-#lifelog .title {
-    font-weight: bold;
-}
-
 #lifelog a:hover .title {
     color: var(--base-anchor-hover-color-A);
 }

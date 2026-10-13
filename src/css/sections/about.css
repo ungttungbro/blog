@@ -1,6 +1,6 @@
 :root {  
-  --photo-zone-width-size: 22rem;
-  --photo-zone-height-size: 16.5rem;
+  --photo-zone-width-size: 21rem;
+  --photo-zone-height-size: 16rem;
 }
 
 #about #photo-zone {
@@ -20,10 +20,8 @@
 }
 
 #about #profile {
-  color: var(--base-font-color);
   font-size: 0.9rem;
-  font-weight: bold;
-  
+    
   border: var(--base-border-line-medium-bold);
   border-radius: var(--base-border-radius-light-medium);
 
@@ -33,6 +31,11 @@
   padding-right: 0.75rem;
   padding-top: 0.5rem;
   padding-bottom: 0.75rem;
+}
+
+#about .medium-icon {
+  display: flex;
+  float: left;
 }
 
 #about #thumbnails {

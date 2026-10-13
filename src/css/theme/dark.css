@@ -1,0 +1,30 @@
+[ data-theme = "dark" ] {
+    --base-fonts : "Pretendard", sans-serif;
+    --font-weight: 400;
+    --font-color: #eaecee;
+    --font-color-description: #abadaf;
+    --font-color-meta: #9a9c9e;
+    --font-color-anchor-color-A: #ffc900;
+    --font-color-anchor-color-B: #cdcdcd;
+
+    --theme-toggle-button: url(/assets/icons/dark-mode-img/light-toggle.png);
+
+    --background-color: #000000;
+    --header-background-color: #181818;
+    --section-header-background-color: #181818;
+    --section-header-background-hover-color: #2b2d2f;
+    --section-box-background-color: #181818;
+    --taskbar-task-item-background-color: #2a2c2e;
+    --taskbar-task-item-background-hover-color: #3b3d3f;
+    --taskbar_task-item-close-background-hover-color: #2f2f2f;
+    --footer-background-color: #181818;
+
+    --section-header-border: none;
+    --section-box-border: none;
+    --taskbar-task-item-border: none;
+    --curation-page-hr: 1px solid rgba(255, 255, 255, 0.06);
+
+    --taskbar-task-item-close: invert(0);
+
+    
+}

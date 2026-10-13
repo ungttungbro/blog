@@ -104,11 +104,11 @@ export const siteMeta = Object.freeze({
         reflectionSummaryListCharLength: 30,
         reflectionTitleListCharLength: 34,
         
-        writingsListViewerId: 'blog_post_list_all_viewer',
-        lifelogListViewerId: 'lifelog_post_list_all_viewer',
-        archiveListViewerId: 'archive_list_all_viewer',
-        reflectionListViewerId: 'reflection_post_list_all_viewer',
-        photologListViewerId: 'photolog-index-viewer',
+        writingsListViewerId: 'blog-post-list-all-viewer',
+        lifelogListViewerId: 'lifelog-post-list-all-viewer',
+        archiveListViewerId: 'archive-post-list-all-viewer',
+        reflectionListViewerId: 'reflection-post-list-all-viewer',
+        photologListViewerId: 'photolog-post-list-all-viewer',
 
         writingsSectionListName: '라이팅스 (writings) 목록',
         lifelogSectionListName: '라이프로그 (lifelog) 목록',

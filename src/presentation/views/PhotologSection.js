@@ -52,7 +52,7 @@ export class PhotologSection {
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateSectionItems(data, section_meta_data);
+        const items = this.generateSectionItems('contents', data, section_meta_data);
         el.appendChild(items);
     }
 
@@ -126,7 +126,7 @@ export class PhotologSection {
             e.preventDefault();
 
             const data = await this.getOriginalDTO();            
-            const items = this.generateSectionItems(data, config);
+            const items = this.generateSectionItems('post-index', data, config);
 
             Templates.openPost(
                 config.photologListViewerId,
@@ -146,11 +146,16 @@ export class PhotologSection {
         return section_header;
     }
     
-    generateSectionItems(data, config) {
+    generateSectionItems(type, data, config) {
         const frag = document.createDocumentFragment();
 
         const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = config.teaserListClassName;
+
+        if (type === 'contents') {
+            element.className = config.teaserListClassName;
+        } else {
+            element.className = 'post-index';
+        }
 
         let index = 0;
         for (const [key, value] of data) {

@@ -5,20 +5,19 @@
 
 .meta { 
     font-size: 0.9rem;
-    font-weight: bold;
     color: var(--section-font-meta-color);
+    font-weight: bold;
 }
 
 .title   { 
-    font-size:1rem; 
-    color: var(--base-font-color);
+    font-size:1rem;
     font-weight: bold;
 }
 
 .summary { 
-    font-size: 0.95rem; 
-    font-weight : bold;
+    font-size: 0.95rem;
     color: var(--section-font-description-color);
+    font-weight: bold;
 }
 
 .curation-post {
@@ -34,7 +33,7 @@
   padding-right: 0.25rem;
 }
 
-.curation-post  hr {
+.curation-post hr {
   width: 100%;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -51,7 +50,6 @@
   border-radius: var(--base-border-radius-light-medium);
   
   font-size : 1.05rem;
-  font-weight: bold;
   
   margin: 0;
   margin-bottom: var(--base-margin-size-tiny);
@@ -75,7 +73,6 @@
 }
 
 .more-options {
-  font-weight: bold;
   letter-spacing: 0.025rem;
   margin-right: 0.25rem;
 }

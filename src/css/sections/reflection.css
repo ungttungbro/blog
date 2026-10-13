@@ -1,7 +1,3 @@
-#reflection .title {
-    font-weight: bold;
-}
-
 #reflection a:hover .title {
     color: var(--base-anchor-hover-color-A);
     

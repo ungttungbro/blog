@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 6rem 1fr 2.5rem 2rem;
   
-  min-height: 3rem;
+  min-height: 2.6rem;
   box-sizing: border-box;
 
   padding-left: 0.5rem;
@@ -33,7 +33,7 @@
   border-radius: 0.5rem;
   border: var(--base-border-line-medium-bold);
 
-  padding: 0.6rem;
+  padding: 0.4rem;
 
   color: var(--base-font-color);
   font-weight: bold;
@@ -151,7 +151,7 @@
 
     align-self: center;
 
-    /*background-image: var(--base-theme-toggle-button);*/
+    background-image: var(--theme-toggle-button);
     background-size: cover;
     background-position: center;
 }
