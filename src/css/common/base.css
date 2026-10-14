@@ -7,8 +7,8 @@
 
   --base-font-light : 0.9rem;
   --base-font-light-medium : 0.95rem;
-  --base-font-medium : 1rem;
-  --base-font-large : 1.2rem;
+  --base-font-medium : 1.5rem;
+  --base-font-large : 2rem;
 
   --base-font-color : #3a3c3e;
   --base-font-hover-color : #e25e0b;
@@ -181,7 +181,7 @@ hr {
   width: var(--base-medium-icon-size);
   height: var(--base-medium-icon-size);
 
-  margin-right: 0.1rem;
+  margin-right: 0.3rem;
   margin-left: 0.25rem;
 }
 

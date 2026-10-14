@@ -8,7 +8,7 @@
 }
 
 #writings .summary, 
-.post-index .summary {
+#blog-post-list-all-viewer .post-index .summary {
     line-height: 1.6;
 
     display: -webkit-box;

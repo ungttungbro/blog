@@ -19,6 +19,12 @@
   animation: fadeIn 500ms ease forwards;
 }
 
+#about #specs figure figcaption {
+  display: flex;
+  align-items: center;
+  padding-top: 0.1rem;
+}
+
 #about #profile {
   font-size: 0.9rem;
     
@@ -34,10 +40,8 @@
 }
 
 #about .small-icon {
-  display: flex;
   float: left;
-
-  margin-right: 0.3rem;
+  margin-right: 0.4rem;
 }
 
 #about #thumbnails {

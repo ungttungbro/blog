@@ -66,7 +66,7 @@ export class ReflectionSection {
 
         const title_span = document.createElement('span');
         title_span.className = 'title';
-        title_span.textContent = title;
+        title_span.textContent = '「' + title + '」' + ' ';
 
         const summary_span = document.createElement('span');
         summary_span.className = 'summary';

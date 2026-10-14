@@ -153,8 +153,8 @@
     padding-bottom: 0.5rem;
   }
   
-  .blog-post-photo-container img {
-    max-width: 100%;
+  .blog-post-photo-container {
+    width: 100%;
     height: auto;
   }
 
@@ -175,7 +175,7 @@
 
   #about #photo-zone {
     width: 100%; 
-    height: 17.5rem;
+    height: auto;
     box-sizing: border-box;
   }
 

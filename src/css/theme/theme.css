@@ -35,7 +35,7 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
 }
 
 #photolog .figure-content { color: var(--font-color-description); }
-#photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A); }
+#photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A);}
 
 
 .links_item_list a:hover { color: var(--font-color-anchor-color-A); }
@@ -44,7 +44,7 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
 #lifelog a:hover .title, 
 #reflection a:hover .title, 
 #archive a:hover .title { 
-    color: var(--font-color-anchor-color-A); 
+    color: var(--font-color-anchor-color-A);
 }
 
 #writings hr, 
@@ -100,7 +100,8 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
     color: var(--font-color);
 }
 
-.viewer .blog-post { font-size: 1.1rem; }
+.viewer .blog-post { font-size: 1.2rem; line-height: 2rem;}
+.viewer .blog-post .meta { font-size: 1rem; }
 .viewer .blog-post p { font-weight: var(--font-weight); }
 
 .viewer a:hover .title { color: var(--font-color-anchor-color-A); }

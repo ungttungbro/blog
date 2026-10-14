@@ -101,16 +101,16 @@
         "entries": {
             "20260301A" : {
                 "date" : "2026.03.01.", 
-                "title" : "첫 직장", 
-                "description" : "나는 전문대학을 졸업한 뒤, 26살 겨울에 사회인으로서 첫 직업을 갖게 되었다.",
+                "title" : "첫 직장 에서", 
+                "description" : "개발자로 필드에 데뷔하던 순간!! 좌충우돌 조나스의 성장기를 회고해 보았습니다.",
                 "orientation" : "landscape",
                 "contentUrl" : "20260301A.html"
             },
 
             "20260228A" : {
                 "date" : "2026.02.28.", 
-                "title" : "덕수정보산업고등학교", 
-                "description" : "나는 덕수정보산업고등학교라는 학교를 나왔다.", 
+                "title" : "그때 그시절 우리학교는", 
+                "description" : "공부도 못하고, 놀지도 못했던 10대 후반, 조나스를 품어주었던 우리학교", 
                 "orientation" : "landscape",
                 "contentUrl" : "20260228A.html"
             },
@@ -118,7 +118,7 @@
             "20260219A" : {
                 "date" : "2026.02.19.", 
                 "title" : "진격의 연일전자", 
-                "description" : "나는 대학교 1학년을 마치고 휴학한뒤 군대를 가기로 했다.", 
+                "description" : "풋풋했던 20대 초반, 나는 안산 반월공단 외진곳의 컴퓨터 공장의 수리사 조나스", 
                 "orientation" : "landscape",
                 "contentUrl" : "20260219A.html"
             },
@@ -134,7 +134,7 @@
             "20260101A" : {
                 "date" : "2026.02.19.", 
                 "title" : "바보 조나스", 
-                "description" : "얼마 전 『바보 빅터』라는 책을 읽다가 문득 어린 시절의 내가 떠올랐다.", 
+                "description" : "얼마 전 『바보 빅터』라는 책을 읽다가 문득 어린 시절의 내가 떠올랐는데, 책 내용과는 이무런 상관이 없어요.",
                 "orientation" : "landscape",
                 "contentUrl" : "20260101A.html"
             }

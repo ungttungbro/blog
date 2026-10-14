@@ -2,18 +2,36 @@
     line-height: 1.4;
 }
 
+#reflection .title {
+    display: inline;
+    margin-right: 0.25rem;
+}
+
+#reflection .summary {
+    display: inline;
+}
+
 #reflection a:hover .title {
     color: var(--base-anchor-hover-color-A);
 }
 
-#reflection .summary,
-.reflection-header-panel .summary {
-    line-height: 1.6rem;
+.reflection-header-panel .reflection-section-item-panel .title {
+    display: inline;
+    margin-right: 0.25rem;
+    font-size: 1rem;
+}
 
+.reflection-header-panel .reflection-section-item-panel .title {
+    display: inline;
+}
+
+#reflection .reflection-section-item-panel,
+.reflection-header-panel .reflection-section-item-panel {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
 
+    line-height: 1.5rem;
     overflow: hidden;
 }
 
