@@ -80,7 +80,7 @@ main {
   width: 100%;
   
   text-align: initial;
-  padding: 4.5rem 1.25rem 0.25rem 1.25rem;
+  padding: 4rem 1rem 0 1rem;
   margin: auto;
   
   position: relative; /* pseudo-element 기준 */
@@ -146,7 +146,6 @@ h1 {
 
 h2 {
   font-size: var(--base-font-medium);
-  color: var(--base-font-color);
   font-weight: bold;
   padding-top : 0rem;
   padding-bottom : var(--base-margin-size-light);
@@ -154,7 +153,6 @@ h2 {
 
 h3 {
   font-size: var(--base-font-large);
-  color: var(--base-font-color);
   font-weight: bold;
   padding-top : 0rem;
   line-height: 1.25;

@@ -166,7 +166,7 @@ export class PhotologSection {
                 value.title,
                 value.description +
                             "<br>" +
-                            "<p style=\"font-size:0.9rem; color:var(--base-anchor-hover-color-A); line-height: 3;\">" +
+                            "<p style=\"font-size:0.9rem; color:var(--font-color-anchor-color-A); line-height: 3;\">" +
                             "&#128247;&nbsp;&nbsp" +
                             value.date + " · " +
                             value.tags.map(tag => '#' + tag).join(" · ") +

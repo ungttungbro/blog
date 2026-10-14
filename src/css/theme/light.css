@@ -1,8 +1,10 @@
 [ data-theme = "light" ] {
     --base-fonts : "Pretendard", sans-serif;
     --font-weight: 600;
+
     --font-color: #3a3c3e;
     --font-color-description: #6a6c6e;
+    
     --font-color-meta: #7a7c7e;
     --font-color-anchor-color-A: #e25e0b;
     --font-color-anchor-color-B: #1a1c1e;
@@ -11,18 +13,30 @@
 
     --background-color: #fafcfe;
     --header-background-color: #eaecef;
+    
     --section-header-background-color: none;
     --section-header-background-hover-color: #eaecef;
     --section-box-background-color: none;
-    --taskbar-task-item-background-color: #f0f2f4;
-    --taskbar-task-item-background-hover-color: #ffffff;
+    
+    --taskbar-task-item-background-color: #f0f0f0;
+    --taskbar-task-item-background-hover-color: #e0e0e0;
+    --taskbar-task-item-group-background-color: #fbfdff;
     --taskbar_task-item-close-background-hover-color: #111111;
-    --footer-background-color: #eaecef;    
+
+    --viewer-background-color: #fafcfe;
+    --viewer-title-bar-background-color: #eaecee;
+    --viewer-title-bar-active-background-color: #caccce;
+    --viewer-footer-background-color: #caccce;
+    
+    --footer-background-color: #eaecef;
 
     --section-header-border: 1px solid rgba(180, 180, 180, 0.75);
     --section-box-border: 1px solid rgba(180, 180, 180, 0.75);
+    
     --taskbar-task-item-border: 1px solid rgba(180, 180, 180, 0.75);
+    
     --curation-page-hr : 1px solid rgba(0, 0, 0, 0.04);
 
     --taskbar-task-item-close: invert(1);
+    --viewer-windoow-button: invert(1);
 }

@@ -18,8 +18,8 @@
     align-self: center;
 
     margin-top: 0;
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 #taskbar .task-bar-item,
@@ -44,7 +44,7 @@
 
   background-color: #f2f2f2;
   
-  margin-left: 0.1rem;
+  margin-left: 0.15rem;
   
   user-select: none;
 }
@@ -58,11 +58,9 @@
   
   background-color: #f2f2f2;
 
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 
-  line-height: 1rem;
-
-  margin-top: 0.35rem;
+  margin-top: 0.2rem;
 
   box-shadow: 0 0 0 0.025rem rgba(255,255,255,0.025),
               0 0.1rem 0.3rem rgba(0,0,0,0.25);;
@@ -89,9 +87,9 @@
   color: var(--base-font-color);
 
   padding-left: 0.5rem;
-  padding-right: 0.4rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   
   justify-content: space-between;
   margin: 0 auto;
@@ -99,11 +97,6 @@
 
 #taskbar .task-bar-group .task-group-items .task-bar-item:hover {
   color : var(--base-anchor-hover-color-A);
-}
-
-#taskbar .task-bar-group .task-bar-item .medium_icon {
-    width: 0.8rem;
-    height: auto;
 }
 
 #taskbar .task-bar-item figure,

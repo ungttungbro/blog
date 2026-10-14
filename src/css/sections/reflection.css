@@ -1,10 +1,15 @@
+#reflection {
+    line-height: 1.4;
+}
+
 #reflection a:hover .title {
     color: var(--base-anchor-hover-color-A);
-    
 }
 
 #reflection .summary,
 .reflection-header-panel .summary {
+    line-height: 1.6rem;
+
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;

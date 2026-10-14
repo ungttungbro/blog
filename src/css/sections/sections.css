@@ -5,8 +5,8 @@
 
 .meta { 
     font-size: 0.9rem;
-    color: var(--section-font-meta-color);
     font-weight: bold;
+    color: var(--section-font-meta-color);
 }
 
 .title   { 
@@ -66,6 +66,10 @@
   display: flex;
   align-items: center;
   margin: 0; /* 기본 margin 제거 중요 */
+}
+
+.section-header figure .medium-icon {
+  margin-right: 0.3rem;
 }
 
 .section-header:hover {

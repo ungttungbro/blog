@@ -87,7 +87,7 @@ export class SiteLibrary {
   static createImgCaption(image_element, caption_id, caption_text) {
     const caption = document.createElement('figcaption');
     caption.id = caption_id;
-    caption.innerHTML = '&nbsp;' + caption_text;
+    caption.textContent = caption_text;
 
     const figure = document.createElement('figure');
     figure.appendChild(image_element);

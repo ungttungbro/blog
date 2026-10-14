@@ -4,7 +4,7 @@
 }
 
 #photolog .curation-post {
-    margin-top: 0.5rem;
+    margin-top: var(--base-margin-size-tiny);
 }
 
 #photolog .teaser-figure:hover .figure-title { 
@@ -15,7 +15,7 @@
     color: var(--base-anchor-hover-color-B); 
 }
 
-#photolog .teaser-figure:hover .photolog-thumbnail {
+.teaser-figure:hover .photolog-thumbnail {
     transform: scale(1.0);
     opacity: 0.8;
 }
@@ -52,16 +52,6 @@
     -webkit-line-clamp: 2;
 
     overflow: hidden;
-}
-
-
-/*photolog index viewer style*/
-
-#photolog-index-viewer .photolog-header-panel {
-    padding-top: 0.75rem;
-    padding-left : 0.5rem;
-    padding-right : 0.5rem;
-    padding-bottom: 0.75rem;
 }
 
 .photolog-header-panel {
@@ -123,8 +113,8 @@
 }
 
 #photolog-post-list-all-viewer .photolog-header-panel  {
-    padding-left: 0.5rem;
-    padding-right: 0.75rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
     padding-top: 0.5rem;
     padding-bottom: 0.25rem;
 }

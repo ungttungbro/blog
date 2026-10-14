@@ -7,12 +7,9 @@ html {
     color: var(--font-color);
 }
 
-footer {
-    font-weight: bold;
-}
-
 header { background-color: var(--header-background-color); }
-footer { background-color: var(--footer-background-color); }
+footer { background-color: var(--footer-background-color); font-weight: bold;}
+
 hr { border: var(--curation-page-hr); }
 
 .meta, .title, .summary { font-weight: var(--font-weight); }
@@ -22,6 +19,7 @@ hr { border: var(--curation-page-hr); }
 .section-header {
     background-color: var(--section-header-background-color);
     padding: 0.5rem;
+    font-weight: bold;
     border: var(--section-header-border);
 }
 
@@ -60,6 +58,15 @@ hr { border: var(--curation-page-hr); }
     color: var(--font-color);
 }
 
+#taskbar .task-group-items { 
+    background-color: var(--taskbar-task-item-group-background-color);
+}
+
+#taskbar .task-bar-group .task-group-items .task-bar-item { 
+    color: var(--font-color);
+    border: 0;
+}
+
 #taskbar .task-bar-item:hover,
 #taskbar .task-bar-group:hover {
     background-color: var(--taskbar-task-item-background-hover-color);
@@ -67,7 +74,37 @@ hr { border: var(--curation-page-hr); }
     color: var(--font-color);
 }
 
-#taskbar .task-item-close { filter: var(--taskbar-task-item-close); }
-#taskbar .task-item-close:hover {
-    background-color: var(--taskbar_task-item-close-background-hover-color);
+#taskbar .task-bar-group .task-group-items .task-bar-item:hover {
+    background-color: var(--taskbar-task-item-background-hover-color);
+    color : var(--font-color-anchor-color-A); 
 }
+
+#taskbar .task-item-close { filter: var(--taskbar-task-item-close); }
+#taskbar .task-item-close:hover { background-color: var(--taskbar_task-item-close-background-hover-color); }
+
+.viewer {
+    background-color: var(--viewer-background-color);
+    color: var(--font-color);
+}
+
+.viewer .blog-post { font-size: 1.1rem; }
+.viewer .blog-post p { font-weight: var(--font-weight); }
+
+.viewer .meta {
+    color: var(--font-color-meta);
+    font-size: 0.95rem;
+}
+
+.viewer .title-bar { 
+    background-color: var(--viewer-title-bar-background-color); 
+    color: var(--font-color);
+}
+
+.viewer .title-bar.active { background-color: var(--viewer-title-bar-active-background-color); }
+.viewer .window_button { filter : var(--viewer-windoow-button); }
+.viewer .footer-panel { background-color: var(--viewer-footer-background-color); }
+
+#photolog-post-list-all-viewer .figure-title { color: var(--font-color); }
+#photolog-post-list-all-viewer .figure-content { color: var(--font-color-description); }
+#photolog-post-list-all-viewer .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A); }
+#photolog-post-list-all-viewer .teaser-figure:hover .figure-content { color: var(--font-color-anchor-color-B); }
