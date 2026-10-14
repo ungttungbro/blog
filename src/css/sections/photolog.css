@@ -15,6 +15,10 @@
     color: var(--base-anchor-hover-color-B); 
 }
 
+#photolog hr {
+    border: 0; 
+}
+
 .teaser-figure:hover .photolog-thumbnail {
     transform: scale(1.0);
     opacity: 0.8;
@@ -117,6 +121,12 @@
     padding-right: 0.25rem;
     padding-top: 0.5rem;
     padding-bottom: 0.25rem;
+}
+
+#photolog-post-list-all-viewer .photolog-header-panel hr {
+    border: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #photolog-post-list-all-viewer .photolog-header-panel,

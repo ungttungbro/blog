@@ -15,6 +15,7 @@
 
   --base-margin-size-tiny : 0.25rem;
   --base-margin-size-light : 0.5rem;
+  --base-margin-size-light-medium : 0.75rem;
   --base-margin-size-medium : 1rem;
   --base-margin-size-large : 1.5rem;
 
@@ -160,8 +161,8 @@ h3 {
 }
 
 hr {
-  border: 1px dashed #dfdfdf;
-  
+  border: 0;
+  border: 1px dashed #dfdfdf;  
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
 }

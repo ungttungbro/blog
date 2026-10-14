@@ -10,15 +10,13 @@ html {
 header { background-color: var(--header-background-color); }
 footer { background-color: var(--footer-background-color); font-weight: bold;}
 
-hr { border: var(--curation-page-hr); }
-
 .meta, .title, .summary { font-weight: var(--font-weight); }
 .meta { color: var(--font-color-meta); }
 .summary { color: var(--font-color-description); }
 
 .section-header {
     background-color: var(--section-header-background-color);
-    padding: 0.5rem;
+    padding: 0.65rem;
     font-weight: bold;
     border: var(--section-header-border);
 }
@@ -32,6 +30,10 @@ hr { border: var(--curation-page-hr); }
     border: var(--section-box-border);
 }
 
+#about .about-photo {
+    filter : drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));
+}
+
 #photolog .figure-content { color: var(--font-color-description); }
 #photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A); }
 
@@ -43,6 +45,17 @@ hr { border: var(--curation-page-hr); }
 #reflection a:hover .title, 
 #archive a:hover .title { 
     color: var(--font-color-anchor-color-A); 
+}
+
+#writings hr, 
+#archive hr,
+#reflection hr, 
+#about hr, 
+#links hr,
+.viewer hr {
+    width: 90%;
+    border: none;
+    border-top: var(--curation-page-hr);
 }
 
 #writings a:hover .summary,
@@ -90,6 +103,9 @@ hr { border: var(--curation-page-hr); }
 .viewer .blog-post { font-size: 1.1rem; }
 .viewer .blog-post p { font-weight: var(--font-weight); }
 
+.viewer a:hover .title { color: var(--font-color-anchor-color-A); }
+.viewer a:hover .summary { color: var(--font-color-anchor-color-B);  }
+
 .viewer .meta {
     color: var(--font-color-meta);
     font-size: 0.95rem;
@@ -103,6 +119,10 @@ hr { border: var(--curation-page-hr); }
 .viewer .title-bar.active { background-color: var(--viewer-title-bar-active-background-color); }
 .viewer .window_button { filter : var(--viewer-windoow-button); }
 .viewer .footer-panel { background-color: var(--viewer-footer-background-color); }
+
+.lifelog-header-panel hr {
+    visibility: hidden;
+}
 
 #photolog-post-list-all-viewer .figure-title { color: var(--font-color); }
 #photolog-post-list-all-viewer .figure-content { color: var(--font-color-description); }

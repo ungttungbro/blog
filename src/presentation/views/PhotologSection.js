@@ -178,7 +178,7 @@ export class PhotologSection {
             
             if (++index < data.size) {
                 frag.appendChild(document.createElement('hr'));
-            }    
+            }
         }
 
         element.appendChild(frag);

@@ -1,6 +1,10 @@
 #lifelog {
     margin-bottom: 0.5rem;
-    line-height: 1.5;
+    line-height: 1.55;
+}
+
+#lifelog hr {
+    visibility: hidden;
 }
 
 #lifelog a:hover .title {

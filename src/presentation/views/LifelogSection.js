@@ -114,7 +114,7 @@ export class LifelogSection {
             section_name,                 
             section_icon,
             title,
-            orientation, 1, 1.01, 0.8, 1.15,
+            orientation, 1, 1.05, 0.8, 1.2,
             header, data, footer
         );
     }

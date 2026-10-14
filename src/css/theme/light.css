@@ -35,7 +35,7 @@
     
     --taskbar-task-item-border: 1px solid rgba(180, 180, 180, 0.75);
     
-    --curation-page-hr : 1px solid rgba(0, 0, 0, 0.04);
+    --curation-page-hr : 1px solid rgba(0, 0, 0, 0.15);
 
     --taskbar-task-item-close: invert(1);
     --viewer-windoow-button: invert(1);
