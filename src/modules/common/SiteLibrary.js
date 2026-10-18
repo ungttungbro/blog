@@ -118,10 +118,16 @@ export class SiteLibrary {
     content.className = 'figure-content';
     content.innerHTML = content_text;
 
+    const caption = document.createElement('div');
+    caption.className = 'image-caption';
+
+    caption.appendChild(title);
+    caption.appendChild(content);
+
     const figure = document.createElement('figure');
     figure.appendChild(image_element);
-    figure.appendChild(title);
-    figure.appendChild(content);
+
+    figure.appendChild(caption);
 
     return figure;
   }

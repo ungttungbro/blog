@@ -7,8 +7,8 @@
 
   --base-font-light : 0.9rem;
   --base-font-light-medium : 0.95rem;
-  --base-font-medium : 1.5rem;
-  --base-font-large : 2rem;
+  --base-font-medium : 1.25rem;
+  --base-font-large : 1.5rem;
 
   --base-font-color : #3a3c3e;
   --base-font-hover-color : #e25e0b;
@@ -23,6 +23,7 @@
   --base-medium-icon-size : 1.5rem;
   --base-large-icon-size : 2rem;
 
+  --base-border-radius-tiny : 0.25rem;
   --base-border-radius-light : 0.25rem;
   --base-border-radius-light-medium : 0.5rem;
   --base-border-radius-medium : 0.75rem;
@@ -75,9 +76,6 @@ header {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-
   width: 100%;
   
   text-align: initial;

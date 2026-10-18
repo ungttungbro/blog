@@ -3,7 +3,7 @@
 }
 
 #archive .title,
-.viewer .title {
+#archive-post-list-all-viewer .title {
     display: block;
     width: 100%;
 

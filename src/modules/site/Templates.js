@@ -134,9 +134,7 @@ export class Templates {
             content_size.width, content_size.height, 
             section_name, section_icon, title, 
             (content_size.width * 0.6)
-        );
-
-        
+        );        
         
         try {
             this.mountViewerContents(

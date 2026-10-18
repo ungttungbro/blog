@@ -3,9 +3,7 @@
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
 
-import { taskbar } from "../../modules/taskbar/TaskBar.js";
-
-import { ELEMENT_TYPE, COMMON } from "../../modules/common/Constants.js";
+import { ELEMENT_TYPE } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 
 export class PhotologSection {
@@ -34,6 +32,22 @@ export class PhotologSection {
         return this.curation_data;
     }
 
+    setSectionHeaderClickHandler(handler) {
+        this.onSectionHeaderClick = handler;
+    }
+
+    getSectionHeaderClickHandler() {
+        return this.onSectionHeaderClick;
+    }
+
+    setPostClickHandler(handler) {
+        this.onPostClick = handler;
+    }
+
+    getPostClickHandler() {
+        return this.onPostClick;
+    }
+
     show() {
         try {
             const el = document.getElementById(this._SECTION_NAME);
@@ -44,75 +58,20 @@ export class PhotologSection {
         }
     }
 
-    createSection(el, data) {        
+    createSection(el, data) {
         const section_meta_data = siteMeta.selectSectionConfig(this._SECTION_NAME);
         if(!section_meta_data) return;
 
-        const section_header = this.generateSectionHeader(section_meta_data);
+        const section_header = this.generateSectionHeader(section_meta_data, this.onSectionHeaderClick);
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateSectionItems('contents', data, section_meta_data);
+        const items = this.generateSectionItems(data, section_meta_data, this.onPostClick);
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, thumbnail_path, title, text, photos_path) {
-        const thumbnail = SiteLibrary.createImgElement(
-            siteMeta.photolog.thumbnailClassName,
-            null,
-            thumbnail_path,
-            siteMeta.photolog.thumbnailImgAlt
-        );
-
-        const teaser = SiteLibrary.createImgTitleCaption(
-            thumbnail,
-            SiteLibrary.truncateText(title, 16),
-            text
-        );
-        
-        teaser.className = siteMeta.photolog.teaserClassName;
-        
-        const section_config = siteMeta.selectSectionConfig('photolog');
-        this.generateTeaserEvent(
-            section_config.typeName,
-            teaser, 
-            id,
-            orientation,
-            section_config.sectionHeaderIcon,
-            title, 
-            text, 
-            photos_path,
-            COMMON.COPYRIGHT
-        );
-        
-        return teaser;
-    }
-
-    createPhotoContents(key, data) {
-        const photo_container = document.createElement(ELEMENT_TYPE.DIV);
-        photo_container.className = 'photo-container';
-
-        const frag = document.createDocumentFragment();
-               
-        for (const content of data) {
-            const image = SiteLibrary.createImgElement(
-                siteMeta.photolog.photoClassName,
-                '',
-                this._BASE_PATH + key + '/' + content,
-                siteMeta.photolog.photoImgAlt
-            );
-
-            image.loading = 'lazy';
-
-            frag.appendChild(image);
-        }
-
-        photo_container.appendChild(frag);
-        
-        return photo_container;
-    }
-
-    generateSectionHeader(config) {
+    /* Section Header */
+    generateSectionHeader(config, onSectionHeaderClick) {
         const section_header = Templates.createSectionHeader(
             config.captionImgId, 
             config.captionId,
@@ -122,57 +81,33 @@ export class PhotologSection {
             config.sectionHeaderIconAlt
         );
 
-        section_header.addEventListener('click',  async e => {
-            e.preventDefault();
-
-            const data = await this.getOriginalDTO();            
-            const items = this.generateSectionItems('post-index', data, config);
-
-            Templates.openPost(
-                config.photologListViewerId,
-                config.typeName,
-                config.sectionHeaderIcon,
-                config.photologSectionListName,
-                'landscape', 0.9, 0.8, 0, 0,
-                items,
-                null,
-                COMMON.COPYRIGHT
-            );
-
-            const element = document.getElementById(config.photologListViewerId);
-            element.querySelector('#viewer-maximize-button').style.display = 'none';
-        });
+        this.generateSectionHeaderEvent(section_header, config, onSectionHeaderClick);
 
         return section_header;
     }
-    
-    generateSectionItems(type, data, config) {
-        const frag = document.createDocumentFragment();
 
+    generateSectionHeaderEvent(section_header_el, config, onSectionHeaderClick) {
+        section_header_el.addEventListener('click', e => {
+            e.preventDefault();
+            onSectionHeaderClick(config);
+        });
+    }
+
+    /* Content items */
+    generateSectionItems(data, config, onTeaserClick) {
         const element = document.createElement(ELEMENT_TYPE.DIV);
 
-        if (type === 'contents') {
-            element.className = config.teaserListClassName;
+        if(document.getElementById('photolog').querySelector('.' + config.teaserListClassName)) {
+            element.className = 'photolog-viewer-menu';
         } else {
-            element.className = 'post-index';
+            element.className = config.teaserListClassName;
         }
+
+        const frag = document.createDocumentFragment();
 
         let index = 0;
         for (const [key, value] of data) {
-            const sectionItemElement = this.createSectionItem(
-                value.id,
-                value.orientation,
-                this._BASE_PATH + "thumbnails/" + value.thumbnails,
-                value.title,
-                value.description +
-                            "<br>" +
-                            "<p style=\"font-size:0.9rem; color:var(--font-color-anchor-color-A); line-height: 3;\">" +
-                            "&#128247;&nbsp;&nbsp" +
-                            value.date + " · " +
-                            value.tags.map(tag => '#' + tag).join(" · ") +
-                            "</p>",
-                this._BASE_PATH + key + '/' + value.contentUrl
-            );
+            const sectionItemElement = this.createSectionItem(element.className, key, value, onTeaserClick);
 
             frag.appendChild(sectionItemElement);
             
@@ -186,80 +121,83 @@ export class PhotologSection {
         return element;
     }
 
-    generateTeaserEvent(section_name, element, id, orientation, section_icon, title, header, contents, footer) {        
-        element.addEventListener('click', e => {
-            e.preventDefault();
-            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
-        });
-    }
-
-    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
-        const data = await SiteLibrary.loadText(contents);
-
-        Templates.openPost(
-            id,
-            section_name,                 
-            section_icon,
-            title,
-            orientation, 1, 0.7, 0, 0,
-            header, data, footer
+    createSectionItem(type, key, value, onTeaserClick) {
+        const thumbnail = SiteLibrary.createImgElement(
+            siteMeta.photolog.thumbnailClassName,
+            null,
+            this._BASE_PATH + "thumbnails/" + value.thumbnails,
+            siteMeta.photolog.thumbnailImgAlt
         );
 
-        const photo_container_el = document.getElementById(id).querySelector('.photo-container');
-        const photo_container_parent = photo_container_el.closest('#content-area');
-        const footer_panel = photo_container_parent.querySelector('.photolog-footer-panel');
-
-        if (taskbar.taskBarElement.dataset.column > 2) {
-            photo_container_el.style.height =
-            `${photo_container_parent.clientHeight}px`;
-
-            const observer = new ResizeObserver(() => {
-                requestAnimationFrame(() => {
-                    photo_container_el.style.height =
-                        `${photo_container_parent.clientHeight - footer_panel.clientHeight}px`;
-                });
-            });
-
-            observer.observe(photo_container_parent);
+        let teaser_description;
+        if(type === 'photolog-viewer-menu') {
+            teaser_description = value.tags.map(tag => '#' + tag).join(" · ");
+        } else {
+            teaser_description = value.description;
         }
 
-        this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
+        const teaser = SiteLibrary.createImgTitleCaption(
+            thumbnail,
+            value.title,
+            teaser_description
+        );
+        
+        teaser.className = siteMeta.photolog.teaserClassName;
+        
+        const section_config = siteMeta.selectSectionConfig('photolog');
+        this.generateTeaserEvent(teaser, type, section_config.typeName, key, value, onTeaserClick);
+        
+        return teaser;
     }
 
-
-    generatePhotoScrollEvent(parent_el, target_el) {
-        parent_el.addEventListener('wheel', (event) => {
-            passive: false;
-
-            const atBottom =
-                parent_el.scrollTop + parent_el.clientHeight >=
-                parent_el.scrollHeight - 1;
-
-            const atLeft =
-                target_el.scrollLeft <= 0;
-
-            const atRight =
-                target_el.scrollLeft + target_el.clientWidth >=
-                target_el.scrollWidth - 1;
-
-            // 부모가 맨 아래이고, 아래로 스크롤
-            if (atBottom && event.deltaY > 0 && !atRight) {
-                target_el.scrollLeft += event.deltaY;
-                event.preventDefault();
-            }
-
-            // 부모가 맨 아래이고, 위로 스크롤
-            else if (atBottom && event.deltaY < 0) {
-                // 사진이 아직 왼쪽으로 갈 수 있음
-                if (!atLeft) {
-                    target_el.scrollLeft += event.deltaY;
-                    event.preventDefault();
-                // 사진이 이미 맨 왼쪽이면 부모를 위로
-                } else {
-                    parent_el.scrollTop += event.deltaY;
-                    event.preventDefault();
-                }
-            }
+    generateTeaserEvent(teaser_el, type, section_name, key, value, onTeaserClick) {
+        teaser_el.addEventListener('click', e => {
+            e.preventDefault();
+            onTeaserClick(type, section_name, key, value);
         });
+    }
+
+    
+    /* header content */
+    generatePhotoViewer(data, onTeaserClick) {
+        const element = document.createElement(ELEMENT_TYPE.DIV);
+        element.id = 'photolog-viewer';
+
+        const photolog_viewer_menu = this.generatePhotoViewerMenu(data, onTeaserClick);
+        const photolog_viewer_item = document.createElement('div');
+        photolog_viewer_item.className = 'photolog-viewer-item-detail';
+
+        element.appendChild(photolog_viewer_menu);       
+        element.appendChild(photolog_viewer_item);
+
+        return element;
+    }
+
+    generatePhotoViewerMenu(data, onTeaserClick) {
+        const frag = document.createDocumentFragment();
+
+        const element = document.createElement(ELEMENT_TYPE.DIV);
+        element.className = 'photolog-viewer-menu';
+
+        let index = 0;
+        for (const [key, value] of data) {
+            
+            const sectionItemElement = this.createSectionItem(
+                element.className, 
+                key, 
+                value, 
+                onTeaserClick
+            );
+
+            frag.appendChild(sectionItemElement);
+            
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }
+        }
+
+        element.appendChild(frag);
+
+        return element;
     }
 }

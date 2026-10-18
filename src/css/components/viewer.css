@@ -69,10 +69,16 @@
   background-color : #caccce;
 }
 
+/*.content-panel {
+  padding-bottom: 3rem;
+}*/
+
 .footer-panel {
   position: relative;
   background-color: #dadcde;
   color: var(--base_font-color);
+  height: 3rem;
+  z-index: 9999;
 }
 
 .window_button {

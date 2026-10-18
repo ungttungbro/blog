@@ -9,10 +9,13 @@
     --font-color-anchor-color-A: #e25e0b;
     --font-color-anchor-color-B: #1a1c1e;
 
+    --div-hover-color-A: #e9e9e9;
+
     --theme-toggle-button: url(/assets/icons/light-mode-img/dark-toggle.png);
 
     --background-color: #fafcfe;
     --header-background-color: #eaecef;
+    --header-background:  rgba(229, 230, 232, 0.7);
     
     --section-header-background-color: none;
     --section-header-background-hover-color: #eaecef;
@@ -24,18 +27,23 @@
     --taskbar_task-item-close-background-hover-color: #111111;
 
     --viewer-background-color: #fafcfe;
+    --viewer-header-color: #f6f8fa;
     --viewer-title-bar-background-color: #eaecee;
     --viewer-title-bar-active-background-color: #caccce;
+    --viewer-scrollbar-thumb-background-color: #dddddd;
+    --viewer-scrollbar-track-background-color: #bbbbbb;
     --viewer-footer-background-color: #caccce;
     
     --footer-background-color: #eaecef;
 
     --section-header-border: 1px solid rgba(180, 180, 180, 0.75);
-    --section-box-border: 1px solid rgba(180, 180, 180, 0.75);
+    --section-box-border: 1px solid rgba(180, 180, 180, 0.75);    
+    --taskbar-task-item-border: 1px solid rgba(180, 180, 180, 0.75);   
     
-    --taskbar-task-item-border: 1px solid rgba(180, 180, 180, 0.75);
+    --border-color-A: 2px solid #caccce;
     
-    --curation-page-hr : 1px solid rgba(0, 0, 0, 0.15);
+    --curation-page-hr : 1px solid rgba(0, 0, 0, 0.1);
+    --photolog-viewer-hr: 1px solid rgba(0, 0, 0, 0.05);
 
     --taskbar-task-item-close: invert(1);
     --viewer-windoow-button: invert(1);

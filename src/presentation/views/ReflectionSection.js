@@ -133,7 +133,7 @@ export class ReflectionSection {
             const sectionItemElement = this.createSectionItem(
                 value.id,
                 value.orientation,
-                value.date,
+                (value.tags ?? []).map(tag => '#' + tag).join(" · "),
                 value.title,
                 value.description,
                 key + '/' + value.contentUrl

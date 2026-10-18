@@ -127,7 +127,7 @@ export class ArchiveSection {
             const sectionItemElement = this.createSectionItem(
                 value.id,
                 value.orientation,
-                Templates.symbol(value.type) + value.date,
+                Templates.symbol(value.type) + value.tags.map(tag => '#' + tag).join(" · "),
                 value.title,
                 key + '/' + value.contentUrl
             );

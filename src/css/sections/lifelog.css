@@ -3,10 +3,6 @@
     line-height: 1.55;
 }
 
-#lifelog hr {
-    visibility: hidden;
-}
-
 #lifelog a:hover .title {
     color: var(--base-anchor-hover-color-A);
 }

@@ -7,7 +7,7 @@
     margin-top: var(--base-margin-size-tiny);
 }
 
-#photolog .teaser-figure:hover .figure-title { 
+#photolog .teaser-figure:hover .figure-title {
     color: var(--base-anchor-hover-color-A);
 }
 
@@ -24,7 +24,7 @@
     opacity: 0.8;
 }
 
-.photolog-thumbnail {
+#photolog .photolog-thumbnail {
     width: var( --photolog-thumbnail-width-size);
     height: var(--photolog-thumbnail-height-size);
 
@@ -50,6 +50,7 @@
     color: var(--section-font-description-color);
 
     line-height: 1.5;
+    white-space: pre-line;
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -63,11 +64,8 @@
     scroll-snap-stop: unset;
     scroll-margin-top: 0;
 
-    padding: 1rem;
-    padding-bottom: 0.25rem;
-
     font-size: 1.2rem;
-    font-weight: normal;
+    font-weight: var(--font-weight);
 }
 
 .photo-container {
@@ -103,32 +101,220 @@
 }
 
 
+.description {
+    font-size: 1.1rem;
+    color: var(--font-color);
+}
+
+.meta {
+    font-size: 0.95rem;
+    color: #ffc900;
+    padding-top: 0.75rem;
+}
+
+.tags{
+    font-size: 0.9rem;
+    color: #ffc900;
+    padding-bottom: 0.75rem;
+}
+
+
 /*
     photolog content viewer style
 */
 
-#photolog-post-list-all-viewer .figure-title {
-    font-size: 1rem;
-    color: var(--base-font-color);
+#photolog-post-list-all-viewer #content-area {
+    overflow: hidden;
 }
 
-#photolog-post-list-all-viewer .figure-content {
+#photolog-post-list-all-viewer #content-area .header-panel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#photolog-post-list-all-viewer 
+#content-area
+.header-panel 
+.photolog-header-panel  {
+    display: flex;
+    width: 100%;
+    height:100%;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#photolog-post-list-all-viewer 
+#content-area 
+.header-panel 
+.photolog-header-panel hr {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+#photolog-post-list-all-viewer #content-area .content-panel {
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#photolog-post-list-all-viewer 
+#content-area 
+#photolog-viewer {
+    display: grid;
+    grid-template-columns: 16rem minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+
+#photolog-post-list-all-viewer 
+.photolog-viewer-menu {
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    /*padding: 0.5rem;*/
+    line-height: 1.4;
+}
+
+#photolog-post-list-all-viewer 
+.photolog-viewer-menu 
+.teaser-figure {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.3rem;
+}
+
+#photolog-post-list-all-viewer 
+.photolog-viewer-menu 
+.teaser-figure:hover {
+    background-color: #282828;
+}
+
+#photolog-post-list-all-viewer 
+.photolog-viewer-menu 
+.teaser-figure 
+.image-caption {
+    height: 100%;
+    padding-left : 0.1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#photolog-post-list-all-viewer
+.photolog-viewer-menu
+.photolog-thumbnail {
+    width: 3.5rem;
+    height: 2.75rem;
+
+    /*border: 2px solid #2a2c2e;*/
+    border-radius: var(--base-border-radius-tiny);
+
+    transition-duration: 0.3s;
+    transition-property: transform, opacity;
+
+    margin-right:0.25rem;
+
+    z-index: 1;
+}
+
+#photolog-post-list-all-viewer
+.photolog-viewer-menu
+.figure-title {
     font-size: 0.95rem;
-    color: var(--base-font-color);
+    color: var(--font-color);
+
+    margin-right: 0.25rem;
+
+    overflow: hidden;
 }
 
-#photolog-post-list-all-viewer .photolog-header-panel  {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.25rem;
+#photolog-post-list-all-viewer
+.photolog-viewer-menu
+.figure-content {
+    font-size: 0.9rem;
+    color: var(--section-font-description-color);
+    line-height: 1.5;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+    overflow: hidden;
 }
 
-#photolog-post-list-all-viewer .photolog-header-panel hr {
-    border: 0;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+
+#photolog-post-list-all-viewer
+#content-area 
+.photolog-viewer-item-detail,
+
+.viewer
+.photolog-viewer-item-detail {
+    text-align: center;
+    width: 100%;
+    overflow: auto;
 }
+
+
+#photolog-post-list-all-viewer 
+#content-area 
+.photolog-viewer-item-detail
+.title,
+
+.viewer
+.photolog-viewer-item-detail
+.title {
+    font-size: 1.5rem;
+    padding: 1.25rem;
+    font-weight: bold;
+}
+
+#photolog-post-list-all-viewer 
+#content-area 
+.photolog-viewer-item-detail
+.meta,
+
+.viewer
+.photolog-viewer-item-detail
+.meta {
+    font-size: 0.95rem;
+    padding:0;
+}
+
+#photolog-post-list-all-viewer 
+#content-area 
+.photolog-viewer-item-detail
+.tags,
+
+.viewer
+.photolog-viewer-item-detail
+.tags {
+    font-size: 0.9rem;
+    padding: 0;
+}
+
+#photolog-post-list-all-viewer 
+#content-area 
+.photolog-viewer-item-detail
+.description,
+
+.viewer
+.photolog-viewer-item-detail
+.description {
+    font-size: 1rem;
+    padding: 1.5rem;
+}
+
 
 #photolog-post-list-all-viewer .photolog-header-panel,
 #photolog-post-list-all-viewer .photolog-content-panel,
@@ -138,5 +324,29 @@
     scroll-margin-top: unset;
 }
 
-#photolog-post-list-all-viewer .teaser-figure:hover .figure-title { color: var(--base-anchor-hover-color-A); }
-#photolog-post-list-all-viewer .teaser-figure:hover .figure-content { color: var(--base-anchor-hover-color-B); }
+#photolog-post-list-all-viewer 
+#content-area 
+#photolog-viewer 
+.photolog-viewer-menu
+.teaser-figure:hover {
+    cursor: pointer;
+}
+
+#photolog-post-list-all-viewer 
+#content-area 
+#photolog-viewer 
+.photolog-viewer-menu
+.teaser-figure:hover 
+.figure-title {
+    color: var(--font-color-anchor-color-A);
+}
+
+
+#photolog-post-list-all-viewer 
+#content-area 
+#photolog-viewer 
+.photolog-viewer-menu
+.teaser-figure:hover 
+.figure-content {
+     color: var(--font-color-anchor-color-B); 
+}

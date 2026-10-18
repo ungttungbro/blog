@@ -6,6 +6,8 @@
 
   position:fixed;
 
+  min-height: 0;
+
   border-radius: 0.75rem;
   
   touch-action: none;
@@ -70,18 +72,13 @@
 }
 
 .header-panel {
+  inset: 0;
   user-select: none;
 }
 
-.header-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  pointer-events: none;
-}
-
 .content-panel {
+  height: 100%;
+
   color: var(--base_font_color);
   font-size: 1.1rem;
 

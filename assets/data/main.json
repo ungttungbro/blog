@@ -101,6 +101,7 @@
         "entries": {
             "20260301A" : {
                 "date" : "2026.03.01.", 
+                "tags" : ["첫 직장", "개발자"], 
                 "title" : "첫 직장 에서", 
                 "description" : "개발자로 필드에 데뷔하던 순간!! 좌충우돌 조나스의 성장기를 회고해 보았습니다.",
                 "orientation" : "landscape",
@@ -109,6 +110,7 @@
 
             "20260228A" : {
                 "date" : "2026.02.28.", 
+                "tags" : ["고등학교", "10대"], 
                 "title" : "그때 그시절 우리학교는", 
                 "description" : "공부도 못하고, 놀지도 못했던 10대 후반, 조나스를 품어주었던 우리학교", 
                 "orientation" : "landscape",
@@ -117,6 +119,7 @@
 
             "20260219A" : {
                 "date" : "2026.02.19.", 
+                "tags" : ["연일전자", "컴퓨터 수리사"], 
                 "title" : "진격의 연일전자", 
                 "description" : "풋풋했던 20대 초반, 나는 안산 반월공단 외진곳의 컴퓨터 공장의 수리사 조나스", 
                 "orientation" : "landscape",
@@ -125,6 +128,7 @@
 
             "20260115A" : {
                 "date" : "2026.02.19.", 
+                "tags" : ["근태형", "2001 Outlet", "보안요원"], 
                 "title" :  "근태형", 
                 "description" : "내가 근태형을 알게 된 건 2004년 여름 천호동에 있는 2001 Outlet에서 보안요원 아르바이트를 시작하면서였다.", 
                 "orientation" : "landscape",
@@ -133,6 +137,7 @@
             
             "20260101A" : {
                 "date" : "2026.02.19.", 
+                "tags" : ["바보 빅터", "어린시절", "바보 조나스"], 
                 "title" : "바보 조나스", 
                 "description" : "얼마 전 『바보 빅터』라는 책을 읽다가 문득 어린 시절의 내가 떠올랐는데, 책 내용과는 이무런 상관이 없어요.",
                 "orientation" : "landscape",
@@ -190,6 +195,7 @@
             "20180928A" : {
                 "date" : "2018.09.28.", 
                 "type" : "lecture-note", 
+                "tags" : ["C언어", "프로그래밍언어"],
                 "title" : "C언어 기초 강의교안 (실습)",
                 "orientation" : "landscape",
                 "contentUrl" : "20180928A.html"
@@ -198,6 +204,7 @@
             "20140928A" : {
                 "date" : "2014.09.28.", 
                 "type" : "code", 
+                "tags" : ["블록암호", "라이브러리", "C++"],
                 "title" : "블록암호 운용 라이브러리", 
                 "orientation" : "landscape",
                 "contentUrl" : "20140928A.html"
@@ -205,7 +212,8 @@
 
             "20140924A" : {
                 "date" : "2014.09.24.", 
-                "type" : "code", 
+                "type" : "code",
+                "tags" : ["의사난수생성기", "C++"], 
                 "title" : "의사난수생성기 (Psuedorandom Number Generator)",
                 "orientation" : "landscape", 
                 "contentUrl" : "20140924A.html"
