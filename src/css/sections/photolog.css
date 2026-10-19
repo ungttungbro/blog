@@ -16,10 +16,10 @@
 }
 
 #photolog hr {
-    border: 0; 
+    border: 0;
 }
 
-.teaser-figure:hover .photolog-thumbnail {
+#photolog .teaser-figure:hover .photolog-thumbnail {
     transform: scale(1.0);
     opacity: 0.8;
 }
@@ -40,14 +40,14 @@
     z-index: 1;
 }
 
-.figure-title {
+#photolog .figure-title {
     display: block;
     font-size: 1rem;
 }
 
-.figure-content {
+#photolog .figure-content {
     font-size: 0.95rem;
-    color: var(--section-font-description-color);
+    color: #6a6c6e;
 
     line-height: 1.5;
     white-space: pre-line;
@@ -59,34 +59,27 @@
     overflow: hidden;
 }
 
-.photolog-header-panel {
-    scroll-snap-align: unset;
-    scroll-snap-stop: unset;
-    scroll-margin-top: 0;
-
-    font-size: 1.2rem;
-    font-weight: var(--font-weight);
-}
-
-.photo-container {
+#content-area .photo-container {
     display: flex;
+    
     width: 100%;
     height: 100%;
+
     overflow-x: auto;
     overflow-y: hidden;
 
     transition: height 0.15s ease-out;
 }
 
-.photo-container::-webkit-scrollbar {
+#content-area .photo-container::-webkit-scrollbar {
     display: none;
 }
 
-.photo-container > * {
+#content-area .photo-container > * {
     flex-shrink: 0;
 }
 
-.photolog-photo {
+#content-area .photo-container .photolog-photo {
     width: auto;
     height: 100%;
 
@@ -95,40 +88,30 @@
     margin: 0;
 }
 
-.photolog-footer-panel {
-    scroll-snap-align: unset;
-    scroll-margin-bottom: 3vh;
-}
-
-
-.description {
-    font-size: 1.1rem;
-    color: var(--font-color);
-}
-
-.meta {
-    font-size: 0.95rem;
-    color: #ffc900;
-    padding-top: 0.75rem;
-}
-
-.tags{
-    font-size: 0.9rem;
-    color: #ffc900;
-    padding-bottom: 0.75rem;
-}
-
 
 /*
     photolog content viewer style
 */
 
+
+
 #photolog-post-list-all-viewer #content-area {
     overflow: hidden;
 }
 
-#photolog-post-list-all-viewer #content-area .header-panel {
+#photolog-post-list-all-viewer 
+#content-area .photolog-viewer-item-detail .photolog-welcome {
     display: flex;
+   
+    width: 100%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#photolog-post-list-all-viewer #content-area .header-panel {
+    /*display: flex;*/
     width: 100%;
     height: 100%;
     min-height: 0;
@@ -136,9 +119,7 @@
 }
 
 #photolog-post-list-all-viewer 
-#content-area
-.header-panel 
-.photolog-header-panel  {
+#content-area .header-panel .photolog-header-panel  {
     display: flex;
     width: 100%;
     height:100%;
@@ -148,9 +129,7 @@
 }
 
 #photolog-post-list-all-viewer 
-#content-area 
-.header-panel 
-.photolog-header-panel hr {
+#content-area .header-panel .photolog-header-panel hr {
     border: 1px solid rgba(0, 0, 0, 0.05);
     width: 90%;
     margin-top: 0;
@@ -158,10 +137,12 @@
 }
 
 
-#photolog-post-list-all-viewer #content-area .content-panel {
+#photolog-post-list-all-viewer #content-area .content-panel,
+#photolog-post-list-all-viewer #content-area .photolog-content-panel {
     height: 0;
     padding: 0;
     margin: 0;
+    visibility: hidden;
 }
 
 #photolog-post-list-all-viewer 
@@ -175,30 +156,25 @@
     min-height: 0;
 }
 
-#photolog-post-list-all-viewer 
-.photolog-viewer-menu {
+#photolog-post-list-all-viewer .photolog-viewer-menu {
     width: 100%;
     min-height: 0;
     min-width: 0;
     overflow-y: auto;
     box-sizing: border-box;
-    /*padding: 0.5rem;*/
+    padding: 0.25rem;
     line-height: 1.4;
 }
 
-#photolog-post-list-all-viewer 
-.photolog-viewer-menu 
-.teaser-figure {
+#photolog-post-list-all-viewer .photolog-viewer-menu .teaser-figure {
     display: flex;
     align-items: center;
     margin: 0;
     padding: 0.3rem;
 }
 
-#photolog-post-list-all-viewer 
-.photolog-viewer-menu 
-.teaser-figure:hover {
-    background-color: #282828;
+#photolog-post-list-all-viewer .photolog-viewer-menu .teaser-figure:hover {
+    background-color: #cccccc;
 }
 
 #photolog-post-list-all-viewer 
@@ -217,8 +193,7 @@
     width: 3.5rem;
     height: 2.75rem;
 
-    /*border: 2px solid #2a2c2e;*/
-    border-radius: var(--base-border-radius-tiny);
+    border-radius: var(--base-border-radius-light);
 
     transition-duration: 0.3s;
     transition-property: transform, opacity;
@@ -232,10 +207,7 @@
 .photolog-viewer-menu
 .figure-title {
     font-size: 0.95rem;
-    color: var(--font-color);
-
     margin-right: 0.25rem;
-
     overflow: hidden;
 }
 
@@ -243,7 +215,6 @@
 .photolog-viewer-menu
 .figure-content {
     font-size: 0.9rem;
-    color: var(--section-font-description-color);
     line-height: 1.5;
 
     display: -webkit-box;
@@ -254,65 +225,38 @@
 }
 
 
-#photolog-post-list-all-viewer
 #content-area 
-.photolog-viewer-item-detail,
-
-.viewer
 .photolog-viewer-item-detail {
     text-align: center;
     width: 100%;
     overflow: auto;
 }
 
-
-#photolog-post-list-all-viewer 
-#content-area 
-.photolog-viewer-item-detail
-.title,
-
-.viewer
-.photolog-viewer-item-detail
-.title {
+#content-area .photolog-viewer-item-detail .title {
     font-size: 1.5rem;
     padding: 1.25rem;
     font-weight: bold;
 }
 
-#photolog-post-list-all-viewer 
-#content-area 
-.photolog-viewer-item-detail
-.meta,
-
-.viewer
-.photolog-viewer-item-detail
-.meta {
+#content-area .photolog-viewer-item-detail .meta {
     font-size: 0.95rem;
     padding:0;
 }
 
-#photolog-post-list-all-viewer 
-#content-area 
-.photolog-viewer-item-detail
-.tags,
-
-.viewer
-.photolog-viewer-item-detail
-.tags {
+#content-area .photolog-viewer-item-detail .tags {
     font-size: 0.9rem;
     padding: 0;
 }
 
-#photolog-post-list-all-viewer 
 #content-area 
-.photolog-viewer-item-detail
-.description,
-
-.viewer
 .photolog-viewer-item-detail
 .description {
     font-size: 1rem;
     padding: 1.5rem;
+}
+
+#photolog-post-list-all-viewer .footer-panel {
+    height: auto;
 }
 
 
@@ -327,17 +271,14 @@
 #photolog-post-list-all-viewer 
 #content-area 
 #photolog-viewer 
-.photolog-viewer-menu
-.teaser-figure:hover {
+.photolog-viewer-menu .teaser-figure:hover {
     cursor: pointer;
 }
 
 #photolog-post-list-all-viewer 
 #content-area 
 #photolog-viewer 
-.photolog-viewer-menu
-.teaser-figure:hover 
-.figure-title {
+.photolog-viewer-menu .teaser-figure:hover .figure-title {
     color: var(--font-color-anchor-color-A);
 }
 
@@ -345,8 +286,6 @@
 #photolog-post-list-all-viewer 
 #content-area 
 #photolog-viewer 
-.photolog-viewer-menu
-.teaser-figure:hover 
-.figure-content {
+.photolog-viewer-menu .teaser-figure:hover .figure-content {
      color: var(--font-color-anchor-color-B); 
 }

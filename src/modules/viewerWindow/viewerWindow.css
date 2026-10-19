@@ -71,36 +71,6 @@
   scroll-padding-bottom: 0;
 }
 
-.header-panel {
-  inset: 0;
-  user-select: none;
-}
-
-.content-panel {
-  height: 100%;
-
-  color: var(--base_font_color);
-  font-size: 1.1rem;
-
-  line-height: 1.75;
-  text-align: justify;
-  
-  overflow-wrap: anywhere;
-  user-select: none;
-}
-
-.footer-panel {
-  width: 100%;
-  height: 100%;
-  
-  text-align: center;
-  padding: 0.5rem;
-  
-  color: #dddddd;
-  font-weight: bold;
-  margin: auto;
-}
-
 #window_button_container {
   display: flex;
 
@@ -124,6 +94,6 @@
 }
 
 .window_button:hover {
-  background: rgba(10, 10, 10, 0.4);
+  background: rgba(25, 25, 25, 0.4);
   border-radius: 20%;
 }

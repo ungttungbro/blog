@@ -3,23 +3,6 @@
     --section-font-description-color : #6a6c6e;
 }
 
-.meta { 
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--section-font-meta-color);
-}
-
-.title   { 
-    font-size:1rem;
-    font-weight: bold;
-}
-
-.summary { 
-    font-size: 0.95rem;
-    color: var(--section-font-description-color);
-    font-weight: bold;
-}
-
 .curation-post {
   display: flex;
   flex: 1;
@@ -31,6 +14,23 @@
 
   padding-left: 0.25rem; 
   padding-right: 0.25rem;
+}
+
+.curation-post .meta { 
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--section-font-meta-color);
+}
+
+.curation-post .title   { 
+    font-size:1rem;
+    font-weight: bold;
+}
+
+.curation-post .summary { 
+    font-size: 0.95rem;
+    color: var(--section-font-description-color);
+    font-weight: bold;
 }
 
 .curation-post hr {

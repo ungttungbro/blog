@@ -167,6 +167,19 @@ export class PhotologSection {
         const photolog_viewer_item = document.createElement('div');
         photolog_viewer_item.className = 'photolog-viewer-item-detail';
 
+        const photolog_icon = SiteLibrary.createImgElement(
+            'photograhper', 
+            '', 
+            'assets/icons/photographer.png', 
+            'photographer'
+        );
+
+        const photolog_welcome_el = document.createElement(ELEMENT_TYPE.DIV);
+        photolog_welcome_el.className = 'photolog-welcome';
+
+        photolog_welcome_el.appendChild(photolog_icon);
+        photolog_viewer_item.appendChild(photolog_welcome_el);
+
         element.appendChild(photolog_viewer_menu);       
         element.appendChild(photolog_viewer_item);
 

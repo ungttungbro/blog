@@ -69,7 +69,7 @@ export class PhotologController {
             config.typeName,
             config.sectionHeaderIcon,
             config.photologSectionListName,
-            'landscape', 1.2, 0.75, 0, 0,
+            'landscape', 1.3, 0.75, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -84,7 +84,7 @@ export class PhotologController {
             this._BASE_PATH + key + '/' + value.contentUrl
         );
 
-        const photolog_item_detail_el = this.createPhotologItemDetail(value);
+        const photolog_item_detail_el = this.createPhotologItemDetail(type, value);
 
         const photo_container = document.createElement('div');
         photo_container.className = 'photo-container';
@@ -110,11 +110,11 @@ export class PhotologController {
         }        
     }
 
-    createPhotologItemDetail(data) {
+    createPhotologItemDetail(type, data) {
         let photolog_viewer_item = document.getElementById('photolog-post-list-all-viewer')
                             ?.querySelector('.photolog-viewer-item-detail');
 
-        if(photolog_viewer_item) {
+        if(photolog_viewer_item && type!=='curation-post') {
             photolog_viewer_item.innerHTML='';
             photolog_viewer_item.scrollTop = 0;
         } else {
@@ -153,20 +153,24 @@ export class PhotologController {
     }
 
     initializePhotoContainer(id, parent) {
-        const photo_container_el = document.getElementById(id).querySelector('.photo-container');
+        const photo_container_el = document.getElementById(id)
+            .querySelector('.photo-container');
         const photo_container_parent = photo_container_el.closest(parent);
 
         if (taskbar.taskBarElement.dataset.column > 2) {
-            photo_container_el.style.height =
-            `${photo_container_parent.clientHeight}px`;
-
-            const observer = new ResizeObserver(() => {
+            const resizePhotoContainer = () => {
                 requestAnimationFrame(() => {
-                    photo_container_el.style.height =
-                        `${photo_container_parent.clientHeight}px`;
-                });
-            });
+                    const width = photo_container_parent.clientWidth;
+                    const height = photo_container_parent.clientHeight;
 
+                    photo_container_el.style.width = `${width}px`;
+                    photo_container_el.style.height = `${height}px`;
+                });
+            };
+
+            resizePhotoContainer();
+
+            const observer = new ResizeObserver(resizePhotoContainer);
             observer.observe(photo_container_parent);
         }
 
@@ -177,8 +181,6 @@ export class PhotologController {
 
     generatePhotoScrollEvent(parent_el, target_el) {
         parent_el.addEventListener('wheel', (event) => {
-            passive: false;
-
             const atBottom =
                 parent_el.scrollTop + parent_el.clientHeight >=
                 parent_el.scrollHeight - 1;

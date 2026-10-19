@@ -13,9 +13,14 @@ header {
 
 footer { background-color: var(--footer-background-color); font-weight: bold;}
 
-.meta, .title, .summary { font-weight: var(--font-weight); }
-.meta { color: var(--font-color-meta); }
-.summary { color: var(--font-color-description); }
+.curation-post .meta, 
+.curation-post .title, 
+.curation-post .summary { 
+    font-weight: var(--font-weight); 
+}
+
+.curation-post .meta { color: var(--font-color-meta); }
+.curation-post .summary { color: var(--font-color-description); }
 
 .section-header {
     background-color: var(--section-header-background-color);
@@ -99,21 +104,31 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
 #taskbar .task-item-close { filter: var(--taskbar-task-item-close); }
 #taskbar .task-item-close:hover { background-color: var(--taskbar_task-item-close-background-hover-color); }
 
+
 .viewer {
     background-color: var(--viewer-background-color);
     color: var(--font-color);
 }
 
-.viewer .blog-post { font-size: 1.1rem; line-height: 2rem;}
-.viewer .blog-post .meta { font-size: 0.95rem; }
-.viewer .blog-post p { font-weight: var(--font-weight); }
+.viewer #content-area .blog-post { font-size: 1.1rem; line-height: 2rem;}
+.viewer #content-area .blog-post .meta { font-size: 0.95rem; }
+.viewer #content-area .blog-post p { font-weight: var(--font-weight); }
 
-.viewer a:hover .title { color: var(--font-color-anchor-color-A); }
-.viewer a:hover .summary { color: var(--font-color-anchor-color-B);  }
+.viewer #content-area a:hover .title { color: var(--font-color-anchor-color-A); }
+.viewer #content-area a:hover .summary { color: var(--font-color-anchor-color-B);  }
 
-.viewer .meta {
+.viewer #content-area .meta,
+.viewer #content-area .tags {
     color: var(--font-color-meta);
     font-size: 0.95rem;
+}
+
+.viewer #content-area .title {
+    color: var(--font-color);
+}
+
+.viewer #content-area .description { 
+    color: var(--font-color);
 }
 
 .viewer .title-bar { 
@@ -125,12 +140,6 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
 .viewer .window_button { filter : var(--viewer-windoow-button); }
 .viewer .footer-panel { background-color: var(--viewer-footer-background-color); }
 
-
-
-.lifelog-header-panel hr {
-    visibility: hidden;
-}
-
 #photolog-post-list-all-viewer {
     ::-webkit-scrollbar { width: 1px; }
     ::-webkit-scrollbar-thumb { background-color: var(--viewer-scrollbar-thumb-background-color);}
@@ -141,16 +150,14 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
 
 #photolog-post-list-all-viewer #content-area .header-panel .photolog-header-panel hr { border: var(--photolog-viewer-hr); }
 #photolog-post-list-all-viewer .figure-title { color: var(--font-color); }
-#photolog-post-list-all-viewer .figure-content { color: var(--font-color-description); }
+#photolog-post-list-all-viewer .figure-content { color: var(--section-font-meta-color); }
 #photolog-post-list-all-viewer .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A); }
 #photolog-post-list-all-viewer .teaser-figure:hover .figure-content { color: var(--font-color-anchor-color-B); }
 
 #photolog-post-list-all-viewer .photolog-viewer-menu { background-color: var(--viewer-header-color); }
+#photolog-post-list-all-viewer .photolog-viewer-menu .title { border: var(--font-color); }
 #photolog-post-list-all-viewer .photolog-viewer-menu .photolog-thumbnail { border: var(--border-color-A); }
 #photolog-post-list-all-viewer .photolog-viewer-menu .teaser-figure:hover { background-color: var(--div-hover-color-A); }
 
 #photolog-post-list-all-viewer .photolog-viewer-item-detail { background-color: var(--viewer-background-color); }
 #photolog-post-list-all-viewer .photolog-viewer-item-detail .title { color: var(--font-color); }
-#photolog-post-list-all-viewer .photolog-viewer-item-detail .meta { color: var(--font-color-meta); }
-#photolog-post-list-all-viewer .photolog-viewer-item-detail .tags { color: var(--font-color-meta); }
-#photolog-post-list-all-viewer .photolog-viewer-item-detail .description { color: var(--font-color); }
