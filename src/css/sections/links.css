@@ -1,14 +1,12 @@
 #links .section-header {
   cursor: default;
+  pointer-events: none;
 }
 
 #links .more-options {
   display: none;
 }
 
-#links .section-header:hover {
-  background: none;
-}
 
 #links .links_item_list {
   display: block;

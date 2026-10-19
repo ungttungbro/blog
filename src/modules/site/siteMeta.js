@@ -110,11 +110,11 @@ export const siteMeta = Object.freeze({
         reflectionListViewerId: 'reflection-post-list-all-viewer',
         photologListViewerId: 'photolog-post-list-all-viewer',
 
-        writingsSectionListName: '라이팅스 (writings) 목록',
-        lifelogSectionListName: '라이프로그 (lifelog) 목록',
-        archiveSectionListName: '아카이브 (archive) 목록',
-        reflectionSectionListName: '리플렉션 (reflection) 목록',
-        photologSectionListName: '포토로그 (photolog) 목록'
+        writingsSectionListName: '라이팅스 (writings)',
+        lifelogSectionListName: '라이프로그 (lifelog)',
+        archiveSectionListName: '아카이브 (archive)',
+        reflectionSectionListName: '리플렉션 (reflection)',
+        photologSectionListName: '포토로그 (photolog)'
     }),
 
     selectSectionConfig(type) {

@@ -15,7 +15,7 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
 
 .curation-post .meta, 
 .curation-post .title, 
-.curation-post .summary { 
+.curation-post .summary {
     font-weight: var(--font-weight); 
 }
 
@@ -42,9 +42,9 @@ footer { background-color: var(--footer-background-color); font-weight: bold;}
     filter : drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));
 }
 
-#photolog .figure-content { color: var(--font-color-description); }
+#photolog .teaser-figure:hover { border-right: var(--border-color-B); }
 #photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A);}
-
+#photolog .figure-content { color: var(--font-color-description); }
 
 .links_item_list a:hover { color: var(--font-color-anchor-color-A); }
 #about a:hover { color: var(--font-color-anchor-color-A); }

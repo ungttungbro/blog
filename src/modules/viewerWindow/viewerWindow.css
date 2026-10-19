@@ -94,6 +94,6 @@
 }
 
 .window_button:hover {
-  background: rgba(25, 25, 25, 0.4);
+  background: rgba(20, 20, 20, 0.4);
   border-radius: 20%;
 }

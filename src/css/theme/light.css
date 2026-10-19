@@ -26,7 +26,7 @@
     --taskbar-task-item-group-background-color: #fbfdff;
     --taskbar_task-item-close-background-hover-color: #111111;
 
-    --viewer-background-color: #fafcfe;
+    --viewer-background-color: #f1f3f5;
     --viewer-header-color: #f6f8fa;
     --viewer-title-bar-background-color: #eaecee;
     --viewer-title-bar-active-background-color: #caccce;
@@ -36,11 +36,12 @@
     
     --footer-background-color: #eaecef;
 
-    --section-header-border: 1px solid rgba(180, 180, 180, 0.75);
-    --section-box-border: 1px solid rgba(180, 180, 180, 0.75);    
+    --section-header-border: 2px solid rgba(180, 180, 180, 0.25);
+    --section-box-border: 2px solid rgba(180, 180, 180, 0.25);    
     --taskbar-task-item-border: 1px solid rgba(180, 180, 180, 0.75);   
     
     --border-color-A: 2px solid #caccce;
+    --border-color-B: 2px solid #eaecee;
     
     --curation-page-hr : 1px solid rgba(0, 0, 0, 0.1);
     --photolog-viewer-hr: 1px solid rgba(0, 0, 0, 0.05);

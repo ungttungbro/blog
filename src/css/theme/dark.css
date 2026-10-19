@@ -9,7 +9,6 @@
     --font-color-anchor-color-A: #ffc900;
     --font-color-anchor-color-B: #cdcdcd;
     
-
     --div-hover-color-A: #282828;
 
     --theme-toggle-button: url(/assets/icons/dark-mode-img/light-toggle.png);
@@ -30,10 +29,10 @@
     --viewer-background-color: #1f1f1f;
     --viewer-header-color: #181818;
     --viewer-title-bar-background-color: #282828;
-    --viewer-title-bar-active-background-color: #383838;
+    --viewer-title-bar-active-background-color: #2b2d2f;
     --viewer-scrollbar-thumb-background-color: #666666;
     --viewer-scrollbar-track-background-color: #333333;
-    --viewer-footer-background-color: #383838;
+    --viewer-footer-background-color: #2b2d2f;
    
     --footer-background-color: #181818;
 
@@ -42,6 +41,7 @@
     --taskbar-task-item-border: none;
 
     --border-color-A: 2px solid #2a2c2e;
+    --border-color-B: 2px solid #121314;
     
     --curation-page-hr: 1px solid rgba(255, 255, 255, 0.1);
     --photolog-viewer-hr: 1px solid rgba(160, 148, 67, 0.05);
