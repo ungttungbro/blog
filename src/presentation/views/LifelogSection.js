@@ -1,6 +1,6 @@
 'use strict';
 
-import { ELEMENT_TYPE, COMMON } from "../../modules/common/Constants.js";
+import { COMMON } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
@@ -31,6 +31,22 @@ export class LifelogSection {
         return this.curation_data;
     }
 
+    setSectionHeaderClickHandler(handler) {
+        this.onSectionHeaderClick = handler;
+    }
+
+    getSectionHeaderClickHandler() {
+        return this.onSectionHeaderClick;
+    }
+
+    setPostClickHandler(handler) {
+        this.onPostClick = handler;
+    }
+
+    getPostClickHandler() {
+        return this.onPostClick;
+    }
+
     show() {
         try {
             const el = document.getElementById(this._SECTION_NAME);
@@ -45,114 +61,17 @@ export class LifelogSection {
         const section_meta_data = siteMeta.selectSectionConfig(this._SECTION_NAME);
         if(!section_meta_data) return;
 
-        const section_header = this.generateSectionHeader(section_meta_data);
+        const section_header_click_handler = this.getSectionHeaderClickHandler();
+        const section_header = this.generateSectionHeader(section_meta_data, section_header_click_handler);
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateSectionItems('contents', data, section_meta_data);
+        const post_click_handler = this.getPostClickHandler();
+        const items = this.generateSectionItems(data, section_meta_data, post_click_handler);
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, meta_data, title, content_path) {
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = 'lifelog-section-item-panel';
-
-        const meta_span = document.createElement('span');
-        meta_span.className = 'meta';
-        meta_span.innerHTML = meta_data;
-        meta_span.innerHTML += '<br>';
-
-        element.appendChild(meta_span);
-
-        const title_span = document.createElement('span');
-        title_span.className = 'title';
-        title_span.textContent = title;
-
-        const a =  document.createElement('a');
-        a.href = '#';
-        a.appendChild(title_span);
-
-        const section_config = siteMeta.selectSectionConfig('lifelog');
-
-        const footer_span = document.createElement('span');
-        footer_span.className = 'footer';
-        footer_span.innerHTML = "<p align='right' style='font-size:0.85rem; font-weight:400;'>" 
-                                + meta_data 
-                                + "</p>";
-        footer_span.innerHTML += COMMON.COPYRIGHT;
-
-        this.generatePostEvent(
-            section_config.blogTypeName, 
-            COMMON.VIEWER_PREFIX + id, 
-            orientation,
-            a, 
-            section_config.sectionHeaderIcon, 
-            title, 
-            null,
-            this._BASE_PATH + content_path,
-            footer_span
-        );
-
-        element.appendChild(a);
-
-        return element;
-    }
-
-    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, contents, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
-        element.addEventListener('click', e => {
-            e.preventDefault();
-            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
-        });
-    }
-
-    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
-        const data = await SiteLibrary.loadText(contents);
-
-        Templates.openPost(
-            id,
-            section_name,                 
-            section_icon,
-            title,
-            orientation, 1, 1.05, 0.8, 1.2,
-            header, data, footer
-        );
-    }
-
-    generateSectionItems(type, data, config) {
-        const frag = document.createDocumentFragment();
-
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-        
-        if (type === 'contents') {
-            element.className = config.latestPostClassName;         
-        } else {
-            element.className = config.postIndexClassName;
-        }
-
-        let index = 0;
-        for (const [key, value] of data) {
-            const sectionItemElement = this.createSectionItem(
-                value.id,
-                value.orientation,
-                Templates.symbol(value.type) + value.date + ' (' + value.location + ')',
-                value.tags.map(tag => '#' + tag).join(" · "),
-                key + '/' + value.contentUrl
-            );
-
-            frag.appendChild(sectionItemElement);
-
-            if (++index < data.size) {
-                frag.appendChild(document.createElement('hr'));
-            }      
-        }
-
-        element.appendChild(frag);
-
-        return element;
-    }
-
-    generateSectionHeader(config) {
+    generateSectionHeader(config, onSectionHeaderClick) {
         const section_header = Templates.createSectionHeader(
             config.captionImgId, 
             config.captionId,
@@ -162,23 +81,154 @@ export class LifelogSection {
             config.sectionHeaderIconAlt
         );
 
-        section_header.addEventListener('click',  async e => {
-            e.preventDefault();
-            Templates.openPost(
-                config.listViewerId,
-                config.blogTypeName,
-                config.sectionHeaderIcon,
-                config.sectionListName,
-                'portrait', 0, 0, 0.8, 1.15,
-                this.generateSectionItems('header', await this.getOriginalDTO(), config),
-                null,
-                COMMON.COPYRIGHT
-            );
-
-            const element = document.getElementById(config.listViewerId);
-            element.querySelector('#viewer-maximize-button').style.display = 'none';
-        });
+        this.generateSectionHeaderEvent(section_header, config, onSectionHeaderClick);
 
         return section_header;
+    }
+
+    generateSectionHeaderEvent(section_header_el, config, onSectionHeaderClick) {
+        section_header_el.addEventListener('click', async e => {
+            e.preventDefault();
+            onSectionHeaderClick(config);                    
+        });
+    }
+
+    generateSectionItems(data, config, onTeaserClick) {
+        const element = document.createElement('div');
+
+        if(document.getElementById('lifelog').querySelector('.' + config.latestPostClassName)) {
+            element.className = 'lifelog-viewer-menu';
+        } else {
+            element.className = config.latestPostClassName;
+        }
+
+        const frag = document.createDocumentFragment();
+
+        let index = 0;
+        for (const [key, value] of data) {
+            const sectionItemElement = this.createSectionItem(element.className, key, value, onTeaserClick);
+
+            frag.appendChild(sectionItemElement);
+            
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }
+        }
+
+        element.appendChild(frag);
+
+        return element;
+    }
+
+    createSectionItem(type, key, value, onTeaserClick) {
+        const element = document.createElement('div');
+        element.className = 'teaser-figure';
+
+        const meta = Templates.symbol(value.type) + value.date + ' · ' + value.location;
+        const meta_el = document.createElement('div');
+        meta_el.className = 'meta';
+        meta_el.innerHTML = meta;
+
+        element.appendChild(meta_el);
+
+        const title = value.tags.map(tag => '#' + tag).join(" · ");
+        const title_el = document.createElement('div');
+        title_el.className = 'title';
+        title_el.textContent = title;
+
+        element.appendChild(title_el);
+
+        const teaser =  document.createElement('a');
+        teaser.href = '#';
+        teaser.appendChild(element);
+
+        const section_config = siteMeta.selectSectionConfig('lifelog');
+
+        this.generatePostEvent(teaser, type, section_config.blogTypeName, key, value, onTeaserClick);
+
+        return teaser;
+    }
+
+    generatePostEvent(element, type, class_name, key, value, onTeaserClick) {
+        element.addEventListener('mouseenter', () => {
+            SiteLibrary.prefetch(
+                element,
+                this._BASE_PATH + key + '/' + value.contentUrl
+            );
+        });
+
+        element.addEventListener('click', e => {
+            e.preventDefault();
+            onTeaserClick(type, class_name, key, value);
+        });
+    }
+
+    async presentPost(key, value, config) {
+        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
+
+        Templates.openPost(
+            COMMON.VIEWER_PREFIX + value.id,
+            config.blogTypeName,                 
+            config.sectionHeaderIcon,
+            value.tags.map(tag => '#' + tag).join(" · "),
+            value.orientation, 1, 1.05, 0.8, 1.2,
+            null, 
+            data, 
+            COMMON.COPYRIGHT
+        );
+    }
+
+    generateLifelogViewer(data, onTeaserClick) {
+        const element = document.createElement('div');
+        element.id = 'lifelog-viewer';
+
+        const lifelog_viewer_menu = this.generatelifelogViewerMenu(data, onTeaserClick);
+        const lifelog_viewer_item = document.createElement('div');
+        lifelog_viewer_item.className = 'lifelog-viewer-item-detail';
+
+        const photolog_icon = SiteLibrary.createImgElement(
+            'lifelog-icon', 
+            '', 
+            'assets/icons/lifelog.png', 
+            'lifelog-welcome-icon'
+        );
+
+        const lifelog_welcome_el = document.createElement('div');
+        lifelog_welcome_el.className = 'lifelog-welcome';
+
+        lifelog_welcome_el.appendChild(photolog_icon);
+        lifelog_viewer_item.appendChild(lifelog_welcome_el);
+
+        element.appendChild(lifelog_viewer_menu);       
+        element.appendChild(lifelog_viewer_item);
+
+        return element;
+    }
+
+    generatelifelogViewerMenu(data, onTeaserClick) {
+        const frag = document.createDocumentFragment();
+
+        const element = document.createElement('div');
+        element.className = 'lifelog-viewer-menu';
+
+        let index = 0;
+        for (const [key, value] of data) {            
+            const sectionItemElement = this.createSectionItem(
+                element.className,
+                key, 
+                value, 
+                onTeaserClick
+            );
+
+            frag.appendChild(sectionItemElement);
+            
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }
+        }
+
+        element.appendChild(frag);
+
+        return element;
     }
 }

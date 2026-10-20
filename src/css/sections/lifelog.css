@@ -7,6 +7,151 @@
     color: var(--base-anchor-hover-color-A);
 }
 
-#lifelog a:hover .summary {
-    color: var(--base-anchor-hover-color-B);
+
+/*
+    lifelog content viewer style
+*/
+#lifelog-post-list-all-viewer #content-area {
+    overflow: hidden;
+}
+
+#lifelog-post-list-all-viewer 
+#content-area .lifelog-viewer-item-detail .lifelog-welcome {
+    display: flex;
+   
+    width: 100%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#lifelog-post-list-all-viewer #content-area .header-panel {
+    /*display: flex;*/
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#lifelog-post-list-all-viewer 
+#content-area .header-panel .lifelog-header-panel  {
+    display: flex;
+    width: 100%;
+    height:100%;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#lifelog-post-list-all-viewer 
+#content-area .header-panel .lifelog-header-panel hr {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#lifelog-post-list-all-viewer #content-area .content-panel,
+#lifelog-post-list-all-viewer #content-area .lifelog-content-panel {
+    height: 0;
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+}
+
+#lifelog-post-list-all-viewer 
+#content-area 
+#lifelog-viewer {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+
+#lifelog-post-list-all-viewer 
+.lifelog-viewer-menu {
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    /*padding: 0.25rem;*/
+    line-height: 1.4;
+}
+
+#lifelog-post-list-all-viewer 
+.lifelog-viewer-menu 
+.teaser-figure {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+#lifelog-post-list-all-viewer 
+.lifelog-viewer-menu 
+.teaser-figure:hover {
+    background-color: #cccccc;
+}
+
+
+#lifelog-post-list-all-viewer
+.lifelog-viewer-menu
+.title {
+    font-size: 0.95rem;
+    
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+    overflow: hidden;
+}
+
+#lifelog-post-list-all-viewer
+.lifelog-viewer-menu
+.meta {
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
+    overflow: hidden;
+}
+
+#content-area 
+.lifelog-viewer-item-detail {
+    width: 100%;
+    text-align: center;
+    overflow: auto;
+}
+
+#content-area
+.lifelog-viewer-item-detail .lifelog-section-item-panel {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#content-area
+.lifelog-viewer-item-detail .lifelog-section-item-panel .lifelog-photo-medium {
+    width: auto;
+    max-width: none;
+}
+
+
+#lifelog-post-list-all-viewer .footer-panel {
+    height: auto;
+}
+
+
+#lifelog-post-list-all-viewer .lifelog-header-panel,
+#lifelog-post-list-all-viewer .lifelog-content-panel,
+#lifelog-post-list-all-viewer .lifelog-footer-panel  {
+    scroll-snap-align: unset;
+    scroll-snap-stop: unset;
+    scroll-margin-top: unset;
 }

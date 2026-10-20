@@ -25,20 +25,18 @@ export class PhotologController {
      * 섹션 블록은 큐레이션 data를 활용하므로 curation_service를 활용한다.
      */
     async displaySection() {
-        const OriginalDTO = await this.original_service.getPhotolog();
         const CurationDTO = await this.curation_service.getPhotolog();
         
-        this.section_view.setOriginalDTO(OriginalDTO);
         this.section_view.setCurationDTO(CurationDTO);
-
-        this.section_view.setPostClickHandler(
-            (type, section_name, key, value) => 
-                this.presentOpenPost(type, section_name, key, value)
-        );
 
         this.section_view.setSectionHeaderClickHandler(
             (config) => 
                 this.presentSectionHeaderContent(config)
+        );
+
+        this.section_view.setPostClickHandler(
+            (type, section_name, key, value) => 
+                this.presentOpenPost(type, section_name, key, value)
         );
 
         this.section_view.show();
@@ -158,20 +156,24 @@ export class PhotologController {
         const photo_container_parent = photo_container_el.closest(parent);
 
         if (taskbar.taskBarElement.dataset.column > 2) {
-            const resizePhotoContainer = () => {
-                requestAnimationFrame(() => {
-                    const width = photo_container_parent.clientWidth;
-                    const height = photo_container_parent.clientHeight;
+            for (const photo of photo_container_el.querySelectorAll('.photolog-photo')) {
+                photo.style.height = photo_container_parent.clientHeight + 'px';
 
-                    photo_container_el.style.width = `${width}px`;
-                    photo_container_el.style.height = `${height}px`;
-                });
-            };
+                const resizePhotoContainer = () => {
+                    requestAnimationFrame(() => {
+                        //const width = photo_container_parent.clientWidth;
+                        const height = photo_container_parent.clientHeight;
 
-            resizePhotoContainer();
+                        //photo_container_el.style.width = `${width}px`;
+                        photo.style.height = `${height}px`;
+                    });
+                };
 
-            const observer = new ResizeObserver(resizePhotoContainer);
-            observer.observe(photo_container_parent);
+                resizePhotoContainer();
+
+                const observer = new ResizeObserver(resizePhotoContainer);
+                observer.observe(photo_container_parent);
+            }
         }
 
         this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);

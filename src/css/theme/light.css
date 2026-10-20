@@ -44,7 +44,7 @@
     --border-color-B: 2px solid #eaecee;
     
     --curation-page-hr : 1px solid rgba(0, 0, 0, 0.1);
-    --photolog-viewer-hr: 1px solid rgba(0, 0, 0, 0.05);
+    --viewer-hr-A: 1px solid rgba(0, 0, 0, 0.05);
 
     --taskbar-task-item-close: invert(1);
     --viewer-windoow-button: invert(1);

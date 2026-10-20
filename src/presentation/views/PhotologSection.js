@@ -2,8 +2,6 @@
 
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
-
-import { ELEMENT_TYPE } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 
 export class PhotologSection {
@@ -15,14 +13,6 @@ export class PhotologSection {
     }
 
     async initialize(){}
-
-    setOriginalDTO(data) {
-        this.original_data = data;
-    }
-
-    getOriginalDTO() {
-        return this.original_data;
-    }
 
     setCurationDTO(data) {
         this.curation_data = data;
@@ -62,11 +52,13 @@ export class PhotologSection {
         const section_meta_data = siteMeta.selectSectionConfig(this._SECTION_NAME);
         if(!section_meta_data) return;
 
-        const section_header = this.generateSectionHeader(section_meta_data, this.onSectionHeaderClick);
+        const section_header_click_handler = this.getSectionHeaderClickHandler();
+        const section_header = this.generateSectionHeader(section_meta_data, section_header_click_handler);
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateSectionItems(data, section_meta_data, this.onPostClick);
+        const post_click_handler = this.getPostClickHandler();
+        const items = this.generateSectionItems(data, section_meta_data, post_click_handler);
         el.appendChild(items);
     }
 
@@ -95,7 +87,7 @@ export class PhotologSection {
 
     /* Content items */
     generateSectionItems(data, config, onTeaserClick) {
-        const element = document.createElement(ELEMENT_TYPE.DIV);
+        const element = document.createElement('div');
 
         if(document.getElementById('photolog').querySelector('.' + config.teaserListClassName)) {
             element.className = 'photolog-viewer-menu';
@@ -160,7 +152,7 @@ export class PhotologSection {
     
     /* header content */
     generatePhotoViewer(data, onTeaserClick) {
-        const element = document.createElement(ELEMENT_TYPE.DIV);
+        const element = document.createElement('div');
         element.id = 'photolog-viewer';
 
         const photolog_viewer_menu = this.generatePhotoViewerMenu(data, onTeaserClick);
@@ -174,7 +166,7 @@ export class PhotologSection {
             'photographer'
         );
 
-        const photolog_welcome_el = document.createElement(ELEMENT_TYPE.DIV);
+        const photolog_welcome_el = document.createElement('div');
         photolog_welcome_el.className = 'photolog-welcome';
 
         photolog_welcome_el.appendChild(photolog_icon);
@@ -189,7 +181,7 @@ export class PhotologSection {
     generatePhotoViewerMenu(data, onTeaserClick) {
         const frag = document.createDocumentFragment();
 
-        const element = document.createElement(ELEMENT_TYPE.DIV);
+        const element = document.createElement('div');
         element.className = 'photolog-viewer-menu';
 
         let index = 0;
