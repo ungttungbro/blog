@@ -16,7 +16,7 @@
   border: var(--base-border-line-medium-bold);
   border-radius: var(--base-border-radius-light-medium);
   
-  padding: var(--base-margin-size-light);
+  padding: var(--base-margin-size-light-medium);
   margin-top: var(--base-margin-size-tiny);
 }
 

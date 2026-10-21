@@ -86,8 +86,7 @@
 
 #content-area .photo-container .photolog-photo {
     width: auto;
-
-    max-width: none;
+    
     /*flex-shrink: 0;*/
 
     margin: 0;
@@ -132,8 +131,8 @@
 
 #photolog-post-list-all-viewer 
 #content-area .header-panel .photolog-header-panel hr {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    width: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    width: 80%;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -151,7 +150,7 @@
 #content-area 
 #photolog-viewer {
     display: grid;
-    grid-template-columns: 17rem minmax(0, 1fr);
+    grid-template-columns: 18rem minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     flex: 1;
     min-width: 0;

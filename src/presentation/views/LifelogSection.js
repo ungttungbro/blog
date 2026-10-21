@@ -14,15 +14,7 @@ export class LifelogSection {
     }
 
     async initialize(){}
-
-    setOriginalDTO(data) {
-        this.original_data = data;
-    }
-
-    getOriginalDTO() {
-        return this.original_data;
-    }
-
+    
     setCurationDTO(data) {
         this.curation_data = data;
     }
@@ -87,7 +79,7 @@ export class LifelogSection {
     }
 
     generateSectionHeaderEvent(section_header_el, config, onSectionHeaderClick) {
-        section_header_el.addEventListener('click', async e => {
+        section_header_el.addEventListener('click', e => {
             e.preventDefault();
             onSectionHeaderClick(config);                    
         });

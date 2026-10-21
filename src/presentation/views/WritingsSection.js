@@ -1,6 +1,6 @@
 'use strict';
 
-import { ELEMENT_TYPE, COMMON } from "../../modules/common/Constants.js";
+import { COMMON } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
@@ -49,105 +49,8 @@ export class WritingsSection {
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateSectionItems('contents', data, section_meta_data);
+        const items = this.generateCurationItems(data, section_meta_data);
         el.appendChild(items);
-    }
-
-    createSectionItem(id, orientation, meta_data, title, summary, content_path) {
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = 'writings-section-item-panel';
-
-        const meta_span = document.createElement('span');
-        meta_span.className = 'meta';
-        meta_span.innerHTML = meta_data;
-        meta_span.innerHTML += '<br>';
-
-        element.appendChild(meta_span);
-
-        const title_span = document.createElement('span');
-        title_span.className = 'title';
-        title_span.textContent = title;
-
-        const summary_span = document.createElement('span');
-        summary_span.className = 'summary';
-        summary_span.textContent = summary;
-
-        const a =  document.createElement('a');
-        a.href = '#';
-        a.appendChild(title_span);
-        a.appendChild(summary_span);
-
-        const section_config = siteMeta.selectSectionConfig('writings');
-        this.generatePostEvent(
-            section_config.blogTypeName, 
-            COMMON.VIEWER_PREFIX + id, 
-            orientation,
-            a, 
-            section_config.sectionHeaderIcon, 
-            title, 
-            null,
-            this._BASE_PATH + content_path, 
-            COMMON.COPYRIGHT
-        );
-
-        element.appendChild(a);
-
-        return element;
-    }
-
-    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, contents, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
-        element.addEventListener('click', e => {
-            e.preventDefault();
-            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
-        });
-    }
-
-    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
-        const data = await SiteLibrary.loadText(contents);
-
-        Templates.openPost(
-            id,
-            section_name,                 
-            section_icon,
-            title,
-            orientation, 1, 0.8, 0, 0,
-            header, data, footer
-        );
-    }
-
-    generateSectionItems(type, data, config) {
-        const frag = document.createDocumentFragment();
-
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-
-        if (type === 'contents') {
-            element.className = config.latestPostClassName;
-        } else {
-            element.className = config.postIndexClassName;
-        }
-
-        let index = 0;
-        for (const [key ,value] of data) {
-            const sectionItemElement = this.createSectionItem(
-                value.id,
-                value.orientation,
-                value.type + ' · ' + value.date,
-                value.title,                
-                value.description,               
-                key + '/' + value.contentUrl
-            );
-
-            frag.appendChild(sectionItemElement);
-
-            if (++index < data.size) {
-                frag.appendChild(document.createElement('hr'));
-            }      
-        }
-
-        element.appendChild(frag);
-
-        return element;
     }
 
     generateSectionHeader(config) {
@@ -160,8 +63,15 @@ export class WritingsSection {
             config.sectionHeaderIconAlt
         );
 
-        section_header.addEventListener('click',  async e => {
+        this.generateSectionHeaderEvent(section_header, config);
+
+        return section_header;
+    }
+
+    generateSectionHeaderEvent(section_header_el, config) {
+            section_header_el.addEventListener('click',  async e => {
             e.preventDefault();
+
             Templates.openPost(
                 config.listViewerId,
                 config.blogTypeName,
@@ -176,7 +86,146 @@ export class WritingsSection {
             const element = document.getElementById(config.listViewerId);
             element.querySelector('#viewer-maximize-button').style.display = 'none';
         });
+    }
 
-        return section_header;
+    generateCurationItems(data, config) {
+        const element = document.createElement('div');
+        element.className = config.latestPostClassName;
+
+        const writings_main_teaser_el = document.createElement('div');
+        writings_main_teaser_el.className = 'curation-teaser-panel';
+
+        const writings_section_item_el = document.createElement('div');
+        writings_section_item_el.className = 'section-item-panel';
+
+        let index = 0;
+        for (const [key ,value] of data) {
+            if (index < 1) {                
+                writings_main_teaser_el.appendChild(SiteLibrary.createImgElement(
+                    'main-teaser-thumbnail',
+                    '',
+                    this._BASE_PATH + key + '/' + value.thumbnails,
+                    'writings thumbnail'
+                ));
+
+                writings_main_teaser_el.appendChild(this.createSectionItem(key, value));
+
+                //frag.appendChild(writings_main_teaser_el);
+                /*frag.appendChild(document.createElement('hr'));*/
+
+                index++;
+                continue;
+            }
+            
+
+            /**processing */
+
+            /*여기서부터는 data.next*/
+            const sectionItemElement = this.createSectionItem(key, value);
+            writings_section_item_el.appendChild(sectionItemElement);
+
+
+            /*if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            } */    
+        }
+
+        element.appendChild(writings_main_teaser_el);
+        element.appendChild(writings_section_item_el);
+
+        return element;
+    }
+
+    generateSectionItems(type, data, config) {
+        const frag = document.createDocumentFragment();
+
+        const element = document.createElement('div');
+
+        if (type === 'contents') {
+            element.className = config.latestPostClassName;
+        } else {
+            element.className = config.postIndexClassName;
+        }
+
+        let index = 0;
+        for (const [key ,value] of data) {
+            const sectionItemElement = this.createSectionItem(key, value);
+
+            frag.appendChild(sectionItemElement);
+
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }      
+        }
+
+        element.appendChild(frag);
+
+        return element;
+    }
+
+    createSectionItem(key, value) {
+        const element = document.createElement('div');
+        element.className = 'writings-section-item-panel';
+
+        const meta_span = document.createElement('div');
+        meta_span.className = 'meta';
+        meta_span.innerHTML = value.type + ' · ' + value.date;
+        meta_span.innerHTML += '<br>';
+
+        element.appendChild(meta_span);
+
+        const title_span = document.createElement('div');
+        title_span.className = 'title';
+        title_span.textContent = value.title;
+
+        element.appendChild(title_span);
+
+        const summary_span = document.createElement('div');
+        summary_span.className = 'summary';
+        summary_span.textContent = value.description;
+
+        element.appendChild(summary_span);
+
+        const a =  document.createElement('a');
+        a.href = '#';
+        a.appendChild(element);
+
+        const section_config = siteMeta.selectSectionConfig('writings');
+        this.generatePostEvent(a, key, value, section_config);
+
+        return a;
+    }
+
+    generatePostEvent(element, key, value, config) {
+        element.addEventListener('mouseenter', () => {
+            SiteLibrary.prefetch(
+                element,
+                this._BASE_PATH + key + '/' + value.contentUrl
+            );
+        });
+
+        element.addEventListener('click', e => {
+            e.preventDefault();
+            this.presentPost(
+                key,
+                value,
+                config
+            );
+        });
+    }
+
+    async presentPost(key, value, config) {
+        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
+
+        Templates.openPost(
+            COMMON.VIEWER_PREFIX + value.id,
+            config.blogTypeName,
+            config.sectionHeaderIcon,
+            value.title,
+            value.orientation, 1, 0.8, 0, 0,
+            null, 
+            data, 
+            COMMON.COPYRIGHT
+        );
     }
 }

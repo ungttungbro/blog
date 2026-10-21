@@ -46,8 +46,8 @@
 
 #lifelog-post-list-all-viewer 
 #content-area .header-panel .lifelog-header-panel hr {
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    width: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    width: 80%;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -64,7 +64,7 @@
 #content-area 
 #lifelog-viewer {
     display: grid;
-    grid-template-columns: 14rem minmax(0, 1fr);
+    grid-template-columns: 18rem minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr);
     flex: 1;
     min-width: 0;
@@ -127,19 +127,32 @@
 .lifelog-viewer-item-detail {
     width: 100%;
     text-align: center;
-    overflow: auto;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    gap: 0;
 }
 
 #content-area
 .lifelog-viewer-item-detail .lifelog-section-item-panel {
     display: inline-flex;
     flex-direction: column;
+    margin:0;
+    padding:0;
 }
 
 #content-area
-.lifelog-viewer-item-detail .lifelog-section-item-panel .lifelog-photo-medium {
+.lifelog-viewer-item-detail
+.lifelog-section-item-panel
+.lifelog-photo-medium {
+    display: block;
     width: auto;
+    height: 100%;
     max-width: none;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 
@@ -154,4 +167,24 @@
     scroll-snap-align: unset;
     scroll-snap-stop: unset;
     scroll-margin-top: unset;
+}
+
+/*#content-area .content-panel {*/
+    /*display: flex;
+    flex-direction: column; 
+    height: auto;
+    min-height: 0;*/
+    /*flex: 1;*/
+    /*overflow-y: auto;*/
+/*}*/
+
+#content-area .content-panel .lifelog-content-panel {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+}
+
+#content-area .footer-panel {
+    flex: 0 0 3rem;
 }

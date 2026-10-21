@@ -1,19 +1,124 @@
 #writings {
+    line-height: 1;
+}
+
+#writing .curation-post {
+    display: flex;
+    border: 0px solid #ffffff;
+}
+
+#writings .curation-teaser-panel {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding-top: 0.25rem;
+    border: 0px solid #ffffff;
+}
+
+#writings .curation-teaser-panel .meta {
+    margin-top: 0.25rem;
+}
+
+#writings .curation-teaser-panel .title {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
     line-height: 1.4;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
-#writings .title {
+#writings .curation-teaser-panel .summary {
+     display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+
+    text-align: justify;
+
+    line-height: 1.6;
+}
+
+#writings .main-teaser-thumbnail {
+    width: auto;
+    height: 12rem;
+
+    margin-right: 1.25rem;
+
+    border-radius: var(--base-border-radius-medium);
+    border: 0px solid #ffffff;
+}
+
+#writings .section-item-panel {
+    display: flex;
+    width: 100%;
+    gap: 1.25rem;
+    border: 0px solid #ffffff;
+}
+
+#writings .section-item-panel a {
+    width: 100%;
+    border: 0px solid #ffffff;
+}
+
+#writings .section-item-panel .writings-section-item-panel{
+    width: 100%;
+    height: 100%;
+
+    background-color: #181818;
+    border: 0px solid #ffffff;
+
+    border-radius: var(--base-border-radius-medium);
+
+    padding: 1.5rem;
+
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+#writings .section-item-panel .writings-section-item-panel:hover{
+    background-color: #2b2d2f;
+}
+
+#writings .section-item-panel .writings-section-item-panel .title{
+    display: flex;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+#writings .section-item-panel .writings-section-item-panel .summary{
+    text-align: justify;
+    text-align-last: left;
+    line-height: 1.6;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+
     overflow: hidden;
-    line-height: 1.8;
 }
 
-#writings .summary, 
+#writings .meta {
+    overflow: hidden;
+    border: 0px solid #ffffff;
+}
+
+/*#writings .title {
+    overflow: hidden;
+    line-height: 2;
+    border: 0px solid #ffffff;
+}*/
+
+/*#writings .summary, */
 #blog-post-list-all-viewer .post-index .summary {
     line-height: 1.6;
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+
+    border: 0px solid #ffffff;
 
     overflow: hidden;
 }

@@ -161,11 +161,9 @@ export class PhotologController {
 
                 const resizePhotoContainer = () => {
                     requestAnimationFrame(() => {
-                        //const width = photo_container_parent.clientWidth;
                         const height = photo_container_parent.clientHeight;
-
-                        //photo_container_el.style.width = `${width}px`;
                         photo.style.height = `${height}px`;
+                        photo.style.maxWidth = 'none';
                     });
                 };
 

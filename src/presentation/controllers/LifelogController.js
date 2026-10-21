@@ -25,10 +25,8 @@ export class LifelogController {
      * 섹션 블록은 큐레이션 data를 활용하므로 curation_service를 활용한다.
      */
     async displaySection() {
-        const OriginalDTO = await this.original_service.getLifelog();
         const CurationDTO = await this.curation_service.getLifelog();
         
-        this.section_view.setOriginalDTO(OriginalDTO);
         this.section_view.setCurationDTO(CurationDTO);
 
         this.section_view.setSectionHeaderClickHandler(
@@ -69,7 +67,7 @@ export class LifelogController {
             config.blogTypeName,
             config.sectionHeaderIcon,
             config.sectionListName,
-            'portrait', 0, 0, 1.75, 1.1,
+            'landscape', 2, 1.2, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -95,32 +93,28 @@ export class LifelogController {
 
             for (const photo of section_item_panel.querySelectorAll('.lifelog-photo-medium')) {                
                 photo.style.height = lifelog_viewer_item_detail_el.clientHeight + 'px';
-
-                const resizePhoto = () => {
-                    requestAnimationFrame(() => {
-                        const height = lifelog_viewer_item_detail_el.clientHeight;
-                        photo.style.height = `${height}px`;
-                    });
-                };
-
-                resizePhoto();
-
-                const observer = new ResizeObserver(resizePhoto);
-                observer.observe(lifelog_viewer_item_detail_el);
-            }
-
-            
+                this.syncPhotoHeight(lifelog_viewer_item_detail_el, photo);
+            }            
         } else {
             Templates.openPost(
                 value.id,
                 section_name,
                 this._ICON_PATH,
                 value.tags.map(tag => '#' + tag).join(" · "),
-                value.orientation, 1, 1.05, 0.8, 1.2,
+                value.orientation, 1, 1.01, 0.8, 1.2,
                 null, 
                 data, 
                 COMMON.COPYRIGHT
-            );            
+            );
+            
+            const viewer_el = document.getElementById(value.id);
+            const content_area_el = viewer_el.querySelector('#content-area');
+            content_area_el.style.overflow = 'hidden';
+            content_area_el.querySelector('.content-panel').style.overflowY = 'auto';
+
+            for (const photo of content_area_el.querySelectorAll('.lifelog-photo-medium')) {
+                this.syncPhotoHeight(content_area_el, photo);    
+            }            
         }        
     }
 
@@ -146,4 +140,21 @@ export class LifelogController {
     async presentLifelog(content_url) {
         return await SiteLibrary.loadText(content_url);
     }
+
+    syncPhotoHeight(parent_el, target_el) {
+        const resizePhoto = () => {
+            requestAnimationFrame(() => {
+                const height = parent_el.clientHeight;
+                target_el.style.height = `${height}px`;
+
+                console.log(parent_el);
+            });
+        };
+
+        resizePhoto();
+
+        const observer = new ResizeObserver(resizePhoto);
+        observer.observe(parent_el);
+    }
+
 }

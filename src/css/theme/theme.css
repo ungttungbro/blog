@@ -42,6 +42,15 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
     filter : drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));
 }
 
+#writings .section-item-panel .writings-section-item-panel{
+    background-color: var(--section-box-background-color);
+    border: var(--section-box-border);
+}
+
+#writings .section-item-panel .writings-section-item-panel:hover{
+    background-color: var(--div-hover-color-B);
+}
+
 #photolog .teaser-figure:hover { border-right: var(--border-color-B); }
 #photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A);}
 #photolog .figure-content { color: var(--font-color-description); }

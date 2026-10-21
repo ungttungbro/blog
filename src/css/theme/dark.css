@@ -10,6 +10,7 @@
     --font-color-anchor-color-B: #cdcdcd;
     
     --div-hover-color-A: #282828;
+    --div-hover-color-B: #2b2d2f;
 
     --theme-toggle-button: url(/assets/icons/dark-mode-img/light-toggle.png);
 
@@ -43,8 +44,8 @@
     --border-color-A: 2px solid #2a2c2e;
     --border-color-B: 2px solid #121314;
     
-    --curation-page-hr: 1px solid rgba(255, 255, 255, 0.1);
-    --viewer-hr-A: 1px solid rgba(160, 148, 67, 0.05);
+    --curation-page-hr: 1px solid rgba(255, 255, 255, 0.075);
+    --viewer-hr-A: 1px solid rgba(160, 148, 67, 0.075);
 
     --taskbar-task-item-close: invert(0);
     --viewer-windoow-button: invert(0);    
