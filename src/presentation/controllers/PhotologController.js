@@ -67,7 +67,7 @@ export class PhotologController {
             config.typeName,
             config.sectionHeaderIcon,
             config.photologSectionListName,
-            'landscape', 1.3, 0.75, 0, 0,
+            'landscape', 1.25, 0.7, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -91,7 +91,7 @@ export class PhotologController {
         if(document.getElementById('photolog-post-list-all-viewer')
             ?.querySelector('.photolog-viewer-item-detail') && type!=='curation-post') {
             photolog_item_detail_el.appendChild(photo_container);            
-            this.initializePhotoContainer('photolog-viewer', '.photolog-viewer-item-detail');
+            this.initializePhotoContainer(photolog_item_detail_el, '.photolog-viewer-item-detail', 0);
         } else {
             Templates.openPost(
                 value.id,
@@ -104,7 +104,8 @@ export class PhotologController {
                 COMMON.COPYRIGHT  
             );
 
-            this.initializePhotoContainer(value.id, '#content-area');
+            const el = document.getElementById(value.id);
+            this.initializePhotoContainer(el, '#content-area', SiteLibrary.remToPx(3));
         }        
     }
 
@@ -150,66 +151,63 @@ export class PhotologController {
         return await SiteLibrary.loadText(content_url);
     }
 
-    initializePhotoContainer(id, parent) {
-        const photo_container_el = document.getElementById(id)
-            .querySelector('.photo-container');
+    initializePhotoContainer(element, parent, offset) {
+        const photo_container_el = element.querySelector('.photo-container');
         const photo_container_parent = photo_container_el.closest(parent);
 
         if (taskbar.taskBarElement.dataset.column > 2) {
             for (const photo of photo_container_el.querySelectorAll('.photolog-photo')) {
-                photo.style.height = photo_container_parent.clientHeight + 'px';
-
-                const resizePhotoContainer = () => {
-                    requestAnimationFrame(() => {
-                        const height = photo_container_parent.clientHeight;
-                        photo.style.height = `${height}px`;
-                        photo.style.maxWidth = 'none';
-                    });
-                };
-
-                resizePhotoContainer();
-
-                const observer = new ResizeObserver(resizePhotoContainer);
-                observer.observe(photo_container_parent);
+                SiteLibrary.syncPhotoHeight(photo_container_parent, photo, offset);
             }
         }
 
         this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
     }
 
-
-
     generatePhotoScrollEvent(parent_el, target_el) {
         parent_el.addEventListener('wheel', (event) => {
+            const maxScrollTop =
+                parent_el.scrollHeight - parent_el.clientHeight;
+
+            const maxScrollLeft =
+                target_el.scrollWidth - target_el.clientWidth;
+
             const atBottom =
-                parent_el.scrollTop + parent_el.clientHeight >=
-                parent_el.scrollHeight - 1;
+                parent_el.scrollTop >= maxScrollTop - 2;
 
             const atLeft =
-                target_el.scrollLeft <= 0;
+                target_el.scrollLeft <= 1;
 
             const atRight =
-                target_el.scrollLeft + target_el.clientWidth >=
-                target_el.scrollWidth - 1;
+                target_el.scrollLeft >= maxScrollLeft - 1;
 
-            // 부모가 맨 아래이고, 아래로 스크롤
-            if (atBottom && event.deltaY > 0 && !atRight) {
+            if (!atBottom) return;
+
+            console.log(event.deltaY + ' ' + atLeft);
+
+            // 아래로 스크롤: 사진을 오른쪽으로 이동
+            if (event.deltaY > 0 && !atRight) {
                 target_el.scrollLeft += event.deltaY;
+                event.preventDefault();
+                return;
+            }
+
+            // 위로 스크롤: 사진을 왼쪽으로 이동
+            else if (event.deltaY < 0 && !atLeft) {
+                target_el.scrollLeft += event.deltaY;
+                event.preventDefault();
+                return;
+            }
+
+            // 사진이 왼쪽 끝이고 위로 스크롤하는 경우
+            else if (event.deltaY < 0 && atLeft) {
+                parent_el.scrollTop += event.deltaY;
                 event.preventDefault();
             }
 
-            // 부모가 맨 아래이고, 위로 스크롤
-            else if (atBottom && event.deltaY < 0) {
-                // 사진이 아직 왼쪽으로 갈 수 있음
-                if (!atLeft) {
-                    target_el.scrollLeft += event.deltaY;
-                    event.preventDefault();
-                // 사진이 이미 맨 왼쪽이면 부모를 위로
-                } else {
-                    parent_el.scrollTop += event.deltaY;
-                    event.preventDefault();
-                }
+            else {
+                console.log('??');
             }
-        });
+        }, { passive: false });
     }
 }

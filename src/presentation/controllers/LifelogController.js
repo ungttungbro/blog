@@ -93,7 +93,7 @@ export class LifelogController {
 
             for (const photo of section_item_panel.querySelectorAll('.lifelog-photo-medium')) {                
                 photo.style.height = lifelog_viewer_item_detail_el.clientHeight + 'px';
-                this.syncPhotoHeight(lifelog_viewer_item_detail_el, photo);
+                SiteLibrary.syncPhotoHeight(lifelog_viewer_item_detail_el, photo, 0);
             }            
         } else {
             Templates.openPost(
@@ -101,7 +101,7 @@ export class LifelogController {
                 section_name,
                 this._ICON_PATH,
                 value.tags.map(tag => '#' + tag).join(" · "),
-                value.orientation, 1, 1.01, 0.8, 1.2,
+                value.orientation, 1, 1.01, 0.8, 1.3,
                 null, 
                 data, 
                 COMMON.COPYRIGHT
@@ -113,7 +113,11 @@ export class LifelogController {
             content_area_el.querySelector('.content-panel').style.overflowY = 'auto';
 
             for (const photo of content_area_el.querySelectorAll('.lifelog-photo-medium')) {
-                this.syncPhotoHeight(content_area_el, photo);    
+                if (taskbar.taskBarElement.dataset.column > 1) {
+                    SiteLibrary.syncPhotoHeight(content_area_el, photo, SiteLibrary.remToPx(3));
+                } else {
+                    this.syncPhotoWidth(content_area_el, photo);
+                }
             }            
         }        
     }
@@ -141,13 +145,11 @@ export class LifelogController {
         return await SiteLibrary.loadText(content_url);
     }
 
-    syncPhotoHeight(parent_el, target_el) {
+    syncPhotoWidth(parent_el, target_el) {
         const resizePhoto = () => {
             requestAnimationFrame(() => {
-                const height = parent_el.clientHeight;
-                target_el.style.height = `${height}px`;
-
-                console.log(parent_el);
+                const width = parent_el.clientWidth;
+                target_el.style.width = `${width}px`;
             });
         };
 

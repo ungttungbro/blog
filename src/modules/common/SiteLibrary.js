@@ -384,4 +384,19 @@ export class SiteLibrary {
       
     return { width, height };
   }
+
+  static syncPhotoHeight(parent_el, target_el, offset) {
+    const resizePhoto = () => {
+        requestAnimationFrame(() => {
+            const height = parent_el.clientHeight;
+            target_el.style.height = `${height - offset}px`;
+            //target_el.style.maxWidth = 'none';
+        });
+    };
+
+    resizePhoto();
+
+    const observer = new ResizeObserver(resizePhoto);
+    observer.observe(parent_el);
+  }
 }

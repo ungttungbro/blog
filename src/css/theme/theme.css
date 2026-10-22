@@ -39,7 +39,12 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 }
 
 #about .about-photo {
-    filter : drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));
+    transition: 0.3s;
+    transition-property: transform, opacity, filter;
+
+    filter: grayscale(0%) brightness(0.8) contrast(1);
+
+    /*filter : drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));*/
 }
 
 #writings .section-item-panel .writings-section-item-panel{
@@ -51,7 +56,11 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
     background-color: var(--div-hover-color-B);
 }
 
-#photolog .teaser-figure:hover { border-right: var(--border-color-B); }
+#photolog .teaser-figure { 
+    background-color: var(--section-box-background-color);
+    border: var(--section-box-border);
+}
+#photolog .teaser-figure:hover { background-color: var(--section-box-background-hover-color); }
 #photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A);}
 #photolog .figure-content { color: var(--font-color-description); }
 
@@ -70,7 +79,7 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 #reflection hr, 
 #about hr, 
 #links hr,
-.viewer hr {
+.lifelog-viewer hr {
     width: 90%;
     border: 0;
     border-top: var(--curation-page-hr);
@@ -114,40 +123,75 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 #taskbar .task-item-close:hover { background-color: var(--taskbar_task-item-close-background-hover-color); }
 
 
-.viewer {
+.writings-viewer,
+.photolog-viewer,
+.lifelog-viewer {
     background-color: var(--viewer-background-color);
     color: var(--font-color);
 }
 
-.viewer #content-area .blog-post { font-size: 1.1rem; line-height: 2rem;}
-.viewer #content-area .blog-post .meta { font-size: 0.95rem; }
-.viewer #content-area .blog-post p { font-weight: var(--font-weight); }
+.writings-viewer #content-area .blog-post,
+.photolog-viewer #content-area .blog-post,
+.lifelog-viewer #content-area .blog-post { font-size: 1.1rem; line-height: 2rem;}
 
-.viewer #content-area a:hover .title { color: var(--font-color-anchor-color-A); }
-.viewer #content-area a:hover .summary { color: var(--font-color-anchor-color-B);  }
+.writings-viewer #content-area .blog-post .meta,
+.photolog-viewer #content-area .blog-post .meta,
+.lifelog-viewer #content-area .blog-post .meta { font-size: 0.95rem; }
 
-.viewer #content-area .meta,
-.viewer #content-area .tags {
+.writings-viewer #content-area .blog-post p,
+.photolog-viewer #content-area .blog-post p,
+.lifelog-viewer #content-area .blog-post p { font-weight: var(--font-weight); }
+
+.writings-viewer #content-area a:hover .title,
+.photolog-viewer #content-area a:hover .title,
+.lifelog-viewer #content-area a:hover .title { color: var(--font-color-anchor-color-A); }
+
+.writings-viewer #content-area a:hover .summary,
+.photolog-viewer #content-area a:hover .summary,
+.lifelog-viewer #content-area a:hover .summary { color: var(--font-color-anchor-color-B);  }
+
+
+.writings-viewer #content-area .meta,
+.writings-viewer #content-area .tags,
+.photolog-viewer #content-area .meta,
+.photolog-viewer #content-area .tags,
+.lifelog-viewer #content-area .meta,
+.lifelog-viewer #content-area .tags {
     color: var(--font-color-meta);
 }
 
-.viewer #content-area .title {
+.writings-viewer #content-area .title,
+.photolog-viewer #content-area .title,
+.lifelog-viewer #content-area .title {
     color: var(--font-color);
 }
 
-.viewer #content-area .summary { 
+.writings-viewer #content-area .summary,
+.photolog-viewer #content-area .summary,
+.lifelog-viewer #content-area .summary { 
     color: var(--font-color-description);
 }
 
-.viewer .title-bar { 
+.writings-viewer .title-bar,
+.photolog-viewer .title-bar,
+.lifelog-viewer .title-bar { 
     background-color: var(--viewer-title-bar-background-color); 
     color: var(--font-color);
 }
 
-.viewer .title-bar.active { background-color: var(--viewer-title-bar-active-background-color); }
-.viewer .window_button { filter : var(--viewer-windoow-button); }
-.viewer .footer-panel { background-color: var(--viewer-footer-background-color); }
+.writings-viewer .title-bar.active,
+.photolog-viewer .title-bar.active,
+.lifelog-viewer .title-bar.active { background-color: var(--viewer-title-bar-active-background-color); }
 
+.writings-viewer .window_button,
+.photolog-viewer .window_button,
+.lifelog-viewer .window_button { filter : var(--viewer-windoow-button); }
+
+.writings-viewer .footer-panel,
+.photolog-viewer .footer-panel,
+.lifelog-viewer .footer-panel { background-color: var(--viewer-footer-background-color); }
+
+#writings-post-list-all-viewer,
 #photolog-post-list-all-viewer,
 #lifelog-post-list-all-viewer {
     ::-webkit-scrollbar { width: 1px; }
@@ -157,6 +201,7 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
     overflow: hidden;
 }
 
+#writings-post-list-all-viewer #content-area .header-panel .writings-header-panel hr,
 #photolog-post-list-all-viewer #content-area .header-panel .photolog-header-panel hr,
 #lifelog-post-list-all-viewer #content-area .header-panel .lifelog-header-panel hr {
     border: var(--viewer-hr-A); 

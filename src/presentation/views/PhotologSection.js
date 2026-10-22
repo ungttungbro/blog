@@ -152,8 +152,7 @@ export class PhotologSection {
     
     /* header content */
     generatePhotoViewer(data, onTeaserClick) {
-        const element = document.createElement('div');
-        element.id = 'photolog-viewer';
+        const frag = document.createDocumentFragment();
 
         const photolog_viewer_menu = this.generatePhotoViewerMenu(data, onTeaserClick);
         const photolog_viewer_item = document.createElement('div');
@@ -172,10 +171,10 @@ export class PhotologSection {
         photolog_welcome_el.appendChild(photolog_icon);
         photolog_viewer_item.appendChild(photolog_welcome_el);
 
-        element.appendChild(photolog_viewer_menu);       
-        element.appendChild(photolog_viewer_item);
+        frag.appendChild(photolog_viewer_menu);       
+        frag.appendChild(photolog_viewer_item);
 
-        return element;
+        return frag;
     }
 
     generatePhotoViewerMenu(data, onTeaserClick) {

@@ -97,8 +97,8 @@ export class Shell {
 
         if (columnCount === 2) {
             primary.append(base.secondary[0], base.primary[2]);
-            secondary.append(base.primary[0], base.primary[1]);
-            tertiary.append(base.secondary[1], base.secondary[2]);
+            secondary.append(base.primary[0]);
+            tertiary.append(base.secondary[1], base.primary[1]);
 
             this.isPortraitLayout = true;
             taskbar.taskBarElement.dataset.column = columnCount;
@@ -107,10 +107,10 @@ export class Shell {
         if (columnCount === 1) {
             const all = [
                 base.primary[2],
-                base.secondary[0],                
                 base.primary[0],
                 base.primary[1],
                 base.secondary[1],
+                base.secondary[0],
                 base.secondary[2]
             ];
             all.forEach(n => primary.appendChild(n));

@@ -46,28 +46,28 @@
   color: var(--base_font_color); 
 }
 
-.viewer {
+/*.viewer {
   animation: fadeIn 250ms ease forwards;
   
   overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
 
-  color : var(--base-font-color);
+  /*color : var(--base-font-color);
 
   background-color: #fafcfe; 
   box-shadow:  0 0 0 0.075rem rgba(255,255,255,0.04),
     0 0.3rem 0.6rem rgba(0,0,0,0.45);
-}
+}*/
 
 .title-bar {
-  position: relative;
+  /*position: relative;
   background-color : #eaecee;
-  color: var(--base-font-color);
+  color: var(--base-font-color);*/
   font-weight: bold;
 }
 
-.title-bar.active {
+/*.title-bar.active {
   background-color : #caccce;
-}
+}*/
 
 .header-panel {
   inset: 0;
@@ -92,16 +92,12 @@
 
   font-weight: bold;
   color: var(--base_font-color);
-  background-color: #dadcde;
+  /*background-color: #dadcde;*/
     
   position: relative;
   text-align: center;
   padding: 0.75rem;
     
   z-index: 9999;
-}
-
-.window_button {
-  filter : invert(1);
 }
 

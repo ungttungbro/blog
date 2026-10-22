@@ -16,7 +16,7 @@ export const ICON_SIZE = Object.freeze({
 export const COMMON = Object.freeze({
     TASKBAR_PREFIX : 'task-bar-item-',
     VIEWER_PREFIX : 'viewer-content-',
-    COPYRIGHT: '&copy; Jonas'
+    COPYRIGHT: 'Jonas'
 });
 
 export const VIEWER = Object.freeze({

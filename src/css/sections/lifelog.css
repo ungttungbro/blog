@@ -8,6 +8,30 @@
 }
 
 
+.lifelog-viewer {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fafcfe; 
+
+    position:fixed;
+    min-height: 0;
+
+    border-radius: 0.75rem;
+  
+    touch-action: none;
+    overflow: hidden;
+    overscroll-behavior: none;
+
+    animation: fadeIn 250ms ease forwards;
+    
+    overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
+
+    box-shadow:  0 0 0 0.075rem rgba(255,255,255,0.04),
+        0 0.3rem 0.6rem rgba(0,0,0,0.45);
+}
+
+
 /*
     lifelog content viewer style
 */
@@ -61,19 +85,8 @@
 }
 
 #lifelog-post-list-all-viewer 
-#content-area 
-#lifelog-viewer {
-    display: grid;
-    grid-template-columns: 18rem minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr);
-    flex: 1;
-    min-width: 0;
-    min-height: 0;
-}
-
-#lifelog-post-list-all-viewer 
 .lifelog-viewer-menu {
-    width: 100%;
+    width: 24rem;
     min-height: 0;
     min-width: 0;
     overflow-y: auto;
@@ -146,10 +159,13 @@
 .lifelog-section-item-panel
 .lifelog-photo-medium {
     display: block;
+    
     width: auto;
     height: 100%;
+    
     max-width: none;
     object-fit: contain;
+    
     margin: 0;
     padding: 0;
     border: 0;
@@ -178,6 +194,7 @@
     /*overflow-y: auto;*/
 /*}*/
 
+.lifelog-viewer
 #content-area .content-panel .lifelog-content-panel {
     display: flex;
     flex-direction: column;
@@ -185,6 +202,7 @@
     align-items: center;
 }
 
+.lifelog-viewer
 #content-area .footer-panel {
     flex: 0 0 3rem;
 }

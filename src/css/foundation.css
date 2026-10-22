@@ -22,7 +22,7 @@
 #content-primary {
   display: grid;
   grid-template-columns: 1.7fr 1fr 21rem;
-  gap: 1rem;
+  gap: 1.25rem;
   
   align-items: stretch;
   
@@ -34,7 +34,7 @@
   grid-template-columns: 1fr 1.7fr 21rem;
   align-items: stretch;
 
-  gap: 1rem;
+  gap: 1.25rem;
 
   margin-bottom: 1.25rem;
 }
@@ -44,7 +44,7 @@
   grid-template-columns: 1fr 1fr 21rem;
   align-items: stretch;
 
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 #writings, #lifelog-and-archive, #about,
@@ -79,7 +79,7 @@
   }
 
   #content-secondary {
-    grid-template-columns: 1fr 19rem;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.75rem;
 
     align-items: stretch;
@@ -177,6 +177,23 @@
     width: 100%; 
     height: auto;
     box-sizing: border-box;
+  }
+
+  #writings .curation-teaser-panel {
+    flex-direction: column;
+  }
+
+  #writings .main-teaser-thumbnail {
+    width: 100%;
+    height: auto;
+  }
+
+  #writings .curation-teaser-panel .meta {
+    margin-top: 1rem;
+  }
+
+  #writings .section-item-panel {
+    flex-direction: column;
   }
 
 /*@media (orientation: landscape) and (max-width: 768px) {

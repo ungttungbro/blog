@@ -162,7 +162,7 @@ export class Templates {
         
         config.element.elementId = viewer_id;
         config.element.offsetElementId = 'taskbar';
-        config.element.className = 'viewer';
+        config.element.className = content_type + '-' + 'viewer';
 
         config.layout.width = width + 'rem';
         config.layout.height = height + 'rem';

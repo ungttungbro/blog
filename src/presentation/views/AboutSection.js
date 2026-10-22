@@ -139,10 +139,11 @@ export class AboutSection {
   }
 
   generateThumbnailEvent(thumbnail_element, src) {
-    thumbnail_element.addEventListener('mouseenter', e => { this.onThumbnailHover(src); });
+    thumbnail_element.addEventListener('pointerenter', () => { this.onThumbnailEnter(src); });
+    thumbnail_element.addEventListener('pointerleave', () => { this.onThumbnailLeave(); });
   }
 
-  onThumbnailHover(src) {
+  onThumbnailEnter(src) {
     this.aboutPhotoElement.innerHTML = '';
 
     const photo = SiteLibrary.createImgElement(
@@ -151,7 +152,19 @@ export class AboutSection {
       src,
       siteMeta.about.photoImgAlt
     );
+
+    photo.style.setProperty(
+      'filter', 
+      'drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5)) grayscale(0%) brightness(1.1) contrast(1.1)'
+    );
       
     this.aboutPhotoElement.appendChild(photo);
+  }
+
+  onThumbnailLeave() {
+    const el = document.getElementById('about').querySelector('.about-photo');
+   
+    el.style.setProperty('filter', 'grayscale(0%) brightness(0.8) contrast(1)');
+    el.style.setProperty('transition-duration', '0.3');
   }
 }

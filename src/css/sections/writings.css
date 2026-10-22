@@ -38,6 +38,12 @@
     line-height: 1.6;
 }
 
+#writings .curation-teaser-panel:hover .main-teaser-thumbnail {
+    transition-duration: 0.3s;
+    filter: grayscale(0%) brightness(1.1) contrast(1.1);
+    opacity: 1;
+}
+
 #writings .main-teaser-thumbnail {
     width: auto;
     height: 12rem;
@@ -45,6 +51,13 @@
     margin-right: 1.25rem;
 
     border-radius: var(--base-border-radius-medium);
+
+    transition: 0.3s;
+    transition-property: transform, opacity, filter;
+
+    filter: grayscale(0%) brightness(0.8) contrast(1);
+    opacity: 1;
+
     border: 0px solid #ffffff;
 }
 
@@ -131,6 +144,30 @@
     color: var(--base-anchor-hover-color-B);
 }
 
-.viewer .post-index {
+.writings-viewer {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fafcfe; 
+
+    position:fixed;
+
+    min-height: 0;
+
+    border-radius: 0.75rem;
+  
+    touch-action: none;
+    overflow: hidden;
+    overscroll-behavior: none;
+
+    animation: fadeIn 250ms ease forwards;
+    
+    overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
+
+    box-shadow:  0 0 0 0.075rem rgba(255,255,255,0.04),
+        0 0.3rem 0.6rem rgba(0,0,0,0.45);
+}
+
+.writings-viewer .post-index {
     padding-bottom: 0.75rem;
 }

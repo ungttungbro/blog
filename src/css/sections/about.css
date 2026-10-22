@@ -15,7 +15,12 @@
   position: relative;
  
   border-radius: var(--base-border-radius-medium);
- 
+
+  transition: 0.3s;
+  transition-property: transform, opacity, filter;
+
+  filter: grayscale(0%) brightness(0.8) contrast(1);
+
   animation: fadeIn 500ms ease forwards;
 }
 
@@ -56,6 +61,20 @@
   font-size: 0;
 
   border-radius: var(--base-border-radius-medium);
+}
+
+#about #thumbnails .profile-thumbnail {
+  transition: 0.3s;
+  transition-property: transform, opacity, filter;
+
+  filter: grayscale(0%) brightness(0.8) contrast(1);
+  opacity: 1;
+}
+
+#about #thumbnails .profile-thumbnail:hover {
+  transition-duration: 0.3s;
+  filter: grayscale(0%) brightness(1.1) contrast(1.1);
+  opacity: 1;
 }
 
 #about a:hover {

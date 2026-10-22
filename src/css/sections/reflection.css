@@ -38,3 +38,27 @@
 #reflection a:hover .summary {
     color: var(--base-anchor-hover-color-B);   
 }
+
+.reflection-viewer {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fafcfe; 
+
+    position:fixed;
+
+    min-height: 0;
+
+    border-radius: 0.75rem;
+  
+    touch-action: none;
+    overflow: hidden;
+    overscroll-behavior: none;
+
+    animation: fadeIn 250ms ease forwards;
+    
+    overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
+
+    box-shadow:  0 0 0 0.075rem rgba(255,255,255,0.04),
+        0 0.3rem 0.6rem rgba(0,0,0,0.45);
+}
