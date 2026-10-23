@@ -2,6 +2,15 @@
     line-height: 1.55;
 }
 
+#archive-post-list-all-viewer 
+#content-area 
+.header-panel 
+.archive-header-panel hr {
+    width: 100%;
+    margin:0;
+    padding:0;
+}
+
 #archive .title,
 #archive-post-list-all-viewer .title {
     display: block;
@@ -14,6 +23,42 @@
     overflow: hidden;
     
     text-overflow: ellipsis;
+}
+
+#archive-post-list-all-viewer .title-bar {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+#archive-post-list-all-viewer .title {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    padding-bottom: 0;
+}
+
+#archive-post-list-all-viewer .meta {
+    padding-top: 0;
+    margin-top: 0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+#archive-post-list-all-viewer 
+.header-panel 
+.post-index {
+    padding: 0;
+    margin: 0;
+    border: 0;    
+}
+
+#archive-post-list-all-viewer 
+.header-panel 
+.post-index
+.teaser-figure {
+    padding: 0.5rem;
+    padding-top: 0.25rem;   
 }
 
 #archive a:hover .title {

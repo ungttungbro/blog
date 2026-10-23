@@ -123,8 +123,18 @@
     width: 6rem;
   }
 
-  .viewer { 
+  .writings-viewer,
+  .lifelog-viewer,
+  .archive-viewer,
+  .photolog-viewer,
+  .reflection-viewer { 
     border: none;
+  }
+
+  #blog-post-list-all-viewer .writings-viewer-menu,
+  #lifelog-post-list-all-viewer .lifelog-viewer-menu,
+  #photolog-post-list-all-viewer .photolog-viewer-menu {
+    width: 100%;
   }
 
   #viewer-maximize-button {

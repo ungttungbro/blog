@@ -16,6 +16,13 @@
   padding-right: 0.25rem;*/
 }
 
+#reflection .curation-post,
+#archive .curation-post,
+#lifelog .curation-post {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .curation-post .meta { 
     font-size: 0.9rem;
     font-weight: bold;

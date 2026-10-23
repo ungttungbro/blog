@@ -159,12 +159,32 @@ export class PhotologController {
             for (const photo of photo_container_el.querySelectorAll('.photolog-photo')) {
                 SiteLibrary.syncPhotoHeight(photo_container_parent, photo, offset);
             }
+        } else {
+            for (const photo of photo_container_el.querySelectorAll('.photolog-photo')) {
+                this.syncPhotoWidth(photo_container_parent, photo, offset);
+            }
         }
 
         this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
     }
 
+    syncPhotoWidth(parent_el, target_el) {
+        const resizePhoto = () => {
+            requestAnimationFrame(() => {
+                const width = parent_el.clientWidth;
+                target_el.style.width = `${width}px`;
+            });
+        };
+
+        resizePhoto();
+
+        const observer = new ResizeObserver(resizePhoto);
+        observer.observe(parent_el);
+    }
+
     generatePhotoScrollEvent(parent_el, target_el) {
+        let isHorizontalScrollActive = false;
+
         parent_el.addEventListener('wheel', (event) => {
             const maxScrollTop =
                 parent_el.scrollHeight - parent_el.clientHeight;
@@ -181,32 +201,42 @@ export class PhotologController {
             const atRight =
                 target_el.scrollLeft >= maxScrollLeft - 1;
 
+            // 가로 스크롤이 활성화된 상태
+            if (isHorizontalScrollActive) {
+
+                // 사진의 왼쪽 끝에서 위로 스크롤하면 부모로 복귀
+                if (atLeft && event.deltaY < 0) {
+                    isHorizontalScrollActive = false;
+                    return;
+                }
+
+                // 부모를 최하단에 고정
+                event.preventDefault();
+                
+                parent_el.scrollTop =
+                    parent_el.scrollHeight - parent_el.clientHeight;
+
+                // 사진의 가로 스크롤 처리
+                target_el.scrollLeft += event.deltaY;
+                return;
+            }
+
+            // 부모가 하단에 도달하기 전에는 일반 세로 스크롤
             if (!atBottom) return;
 
-            console.log(event.deltaY + ' ' + atLeft);
-
-            // 아래로 스크롤: 사진을 오른쪽으로 이동
+            // 하단에서 아래로 스크롤하면 가로 스크롤 활성화
             if (event.deltaY > 0 && !atRight) {
-                target_el.scrollLeft += event.deltaY;
+                isHorizontalScrollActive = true;
                 event.preventDefault();
+                target_el.scrollLeft += event.deltaY;
                 return;
             }
 
-            // 위로 스크롤: 사진을 왼쪽으로 이동
-            else if (event.deltaY < 0 && !atLeft) {
+            // 사진이 왼쪽 끝이 아니면 위로 스크롤해도 가로 이동
+            if (event.deltaY < 0 && !atLeft) {
+                isHorizontalScrollActive = true;
+                event.preventDefault();
                 target_el.scrollLeft += event.deltaY;
-                event.preventDefault();
-                return;
-            }
-
-            // 사진이 왼쪽 끝이고 위로 스크롤하는 경우
-            else if (event.deltaY < 0 && atLeft) {
-                parent_el.scrollTop += event.deltaY;
-                event.preventDefault();
-            }
-
-            else {
-                console.log('??');
             }
         }, { passive: false });
     }

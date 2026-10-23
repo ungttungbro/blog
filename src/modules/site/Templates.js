@@ -132,8 +132,7 @@ export class Templates {
         const config = this.buildViewerConfig(
             id, 
             content_size.width, content_size.height, 
-            section_name, section_icon, title, 
-            (content_size.width * 0.6)
+            section_name, section_icon, title
         );        
         
         try {
@@ -157,7 +156,7 @@ export class Templates {
         }
     }
 
-    static buildViewerConfig(viewer_id, width, height, content_type, section_icon, title, title_truncate_length) {        
+    static buildViewerConfig(viewer_id, width, height, content_type, section_icon, title) {        
         const config = structuredClone(viewerConfig);    
         
         config.element.elementId = viewer_id;
@@ -171,7 +170,7 @@ export class Templates {
 
         config.meta.contentType = content_type;
         config.meta.titleIconPath = section_icon;
-        config.meta.titleText = SiteLibrary.truncateText(title, title_truncate_length);
+        config.meta.titleText = title;
 
         return config;
     }

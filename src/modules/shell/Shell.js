@@ -96,9 +96,9 @@ export class Shell {
         }
 
         if (columnCount === 2) {
-            primary.append(base.secondary[0], base.primary[2]);
+            primary.append(base.primary[1], base.primary[2]);
             secondary.append(base.primary[0]);
-            tertiary.append(base.secondary[1], base.primary[1]);
+            tertiary.append(base.secondary[1], base.secondary[0]);
 
             this.isPortraitLayout = true;
             taskbar.taskBarElement.dataset.column = columnCount;

@@ -10,7 +10,7 @@
 #photolog .teaser-figure {
     display: flex;
     background-color: #181818;
-    border-radius: var(--base-border-radius-light-medium);
+    border-radius: var(--base-border-radius-medium);
 
     align-items: center;
 }
@@ -44,8 +44,8 @@
     width: var( --photolog-thumbnail-width-size);
     height: var(--photolog-thumbnail-height-size);
 
-    border-top-left-radius: var(--base-border-radius-light-medium);
-    border-bottom-left-radius: var(--base-border-radius-light-medium);
+    border-top-left-radius: var(--base-border-radius-medium);
+    border-bottom-left-radius: var(--base-border-radius-medium);
     
     margin-right: 1rem;    
    
@@ -112,12 +112,14 @@
     overflow-x: auto;
     overflow-y: hidden;
 
+    scroll-behavior: smooth;
+
     transition: height 0.15s ease-out;
 }
 
 .photolog-viewer #content-area .photo-container::-webkit-scrollbar {
-    /*width: 10px; height: 10px;*/
-    display: none;
+    width: 6px; height: 6px;
+    /*display: none;*/
 }
 
 /*#content-area .photo-container > * {

@@ -38,8 +38,8 @@
    
     --footer-background-color: #181818;
 
-    --section-header-border: none;
-    --section-box-border: none;   
+    --section-header-border:  2px solid transparent;
+    --section-box-border:  2px solid transparent;   
     --taskbar-task-item-border: none;
 
     --border-color-A: 2px solid #2a2c2e;
@@ -47,7 +47,17 @@
     
     --curation-page-hr: 1px solid rgba(255, 255, 255, 0.075);
     --viewer-hr-A: 1px solid rgba(160, 148, 67, 0.075);
+    --viewer-hr-B: 1px solid rgba(160, 148, 67, 0.1);
 
     --taskbar-task-item-close: invert(0);
-    --viewer-windoow-button: invert(0);    
+    --viewer-windoow-button: invert(0);
+    
+    --writings-main-teaser-image-filter: grayscale(0) brightness(0.8) contrast(1);
+    --about-photo-image-filter: grayscale(0) brightness(0.8) contrast(1);
+    --about-thumbnail-filter: grayscale(0) brightness(0.8) contrast(1);
+    --photolog-thumbnail-filter: grayscale(0) brightness(0.8) contrast(1);
+
+    --writings-main-teaser-image-hover-filter: grayscale(0%) brightness(1.1) contrast(1.1);
+    --photolog-thumbnail-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
+    --about-thumbnail-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
 }

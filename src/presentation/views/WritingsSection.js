@@ -15,20 +15,28 @@ export class WritingsSection {
 
     async initialize(){}
 
-    setOriginalDTO(data) {
-        this.original_data = data;
-    }
-
-    getOriginalDTO() {
-        return this.original_data;
-    }
-
     setCurationDTO(data) {
         this.curation_data = data;
     }
 
     getCurationDTO() {
         return this.curation_data;
+    }
+
+    setSectionHeaderClickHandler(handler) {
+        this.onSectionHeaderClick = handler;
+    }
+
+    getSectionHeaderClickHandler() {
+        return this.onSectionHeaderClick;
+    }
+
+    setPostClickHandler(handler) {
+        this.onPostClick = handler;
+    }
+
+    getPostClickHandler() {
+        return this.onPostClick;
     }
 
     show() {
@@ -45,15 +53,17 @@ export class WritingsSection {
         const section_meta_data = siteMeta.selectSectionConfig(this._SECTION_NAME);
         if(!section_meta_data) return;
 
-        const section_header = this.generateSectionHeader(section_meta_data);
+        const section_header_click_handler = this.getSectionHeaderClickHandler();
+        const section_header = this.generateSectionHeader(section_meta_data, section_header_click_handler);
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateCurationItems(data, section_meta_data);
+        const post_click_handler = this.getPostClickHandler();
+        const items = this.generateCurationItems(data, section_meta_data, post_click_handler);
         el.appendChild(items);
     }
 
-    generateSectionHeader(config) {
+    generateSectionHeader(config, onSectionHeaderClick) {
         const section_header = Templates.createSectionHeader(
             config.captionImgId, 
             config.captionId,
@@ -63,32 +73,19 @@ export class WritingsSection {
             config.sectionHeaderIconAlt
         );
 
-        this.generateSectionHeaderEvent(section_header, config);
+        this.generateSectionHeaderEvent(section_header, config, onSectionHeaderClick);
 
         return section_header;
     }
 
-    generateSectionHeaderEvent(section_header_el, config) {
-            section_header_el.addEventListener('click',  async e => {
+    generateSectionHeaderEvent(section_header_el, config, onSectionHeaderClick) {
+        section_header_el.addEventListener('click', e => {
             e.preventDefault();
-
-            Templates.openPost(
-                config.listViewerId,
-                config.blogTypeName,
-                config.sectionHeaderIcon,
-                config.sectionListName,
-                'portrait', 0, 0, 0.7, 0.8,
-                this.generateSectionItems('header', await this.getOriginalDTO(), config),
-                null,
-                COMMON.COPYRIGHT
-            );
-
-            const element = document.getElementById(config.listViewerId);
-            element.querySelector('#viewer-maximize-button').style.display = 'none';
+            onSectionHeaderClick(config);                    
         });
     }
 
-    generateCurationItems(data, config) {
+    generateCurationItems(data, config, onTeaserClick) {
         const element = document.createElement('div');
         element.className = config.latestPostClassName;
 
@@ -108,26 +105,14 @@ export class WritingsSection {
                     'writings thumbnail'
                 ));
 
-                writings_main_teaser_el.appendChild(this.createSectionItem(key, value));
-
-                //frag.appendChild(writings_main_teaser_el);
-                /*frag.appendChild(document.createElement('hr'));*/
+                writings_main_teaser_el.appendChild(this.createSectionItem('curation-post', key, value, onTeaserClick));
 
                 index++;
                 continue;
             }
             
-
-            /**processing */
-
-            /*여기서부터는 data.next*/
-            const sectionItemElement = this.createSectionItem(key, value);
+            const sectionItemElement = this.createSectionItem('curation-post', key, value, onTeaserClick);
             writings_section_item_el.appendChild(sectionItemElement);
-
-
-            /*if (++index < data.size) {
-                frag.appendChild(document.createElement('hr'));
-            } */    
         }
 
         element.appendChild(writings_main_teaser_el);
@@ -136,20 +121,20 @@ export class WritingsSection {
         return element;
     }
 
-    generateSectionItems(type, data, config) {
-        const frag = document.createDocumentFragment();
-
+    generateSectionItems(type, data, config, onTeaserClick) {
         const element = document.createElement('div');
 
-        if (type === 'contents') {
-            element.className = config.latestPostClassName;
+        if(document.getElementById('writings').querySelector('.' + config.latestPostClassName)) {
+            element.className = 'writings-viewer-menu';
         } else {
-            element.className = config.postIndexClassName;
+            element.className = config.latestPostClassName;
         }
+
+        const frag = document.createDocumentFragment();
 
         let index = 0;
         for (const [key ,value] of data) {
-            const sectionItemElement = this.createSectionItem(key, value);
+            const sectionItemElement = this.createSectionItem(type, key, value, onTeaserClick);
 
             frag.appendChild(sectionItemElement);
 
@@ -163,9 +148,9 @@ export class WritingsSection {
         return element;
     }
 
-    createSectionItem(key, value) {
+    createSectionItem(type, key, value, onTeaserClick) {
         const element = document.createElement('div');
-        element.className = 'writings-section-item-panel';
+        element.className = 'teaser-figure';
 
         const meta_span = document.createElement('div');
         meta_span.className = 'meta';
@@ -186,17 +171,17 @@ export class WritingsSection {
 
         element.appendChild(summary_span);
 
-        const a =  document.createElement('a');
-        a.href = '#';
-        a.appendChild(element);
+        const teaser =  document.createElement('a');
+        teaser.href = '#';
+        teaser.appendChild(element);
 
         const section_config = siteMeta.selectSectionConfig('writings');
-        this.generatePostEvent(a, key, value, section_config);
+        this.generatePostEvent(teaser, type, key, value, section_config, onTeaserClick);
 
-        return a;
+        return teaser;
     }
 
-    generatePostEvent(element, key, value, config) {
+    generatePostEvent(element, type, key, value, config, onTeaserClick) {
         element.addEventListener('mouseenter', () => {
             SiteLibrary.prefetch(
                 element,
@@ -206,7 +191,8 @@ export class WritingsSection {
 
         element.addEventListener('click', e => {
             e.preventDefault();
-            this.presentPost(
+            onTeaserClick(
+                type,
                 key,
                 value,
                 config
@@ -227,5 +213,58 @@ export class WritingsSection {
             data, 
             COMMON.COPYRIGHT
         );
+    }
+
+    generateWritingsViewer(data, onTeaserClick) {
+        const frag = document.createDocumentFragment();
+
+        const writings_viewer_menu = this.generateWritingsViewerMenu(data, onTeaserClick);
+        const writings_viewer_item = document.createElement('div');
+        writings_viewer_item.className = 'writings-viewer-item-detail';
+
+        const photolog_icon = SiteLibrary.createImgElement(
+            'writings-icon', 
+            '', 
+            'assets/icons/blog.png', 
+            'writings-welcome-icon'
+        );
+
+        const writings_welcome_el = document.createElement('div');
+        writings_welcome_el.className = 'writings-welcome';
+
+        writings_welcome_el.appendChild(photolog_icon);
+        writings_viewer_item.appendChild(writings_welcome_el);
+
+        frag.appendChild(writings_viewer_menu);       
+        frag.appendChild(writings_viewer_item);
+
+        return frag;
+    }
+
+    generateWritingsViewerMenu(data, onTeaserClick) {
+        const frag = document.createDocumentFragment();
+
+        const element = document.createElement('div');
+        element.className = 'writings-viewer-menu';
+
+        let index = 0;
+        for (const [key, value] of data) {            
+            const sectionItemElement = this.createSectionItem(
+                element.className,
+                key, 
+                value, 
+                onTeaserClick
+            );
+
+            frag.appendChild(sectionItemElement);
+            
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }
+        }
+
+        element.appendChild(frag);
+
+        return element;
     }
 }

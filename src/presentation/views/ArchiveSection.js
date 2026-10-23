@@ -53,41 +53,106 @@ export class ArchiveSection {
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, meta_data, title, content_path) {
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = 'archive-section-item-panel';
+    generateSectionHeader(config) {
+        const section_header = Templates.createSectionHeader(
+            config.captionImgId, 
+            config.captionId,
+            config.className, 
+            config.sectionHeaderIcon, 
+            config.captionText, 
+            config.sectionHeaderIconAlt
+        );
 
-        const meta_span = document.createElement('span');
-        meta_span.className = 'meta';
-        meta_span.innerHTML = meta_data;
-        meta_span.innerHTML += '<br>';
+        this.generateSectionHeaderEvent(section_header, config);        
 
-        element.appendChild(meta_span);
+        return section_header;
+    }
 
-        const title_span = document.createElement('span');
-        title_span.className = 'title';
-        title_span.textContent = title;
+    generateSectionHeaderEvent(section_header_el, config) {
+        section_header_el.addEventListener('click', e => {            
+            e.preventDefault();
+            this.onSectionHeaderClick(config);
+        });
+    }
 
-        const a =  document.createElement('a');
-        a.href = '#';
-        a.appendChild(title_span);
+    async onSectionHeaderClick(config) {
+        Templates.openPost(
+            config.listViewerId,
+            config.blogTypeName,
+            config.sectionHeaderIcon,
+            config.sectionListName,
+            'portrait', 0, 0, 0.8, 1.15,
+            this.generateSectionItems('header', await this.getOriginalDTO(), config),
+            null,
+            COMMON.COPYRIGHT
+        );
+
+        const element = document.getElementById(config.listViewerId);
+        element.querySelector('#viewer-maximize-button').style.display = 'none';
+    }
+
+    generateSectionItems(type, data, config) {
+        const frag = document.createDocumentFragment();
+
+        const element = document.createElement('div');
+
+        if (type === 'contents') {
+            element.className = config.latestPostClassName;
+        } else {
+            element.className = config.postIndexClassName;
+        }
+
+        let index = 0;
+        for (const [key, value] of data) {
+            const sectionItemElement = this.createSectionItem(key, value);
+
+            frag.appendChild(sectionItemElement);
+
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }      
+        }
+
+        element.appendChild(frag);
+
+        return element;
+    }
+
+    createSectionItem(key, value) {
+        const element = document.createElement('div');
+        element.className = 'teaser-figure';
+
+        const meta_el = document.createElement('div');
+        meta_el.className = 'meta';
+        meta_el.innerHTML = Templates.symbol(value.type) + value.tags.map(tag => '#' + tag).join(" · ");
+        meta_el.innerHTML += '<br>';
+
+        element.appendChild(meta_el);
+
+        const title_el = document.createElement('div');
+        title_el.className = 'title';
+        title_el.textContent = value.title;
+
+        element.appendChild(title_el);
+
+        const teaser =  document.createElement('a');
+        teaser.href = '#';
+        teaser.appendChild(element);
 
         const section_config = siteMeta.selectSectionConfig('archive');
         this.generatePostEvent(
             section_config.blogTypeName,
-            COMMON.VIEWER_PREFIX + id,
-            orientation,
-            a, 
+            COMMON.VIEWER_PREFIX + value.id,
+            value.orientation,
+            teaser, 
             section_config.sectionHeaderIcon, 
-            title, 
+            value.title, 
             null,
-            this._BASE_PATH + content_path, 
+            this._BASE_PATH + key + '/' + value.contentUrl, 
             COMMON.COPYRIGHT
         );
 
-        element.appendChild(a);
-
-        return element;
+        return teaser;
     }
 
     generatePostEvent(section_name, id, orientation, element, section_icon, title, header, contents, footer) {
@@ -110,67 +175,4 @@ export class ArchiveSection {
             header, data, footer
         );
     }
-
-    generateSectionItems(type, data, config) {
-        const frag = document.createDocumentFragment();
-
-        const element = document.createElement(ELEMENT_TYPE.DIV);        
-
-        if (type === 'contents') {
-            element.className = config.latestPostClassName;
-        } else {
-            element.className = config.postIndexClassName;
-        }
-
-        let index = 0;
-        for (const [key, value] of data) {
-            const sectionItemElement = this.createSectionItem(
-                value.id,
-                value.orientation,
-                Templates.symbol(value.type) + value.tags.map(tag => '#' + tag).join(" · "),
-                value.title,
-                key + '/' + value.contentUrl
-            );
-
-            frag.appendChild(sectionItemElement);
-
-            if (++index < data.size) {
-                frag.appendChild(document.createElement('hr'));
-            }      
-        }
-
-        element.appendChild(frag);
-
-        return element;
-    }
-
-    generateSectionHeader(config) {
-        const section_header = Templates.createSectionHeader(
-            config.captionImgId, 
-            config.captionId,
-            config.className, 
-            config.sectionHeaderIcon, 
-            config.captionText, 
-            config.sectionHeaderIconAlt
-        );
-
-        section_header.addEventListener('click',  async e => {
-            e.preventDefault();
-            Templates.openPost(
-                config.listViewerId,
-                config.blogTypeName,
-                config.sectionHeaderIcon,
-                config.sectionListName,
-                'portrait', 0, 0, 0.8, 1.15,
-                this.generateSectionItems('header', await this.getOriginalDTO(), config),
-                null,
-                COMMON.COPYRIGHT
-            );
-
-            const element = document.getElementById(config.listViewerId);
-            element.querySelector('#viewer-maximize-button').style.display = 'none';
-        });
-
-        return section_header;
-    }    
 }

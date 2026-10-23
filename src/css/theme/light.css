@@ -47,7 +47,16 @@
     
     --curation-page-hr : 1px solid rgba(0, 0, 0, 0.1);
     --viewer-hr-A: 1px solid rgba(0, 0, 0, 0.05);
+    --viewer-hr-B: 1px solid rgba(0, 0, 0, 0.1);
 
     --taskbar-task-item-close: invert(1);
     --viewer-windoow-button: invert(1);
+
+    --writings-main-teaser-image-filter: grayscale(0.9);
+    --about-photo-image-filter: grayscale(0.9);
+    --about-thumbnail-filter: grayscale(0.9);
+    --photolog-thumbnail-filter: grayscale(0.9);
+
+    --photolog-thumbnail-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
+    --writings-main-teaser-image-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
 }

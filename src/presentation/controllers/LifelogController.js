@@ -82,7 +82,7 @@ export class LifelogController {
             this._BASE_PATH + key + '/' + value.contentUrl
         );
 
-        const element = this.createlifelogItemDetail(type);
+        const element = this.createLifelogItemDetail(type);
         const lifelog_viewer_item_detail_el = document.getElementById('lifelog-post-list-all-viewer')
             ?.querySelector('.lifelog-viewer-item-detail');
         
@@ -122,7 +122,7 @@ export class LifelogController {
         }        
     }
 
-    createlifelogItemDetail(type) {
+    createLifelogItemDetail(type) {
         let lifelog_viewer_item = document.getElementById('lifelog-post-list-all-viewer')
                             ?.querySelector('.lifelog-viewer-item-detail');
 

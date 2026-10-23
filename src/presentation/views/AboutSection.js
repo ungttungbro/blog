@@ -164,7 +164,7 @@ export class AboutSection {
   onThumbnailLeave() {
     const el = document.getElementById('about').querySelector('.about-photo');
    
-    el.style.setProperty('filter', 'grayscale(0%) brightness(0.8) contrast(1)');
+    el.style.setProperty('filter', 'var(--about-photo-image-filter)');
     el.style.setProperty('transition-duration', '0.3');
   }
 }

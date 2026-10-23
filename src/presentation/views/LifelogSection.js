@@ -173,7 +173,7 @@ export class LifelogSection {
     generateLifelogViewer(data, onTeaserClick) {
         const frag = document.createDocumentFragment();
 
-        const lifelog_viewer_menu = this.generatelifelogViewerMenu(data, onTeaserClick);
+        const lifelog_viewer_menu = this.generateLifelogViewerMenu(data, onTeaserClick);
         const lifelog_viewer_item = document.createElement('div');
         lifelog_viewer_item.className = 'lifelog-viewer-item-detail';
 
@@ -196,7 +196,7 @@ export class LifelogSection {
         return frag;
     }
 
-    generatelifelogViewerMenu(data, onTeaserClick) {
+    generateLifelogViewerMenu(data, onTeaserClick) {
         const frag = document.createDocumentFragment();
 
         const element = document.createElement('div');
