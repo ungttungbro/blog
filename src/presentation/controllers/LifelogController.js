@@ -67,7 +67,7 @@ export class LifelogController {
             config.blogTypeName,
             config.sectionHeaderIcon,
             config.sectionListName,
-            'landscape', 2, 1.2, 0, 0,
+            'landscape', 1.9, 1.2, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -94,7 +94,7 @@ export class LifelogController {
             for (const photo of section_item_panel.querySelectorAll('.lifelog-photo-medium')) {                
                 photo.style.height = lifelog_viewer_item_detail_el.clientHeight + 'px';
                 SiteLibrary.syncPhotoHeight(lifelog_viewer_item_detail_el, photo, 0);
-            }            
+            }
         } else {
             Templates.openPost(
                 value.id,
@@ -102,23 +102,24 @@ export class LifelogController {
                 this._ICON_PATH,
                 value.tags.map(tag => '#' + tag).join(" · "),
                 value.orientation, 1, 1.01, 0.8, 1.3,
-                null, 
-                data, 
+                null,
+                data,
                 COMMON.COPYRIGHT
             );
-            
+           
             const viewer_el = document.getElementById(value.id);
-            const content_area_el = viewer_el.querySelector('#content-area');
-            content_area_el.style.overflow = 'hidden';
-            content_area_el.querySelector('.content-panel').style.overflowY = 'auto';
+            viewer_el.className = section_name + '-' + 'curation' + '-' + 'viewer';
 
-            for (const photo of content_area_el.querySelectorAll('.lifelog-photo-medium')) {
-                if (taskbar.taskBarElement.dataset.column > 1) {
-                    SiteLibrary.syncPhotoHeight(content_area_el, photo, SiteLibrary.remToPx(3));
+            const content_area_el = viewer_el.querySelector('#content-area');
+            const photos = content_area_el.querySelectorAll('.lifelog-photo-medium');
+
+            for (const photo of photos) {
+                if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {                        
+                    this.syncPhotoHeight(content_area_el, photo, 0);
                 } else {
                     this.syncPhotoWidth(content_area_el, photo);
                 }
-            }            
+            }
         }        
     }
 
@@ -159,4 +160,26 @@ export class LifelogController {
         observer.observe(parent_el);
     }
 
+    syncPhotoHeight(parent_el, target_el, offset) {
+        let previousHeight = -1;
+
+        const resizePhoto = () => {
+            requestAnimationFrame(() => {
+                const height = parent_el.clientHeight - offset;
+                console.log(height);
+
+                if (height <= 0 || height === previousHeight) {
+                    return;
+                }
+
+                previousHeight = height;
+                target_el.style.height = `${height}px`;
+            });
+        };
+
+        resizePhoto();
+
+        const observer = new ResizeObserver(resizePhoto);
+        observer.observe(parent_el);
+    }
 }

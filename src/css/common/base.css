@@ -41,9 +41,9 @@
 
 }
 
-::-webkit-scrollbar { width: 0px; height: 0px;}
+/*::-webkit-scrollbar { width: 4px; height: 0px;}
 ::-webkit-scrollbar-thumb { background-color: #666666;}
-::-webkit-scrollbar-track { background-color: #333333;}
+::-webkit-scrollbar-track { background-color: #333333;}*/
 
 html {
   background-color: var(--base_background-color);
@@ -55,6 +55,8 @@ html {
   font-weight: bold;
 
   line-height: var(--base-font-line-height);
+
+  scrollbar-width: none;
 }
 
 body {

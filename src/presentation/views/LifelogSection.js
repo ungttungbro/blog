@@ -203,7 +203,7 @@ export class LifelogSection {
         element.className = 'lifelog-viewer-menu';
 
         let index = 0;
-        for (const [key, value] of data) {            
+        for (const [key, value] of data) {
             const sectionItemElement = this.createSectionItem(
                 element.className,
                 key, 

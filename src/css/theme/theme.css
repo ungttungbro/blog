@@ -1,3 +1,62 @@
+/* WebKit 스크롤바 지원 브라우저 */
+@supports selector(::-webkit-scrollbar) {
+    .lifelog-curation-viewer .content-panel,
+    .lifelog-viewer .lifelog-viewer-menu,
+    .lifelog-viewer .lifelog-viewer-item-detail {
+        scrollbar-width: auto;
+    }
+
+    .lifelog-curation-viewer .content-panel::-webkit-scrollbar,
+    .lifelog-viewer .lifelog-viewer-menu::-webkit-scrollbar,
+    .lifelog-viewer .lifelog-viewer-item-detail::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .lifelog-curation-viewer .content-panel::-webkit-scrollbar-track,
+    .lifelog-viewer .lifelog-viewer-menu::-webkit-scrollbar-track,
+    .lifelog-viewer .lifelog-viewer-item-detail::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .lifelog-curation-viewer .content-panel:hover::-webkit-scrollbar-track,
+    .lifelog-viewer .lifelog-viewer-menu:hover::-webkit-scrollbar-track,
+    .lifelog-viewer .lifelog-viewer-item-detail:hover::-webkit-scrollbar-track {
+        background-color: var(--viewer-scrollbar-track-background-color);
+    }
+
+    .lifelog-curation-viewer .content-panel::-webkit-scrollbar-thumb,
+    .lifelog-viewer .lifelog-viewer-menu::-webkit-scrollbar-thumb,
+    .lifelog-viewer .lifelog-viewer-item-detail::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .lifelog-curation-viewer .content-panel:hover::-webkit-scrollbar-thumb,
+    .lifelog-viewer .lifelog-viewer-menu:hover::-webkit-scrollbar-thumb,
+    .lifelog-viewer .lifelog-viewer-item-detail:hover::-webkit-scrollbar-thumb {
+        background-color: var(--viewer-scrollbar-thumb-background-color);
+        border-radius: 4px;
+        background-clip: padding-box;
+    }
+
+     /* 스크롤바 스타일 재계산 유도 */
+    .lifelog-curation-viewer .content-panel:hover,
+    .lifelog-viewer .lifelog-viewer-menu:hover,
+    .lifelog-viewer .lifelog-viewer-item-detail:hover {
+        --scrollbar-refresh: ;
+    }
+}
+
+/* WebKit 스크롤바를 지원하지 않는 브라우저 */
+@supports not selector(::-webkit-scrollbar) {
+    .lifelog-viewer .lifelog-viewer-menu:hover {
+        scrollbar-width: thin;
+        scrollbar-color: #888 transparent;
+    }
+}
+
 html {
     background-color: var(--background-color);
 
@@ -139,6 +198,11 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
     color: var(--font-color);
 }
 
+.lifelog-curation-viewer {
+    background-color: var(--viewer-background-color);
+    color: var(--font-color);
+}
+
 .archive-viewer #content-area .blog-post,
 .writings-viewer #content-area .blog-post,
 .photolog-viewer #content-area .blog-post,
@@ -226,25 +290,31 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 .archive-viewer .title-bar.active,
 .writings-viewer .title-bar.active,
 .photolog-viewer .title-bar.active,
-.lifelog-viewer .title-bar.active { background-color: var(--viewer-title-bar-active-background-color); }
+.lifelog-viewer .title-bar.active, .lifelog-curation-viewer .title-bar.active { 
+    background-color: var(--viewer-title-bar-active-background-color); 
+}
 
 .archive-viewer .window_button,
 .writings-viewer .window_button,
 .photolog-viewer .window_button,
-.lifelog-viewer .window_button { filter : var(--viewer-windoow-button); }
+.lifelog-viewer .window_button, .lifelog-curation-viewer .window_button { 
+    filter : var(--viewer-windoow-button); 
+}
 
 .archive-viewer .footer-panel,
 .writings-viewer .footer-panel,
 .photolog-viewer .footer-panel,
-.lifelog-viewer .footer-panel { background-color: var(--viewer-footer-background-color); }
+.lifelog-viewer .footer-panel, .lifelog-curation-viewer .footer-panel { 
+    background-color: var(--viewer-footer-background-color); 
+}
 
 #archive-post-list-all-viewer,
 #blog-post-list-all-viewer,
 #photolog-post-list-all-viewer,
 #lifelog-post-list-all-viewer {
-    ::-webkit-scrollbar { width: 1px; }
+    /*::-webkit-scrollbar { width: 1px; }
     ::-webkit-scrollbar-thumb { background-color: var(--viewer-scrollbar-thumb-background-color);}
-    ::-webkit-scrollbar-track { background-color: var(--viewer-scrollbar-track-background-color);}
+    ::-webkit-scrollbar-track { background-color: var(--viewer-scrollbar-track-background-color);}*/
 
     overflow: hidden;
 }
@@ -277,7 +347,10 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 }
 
 #photolog-post-list-all-viewer .photolog-viewer-menu .title { border: var(--font-color); }
-#photolog-post-list-all-viewer .photolog-viewer-menu .photolog-thumbnail { border: var(--border-color-A); }
+#photolog-post-list-all-viewer .photolog-viewer-menu .photolog-thumbnail { 
+    border: var(--border-color-A);
+    filter: var(--photolog-thumbnail-filter);
+}
 
 #archive-post-list-all-viewer .teaser-figure:hover,
 #blog-post-list-all-viewer .writings-viewer-menu .teaser-figure:hover,

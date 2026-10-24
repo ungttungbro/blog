@@ -386,11 +386,18 @@ export class SiteLibrary {
   }
 
   static syncPhotoHeight(parent_el, target_el, offset) {
+    let previousHeight = -1;
+
     const resizePhoto = () => {
         requestAnimationFrame(() => {
-            const height = parent_el.clientHeight;
-            target_el.style.height = `${height - offset}px`;
-            //target_el.style.maxWidth = 'none';
+            const height = parent_el.clientHeight - offset;
+
+            if (height <= 0 || height === previousHeight) {
+                return;
+            }
+
+            previousHeight = height;
+            target_el.style.height = `${height}px`;
         });
     };
 
