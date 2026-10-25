@@ -114,8 +114,8 @@ export class LifelogController {
             const photos = content_area_el.querySelectorAll('.lifelog-photo-medium');
 
             for (const photo of photos) {
-                if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {                        
-                    this.syncPhotoHeight(content_area_el, photo, 0);
+                if (parseInt(taskbar.taskBarElement.dataset.column, 10) > 2) {                        
+                    SiteLibrary.syncPhotoHeight(content_area_el, photo, SiteLibrary.remToPx(3));
                 } else {
                     this.syncPhotoWidth(content_area_el, photo);
                 }

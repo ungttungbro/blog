@@ -50,14 +50,16 @@
     --viewer-hr-B: 1px solid rgba(160, 148, 67, 0.1);
 
     --taskbar-task-item-close: invert(0);
-    --viewer-windoow-button: invert(0);
+    --viewer-window-button: invert(0);
     
     --writings-main-teaser-image-filter: grayscale(0) brightness(0.8) contrast(1);
     --about-photo-image-filter: grayscale(0) brightness(0.8) contrast(1);
     --about-thumbnail-filter: grayscale(0) brightness(0.8) contrast(1);
     --photolog-thumbnail-filter: grayscale(0) brightness(0.8) contrast(1);
+    --lifelog-photo-filter: grayscale(0) brightness(0.8) contrast(1);
 
-    --writings-main-teaser-image-hover-filter: grayscale(0%) brightness(1.1) contrast(1.1);
-    --photolog-thumbnail-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
-    --about-thumbnail-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
+    --writings-main-teaser-image-hover-filter: grayscale(0%) brightness(1) contrast(1);
+    --photolog-thumbnail-hover-filter: grayscale(0) brightness(1) contrast(1);
+    --about-thumbnail-hover-filter: grayscale(0) brightness(1) contrast(1);
+    --lifelog-photo-hover-filter: grayscale(0) brightness(1) contrast(1);
 }

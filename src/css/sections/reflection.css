@@ -15,18 +15,18 @@
     color: var(--base-anchor-hover-color-A);
 }
 
-.reflection-header-panel .reflection-section-item-panel .title {
+.reflection-header-panel .teaser-figure .title {
     display: inline;
     margin-right: 0.25rem;
     font-size: 1rem;
 }
 
-.reflection-header-panel .reflection-section-item-panel .title {
+.reflection-header-panel .teaser-figure .title {
     display: inline;
 }
 
-#reflection .reflection-section-item-panel,
-.reflection-header-panel .reflection-section-item-panel {
+#reflection .teaser-figure,
+.reflection-header-panel .teaser-figure {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;

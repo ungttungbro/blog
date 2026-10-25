@@ -93,19 +93,25 @@ export class PhotologController {
             photolog_item_detail_el.appendChild(photo_container);            
             this.initializePhotoContainer(photolog_item_detail_el, '.photolog-viewer-item-detail', 0);
         } else {
+            const frag = document.createDocumentFragment();
+            frag.appendChild(photolog_item_detail_el);
+            frag.appendChild(photo_container);
+
             Templates.openPost(
                 value.id,
                 section_name,
                 this._ICON_PATH,
                 value.title,
                 value.orientation, 1.1, 0.7, 0, 0,
-                photolog_item_detail_el,
-                photo_container,       
+                null,
+                frag,       
                 COMMON.COPYRIGHT  
             );
 
             const el = document.getElementById(value.id);
-            this.initializePhotoContainer(el, '#content-area', SiteLibrary.remToPx(3));
+            el.className = section_name + '-' + 'curation' + '-' + 'viewer';
+
+            this.initializePhotoContainer(el, '.content-panel', 0);
         }        
     }
 
@@ -155,7 +161,7 @@ export class PhotologController {
         const photo_container_el = element.querySelector('.photo-container');
         const photo_container_parent = photo_container_el.closest(parent);
 
-        if (taskbar.taskBarElement.dataset.column > 2) {
+        if (parseInt(taskbar.taskBarElement.dataset.column, 10) > 2) {
             for (const photo of photo_container_el.querySelectorAll('.photolog-photo')) {
                 SiteLibrary.syncPhotoHeight(photo_container_parent, photo, offset);
             }

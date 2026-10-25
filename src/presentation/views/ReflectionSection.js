@@ -1,6 +1,6 @@
 'use strict';
 
-import { ELEMENT_TYPE, COMMON } from "../../modules/common/Constants.js";
+import { COMMON } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
@@ -53,73 +53,48 @@ export class ReflectionSection {
         el.appendChild(items);
     }
 
-    createSectionItem(id, orientation, meta_data, title, summary, content_path) {
-        const element = document.createElement(ELEMENT_TYPE.DIV);
-        element.className = 'reflection-section-item-panel';
-
-        const meta_span = document.createElement('span');
-        meta_span.className = 'meta';
-        meta_span.innerHTML = meta_data;
-        meta_span.innerHTML += '<br>';
-
-        element.appendChild(meta_span);
-
-        const title_span = document.createElement('span');
-        title_span.className = 'title';
-        title_span.textContent = '「' + title + '」' + ' ';
-
-        const summary_span = document.createElement('span');
-        summary_span.className = 'summary';
-        summary_span.textContent = summary;
-
-        const a =  document.createElement('a');
-        a.href = '#';
-        a.appendChild(title_span);
-        a.appendChild(summary_span);
-
-        const section_config = siteMeta.selectSectionConfig('reflection');
-        this.generatePostEvent(
-            section_config.blogTypeName, 
-            COMMON.VIEWER_PREFIX + id, 
-            orientation,
-            a, 
-            section_config.sectionHeaderIcon, 
-            title, 
-            null,
-            this._BASE_PATH + content_path, 
-            COMMON.COPYRIGHT
+    generateSectionHeader(config) {
+        const section_header = Templates.createSectionHeader(
+            config.captionImgId, 
+            config.captionId,
+            config.className, 
+            config.sectionHeaderIcon, 
+            config.captionText, 
+            config.sectionHeaderIconAlt
         );
 
-        element.appendChild(a);
+        this.generateSectionHeaderEvent(section_header, config);
 
-        return element;
+        return section_header;
     }
 
-    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, contents, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
-        element.addEventListener('click', e => {
+    generateSectionHeaderEvent(section_header_el, config) {
+        section_header_el.addEventListener('click', async e => {
             e.preventDefault();
-            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
+            this.onSectionHeaderClick(config);
         });
     }
 
-    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
-        const data = await SiteLibrary.loadText(contents);
-
+    async onSectionHeaderClick(config) {
         Templates.openPost(
-            id,
-            section_name,                 
-            section_icon,
-            title,
-            orientation, 1.5, 1.25, 0, 0,
-            header, data, footer
+            config.listViewerId,
+            config.blogTypeName,
+            config.sectionHeaderIcon,
+            config.sectionListName,
+            'portrait', 0, 0, 1, 1.2,
+            this.generateSectionItems('header', await this.getOriginalDTO(), config),
+            null,
+            COMMON.COPYRIGHT
         );
+
+        /*const element = document.getElementById(config.listViewerId);
+        element.querySelector('#viewer-maximize-button').style.display = 'none';*/
     }
 
     generateSectionItems(type, data, config) {
         const frag = document.createDocumentFragment();
 
-        const element = document.createElement(ELEMENT_TYPE.DIV);
+        const element = document.createElement('div');
         element.className = config.postIndexClassName;
 
         if (type === 'contents') {
@@ -130,14 +105,7 @@ export class ReflectionSection {
 
         let index = 0;
         for (const [key ,value] of data) {
-            const sectionItemElement = this.createSectionItem(
-                value.id,
-                value.orientation,
-                (value.tags ?? []).map(tag => '#' + tag).join(" · "),
-                value.title,
-                value.description,
-                key + '/' + value.contentUrl
-            );
+            const sectionItemElement = this.createSectionItem(key, value);
 
             frag.appendChild(sectionItemElement);
 
@@ -151,33 +119,59 @@ export class ReflectionSection {
         return element;
     }
 
-    generateSectionHeader(config) {
-        const section_header = Templates.createSectionHeader(
-            config.captionImgId, 
-            config.captionId,
-            config.className, 
-            config.sectionHeaderIcon, 
-            config.captionText, 
-            config.sectionHeaderIconAlt
-        );
+    createSectionItem(key, value) {
+        const element = document.createElement('div');
+        element.className = 'teaser-figure';
 
-        section_header.addEventListener('click',  async e => {
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.innerHTML = (value.tags ?? []).map(tag => '#' + tag).join(" · ");
+        meta.innerHTML += '<br>';
+
+        element.appendChild(meta);
+
+        const title = document.createElement('div');
+        title.className = 'title';
+        title.textContent = '「' + value.title + '」' + ' ';
+
+        element.appendChild(title);
+
+        const description = document.createElement('div');
+        description.className = 'summary';
+        description.textContent = value.description;
+
+        element.appendChild(description);
+
+        const teaser =  document.createElement('a');
+        teaser.href = '#';
+        teaser.appendChild(element);
+
+        const section_config = siteMeta.selectSectionConfig('reflection');
+        this.generatePostEvent(teaser, section_config, key, value);       
+
+        return teaser;
+    }
+
+    generatePostEvent(element, config, key, value) {
+        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
+        element.addEventListener('click', e => {
             e.preventDefault();
-            Templates.openPost(
-                config.listViewerId,
-                config.blogTypeName,
-                config.sectionHeaderIcon,
-                config.sectionListName,
-                'portrait', 0, 0, 1, 1.2,
-                this.generateSectionItems('header', await this.getOriginalDTO(), config),
-                null,
-                COMMON.COPYRIGHT
-            );
-
-            const element = document.getElementById(config.listViewerId);
-            element.querySelector('#viewer-maximize-button').style.display = 'none';
+            this.presentPost(config, key, value);
         });
+    }
 
-        return section_header;
+    async presentPost(config, key, value) {
+        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
+
+        Templates.openPost(
+            value.id,
+            config.blogTypeName,                 
+            config.sectionHeaderIcon,
+            value.title,
+            value.orientation, 1.5, 1.25, 0, 0,
+            null, 
+            data, 
+            COMMON.COPYRIGH
+        );
     }
 }

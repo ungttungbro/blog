@@ -385,7 +385,7 @@ export class SiteLibrary {
     return { width, height };
   }
 
-  static syncPhotoHeight(parent_el, target_el, offset) {
+  /*static syncPhotoHeight(parent_el, target_el, offset) {
     let previousHeight = -1;
 
     const resizePhoto = () => {
@@ -405,5 +405,42 @@ export class SiteLibrary {
 
     const observer = new ResizeObserver(resizePhoto);
     observer.observe(parent_el);
+  }*/
+
+  static syncPhotoHeight(parent_el, target_el, offset) {
+    let previousHeight = -1;
+    let animationFrameId = null;
+
+    const resizePhoto = () => {
+        if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        animationFrameId = requestAnimationFrame(() => {
+            animationFrameId = null;
+
+            const height = parent_el.clientHeight - offset;
+
+            if (height <= 0 || height === previousHeight) {
+                return;
+            }
+
+            previousHeight = height;
+            target_el.style.height = `${height}px`;
+        });
+    };
+
+    const observer = new ResizeObserver(resizePhoto);
+    observer.observe(parent_el);
+
+    resizePhoto();
+
+    return () => {
+        observer.disconnect();
+
+        if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+        }
+    };
   }
 }

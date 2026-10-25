@@ -91,7 +91,7 @@ export class WritingsController {
             element.appendChild(Templates.createContentPanel('writings-section-item-panel', data));      
         } else {
             Templates.openPost(
-                COMMON.VIEWER_PREFIX + value.id,
+                value.id,
                 config.blogTypeName,
                 config.sectionHeaderIcon,
                 value.title,
@@ -99,8 +99,11 @@ export class WritingsController {
                 null, 
                 Templates.createContentPanel('writings-section-item-panel', data), 
                 COMMON.COPYRIGHT
-            );    
-        }    
+            );
+
+            const viewer_el = document.getElementById(value.id);
+            viewer_el.className = config.blogTypeName + '-' + 'curation' + '-' + 'viewer';
+        }
     }
 
     createWritingsItemDetail(type) {

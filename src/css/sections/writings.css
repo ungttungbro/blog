@@ -4,7 +4,6 @@
 
 #writing .curation-post {
     display: flex;
-    border: 0px solid #ffffff;
 }
 
 #writings .curation-teaser-panel {
@@ -12,7 +11,6 @@
     width: 100%;
     margin-bottom: 1.25rem;
     padding-top: 0.25rem;
-    border: 0px solid #ffffff;
 }
 
 #writings .curation-teaser-panel .meta {
@@ -117,34 +115,6 @@
 
 #writings a:hover .summary {
     color: var(--base-anchor-hover-color-B);
-}
-
-.writings-viewer {
-    display: flex;
-    flex-direction: column;
-
-    background-color: #fafcfe; 
-
-    position:fixed;
-
-    min-height: 0;
-
-    border-radius: 0.75rem;
-  
-    touch-action: none;
-    overflow: hidden;
-    overscroll-behavior: none;
-
-    animation: fadeIn 250ms ease forwards;
-    
-    overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
-
-    box-shadow:  0 0 0 0.075rem rgba(255,255,255,0.04),
-        0 0.3rem 0.6rem rgba(0,0,0,0.45);
-}
-
-.writings-viewer .post-index {
-    padding-bottom: 0.75rem;
 }
 
 #blog-post-list-all-viewer #content-area {
@@ -263,6 +233,7 @@
 #content-area 
 .writings-viewer-item-detail {
     width: 100%;
+    overflow-x: hidden;
     overflow-y: auto;
     margin: 0;
     padding: 0;
@@ -290,20 +261,92 @@
     text-align: justify;
 }
 
-#writings-post-list-all-viewer .footer-panel {
-    height: auto;
+#blog-post-list-all-viewer .footer-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
 }
 
 
-#writings-post-list-all-viewer .writings-header-panel,
-#writings-post-list-all-viewer .writings-content-panel,
-#writings-post-list-all-viewer .writings-footer-panel  {
+#blog-post-list-all-viewer .writings-header-panel,
+#blog-post-list-all-viewer .writings-content-panel,
+#blog-post-list-all-viewer .writings-footer-panel  {
     scroll-snap-align: unset;
     scroll-snap-stop: unset;
     scroll-margin-top: unset;
 }
 
-.writings-viewer
+.writings-viewer, 
+.writings-curation-viewer {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fafcfe; 
+
+    position:fixed;
+
+    min-height: 0;
+
+    border-radius: 0.75rem;
+  
+    touch-action: none;
+    overflow: hidden;
+    overscroll-behavior: none;
+
+    animation: fadeIn 250ms ease forwards;
+    
+    overflow: hidden; /* 하이라이트가 밖으로 튀지 않게 */
+
+    box-shadow:  0 0 0 0.075rem rgba(255,255,255,0.04),
+        0 0.3rem 0.6rem rgba(0,0,0,0.45);
+}
+
+.writings-viewer .post-index {
+    padding-bottom: 0.75rem;
+}
+
+.writings-curation-viewer
+#content-area 
+.content-panel {
+    width:100%;
+    height: 100%;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.writings-curation-viewer
+#content-area {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+}
+
+.writings-curation-viewer
+#content-area .content-panel .writings-content-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+
+    justify-content: center;
+    align-items: center;    
+}
+
+.writings-curation-viewer
 #content-area .footer-panel {
+    display: flex;
     flex: 0 0 3rem;
+    height: 3rem;
+
+    justify-content: center;
+    align-items: center;
 }

@@ -1,57 +1,132 @@
 /* WebKit 스크롤바 지원 브라우저 */
 @supports selector(::-webkit-scrollbar) {
-    .lifelog-curation-viewer .content-panel,
-    .lifelog-viewer .lifelog-viewer-menu,
-    .lifelog-viewer .lifelog-viewer-item-detail {
+    :is(
+        .archive-curation-viewer #content-area .content-panel,
+        #archive-post-list-all-viewer #content-area .header-panel,
+        .writings-curation-viewer .content-panel,
+        .writings-viewer .writings-viewer-menu,
+        .writings-viewer .writings-viewer-item-detail,
+        .photolog-curation-viewer .content-panel,
+        .photolog-viewer .photolog-viewer-menu,
+        .photolog-viewer .photolog-viewer-item-detail,
+        .photolog-viewer #content-area .photo-container,
+        .photolog-curation-viewer #content-area .photo-container,
+        .lifelog-curation-viewer .content-panel,
+        .lifelog-viewer .lifelog-viewer-menu,
+        .lifelog-viewer .lifelog-viewer-item-detail
+    ) {
         scrollbar-width: auto;
     }
 
-    .lifelog-curation-viewer .content-panel::-webkit-scrollbar,
-    .lifelog-viewer .lifelog-viewer-menu::-webkit-scrollbar,
-    .lifelog-viewer .lifelog-viewer-item-detail::-webkit-scrollbar {
+    :is(
+        .archive-curation-viewer #content-area .content-panel,
+        #archive-post-list-all-viewer #content-area .header-panel,
+        .writings-curation-viewer .content-panel,
+        .writings-viewer .writings-viewer-menu,
+        .writings-viewer .writings-viewer-item-detail,
+        .photolog-curation-viewer .content-panel,
+        .photolog-viewer .photolog-viewer-menu,
+        .photolog-viewer .photolog-viewer-item-detail,
+        .photolog-viewer #content-area .photo-container,
+        .photolog-curation-viewer #content-area .photo-container,
+        .lifelog-curation-viewer .content-panel,
+        .lifelog-viewer .lifelog-viewer-menu,
+        .lifelog-viewer .lifelog-viewer-item-detail
+    )::-webkit-scrollbar {
         width: 4px;
     }
 
-    .lifelog-curation-viewer .content-panel::-webkit-scrollbar-track,
-    .lifelog-viewer .lifelog-viewer-menu::-webkit-scrollbar-track,
-    .lifelog-viewer .lifelog-viewer-item-detail::-webkit-scrollbar-track {
+    :is(
+        .archive-curation-viewer #content-area .content-panel,
+        #archive-post-list-all-viewer #content-area .header-panel,
+        .writings-curation-viewer .content-panel,
+        .writings-viewer .writings-viewer-menu,
+        .writings-viewer .writings-viewer-item-detail,
+        .photolog-curation-viewer .content-panel,
+        .photolog-viewer .photolog-viewer-menu,
+        .photolog-viewer .photolog-viewer-item-detail,
+        .photolog-viewer #content-area .photo-container,
+        .photolog-curation-viewer #content-area .photo-container,
+        .lifelog-curation-viewer .content-panel,
+        .lifelog-viewer .lifelog-viewer-menu,
+        .lifelog-viewer .lifelog-viewer-item-detail
+    )::-webkit-scrollbar-track {
         background-color: transparent;
     }
 
-    .lifelog-curation-viewer .content-panel:hover::-webkit-scrollbar-track,
-    .lifelog-viewer .lifelog-viewer-menu:hover::-webkit-scrollbar-track,
-    .lifelog-viewer .lifelog-viewer-item-detail:hover::-webkit-scrollbar-track {
-        background-color: var(--viewer-scrollbar-track-background-color);
-    }
-
-    .lifelog-curation-viewer .content-panel::-webkit-scrollbar-thumb,
-    .lifelog-viewer .lifelog-viewer-menu::-webkit-scrollbar-thumb,
-    .lifelog-viewer .lifelog-viewer-item-detail::-webkit-scrollbar-thumb {
+    :is(
+        .archive-curation-viewer #content-area .content-panel,
+        #archive-post-list-all-viewer #content-area .header-panel,
+        .writings-curation-viewer .content-panel,
+        .writings-viewer .writings-viewer-menu,
+        .writings-viewer .writings-viewer-item-detail,
+        .photolog-curation-viewer .content-panel,
+        .photolog-viewer .photolog-viewer-menu,
+        .photolog-viewer .photolog-viewer-item-detail,
+        .photolog-viewer #content-area .photo-container,
+        .photolog-curation-viewer #content-area .photo-container,
+        .lifelog-curation-viewer .content-panel,
+        .lifelog-viewer .lifelog-viewer-menu,
+        .lifelog-viewer .lifelog-viewer-item-detail
+    )::-webkit-scrollbar-thumb {
         background-color: transparent;
         border-radius: 4px;
         border: 1px solid transparent;
         background-clip: padding-box;
     }
 
-    .lifelog-curation-viewer .content-panel:hover::-webkit-scrollbar-thumb,
-    .lifelog-viewer .lifelog-viewer-menu:hover::-webkit-scrollbar-thumb,
-    .lifelog-viewer .lifelog-viewer-item-detail:hover::-webkit-scrollbar-thumb {
+    :is(
+        .archive-curation-viewer #content-area .content-panel,
+        #archive-post-list-all-viewer #content-area .header-panel,
+        .writings-curation-viewer .content-panel,
+        .writings-viewer .writings-viewer-menu,
+        .writings-viewer .writings-viewer-item-detail,
+        .photolog-curation-viewer .content-panel,
+        .photolog-viewer .photolog-viewer-menu,
+        .photolog-viewer .photolog-viewer-item-detail,
+        .photolog-viewer #content-area .photo-container,
+        .photolog-curation-viewer #content-area .photo-container,
+        .lifelog-curation-viewer .content-panel,
+        .lifelog-viewer .lifelog-viewer-menu,
+        .lifelog-viewer .lifelog-viewer-item-detail
+    ):hover::-webkit-scrollbar-thumb {
         background-color: var(--viewer-scrollbar-thumb-background-color);
         border-radius: 4px;
         background-clip: padding-box;
     }
 
-     /* 스크롤바 스타일 재계산 유도 */
-    .lifelog-curation-viewer .content-panel:hover,
-    .lifelog-viewer .lifelog-viewer-menu:hover,
-    .lifelog-viewer .lifelog-viewer-item-detail:hover {
+    /* 스크롤바 스타일 재계산 유도 */
+    :is(
+        .archive-curation-viewer #content-area .content-panel,
+        #archive-post-list-all-viewer #content-area .header-panel,
+        .writings-curation-viewer .content-panel,
+        .writings-viewer .writings-viewer-menu,
+        .writings-viewer .writings-viewer-item-detail,
+        .photolog-curation-viewer .content-panel,
+        .photolog-viewer .photolog-viewer-menu,
+        .photolog-viewer .photolog-viewer-item-detail,
+        .photolog-viewer #content-area .photo-container,
+        .photolog-curation-viewer #content-area .photo-container,
+        .lifelog-curation-viewer .content-panel,
+        .lifelog-viewer .lifelog-viewer-menu,
+        .lifelog-viewer .lifelog-viewer-item-detail
+    ):hover {
         --scrollbar-refresh: ;
     }
 }
 
 /* WebKit 스크롤바를 지원하지 않는 브라우저 */
 @supports not selector(::-webkit-scrollbar) {
-    .lifelog-viewer .lifelog-viewer-menu:hover {
+    .archive-curation-viewer #content-area .content-panel:hover,
+    #archive-post-list-all-viewer #content-area .header-panel:hover,
+    .writings-curation-viewer .content-panel:hover,
+    .writings-viewer .writings-viewer-menu:hover,
+    .writings-viewer .writings-viewer-item-detail:hover,
+    .photolog-viewer .photolog-viewer-menu:hover,
+    .photolog-viewer .photolog-viewer-item-detail:hover,
+    .lifelog-curation-viewer .content-panel:hover,
+    .lifelog-viewer .lifelog-viewer-menu:hover,
+    .lifelog-viewer .lifelog-viewer-item-detail:hover {
         scrollbar-width: thin;
         scrollbar-color: #888 transparent;
     }
@@ -70,7 +145,10 @@ header {
     background-color: var(--header-background-color);
 }
 
-footer { background-color: var(--footer-background-color); font-weight: bold; }
+footer { 
+    background-color: var(--footer-background-color); 
+    font-weight: bold;
+}
 
 .curation-post .meta, 
 .curation-post .title, 
@@ -122,17 +200,19 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 #photolog .teaser-figure:hover { background-color: var(--section-box-background-hover-color); }
 #photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A);}
 #photolog .figure-content { color: var(--font-color-description); }
-
 #photolog .photolog-thumbnail { filter: var(--photolog-thumbnail-filter); }
 #photolog .teaser-figure:hover .photolog-thumbnail { filter: var(--photolog-thumbnail-hover-filter); }
+
 #writings .main-teaser-thumbnail { filter: var(--writings-main-teaser-image-filter); }
 #writings .main-teaser-thumbnail:hover { filter: var(--writings-main-teaser-image-hover-filter); }
+
 #about #thumbnails .profile-thumbnail{ filter: var(--about-thumbnail-filter); }
 #about #thumbnails .profile-thumbnail:hover { filter: var(--about-thumbnail-hover-filter); }
 #about .about-photo { filter: var(--about-photo-image-filter); }
 
 .links_item_list a:hover { color: var(--font-color-anchor-color-A); }
 #about a:hover { color: var(--font-color-anchor-color-A); }
+
 #writings a:hover .title, 
 #lifelog a:hover .title, 
 #reflection a:hover .title, 
@@ -198,124 +278,186 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
     color: var(--font-color);
 }
 
+.photolog-curation-viewer,
+.writings-curation-viewer,
+.archive-curation-viewer,
 .lifelog-curation-viewer {
     background-color: var(--viewer-background-color);
     color: var(--font-color);
 }
 
-.archive-viewer #content-area .blog-post,
-.writings-viewer #content-area .blog-post,
-.photolog-viewer #content-area .blog-post,
-.lifelog-viewer #content-area .blog-post { font-size: 1.1rem; line-height: 2rem;}
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer
+) #content-area .blog-post {
+    font-size: 1.1rem;
+    line-height: 2rem;
+}
 
-.archive-viewer #content-area .blog-post h3,
-.writings-viewer #content-area .blog-post h3,
-.photolog-viewer #content-area .blog-post h3,
-.lifelog-viewer #content-area .blog-post h3 { 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer
+) #content-area .blog-post h3 {
     line-height: 2rem;
     padding-top: 0.25rem;
     text-align: left;
 }
 
-.archive-viewer #content-area .blog-post a:hover,
-.writings-viewer #content-area .blog-post a:hover,
-.photolog-viewer #content-area .blog-post a:hover,
-.lifelog-viewer #content-area .blog-post a:hover { 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer
+) #content-area .blog-post a:hover {
     color: var(--font-color-anchor-color-A);
 }
 
-.archive-viewer #content-area .blog-post .meta,
-.writings-viewer #content-area .blog-post .meta,
-.photolog-viewer #content-area .blog-post .meta,
-.lifelog-viewer #content-area .blog-post .meta { 
-    font-size: 0.95rem; 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer
+) #content-area .blog-post .meta {
+    font-size: 0.95rem;
     line-height: 1.4;
 }
 
-.archive-viewer #content-area .blog-post p,
-.writings-viewer #content-area .blog-post p,
-.photolog-viewer #content-area .blog-post p,
-.lifelog-viewer #content-area .blog-post p { font-weight: var(--font-weight); }
-
-.archive-viewer #content-area .blog-post hr,
-.writings-viewer #content-area .blog-post hr,
-.photolog-viewer #content-area .blog-post hr,
-.lifelog-viewer #content-area .blog-post hr {
-    border: var(--viewer-hr-B);
-    margin-top: 0.5rem; 
-    margin-bottom: 0.5rem;
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer
+) #content-area .blog-post p {
+    font-weight: var(--font-weight);
 }
 
-.archive-viewer #content-area a:hover .title,
-.writings-viewer #content-area a:hover .title,
-.photolog-viewer #content-area a:hover .title,
-.lifelog-viewer #content-area a:hover .title { color: var(--font-color-anchor-color-A); }
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer
+) #content-area .blog-post hr {
+    border: var(--viewer-hr-B);
+    margin: 0.5rem 0;
+}
 
-.writings-viewer #content-area a:hover .summary,
-.photolog-viewer #content-area a:hover .summary,
-.lifelog-viewer #content-area a:hover .summary { color: var(--font-color-anchor-color-B);  }
+:is(
+    .archive-viewer, 
+    .writings-viewer, 
+    .photolog-viewer, 
+    .lifelog-viewer
+) #content-area a:hover .title {
+    color: var(--font-color-anchor-color-A);
+}
 
-.archive-viewer #content-area .meta,
-.archive-viewer #content-area .tags,
-.writings-viewer #content-area .meta,
-.writings-viewer #content-area .tags,
-.photolog-viewer #content-area .meta,
-.photolog-viewer #content-area .tags,
-.lifelog-viewer #content-area .meta,
-.lifelog-viewer #content-area .tags {
+:is(
+    .writings-viewer, 
+    .photolog-viewer, 
+    .lifelog-viewer
+) #content-area a:hover .summary {
+    color: var(--font-color-anchor-color-B);
+}
+
+:is(
+    .archive-viewer, 
+    .writings-viewer, 
+    .photolog-viewer,
+    .photolog-curation-viewer, 
+    .lifelog-viewer
+) #content-area :is(.meta, .tags) {
     color: var(--font-color-meta);
 }
 
-.archive-viewer #content-area .title,
-.writings-viewer #content-area .title,
-.photolog-viewer #content-area .title,
-.lifelog-viewer #content-area .title {
+:is(
+    .archive-viewer, 
+    .writings-viewer, 
+    .photolog-viewer, 
+    .lifelog-viewer
+) #content-area .title {
     color: var(--font-color);
 }
 
-.writings-viewer #content-area .summary,
-.photolog-viewer #content-area .summary,
-.lifelog-viewer #content-area .summary { 
+:is(
+    .writings-viewer, 
+    .photolog-viewer, 
+    .lifelog-viewer
+) #content-area .summary {
     color: var(--font-color-description);
 }
 
-.archive-viewer .title-bar,
-.writings-viewer .title-bar,
-.photolog-viewer .title-bar,
-.lifelog-viewer .title-bar { 
-    background-color: var(--viewer-title-bar-background-color); 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer,
+    .lifelog-viewer,
+    .lifelog-curation-viewer
+) .title-bar {
+    background-color: var(--viewer-title-bar-background-color);
     color: var(--font-color);
 }
 
-.archive-viewer .title-bar.active,
-.writings-viewer .title-bar.active,
-.photolog-viewer .title-bar.active,
-.lifelog-viewer .title-bar.active, .lifelog-curation-viewer .title-bar.active { 
-    background-color: var(--viewer-title-bar-active-background-color); 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer,
+    .lifelog-viewer,
+    .lifelog-curation-viewer
+) .title-bar.active {
+    background-color: var(--viewer-title-bar-active-background-color);
 }
 
-.archive-viewer .window_button,
-.writings-viewer .window_button,
-.photolog-viewer .window_button,
-.lifelog-viewer .window_button, .lifelog-curation-viewer .window_button { 
-    filter : var(--viewer-windoow-button); 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer,
+    .lifelog-viewer,
+    .lifelog-curation-viewer
+) .window_button {
+    filter: var(--viewer-window-button);
 }
 
-.archive-viewer .footer-panel,
-.writings-viewer .footer-panel,
-.photolog-viewer .footer-panel,
-.lifelog-viewer .footer-panel, .lifelog-curation-viewer .footer-panel { 
-    background-color: var(--viewer-footer-background-color); 
+:is(
+    .archive-viewer,
+    .archive-curation-viewer,
+    .writings-viewer,
+    .writings-curation-viewer,
+    .photolog-viewer,
+    .photolog-curation-viewer,
+    .lifelog-viewer,
+    .lifelog-curation-viewer
+) .footer-panel {
+    background-color: var(--viewer-footer-background-color);
 }
 
 #archive-post-list-all-viewer,
 #blog-post-list-all-viewer,
 #photolog-post-list-all-viewer,
 #lifelog-post-list-all-viewer {
-    /*::-webkit-scrollbar { width: 1px; }
-    ::-webkit-scrollbar-thumb { background-color: var(--viewer-scrollbar-thumb-background-color);}
-    ::-webkit-scrollbar-track { background-color: var(--viewer-scrollbar-track-background-color);}*/
-
     overflow: hidden;
 }
 
@@ -361,3 +503,42 @@ footer { background-color: var(--footer-background-color); font-weight: bold; }
 
 #photolog-post-list-all-viewer .photolog-viewer-item-detail { background-color: var(--viewer-background-color); }
 #photolog-post-list-all-viewer .photolog-viewer-item-detail .title { color: var(--font-color); }
+
+
+
+/*filter 기본상태*/
+#blog-post-list-all-viewer .writings-header-panel,
+#photolog-post-list-all-viewer .photolog-header-panel,
+.photolog-curation-viewer #content-area .photolog-content-panel,
+.writings-curation-viewer #content-area .writings-content-panel,
+.archive-curation-viewer #content-area .blog-post,
+#lifelog-post-list-all-viewer .lifelog-header-panel,
+.lifelog-curation-viewer #content-area .lifelog-content-panel {
+    filter: var(--lifelog-photo-filter);
+}
+
+/* 데스크톱: Hover 시 컬러 복원 */
+@media (hover: hover) {
+    #blog-post-list-all-viewer .writings-header-panel:hover,
+    #photolog-post-list-all-viewer .photolog-header-panel:hover,
+    .photolog-curation-viewer #content-area .photolog-content-panel:hover,
+    .writings-curation-viewer #content-area .writings-content-panel:hover,
+    .archive-curation-viewer #content-area .blog-post:hover,
+    #lifelog-post-list-all-viewer .lifelog-header-panel:hover,
+    .lifelog-curation-viewer #content-area .lifelog-content-panel:hover {
+        filter: var(--lifelog-photo-hover-filter);
+    }
+}
+
+/* 모바일: 활성화된 창에서 컬러 유지 */
+@media (hover: none) {
+    .archive-curation-viewer #content-area .blog-post,
+    .writings-curation-viewer #content-area .writings-content-panel,
+    .photolog-curation-viewer #content-area .photolog-content-panel,
+    .lifelog-curation-viewer #content-area .lifelog-content-panel {
+        filter: grayscale(0%) brightness(1.05);
+    }
+}
+
+
+

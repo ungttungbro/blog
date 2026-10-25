@@ -174,5 +174,9 @@ export class ArchiveSection {
             orientation, 1.5, 1.2, 0, 0,
             header, data, footer
         );
+
+         const viewer_el = document.getElementById(id);
+        viewer_el.className = section_name + '-' + 'curation' + '-' + 'viewer';
+
     }
 }

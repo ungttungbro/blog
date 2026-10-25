@@ -198,12 +198,12 @@
 }*/
 
 
-
-
 #lifelog-post-list-all-viewer .footer-panel {
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
 }
-
 
 #lifelog-post-list-all-viewer .lifelog-header-panel,
 #lifelog-post-list-all-viewer .lifelog-content-panel,

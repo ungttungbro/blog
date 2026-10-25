@@ -155,21 +155,6 @@ export class LifelogSection {
         });
     }
 
-    async presentPost(key, value, config) {
-        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
-
-        Templates.openPost(
-            COMMON.VIEWER_PREFIX + value.id,
-            config.blogTypeName,                 
-            config.sectionHeaderIcon,
-            value.tags.map(tag => '#' + tag).join(" · "),
-            value.orientation, 1, 1.05, 0.8, 1.2,
-            null, 
-            data, 
-            COMMON.COPYRIGHT
-        );
-    }
-
     generateLifelogViewer(data, onTeaserClick) {
         const frag = document.createDocumentFragment();
 

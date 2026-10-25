@@ -32,7 +32,7 @@
     --viewer-header-color: #f6f8fa;
     --viewer-title-bar-background-color: #eaecee;
     --viewer-title-bar-active-background-color: #caccce;
-    --viewer-scrollbar-thumb-background-color: #dddddd;
+    --viewer-scrollbar-thumb-background-color: #9a9c9e;
     --viewer-scrollbar-track-background-color: #bbbbbb;
     --viewer-footer-background-color: #caccce;
     
@@ -50,13 +50,15 @@
     --viewer-hr-B: 1px solid rgba(0, 0, 0, 0.1);
 
     --taskbar-task-item-close: invert(1);
-    --viewer-windoow-button: invert(1);
+    --viewer-window-button: invert(1);
 
-    --writings-main-teaser-image-filter: grayscale(0.9);
-    --about-photo-image-filter: grayscale(0.9);
-    --about-thumbnail-filter: grayscale(0.9);
-    --photolog-thumbnail-filter: grayscale(0.9);
+    --writings-main-teaser-image-filter: grayscale(1);
+    --about-photo-image-filter: grayscale(1);
+    --about-thumbnail-filter: grayscale(1);
+    --photolog-thumbnail-filter: grayscale(1);
+    --lifelog-photo-filter: grayscale(1);
 
-    --photolog-thumbnail-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
-    --writings-main-teaser-image-hover-filter: grayscale(0) brightness(1.1) contrast(1.1);
+    --photolog-thumbnail-hover-filter: grayscale(0) brightness(1) contrast(1);
+    --writings-main-teaser-image-hover-filter: grayscale(0) brightness(1) contrast(1);
+    --lifelog-photo-hover-filter: grayscale(0) brightness(1) contrast(1);
 }
