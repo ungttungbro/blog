@@ -222,7 +222,7 @@ export class WritingsSection {
         const writings_viewer_item = document.createElement('div');
         writings_viewer_item.className = 'writings-viewer-item-detail';
 
-        const photolog_icon = SiteLibrary.createImgElement(
+        const icon = SiteLibrary.createImgElement(
             'writings-icon', 
             '', 
             'assets/icons/blog.png', 
@@ -232,7 +232,7 @@ export class WritingsSection {
         const writings_welcome_el = document.createElement('div');
         writings_welcome_el.className = 'writings-welcome';
 
-        writings_welcome_el.appendChild(photolog_icon);
+        writings_welcome_el.appendChild(icon);
         writings_viewer_item.appendChild(writings_welcome_el);
 
         frag.appendChild(writings_viewer_menu);       

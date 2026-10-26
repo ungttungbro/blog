@@ -15,20 +15,28 @@ export class ReflectionSection {
 
     async initialize() { }
 
-    setOriginalDTO(data) {
-        this.original_data = data;
-    }
-
-    getOriginalDTO() {
-        return this.original_data;
-    }
-
     setCurationDTO(data) {
         this.curation_data = data;
     }
 
     getCurationDTO() {
         return this.curation_data;
+    }
+
+    setSectionHeaderClickHandler(handler) {
+        this.onSectionHeaderClick = handler;
+    }
+
+    getSectionHeaderClickHandler() {
+        return this.onSectionHeaderClick;
+    }
+
+    setPostClickHandler(handler) {
+        this.onPostClick = handler;
+    }
+
+    getPostClickHandler() {
+        return this.onPostClick;
     }
 
     show() {
@@ -41,21 +49,23 @@ export class ReflectionSection {
         }
     }
 
-    createSection(el, data) {        
+    createSection(el, data) {
         const section_meta_data = siteMeta.selectSectionConfig(this._SECTION_NAME);
         if(!section_meta_data) return;
 
-        const section_header = this.generateSectionHeader(section_meta_data);
+        const section_header_click_handler = this.getSectionHeaderClickHandler();
+        const section_header = this.generateSectionHeader(section_meta_data, section_header_click_handler);
         Templates.createSectionHeaderEvent(section_header, section_meta_data.captionId);
         el.appendChild(section_header);
 
-        const items = this.generateSectionItems('contents', data, section_meta_data);
+        const post_click_handler = this.getPostClickHandler();
+        const items = this.generateSectionItems(data, section_meta_data, post_click_handler);
         el.appendChild(items);
     }
 
-    generateSectionHeader(config) {
+    generateSectionHeader(config, onSectionHeaderClick) {
         const section_header = Templates.createSectionHeader(
-            config.captionImgId, 
+            config.captionImgId,
             config.captionId,
             config.className, 
             config.sectionHeaderIcon, 
@@ -63,15 +73,15 @@ export class ReflectionSection {
             config.sectionHeaderIconAlt
         );
 
-        this.generateSectionHeaderEvent(section_header, config);
+        this.generateSectionHeaderEvent(section_header, config, onSectionHeaderClick);
 
         return section_header;
     }
 
-    generateSectionHeaderEvent(section_header_el, config) {
-        section_header_el.addEventListener('click', async e => {
+    generateSectionHeaderEvent(section_header_el, config, onSectionHeaderClick) {
+        section_header_el.addEventListener('click', e => {
             e.preventDefault();
-            this.onSectionHeaderClick(config);
+            onSectionHeaderClick(config);
         });
     }
 
@@ -91,21 +101,24 @@ export class ReflectionSection {
         element.querySelector('#viewer-maximize-button').style.display = 'none';*/
     }
 
-    generateSectionItems(type, data, config) {
-        const frag = document.createDocumentFragment();
-
+    generateSectionItems(data, config, onTeaserClick) {
         const element = document.createElement('div');
-        element.className = config.postIndexClassName;
 
-        if (type === 'contents') {
-            element.className = config.latestPostClassName;
+        if(document.getElementById('reflection').querySelector('.' + config.latestPostClassName)) {
+            element.className = 'reflection-viewer-menu';
         } else {
-            element.className = config.postIndexClassName;
+            element.className = config.latestPostClassName;
         }
+
+        const frag = document.createDocumentFragment();
 
         let index = 0;
         for (const [key ,value] of data) {
-            const sectionItemElement = this.createSectionItem(key, value);
+            const sectionItemElement = this.createSectionItem(element.className,
+                key, 
+                value, 
+                onTeaserClick
+            );
 
             frag.appendChild(sectionItemElement);
 
@@ -119,16 +132,9 @@ export class ReflectionSection {
         return element;
     }
 
-    createSectionItem(key, value) {
+    createSectionItem(type, key, value, onTeaserClick) {
         const element = document.createElement('div');
         element.className = 'teaser-figure';
-
-        const meta = document.createElement('div');
-        meta.className = 'meta';
-        meta.innerHTML = (value.tags ?? []).map(tag => '#' + tag).join(" · ");
-        meta.innerHTML += '<br>';
-
-        element.appendChild(meta);
 
         const title = document.createElement('div');
         title.className = 'title';
@@ -142,36 +148,87 @@ export class ReflectionSection {
 
         element.appendChild(description);
 
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.innerHTML = (value.tags ?? []).map(tag => '#' + tag).join(" · ");
+
+        element.appendChild(meta);
+
+
         const teaser =  document.createElement('a');
         teaser.href = '#';
         teaser.appendChild(element);
 
         const section_config = siteMeta.selectSectionConfig('reflection');
-        this.generatePostEvent(teaser, section_config, key, value);       
+        this.generatePostEvent(teaser, type, section_config, key, value, onTeaserClick);       
 
         return teaser;
     }
 
-    generatePostEvent(element, config, key, value) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
+    generatePostEvent(element, type, config, key, value, onTeaserClick) {
+        element.addEventListener('mouseenter', () => { 
+            SiteLibrary.prefetch(
+                element, 
+                this._BASE_PATH + key + '/' + value.contentUrl
+            ); 
+        });
+
         element.addEventListener('click', e => {
             e.preventDefault();
-            this.presentPost(config, key, value);
+            onTeaserClick(type, key, value, config);
         });
     }
 
-    async presentPost(config, key, value) {
-        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
+    generateReflectionViewer(data, onTeaserClick) {
+        const frag = document.createDocumentFragment();
 
-        Templates.openPost(
-            value.id,
-            config.blogTypeName,                 
-            config.sectionHeaderIcon,
-            value.title,
-            value.orientation, 1.5, 1.25, 0, 0,
-            null, 
-            data, 
-            COMMON.COPYRIGH
+        const reflection_viewer_menu = this.generateReflectionViewerMenu(data, onTeaserClick);
+        const reflection_viewer_item = document.createElement('div');
+        reflection_viewer_item.className = 'reflection-viewer-item-detail';
+
+        const icon = SiteLibrary.createImgElement(
+            'reflection-icon', 
+            '', 
+            'assets/icons/reflection.png', 
+            'reflection-welcome-icon'
         );
+
+        const reflection_welcome_el = document.createElement('div');
+        reflection_welcome_el.className = 'reflection-welcome';
+
+        reflection_welcome_el.appendChild(icon);
+        reflection_viewer_item.appendChild(reflection_welcome_el);
+
+        frag.appendChild(reflection_viewer_menu);       
+        frag.appendChild(reflection_viewer_item);
+
+        return frag;
+    }
+
+    generateReflectionViewerMenu(data, onTeaserClick) {
+        const frag = document.createDocumentFragment();
+
+        const element = document.createElement('div');
+        element.className = 'reflection-viewer-menu';
+
+        let index = 0;
+        for (const [key, value] of data) {
+            const sectionItemElement = this.createSectionItem(
+                element.className,
+                key, 
+                value, 
+                onTeaserClick
+            );
+
+            frag.appendChild(sectionItemElement);
+            
+            if (++index < data.size) {
+                frag.appendChild(document.createElement('hr'));
+            }
+        }
+
+        element.appendChild(frag);
+
+        return element;
     }
 }

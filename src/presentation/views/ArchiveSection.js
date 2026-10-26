@@ -122,12 +122,12 @@ export class ArchiveSection {
         const element = document.createElement('div');
         element.className = 'teaser-figure';
 
-        const meta_el = document.createElement('div');
+        /*const meta_el = document.createElement('div');
         meta_el.className = 'meta';
         meta_el.innerHTML = Templates.symbol(value.type) + value.tags.map(tag => '#' + tag).join(" · ");
         meta_el.innerHTML += '<br>';
 
-        element.appendChild(meta_el);
+        element.appendChild(meta_el);*/
 
         const title_el = document.createElement('div');
         title_el.className = 'title';

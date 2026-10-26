@@ -1,5 +1,14 @@
 #archive {
-    line-height: 1.55;
+    display: flex;
+    line-height: 1.6;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#archive hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 #archive-post-list-all-viewer
@@ -21,15 +30,6 @@
 .header-panel {
     height: 100%;
     overflow-y: auto;
-}
-
-#archive-post-list-all-viewer 
-#content-area 
-.header-panel 
-.archive-header-panel hr {
-    width: 100%;
-    margin:0;
-    padding:0;
 }
 
 #archive .title,

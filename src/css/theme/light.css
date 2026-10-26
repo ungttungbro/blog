@@ -11,6 +11,7 @@
 
     --div-hover-color-A: #e9e9e9;
     --div-hover-color-B: #eaecef;
+    --div-hover-color-C: #d1d3d5;
 
     --theme-toggle-button: url(/assets/icons/light-mode-img/dark-toggle.png);
 
@@ -31,10 +32,10 @@
     --viewer-background-color: #f1f3f5;
     --viewer-header-color: #f6f8fa;
     --viewer-title-bar-background-color: #eaecee;
-    --viewer-title-bar-active-background-color: #caccce;
+    --viewer-title-bar-active-background-color: #e1e3e5;
     --viewer-scrollbar-thumb-background-color: #9a9c9e;
     --viewer-scrollbar-track-background-color: #bbbbbb;
-    --viewer-footer-background-color: #caccce;
+    --viewer-footer-background-color: #e1e3e5;
     
     --footer-background-color: #eaecef;
 

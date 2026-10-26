@@ -1,6 +1,5 @@
 'use strict';
 
-import { COMMON } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
@@ -162,7 +161,7 @@ export class LifelogSection {
         const lifelog_viewer_item = document.createElement('div');
         lifelog_viewer_item.className = 'lifelog-viewer-item-detail';
 
-        const photolog_icon = SiteLibrary.createImgElement(
+        const icon = SiteLibrary.createImgElement(
             'lifelog-icon', 
             '', 
             'assets/icons/lifelog.png', 
@@ -172,7 +171,7 @@ export class LifelogSection {
         const lifelog_welcome_el = document.createElement('div');
         lifelog_welcome_el.className = 'lifelog-welcome';
 
-        lifelog_welcome_el.appendChild(photolog_icon);
+        lifelog_welcome_el.appendChild(icon);
         lifelog_viewer_item.appendChild(lifelog_welcome_el);
 
         frag.appendChild(lifelog_viewer_menu);       
