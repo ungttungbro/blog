@@ -28,12 +28,11 @@ export class TaskBar {
         return this._groupTypeData;
     }
 
-    createLayout(logo_button, screen_shade_button, theme_mode_button) {
+    createLayout(logo_button, settings_button) {
         return new Promise(resolve => {
             this.taskBarElement.appendChild(logo_button);
             this.taskBarElement.appendChild(this.taskItemsElement);
-            this.taskBarElement.appendChild(screen_shade_button);
-            this.taskBarElement.appendChild(theme_mode_button);
+            this.taskBarElement.appendChild(settings_button);
             resolve();
         });
     }
@@ -122,6 +121,7 @@ export class TaskBar {
 
         const title_img = SiteLibrary.createImgElement(TASKBAR_CONSTANTS.TITLE_ICON_TYPE, '', title_icon_path, '');
         const caption = SiteLibrary.createImgCaption(title_img, null, title_text);
+        caption.className = 'task-group-caption';
 
         const close_button_icon_path = TASKBAR_CONSTANTS.CLOSE_BUTTON_ICON_PATH;
         const close_img = SiteLibrary.createImgElement('task-item-close', '', close_button_icon_path, '');
@@ -156,7 +156,7 @@ export class TaskBar {
 
     groupItemsEvent(task_group_item, group_items) {
         document.addEventListener('pointerdown', (e) => {
-            if (!group_items.contains(e.target)) {
+            if (!task_group_item.contains(e.target)) {
                 group_items.style.visibility = 'hidden';
             }
         });
@@ -195,6 +195,7 @@ export class TaskBar {
             
         const title_img = SiteLibrary.createImgElement(TASKBAR_CONSTANTS.TITLE_ICON_TYPE, '', title_icon_path, '');
         const caption = SiteLibrary.createImgCaption(title_img, null, title_text);
+        caption.className = 'task-bar-item-caption';
 
         const close_button_icon_path = TASKBAR_CONSTANTS.CLOSE_BUTTON_ICON_PATH;
         const close_img = SiteLibrary.createImgElement('task-item-close', '', close_button_icon_path, '');

@@ -11,6 +11,12 @@
     margin-bottom: 0.5rem;
 }
 
+#archive-post-list-all-viewer hr {
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 #archive-post-list-all-viewer
 #content-area {
     display: flex;
@@ -79,7 +85,7 @@
 .post-index
 .teaser-figure {
     padding: 0.5rem;
-    padding-top: 0.25rem;
+    padding-top: 0.5rem;
 }
 
 #archive-post-list-all-viewer .footer-panel {

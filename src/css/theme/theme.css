@@ -42,8 +42,12 @@
         width: 4px;
     }
 
+    ::-webkit-scrollbar:hover {
+        width: 10px;
+    }
+
     :is(
-         .archive-curation-viewer #content-area .content-panel,
+        .archive-curation-viewer #content-area .content-panel,
         #archive-post-list-all-viewer #content-area .header-panel,
         .writings-curation-viewer .content-panel,
         .writings-viewer .writings-viewer-menu,
@@ -64,7 +68,7 @@
     }
 
     :is(
-         .archive-curation-viewer #content-area .content-panel,
+        .archive-curation-viewer #content-area .content-panel,
         #archive-post-list-all-viewer #content-area .header-panel,
         .writings-curation-viewer .content-panel,
         .writings-viewer .writings-viewer-menu,
@@ -88,7 +92,7 @@
     }
 
     :is(
-         .archive-curation-viewer #content-area .content-panel,
+        .archive-curation-viewer #content-area .content-panel,
         #archive-post-list-all-viewer #content-area .header-panel,
         .writings-curation-viewer .content-panel,
         .writings-viewer .writings-viewer-menu,
@@ -221,10 +225,18 @@ footer {
 #photolog .photolog-thumbnail { filter: var(--photolog-thumbnail-filter); }
 #photolog .teaser-figure:hover .photolog-thumbnail { filter: var(--photolog-thumbnail-hover-filter); }
 
-#reflection .teaser-figure:hover .title,
 #lifelog .teaser-figure:hover .title,
 #archive .teaser-figure:hover{ 
-    border-right: 6px solid var(--div-hover-color-B); 
+    border-right: 6px solid var(--div-hover-color-D); 
+}
+
+#reflection .teaser-figure {
+    border-left: 0.5rem solid var(--div-hover-color-A);
+    padding-left: 0.75rem;
+}
+
+#reflection .teaser-figure:hover {
+    border-left: 0.5rem solid var(--div-hover-color-D);
 }
 
 #writings .main-teaser-thumbnail { filter: var(--writings-main-teaser-image-filter); }
@@ -262,6 +274,7 @@ footer {
     color: var(--font-color-anchor-color-B);
 }
 
+#taskbar .settings-dropdown,
 #taskbar .task-bar-item,
 #taskbar .task-bar-group {
     background-color: var(--taskbar-task-item-background-color);
@@ -292,6 +305,43 @@ footer {
 
 #taskbar .task-item-close { filter: var(--taskbar-task-item-close); }
 #taskbar .task-item-close:hover { background-color: var(--taskbar_task-item-close-background-hover-color); }
+
+#taskbar .settings-toggle-button {
+    color: var(--font-color);
+    border: 0;
+}
+
+#taskbar .settings-toggle-button:hover {
+    color: var(--font-color-anchor-color-A);
+}
+
+#taskbar .settings-dropdown hr {
+    width: 80%;
+    border: var(--viewer-hr-B);
+}
+
+#taskbar #screen-shade-button:hover,
+#taskbar #color-theme:hover {
+    background-color: var(--taskbar-task-item-background-hover-color);
+}
+
+main #shade-panel {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    overflow: hidden;
+
+    background: var(--shade-panel-background);
+
+    /*-webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);*/
+    z-index: 99999;
+}
 
 
 .archive-viewer,

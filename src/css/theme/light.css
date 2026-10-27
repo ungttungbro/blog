@@ -12,6 +12,7 @@
     --div-hover-color-A: #e9e9e9;
     --div-hover-color-B: #eaecef;
     --div-hover-color-C: #d1d3d5;
+    --div-hover-color-D: #d3d5d7;
 
     --theme-toggle-button: url(/assets/icons/light-mode-img/dark-toggle.png);
 
@@ -62,4 +63,6 @@
     --photolog-thumbnail-hover-filter: grayscale(0) brightness(1) contrast(1);
     --writings-main-teaser-image-hover-filter: grayscale(0) brightness(1) contrast(1);
     --lifelog-photo-hover-filter: grayscale(0) brightness(1) contrast(1);
+
+    --shade-panel-background: rgb(234, 236, 239, 0.97);
 }

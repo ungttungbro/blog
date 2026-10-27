@@ -127,21 +127,10 @@ export class Shell {
 
     showTaskBar() {
         const logo_element = SiteLibrary.createImgElement('', 'logo', TASKBAR_CONSTANTS.LOGO_ICON_PATH, 'logo'); 
-        logo_element.title = '화면정리 (clean view)';       
-
-        const screen_shade_button = document.createElement('div');
-        screen_shade_button.id = 'screen-shade-button';
-        screen_shade_button.title = '선명도 필터 (clarity filter)';
-
-        const color_theme_data = localStorage.getItem('color-theme');
-        const color_theme_element = document.createElement('div');
-        color_theme_element.id = 'color-theme';
-        color_theme_element.title = (color_theme_data === 'dark' ? 'light mode' : 'dark mode');
-
+                
         taskbar.createLayout(
             this.toggleLogo(logo_element),
-            this.toggleScreenShade(screen_shade_button, 'click', 'main'),
-            this.toggleThemeMode(color_theme_data, color_theme_element)
+            this.toggleSettings()
         );
     }
 
@@ -177,11 +166,57 @@ export class Shell {
         return logo_element;
     }
 
-    toggleScreenShade(event_element, event_type, target_element_id) { 
-        const target_element = document.querySelector(target_element_id);
+    toggleSettings() {
+        const settings_toggle_el = document.createElement('div');
+        settings_toggle_el.className = 'settings-toggle-button';
+        settings_toggle_el.innerHTML = '&#x2699';
+
+        const dropdown_el = document.createElement('div');
+        dropdown_el.className = 'settings-dropdown';
+
+        const theme_toggle_el = this.toggleThemeMode();
+        dropdown_el.appendChild(theme_toggle_el);
+
+        dropdown_el.appendChild(document.createElement('hr'));
+
+        const screen_shade_toggle_el = this.toggleScreenShade();
+        dropdown_el.appendChild(screen_shade_toggle_el);
+
+        settings_toggle_el.appendChild(dropdown_el);
+
+        this.generateSttingsToggleButtonEvent(settings_toggle_el, dropdown_el);
+
+        return settings_toggle_el;
+    }
+
+    generateSttingsToggleButtonEvent(toggle_button_el, dropdown_el) {
+        document.addEventListener('pointerdown', (e) => {
+            if (!toggle_button_el.contains(e.target)) {
+                dropdown_el.style.visibility = 'hidden';
+            }
+        });
+
+        toggle_button_el.addEventListener ('click', (e) => {
+            e.stopPropagation();
+            if (dropdown_el.style.visibility === 'visible') {
+                dropdown_el.style.visibility = 'hidden';
+            } else {
+                dropdown_el.style.visibility = 'visible';
+            }            
+        });
+    }
+
+    toggleScreenShade() { 
+        const screen_shade_button = document.createElement('div');
+        screen_shade_button.id = 'screen-shade-button';
+        screen_shade_button.innerHTML = '&#x25E9; 콘텐츠 집중용 화면 가림판';
+        
+        const target_selector = 'main';
+        const target_element = document.querySelector(target_selector);
+
         if (!target_element) {
             console.warn('target_element not found:', target_selector);
-            return event_element;
+            return screen_shade_button;
         }
 
         let shade_panel = document.getElementById('shade-panel');
@@ -194,8 +229,9 @@ export class Shell {
             target_element.appendChild(shade_panel);
         }
         
-        event_element.addEventListener(event_type, () => {  
-            const isActive = shade_panel.dataset.active === 'true';           
+        screen_shade_button.addEventListener('click', () => {
+            const isActive = shade_panel.dataset.active === 'true';
+                 
             if (isActive) {                
                 shade_panel.style.display = 'none';
                 shade_panel.dataset.active = 'false';
@@ -207,24 +243,33 @@ export class Shell {
             }
         }); 
         
-        return event_element;
+        return screen_shade_button;
     }
 
-    toggleThemeMode(color_theme_data, color_theme_element) {
-        if (color_theme_data) { document.documentElement.setAttribute('data-theme', color_theme_data); }
-        else { document.documentElement.setAttribute('data-theme', 'dark'); }
-        
-        color_theme_element.addEventListener('click', () =>{
-            const theme = document.documentElement.getAttribute('data-theme');
-            
-            let mode = '';
+    toggleThemeMode() {
+        const color_theme_data = localStorage.getItem('color-theme') || 'dark';
+        const color_theme_element = document.createElement('div');
 
-            if (theme === 'dark') { mode = 'light'; color_theme_element.title = theme + ' mode'; }
-            else { mode = 'dark'; color_theme_element.title = theme + ' mode'; }
+        color_theme_element.id = 'color-theme';
+
+        const updateThemeButton = (mode) => {
+            color_theme_element.innerHTML =
+                mode === 'dark'
+                    ? '&#x2600;&#xFE0F; 라이트모드 (Light Theme)'
+                    : '&#x1F319; 다크모드 (Dark Theme)';
+        };
+
+        document.documentElement.setAttribute('data-theme', color_theme_data);
+        updateThemeButton(color_theme_data);
+
+        color_theme_element.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const mode = theme === 'dark' ? 'light' : 'dark';
 
             document.documentElement.setAttribute('data-theme', mode);
-
             localStorage.setItem('color-theme', mode);
+
+            updateThemeButton(mode);
         });
 
         return color_theme_element;
