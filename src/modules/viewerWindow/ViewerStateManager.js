@@ -149,7 +149,7 @@ export class ViewerStateManager {
             element.style.transform =
                 `translate(${prev.translateX}px, ${prev.translateY}px)`;
 
-            element.style.borderRadius = '0.5rem';
+            element.style.borderRadius = '1rem';
         } else {
             element._prevState = {
                 width: element.offsetWidth,
@@ -168,12 +168,12 @@ export class ViewerStateManager {
 
             // +1의 이유는 1px이 비는 문제가 발생하여 임의 조정함 (scroll시) 추후 개선 요망
             element.style.transform =
-                `translate(${newTranslateX}px, ${newTranslateY - 1}px)`;
+                `translate(${newTranslateX}px, ${newTranslateY}px)`;
 
             element.style.width = targetWidth + 'px';
-            element.style.height = targetHeight + 1 + 'px';
+            element.style.height = targetHeight + 'px';
 
-            element.style.borderRadius = '0';
+            element.style.borderRadius = 'unset';
         }
     }
 }

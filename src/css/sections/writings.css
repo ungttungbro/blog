@@ -60,6 +60,10 @@
     opacity: 1;
 }
 
+#writings .main-teaser-thumbnail:hover {
+    cursor: pointer;
+}
+
 #writings .section-item-panel {
     display: flex;
     width: 100%;

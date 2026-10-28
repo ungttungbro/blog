@@ -163,7 +163,7 @@ export class SiteLibrary {
         element.style.left = prev.left + 'px';
 
         element.style.transform = 'none';
-        element.style.borderRadius = '0.5rem';
+        element.style.borderRadius = '1rem';
     } else {
         element._prevState = {
           top: element_rect.top,
@@ -384,28 +384,6 @@ export class SiteLibrary {
       
     return { width, height };
   }
-
-  /*static syncPhotoHeight(parent_el, target_el, offset) {
-    let previousHeight = -1;
-
-    const resizePhoto = () => {
-        requestAnimationFrame(() => {
-            const height = parent_el.clientHeight - offset;
-
-            if (height <= 0 || height === previousHeight) {
-                return;
-            }
-
-            previousHeight = height;
-            target_el.style.height = `${height}px`;
-        });
-    };
-
-    resizePhoto();
-
-    const observer = new ResizeObserver(resizePhoto);
-    observer.observe(parent_el);
-  }*/
 
   static syncPhotoHeight(parent_el, target_el, offset) {
     let previousHeight = -1;

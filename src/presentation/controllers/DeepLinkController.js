@@ -1,3 +1,5 @@
+'use strict';
+
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
 
@@ -70,7 +72,7 @@ export class DeepLinkController {
  
     async showContent(el, id, section_name, section_icon, title, orientation, header, contents, footer) {
         el.presentPost(
-            'viewer-content-' + await SiteLibrary.hashString(id),
+            await SiteLibrary.hashString(id),
             section_name,
             section_icon,
             title,

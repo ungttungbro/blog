@@ -3,6 +3,7 @@
 import { ELEMENT_TYPE } from "../../modules/common/Constants.js"
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
+import { taskbar } from "../../modules/taskbar/TaskBar.js";
 
 export class AboutSection {
   constructor(about_service) { 
@@ -164,7 +165,9 @@ export class AboutSection {
   onThumbnailLeave() {
     const el = document.getElementById('about').querySelector('.about-photo');
    
-    el.style.setProperty('filter', 'var(--about-photo-image-filter)');
-    el.style.setProperty('transition-duration', '0.3');
+    if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {
+      el.style.setProperty('filter', 'var(--about-photo-image-filter)');
+      el.style.setProperty('transition-duration', '0.3');
+    }    
   }
 }

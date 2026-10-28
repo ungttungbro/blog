@@ -85,22 +85,6 @@ export class ReflectionSection {
         });
     }
 
-    async onSectionHeaderClick(config) {
-        Templates.openPost(
-            config.listViewerId,
-            config.blogTypeName,
-            config.sectionHeaderIcon,
-            config.sectionListName,
-            'portrait', 0, 0, 1, 1.2,
-            this.generateSectionItems('header', await this.getOriginalDTO(), config),
-            null,
-            COMMON.COPYRIGHT
-        );
-
-        /*const element = document.getElementById(config.listViewerId);
-        element.querySelector('#viewer-maximize-button').style.display = 'none';*/
-    }
-
     generateSectionItems(data, config, onTeaserClick) {
         const element = document.createElement('div');
 

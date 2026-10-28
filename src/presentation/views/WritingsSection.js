@@ -103,7 +103,16 @@ export class WritingsSection {
                     '',
                     this._BASE_PATH + key + '/' + value.thumbnails,
                     'writings thumbnail'
-                ));
+                ))
+                .addEventListener('click', (e) => {
+                    e.preventDefault();
+                    onTeaserClick(
+                        'curation-post',
+                        key,
+                        value,
+                        config
+                    );
+                });
 
                 writings_main_teaser_el.appendChild(this.createSectionItem('curation-post', key, value, onTeaserClick));
 
@@ -198,21 +207,6 @@ export class WritingsSection {
                 config
             );
         });
-    }
-
-    async presentPost(key, value, config) {
-        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
-
-        Templates.openPost(
-            COMMON.VIEWER_PREFIX + value.id,
-            config.blogTypeName,
-            config.sectionHeaderIcon,
-            value.title,
-            value.orientation, 1, 0.8, 0, 0,
-            null, 
-            data, 
-            COMMON.COPYRIGHT
-        );
     }
 
     generateWritingsViewer(data, onTeaserClick) {

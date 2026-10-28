@@ -167,7 +167,7 @@ header {
     background-color: var(--header-background-color);
 }
 
-footer { 
+footer {
     background-color: var(--footer-background-color); 
     font-weight: bold;
 }
@@ -195,15 +195,6 @@ footer {
 #about #profile, #links .links_item_list { 
     background-color: var(--section-box-background-color);
     border: var(--section-box-border);
-}
-
-#about .about-photo {
-    transition: 0.3s;
-    transition-property: transform, opacity, filter;
-
-    filter: grayscale(0%) brightness(0.8) contrast(1);
-
-    /*filter : drop-shadow(0 0 1.5rem rgba(220, 218, 211, 0.5));*/
 }
 
 #writings .section-item-panel .teaser-figure{

@@ -123,6 +123,14 @@
     width: 6rem;
   }
 
+  #photolog .teaser-figure .photolog-thumbnail { filter: none; }
+  #photolog .teaser-figure:hover .photolog-thumbnail { filter: none; }
+  #writings .main-teaser-thumbnail { filter: none; }
+  #writings .main-teaser-thumbnail:hover { filter: none; }
+  #about #thumbnails .profile-thumbnail{ filter: none; }
+  #about #thumbnails .profile-thumbnail:hover { filter: none; }
+  #about .about-photo { filter: none; }
+
   .writings-viewer,
   .lifelog-viewer,
   .archive-viewer,
