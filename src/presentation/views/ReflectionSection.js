@@ -142,18 +142,17 @@ export class ReflectionSection {
 
         element.appendChild(title);
 
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.innerHTML = (value.tags ?? []).map(tag => '#' + tag).join(" · ");
+
+        //element.appendChild(meta);
+
         const description = document.createElement('div');
         description.className = 'summary';
         description.textContent = value.description;
 
         element.appendChild(description);
-
-        const meta = document.createElement('div');
-        meta.className = 'meta';
-        meta.innerHTML = (value.tags ?? []).map(tag => '#' + tag).join(" · ");
-
-        element.appendChild(meta);
-
 
         const teaser =  document.createElement('a');
         teaser.href = '#';

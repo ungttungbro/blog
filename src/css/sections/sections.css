@@ -7,13 +7,15 @@
   display: flex;
   flex: 1;
 
+  padding-top: 0.25rem;
+
   flex-direction: column;
   justify-content: space-between;
 
   min-height: 0;
 }
 
-#reflection .curation-post,
+/*#reflection .curation-post,*/
 #archive .curation-post,
 #lifelog .curation-post {
   padding-left: 0.25rem;
@@ -49,6 +51,7 @@
   display: flex;
 
   width: 100%;
+  height: 3rem;
 
   border: var(--base-border-line-medium-bold);
   border-radius: var(--base-border-radius-light-medium);

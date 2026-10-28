@@ -3,10 +3,6 @@
     --photolog-thumbnail-height-size: 6rem;
 }
 
-#photolog .curation-post {
-    margin-top: var(--base-margin-size-tiny);
-}
-
 #photolog .teaser-figure {
     display: flex;
     background-color: #181818;

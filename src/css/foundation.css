@@ -58,7 +58,7 @@
 /* 세로 모드 2단 (portrait) */
 @media (orientation: portrait), (max-width: 1152px) {
   html {
-    font-size: 2.1vw;
+    font-size: 2.2vw;
   }
 
   main {
@@ -70,7 +70,7 @@
   }
 
   #content-primary {
-    grid-template-columns: 1fr 19rem;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.75rem;
 
     align-items: stretch;
@@ -79,7 +79,7 @@
   }
 
   #content-secondary {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr 19rem;
     gap: 0.75rem;
 
     align-items: stretch;
@@ -110,7 +110,7 @@
   }
 
   #taskbar {
-    grid-template-columns: 1fr 2.5rem 2rem;
+    grid-template-columns: 1fr 2rem;
     height: 2.6rem;
     border: none;
   }
@@ -146,7 +146,11 @@
   }
 
   #screen-shade-button {
-    visibility: hidden;
+    display: none;
+  }
+
+  #taskbar .settings-dropdown hr {
+    display:none;
   }
 }
 
@@ -196,6 +200,8 @@
   #writings .main-teaser-thumbnail {
     width: 100%;
     height: auto;
+
+    margin-right: 0;
   }
 
   #writings .curation-teaser-panel .meta {

@@ -93,6 +93,15 @@
         "title": "reflection",
 
         "entries": {
+            "20260100A" : {
+                "date" : "2026.05.16.", 
+                "tags" : ["SW개발", "양재동", "동료"], 
+                "title" : "개발자 조나스", 
+                "description" : "개발자로 본격 활동하게된 조나스의 고군분투기",
+                "orientation" : "landscape",
+                "contentUrl" : "20260101A.html"
+            },
+
             "20260301A" : {
                 "date" : "2026.03.01.", 
                 "tags" : ["첫 직장", "개발자"], 

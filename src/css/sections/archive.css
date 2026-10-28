@@ -1,6 +1,6 @@
 #archive {
     display: flex;
-    line-height: 1.6;
+    line-height: 1.5;
 
     flex-direction: column;
     justify-content: space-between;
