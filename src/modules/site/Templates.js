@@ -185,4 +185,16 @@ export class Templates {
             default: return type + ' · ';
         }
     }
+
+    static showMessage(message, type = 'info') {
+        const dialog = document.querySelector('#message-box');
+        const content = dialog.querySelector('.message-content');
+
+        content.textContent = message;
+        dialog.dataset.type = type;
+
+        if (!dialog.open) {
+            dialog.showModal();
+        }
+    }
 }

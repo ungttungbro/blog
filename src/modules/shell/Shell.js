@@ -8,6 +8,7 @@ import { ViewerWindowProcessRegistry  } from "../viewerWindow/ViewerWindowProces
 import { TaskBarProcessRegistry  } from "../taskbar/TaskBarProcessRegistry.js";
 import { taskbar } from "../taskbar/TaskBar.js";
 import { siteMeta } from "../site/siteMeta.js";
+import { Templates } from "../site/Templates.js";
 
 const TASKBAR_CONSTANTS = Object.freeze({
     TITLE_ICON_TYPE : 'medium_icon',
@@ -169,7 +170,7 @@ export class Shell {
     toggleSettings() {
         const settings_toggle_el = document.createElement('div');
         settings_toggle_el.className = 'settings-toggle-button';
-        settings_toggle_el.innerHTML = '&#x2699';
+        //settings_toggle_el.innerHTML = '&#8285;';
 
         const dropdown_el = document.createElement('div');
         dropdown_el.className = 'settings-dropdown';
@@ -230,6 +231,11 @@ export class Shell {
         }
         
         screen_shade_button.addEventListener('click', () => {
+            if (ViewerStateManager.state.size <= 0) {
+                Templates.showMessage('콘텐츠가 1개 이상 실행되어 있어야 가림판을 켤 수 있습니다.', 'warning');
+                return;
+            }
+
             const isActive = shade_panel.dataset.active === 'true';
                  
             if (isActive) {                

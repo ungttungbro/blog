@@ -67,7 +67,7 @@ export class PhotologController {
             config.typeName,
             config.sectionHeaderIcon,
             config.photologSectionListName,
-            'landscape', 1.25, 0.7, 0, 0,
+            'landscape', 1.5, 0.6, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -88,31 +88,57 @@ export class PhotologController {
         photo_container.className = 'photo-container';
         photo_container.innerHTML = data;
 
-        if(document.getElementById('photolog-post-list-all-viewer')
-            ?.querySelector('.photolog-viewer-item-detail') && type!=='curation-post') {
-            photolog_item_detail_el.appendChild(photo_container);            
-            this.initializePhotoContainer(photolog_item_detail_el, '.photolog-viewer-item-detail', 0);
-        } else {
-            const frag = document.createDocumentFragment();
-            frag.appendChild(photolog_item_detail_el);
-            frag.appendChild(photo_container);
+        photolog_item_detail_el.appendChild(photo_container);
 
+        const end_el = document.createElement('div');
+        end_el.className = 'photolog-end-caption';
+        end_el.textContent = '끝.';
+
+        photolog_item_detail_el.appendChild(end_el);
+
+        const viewer_el = document.getElementById('photolog-post-list-all-viewer');
+        
+        if(viewer_el?.querySelector('.photolog-viewer-item-detail') && type!=='curation-post') {
+            const caption_el = photolog_item_detail_el.querySelector('.photolog-item-caption');
+
+            this.generateMouseWheelEvent(photolog_item_detail_el);
+            this.syncPhotologCaption(photolog_item_detail_el, caption_el);
+            this.syncPhotologCaption(photolog_item_detail_el, end_el);
+        } else {
             Templates.openPost(
                 value.id,
                 section_name,
                 this._ICON_PATH,
                 value.title,
-                value.orientation, 1.1, 0.7, 0, 0,
+                value.orientation, 1.25, 0.6, 0, 0,
                 null,
-                frag,       
+                photolog_item_detail_el,       
                 COMMON.COPYRIGHT  
             );
 
             const el = document.getElementById(value.id);
             el.className = section_name + '-' + 'curation' + '-' + 'viewer';
 
-            this.initializePhotoContainer(el, '.content-panel', 0);
-        }        
+            const content_panel_el = el.querySelector('.content-panel');
+            const caption_el = content_panel_el.querySelector('.photolog-item-caption');
+
+            this.generateMouseWheelEvent(content_panel_el);
+            this.syncPhotologCaption(content_panel_el, caption_el);
+            this.syncPhotologCaption(content_panel_el, end_el);
+        }
+    }
+
+    generateMouseWheelEvent(element) {       
+        if (element.dataset.wheelRegistered !== 'true') {
+            element.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    element.scrollLeft += e.deltaY / 3;
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            element.dataset.wheelRegistered = 'true';
+        }
     }
 
     createPhotologItemDetail(type, data) {
@@ -127,24 +153,33 @@ export class PhotologController {
             photolog_viewer_item.className = 'photolog-viewer-item-detail';
         }
 
-        photolog_viewer_item.appendChild(
+        const photolog_item_caption = document.createElement('div');
+        photolog_item_caption.className = 'photolog-item-caption';
+
+        photolog_item_caption.appendChild(
             Templates.createContentPanel('title', data.title)
         );
 
-        photolog_viewer_item.appendChild(
+        photolog_item_caption.appendChild(
             Templates.createContentPanel(
                 'meta', 
                 "&#128247;&nbsp" + data.date + " · " + data.location
             )
         );
         
-        photolog_viewer_item.appendChild(
+        photolog_item_caption.appendChild(
             Templates.createContentPanel('tags', data.tags.map(tag => '#' + tag).join(" · "))
         );
 
-        photolog_viewer_item.appendChild(
+        photolog_item_caption.appendChild(
             Templates.createContentPanel('description', data.description)
         );
+
+        photolog_item_caption.appendChild(
+            Templates.createContentPanel('photolog-caption-right-arrow', '&#8594;')
+        );
+
+        photolog_viewer_item.appendChild(photolog_item_caption);
 
         return photolog_viewer_item;
     }
@@ -167,83 +202,22 @@ export class PhotologController {
             }
         } else {
             for (const photo of photo_container_el.querySelectorAll('.photolog-photo')) {
-                this.syncPhotoWidth(photo_container_parent, photo, offset);
+                SiteLibrary.syncPhotoWidth(photo_container_parent, photo, offset);
             }
         }
-
-        this.generatePhotoScrollEvent(photo_container_parent, photo_container_el);
     }
 
-    syncPhotoWidth(parent_el, target_el) {
-        const resizePhoto = () => {
+    syncPhotologCaption(parent_el, target_el) {
+        const resizeCaption = () => {
             requestAnimationFrame(() => {
                 const width = parent_el.clientWidth;
                 target_el.style.width = `${width}px`;
             });
         };
 
-        resizePhoto();
+        resizeCaption();
 
-        const observer = new ResizeObserver(resizePhoto);
+        const observer = new ResizeObserver(resizeCaption);
         observer.observe(parent_el);
-    }
-
-    generatePhotoScrollEvent(parent_el, target_el) {
-        let isHorizontalScrollActive = false;
-
-        parent_el.addEventListener('wheel', (event) => {
-            const maxScrollTop =
-                parent_el.scrollHeight - parent_el.clientHeight;
-
-            const maxScrollLeft =
-                target_el.scrollWidth - target_el.clientWidth;
-
-            const atBottom =
-                parent_el.scrollTop >= maxScrollTop - 2;
-
-            const atLeft =
-                target_el.scrollLeft <= 1;
-
-            const atRight =
-                target_el.scrollLeft >= maxScrollLeft - 1;
-
-            // 가로 스크롤이 활성화된 상태
-            if (isHorizontalScrollActive) {
-
-                // 사진의 왼쪽 끝에서 위로 스크롤하면 부모로 복귀
-                if (atLeft && event.deltaY < 0) {
-                    isHorizontalScrollActive = false;
-                    return;
-                }
-
-                // 부모를 최하단에 고정
-                event.preventDefault();
-                
-                parent_el.scrollTop =
-                    parent_el.scrollHeight - parent_el.clientHeight;
-
-                // 사진의 가로 스크롤 처리
-                target_el.scrollLeft += event.deltaY;
-                return;
-            }
-
-            // 부모가 하단에 도달하기 전에는 일반 세로 스크롤
-            if (!atBottom) return;
-
-            // 하단에서 아래로 스크롤하면 가로 스크롤 활성화
-            if (event.deltaY > 0 && !atRight) {
-                isHorizontalScrollActive = true;
-                event.preventDefault();
-                target_el.scrollLeft += event.deltaY;
-                return;
-            }
-
-            // 사진이 왼쪽 끝이 아니면 위로 스크롤해도 가로 이동
-            if (event.deltaY < 0 && !atLeft) {
-                isHorizontalScrollActive = true;
-                event.preventDefault();
-                target_el.scrollLeft += event.deltaY;
-            }
-        }, { passive: false });
     }
 }

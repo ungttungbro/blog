@@ -46,6 +46,7 @@
 
     --border-color-A: 2px solid #2a2c2e;
     --border-color-B: 2px solid #121314;
+    --border-color-C: 2px solid #9a9c9e;
     
     --curation-page-hr: 1px solid rgba(255, 255, 255, 0.075);
     --viewer-hr-A: 1px solid rgba(160, 148, 67, 0.075);
@@ -66,4 +67,7 @@
     --lifelog-photo-hover-filter: grayscale(0) brightness(1) contrast(1);
 
     --shade-panel-background: rgb(25, 25, 25, 0.99);
+
+    --background-A: rgb(0 0 0 / 75%);
+    --backdrop-filter-A : blur(10px);
 }

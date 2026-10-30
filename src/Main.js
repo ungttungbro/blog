@@ -61,11 +61,11 @@ export default class Main {
 
   handleDeepLink() {
     const section_map = {
-        writings: { element: new WritingsSection, icon: '/assets/icons/blog.png' },
-        reflection: { element: new ReflectionSection, icon: '/assets/icons/reflection.png' },
-        lifelog: { element: new LifelogSection, icon: '/assets/icons/lifelog.png' },
-        archive: { element: new ArchiveSection, icon: '/assets/icons/archive.png' },
-        photolog: { element: new PhotologSection, icon: '/assets/icons/photographer.png' }
+        writings: { element: this.writings.section_view, icon: '/assets/icons/blog.png' },
+        reflection: { element: this.reflection.section_view, icon: '/assets/icons/reflection.png' },
+        lifelog: { element: this.lifelog.section_view, icon: '/assets/icons/lifelog.png' },
+        archive: { element: this.archive.section_view, icon: '/assets/icons/archive.png' },
+        photolog: { element: this.photolog.section_view, icon: '/assets/icons/photographer.png' }
     };
 
     const element = new DeepLinkController(this.original_service);

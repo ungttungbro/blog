@@ -421,4 +421,41 @@ export class SiteLibrary {
         }
     };
   }
+
+  static syncPhotoWidth(parent_el, target_el, offset) {
+    let previousWidth = -1;
+    let animationFrameId = null;
+
+    const resizePhoto = () => {
+        if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+        }
+
+        animationFrameId = requestAnimationFrame(() => {
+            animationFrameId = null;
+
+            const width = parent_el.clientWidth - offset;
+
+            if (width <= 0 || width === previousWidth) {
+                return;
+            }
+
+            previousWidth = width;
+            target_el.style.width = `${width}px`;
+        });
+    };
+
+    const observer = new ResizeObserver(resizePhoto);
+    observer.observe(parent_el);
+
+    resizePhoto();
+
+    return () => {
+        observer.disconnect();
+
+        if (animationFrameId !== null) {
+            cancelAnimationFrame(animationFrameId);
+        }
+    };
+  }
 }

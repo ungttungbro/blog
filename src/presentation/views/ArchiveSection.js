@@ -140,7 +140,7 @@ export class ArchiveSection {
         teaser.appendChild(element);
 
         const section_config = siteMeta.selectSectionConfig('archive');
-        this.generatePostEvent(
+        /*this.generatePostEvent(
             section_config.blogTypeName,
             COMMON.VIEWER_PREFIX + value.id,
             value.orientation,
@@ -150,32 +150,49 @@ export class ArchiveSection {
             null,
             this._BASE_PATH + key + '/' + value.contentUrl, 
             COMMON.COPYRIGHT
-        );
+        ); section_name, id, orientation, element, section_icon, title, header, contents, footer*/
+
+        this.generatePostEvent(teaser, key, value, section_config);
 
         return teaser;
     }
 
-    generatePostEvent(section_name, id, orientation, element, section_icon, title, header, contents, footer) {
-        element.addEventListener('mouseenter', e => { SiteLibrary.prefetch(element, contents); }); 
+    generatePostEvent(element, key, value, config) {
+        element.addEventListener(
+            'mouseenter', 
+            () => { 
+                SiteLibrary.prefetch(
+                    element, 
+                    this._BASE_PATH + key + '/' + value.contentUrl
+                ); 
+        });
+
         element.addEventListener('click', e => {
             e.preventDefault();
-            this.presentPost(id, section_name, section_icon, title, orientation, header, contents, footer);
+            this.presentPost(
+                config.blogTypeName, 
+                key,
+                value
+            );
         });
     }
 
-    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
-        const data = await SiteLibrary.loadText(contents);
+    async presentPost(section_name, key, value) {
+        const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
+        const config = siteMeta.selectSectionConfig(section_name);
 
         Templates.openPost(
-            id,
+            value.id,
             section_name,                 
-            section_icon,
-            title,
-            orientation, 1.5, 1.2, 0, 0,
-            header, data, footer
+            config.sectionHeaderIcon,
+            value.title,
+            value.orientation, 1.5, 1.2, 0, 0,
+            null, 
+            data, 
+            COMMON.COPYRIGHT
         );
 
-         const viewer_el = document.getElementById(id);
+        const viewer_el = document.getElementById(value.id);
         viewer_el.className = section_name + '-' + 'curation' + '-' + 'viewer';
 
     }

@@ -1,6 +1,5 @@
 'use strict';
 
-import { COMMON } from "../../modules/common/Constants.js";
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
 import { Templates } from "../../modules/site/Templates.js";
@@ -130,7 +129,7 @@ export class ReflectionSection {
         meta.className = 'meta';
         meta.innerHTML = (value.tags ?? []).map(tag => '#' + tag).join(" · ");
 
-        //element.appendChild(meta);
+        element.appendChild(meta);
 
         const description = document.createElement('div');
         description.className = 'summary';
@@ -213,5 +212,11 @@ export class ReflectionSection {
         element.appendChild(frag);
 
         return element;
+    }
+
+    /**DeepLink용 */
+    presentPost(section_name, key, value, onTeaserClick) {
+        const config = siteMeta.selectSectionConfig(section_name);
+        onTeaserClick('curation-post', key, value, config);
     }
 }

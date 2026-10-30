@@ -261,4 +261,10 @@ export class WritingsSection {
 
         return element;
     }
+
+    /**DeepLink용 */
+    presentPost(section_name, key, value, onTeaserClick) {
+        const config = siteMeta.selectSectionConfig(section_name);
+        onTeaserClick('curation-post', key, value, config);
+    }
 }

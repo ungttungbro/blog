@@ -9,8 +9,6 @@
         .photolog-curation-viewer .content-panel,
         .photolog-viewer .photolog-viewer-menu,
         .photolog-viewer .photolog-viewer-item-detail,
-        .photolog-viewer #content-area .photo-container,
-        .photolog-curation-viewer #content-area .photo-container,
         .reflection-viewer .reflection-viewer-menu,
         .reflection-viewer .reflection-viewer-item-detail,
         .reflection-curation-viewer .content-panel,
@@ -22,7 +20,7 @@
     }
 
     :is(
-         .archive-curation-viewer #content-area .content-panel,
+        .archive-curation-viewer #content-area .content-panel,
         #archive-post-list-all-viewer #content-area .header-panel,
         .writings-curation-viewer .content-panel,
         .writings-viewer .writings-viewer-menu,
@@ -30,8 +28,6 @@
         .photolog-curation-viewer .content-panel,
         .photolog-viewer .photolog-viewer-menu,
         .photolog-viewer .photolog-viewer-item-detail,
-        .photolog-viewer #content-area .photo-container,
-        .photolog-curation-viewer #content-area .photo-container,
         .reflection-viewer .reflection-viewer-menu,
         .reflection-viewer .reflection-viewer-item-detail,
         .reflection-curation-viewer .content-panel,
@@ -39,12 +35,12 @@
         .lifelog-viewer .lifelog-viewer-menu,
         .lifelog-viewer .lifelog-viewer-item-detail
     )::-webkit-scrollbar {
-        width: 4px;
+        width: 0.25rem;
     }
 
-    ::-webkit-scrollbar:hover {
+    /*::-webkit-scrollbar:hover {
         width: 10px;
-    }
+    }*/
 
     :is(
         .archive-curation-viewer #content-area .content-panel,
@@ -55,8 +51,6 @@
         .photolog-curation-viewer .content-panel,
         .photolog-viewer .photolog-viewer-menu,
         .photolog-viewer .photolog-viewer-item-detail,
-        .photolog-viewer #content-area .photo-container,
-        .photolog-curation-viewer #content-area .photo-container,
         .reflection-curation-viewer .content-panel,
         .reflection-viewer .reflection-viewer-menu,
         .reflection-viewer .reflection-viewer-item-detail,
@@ -76,8 +70,6 @@
         .photolog-curation-viewer .content-panel,
         .photolog-viewer .photolog-viewer-menu,
         .photolog-viewer .photolog-viewer-item-detail,
-        .photolog-viewer #content-area .photo-container,
-        .photolog-curation-viewer #content-area .photo-container,
         .reflection-viewer .reflection-viewer-menu,
         .reflection-viewer .reflection-viewer-item-detail,
         .reflection-curation-viewer .content-panel,
@@ -100,8 +92,6 @@
         .photolog-curation-viewer .content-panel,
         .photolog-viewer .photolog-viewer-menu,
         .photolog-viewer .photolog-viewer-item-detail,
-        .photolog-viewer #content-area .photo-container,
-        .photolog-curation-viewer #content-area .photo-container,
         .reflection-viewer .reflection-viewer-menu,
         .reflection-viewer .reflection-viewer-item-detail,
         .reflection-curation-viewer .content-panel,
@@ -116,7 +106,7 @@
 
     /* 스크롤바 스타일 재계산 유도 */
     :is(
-         .archive-curation-viewer #content-area .content-panel,
+        .archive-curation-viewer #content-area .content-panel,
         #archive-post-list-all-viewer #content-area .header-panel,
         .writings-curation-viewer .content-panel,
         .writings-viewer .writings-viewer-menu,
@@ -124,8 +114,6 @@
         .photolog-curation-viewer .content-panel,
         .photolog-viewer .photolog-viewer-menu,
         .photolog-viewer .photolog-viewer-item-detail,
-        .photolog-viewer #content-area .photo-container,
-        .photolog-curation-viewer #content-area .photo-container,
         .reflection-viewer .reflection-viewer-menu,
         .reflection-viewer .reflection-viewer-item-detail,
         .reflection-curation-viewer .content-panel,
@@ -170,6 +158,19 @@ header {
 footer {
     background-color: var(--footer-background-color); 
     font-weight: bold;
+}
+
+#message-box {
+    border: var(--border-color-C);
+    color: var(--font-color);
+    background: var(--background-A);
+    backdrop-filter: var(--backdrop-filter-A);
+}
+
+#message-box .message-close {
+    border: var(--border-color-C);
+    color: var(--font-color);
+    background-color: var(--section-box-background-color);
 }
 
 .curation-post .meta, 
@@ -218,7 +219,7 @@ footer {
 
 #lifelog .teaser-figure:hover .title,
 #archive .teaser-figure:hover{ 
-    border-right: 6px solid var(--div-hover-color-D); 
+    border-right: 0.25rem solid var(--div-hover-color-D); 
 }
 
 #reflection .teaser-figure {
@@ -546,6 +547,11 @@ main #shade-panel {
     background-color: var(--viewer-footer-background-color);
 }
 
+.photolog-viewer #content-area .photolog-caption-right-arrow,
+.photolog-curation-viewer #content-area .photolog-caption-right-arrow {
+    border: var(--border-color-C);
+}
+
 #archive-post-list-all-viewer,
 #blog-post-list-all-viewer,
 #photolog-post-list-all-viewer,
@@ -600,12 +606,10 @@ main #shade-panel {
 #photolog-post-list-all-viewer .photolog-viewer-item-detail { background-color: var(--viewer-background-color); }
 #photolog-post-list-all-viewer .photolog-viewer-item-detail .title { color: var(--font-color); }
 
-
-
 /*filter 기본상태*/
 #blog-post-list-all-viewer .writings-header-panel,
-#photolog-post-list-all-viewer .photolog-header-panel,
-.photolog-curation-viewer #content-area .photolog-content-panel,
+#photolog-post-list-all-viewer,
+.photolog-curation-viewer,
 .writings-curation-viewer #content-area .writings-content-panel,
 .archive-curation-viewer #content-area .blog-post,
 #lifelog-post-list-all-viewer .lifelog-header-panel,
@@ -618,8 +622,8 @@ main #shade-panel {
 /* 데스크톱: Hover 시 컬러 복원 */
 @media (hover: hover) {
     #blog-post-list-all-viewer .writings-header-panel:hover,
-    #photolog-post-list-all-viewer .photolog-header-panel:hover,
-    .photolog-curation-viewer #content-area .photolog-content-panel:hover,
+    #photolog-post-list-all-viewer:hover,
+    .photolog-curation-viewer:hover,
     .writings-curation-viewer #content-area .writings-content-panel:hover,
     .archive-curation-viewer #content-area .blog-post:hover,
     #lifelog-post-list-all-viewer .lifelog-header-panel:hover,

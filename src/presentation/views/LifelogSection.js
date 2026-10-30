@@ -206,4 +206,9 @@ export class LifelogSection {
 
         return element;
     }
+
+    /**DeepLink용 */
+    presentPost(section_name, key, value, onTeaserClick) {
+        onTeaserClick('curation-post', section_name, key, value);
+    }
 }

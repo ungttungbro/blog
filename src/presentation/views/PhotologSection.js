@@ -206,20 +206,7 @@ export class PhotologSection {
     }
 
     /**DeepLink용 */
-    async presentPost(id, section_name, section_icon, title, orientation, header, contents, footer) {
-        const data = await SiteLibrary.loadText(contents);
-
-        Templates.openPost(
-            id,
-            section_name,                 
-            section_icon,
-            title,
-            orientation, 1.1, 0.7, 0, 0,
-            header, data, footer
-        );
-
-        const viewer_el = document.getElementById(id);
-        viewer_el.className = section_name + '-' + 'curation' + '-' + 'viewer';
-
+    presentPost(section_name, key, value, onTeaserClick) {
+        onTeaserClick('curation-post', section_name, key, value);
     }
 }

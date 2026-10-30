@@ -166,7 +166,6 @@ export class ViewerStateManager {
 
             element.classList.add('is-maximized');
 
-            // +1의 이유는 1px이 비는 문제가 발생하여 임의 조정함 (scroll시) 추후 개선 요망
             element.style.transform =
                 `translate(${newTranslateX}px, ${newTranslateY}px)`;
 

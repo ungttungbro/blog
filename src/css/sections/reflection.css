@@ -8,6 +8,10 @@
     font-size: 1rem;
 }
 
+#reflection .meta {
+    display: none;
+}
+
 #reflection .summary {
     display: block;
 
@@ -35,7 +39,7 @@
     display: flex;
     flex-direction: column;
 
-    height: 4rem;
+    height: 3.8rem;
     line-height: 1.6rem;
 
     justify-content: center;
@@ -120,12 +124,9 @@
 .title {
     font-size: 0.95rem;
     line-height: 1.4;
-    
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
 
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #reflection-post-list-all-viewer
@@ -134,11 +135,9 @@
     font-size: 0.9rem;
     line-height: 1.4;
 
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #reflection-post-list-all-viewer 
@@ -146,15 +145,12 @@
 .summary {
     width: 100%;
 
+    font-size: 0.9rem;
     line-height: 1.6;
 
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-
-    border: 0px solid #ffffff;
-
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     display: none;
 }

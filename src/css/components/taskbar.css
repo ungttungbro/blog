@@ -160,6 +160,17 @@
     user-select: none;
 }
 
+#taskbar .settings-toggle-button::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    /*border-radius: 50%;*/
+    background: currentColor;
+}
+
 #taskbar .settings-toggle-button:hover {
     margin: 0;
     cursor: pointer;
