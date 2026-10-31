@@ -66,8 +66,8 @@
     --about-thumbnail-hover-filter: grayscale(0) brightness(1) contrast(1);
     --lifelog-photo-hover-filter: grayscale(0) brightness(1) contrast(1);
 
-    --shade-panel-background: rgb(25, 25, 25, 0.99);
+    --shade-panel-background: rgba(20, 20, 20, 1);
 
-    --background-A: rgb(0 0 0 / 75%);
+    --background-A: rgba(0, 0, 0, 0.75);
     --backdrop-filter-A : blur(10px);
 }

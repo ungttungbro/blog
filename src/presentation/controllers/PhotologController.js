@@ -50,7 +50,7 @@ export class PhotologController {
         const data = await this.original_service.getPhotolog();
 
         let items;
-        if (taskbar.taskBarElement.dataset.column > 2) {
+        if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {
             items = this.section_view.generatePhotoViewer(
                 data, this.section_view.getPostClickHandler()
             );
@@ -67,7 +67,7 @@ export class PhotologController {
             config.typeName,
             config.sectionHeaderIcon,
             config.photologSectionListName,
-            'landscape', 1.5, 0.6, 0, 0,
+            'landscape', 1.4, 0.7, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -101,7 +101,9 @@ export class PhotologController {
         if(viewer_el?.querySelector('.photolog-viewer-item-detail') && type!=='curation-post') {
             const caption_el = photolog_item_detail_el.querySelector('.photolog-item-caption');
 
-            this.generateMouseWheelEvent(photolog_item_detail_el);
+            if (parseInt(taskbar.taskBarElement.dataset.column) > 2) 
+                this.generateMouseWheelEvent(photolog_item_detail_el);
+
             this.syncPhotologCaption(photolog_item_detail_el, caption_el);
             this.syncPhotologCaption(photolog_item_detail_el, end_el);
         } else {
@@ -110,7 +112,7 @@ export class PhotologController {
                 section_name,
                 this._ICON_PATH,
                 value.title,
-                value.orientation, 1.25, 0.6, 0, 0,
+                value.orientation, 1.3, 0.7, 0, 0,
                 null,
                 photolog_item_detail_el,       
                 COMMON.COPYRIGHT  
@@ -122,7 +124,9 @@ export class PhotologController {
             const content_panel_el = el.querySelector('.content-panel');
             const caption_el = content_panel_el.querySelector('.photolog-item-caption');
 
-            this.generateMouseWheelEvent(content_panel_el);
+            if (parseInt(taskbar.taskBarElement.dataset.column) > 2) 
+                this.generateMouseWheelEvent(content_panel_el);
+
             this.syncPhotologCaption(content_panel_el, caption_el);
             this.syncPhotologCaption(content_panel_el, end_el);
         }
@@ -176,7 +180,9 @@ export class PhotologController {
         );
 
         photolog_item_caption.appendChild(
-            Templates.createContentPanel('photolog-caption-right-arrow', '&#8594;')
+            parseInt(taskbar.taskBarElement.dataset.column) > 2 ? 
+                Templates.createContentPanel('photolog-caption-right-arrow', '&#8594;') :
+                Templates.createContentPanel('photolog-caption-right-arrow', '&#8595;')
         );
 
         photolog_viewer_item.appendChild(photolog_item_caption);

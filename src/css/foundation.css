@@ -109,6 +109,10 @@
     height: auto;
   }
 
+  #archive .curation-post {
+    line-height: 1.2;
+  }
+
   #taskbar {
     grid-template-columns: 1fr 2rem;
     height: 2.6rem;
@@ -129,7 +133,9 @@
   #writings .main-teaser-thumbnail:hover { filter: none; }
   #about #thumbnails .profile-thumbnail{ filter: none; }
   #about #thumbnails .profile-thumbnail:hover { filter: none; }
-  #about .about-photo { filter: none; }
+  #about #photo-zone .about-photo { filter: none; }
+  #photolog-post-list-all-viewer { filter: none; }
+  .photolog-curation-viewer { filter: none; }
 
   .writings-viewer,
   .lifelog-viewer,
@@ -146,6 +152,31 @@
 
   #photolog-post-list-all-viewer .photolog-viewer-menu {
     flex: 0 0 100%;
+  }
+
+  .photolog-curation-viewer
+  #content-area 
+  .content-panel {      
+      overflow-x: hidden;
+      overflow-y: auto;
+  }
+
+  .photolog-viewer #content-area .photolog-viewer-item-detail,
+  .photolog-curation-viewer #content-area .photolog-viewer-item-detail {
+    flex-direction: column;
+  }
+
+  #photolog-post-list-all-viewer #content-area .photo-container,
+  .photolog-curation-viewer #content-area .photo-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .photolog-viewer #content-area .photo-container .photolog-photo,
+  .photolog-curation-viewer #content-area .photo-container .photolog-photo {
+      width: 100%;
+      height: auto;
   }
 
   #viewer-maximize-button {

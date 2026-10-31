@@ -130,7 +130,10 @@ export class AboutSection {
         siteMeta.about.thumbnailImgAlt
       );
 
-      this.generateThumbnailEvent(thumbnail_img, path);
+      if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {
+        this.generateThumbnailEvent(thumbnail_img, path);
+      }
+      
       frag.appendChild(thumbnail_img);
     }
 
@@ -164,10 +167,8 @@ export class AboutSection {
 
   onThumbnailLeave() {
     const el = document.getElementById('about').querySelector('.about-photo');
-   
-    if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {
-      el.style.setProperty('filter', 'var(--about-photo-image-filter)');
-      el.style.setProperty('transition-duration', '0.3');
-    }    
+
+    el.style.setProperty('filter', 'var(--about-photo-image-filter)');
+    el.style.setProperty('transition-duration', '0.3');
   }
 }

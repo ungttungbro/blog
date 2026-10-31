@@ -592,7 +592,7 @@ main #shade-panel {
 #photolog-post-list-all-viewer .photolog-viewer-menu .title { border: var(--font-color); }
 #photolog-post-list-all-viewer .photolog-viewer-menu .photolog-thumbnail { 
     border: var(--border-color-A);
-    filter: var(--photolog-thumbnail-filter);
+    /*filter: var(--photolog-thumbnail-filter);*/
 }
 
 #archive-post-list-all-viewer .teaser-figure:hover,

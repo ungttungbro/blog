@@ -215,6 +215,12 @@
     transition: height 0.5s ease-out;
 }
 
+.photolog-curation-viewer #content-area .content-panel .photolog-content-panel .photolog-viewer-item-detail .photolog-end-caption,
+.photolog-viewer #content-area .photolog-viewer-item-detail .photolog-end-caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 #photolog-post-list-all-viewer #content-area .photo-container,
 .photolog-curation-viewer #content-area .photo-container {
     display: flex;    
@@ -228,7 +234,10 @@
     width: 2rem;
     height: 2rem;
 
-    border: 5px solid #cccccc;
+    line-height: 1.2;
+
+    border: 2px solid #cccccc;
+    font-size: 1.5rem;
 
     border-radius: 50%;
 }
