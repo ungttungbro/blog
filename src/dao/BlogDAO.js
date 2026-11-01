@@ -34,8 +34,13 @@ export class BlogDAO {
     }
 
     /*photolog 관련 메서드*/
-    async findPhotolog() {
+    async findAllPhotolog() {
         const data = await SiteLibrary.loadJson(`${this._BLOG_DATA_PATH}photolog/photolog-data.json`);
         return data;
+    }
+
+    async findPhotolog(id) {
+        const data = await this.findAllPhotolog();
+        return data.entries[id];
     }
 }

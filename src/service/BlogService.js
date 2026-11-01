@@ -33,8 +33,13 @@ export class BlogService extends BaseService {
     }
 
     async getPhotolog() {
-        const records = await this.dao.findPhotolog();
+        const records = await this.dao.findAllPhotolog();
         return super.metaData(records.entries);
+    }
+
+    async getPhotologRecord(id) {
+        const record = await this.dao.findPhotolog(id);
+        return record;
     }
 
     async getContentByParams(section, id) {        

@@ -107,18 +107,20 @@ export class PhotologController {
             this.syncPhotologCaption(photolog_item_detail_el, caption_el);
             this.syncPhotologCaption(photolog_item_detail_el, end_el);
         } else {
+            const db = await this.original_service.getPhotologRecord(key);
+
             Templates.openPost(
-                value.id,
+                db.id,
                 section_name,
                 this._ICON_PATH,
-                value.title,
-                value.orientation, 1.3, 0.7, 0, 0,
+                db.title,
+                db.orientation, 1.3, 0.7, 0, 0,
                 null,
                 photolog_item_detail_el,       
                 COMMON.COPYRIGHT  
             );
 
-            const el = document.getElementById(value.id);
+            const el = document.getElementById(db.id);
             el.className = section_name + '-' + 'curation' + '-' + 'viewer';
 
             const content_panel_el = el.querySelector('.content-panel');
