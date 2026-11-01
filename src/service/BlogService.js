@@ -39,7 +39,7 @@ export class BlogService extends BaseService {
 
     async getPhotologRecord(id) {
         const record = await this.dao.findPhotolog(id);
-        return record;
+        return super.metaData(record);
     }
 
     async getContentByParams(section, id) {        

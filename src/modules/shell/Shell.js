@@ -28,7 +28,7 @@ export class Shell {
     async initialize(task_bar_element) {
         this.isPortraitLayout = null;
         this.isTinyLayout = null;
-        this.currentMode = null;        
+        this.currentThemeMode = null;     
 
         await taskbar.initialize(task_bar_element);
         taskbar.groupTypeData = GROUP_CONFIG;
@@ -46,6 +46,16 @@ export class Shell {
             resizeTimer = setTimeout(() => {
                 this.updateLayout();
             }, 150);
+        });
+
+        const theme_media = window.matchMedia('(prefers-color-scheme: dark)');
+        this.currentThemeMode = theme_media.matches ? 'dark' : 'light';
+        this.toggleThemeMode(); // 초기 테마 모드 설정
+
+        theme_media.addEventListener('change', (event) => {
+            const theme = event.matches ? 'dark' : 'light';
+            this.currentThemeMode = theme;
+            this.toggleThemeMode();
         });
 
         history.replaceState({ modal: null }, '', '');
@@ -253,7 +263,7 @@ export class Shell {
     }
 
     toggleThemeMode() {
-        const color_theme_data = localStorage.getItem('color-theme') || 'dark';
+        const color_theme_data = localStorage.getItem('color-theme') || this.currentThemeMode;
         const color_theme_element = document.createElement('div');
 
         color_theme_element.id = 'color-theme';

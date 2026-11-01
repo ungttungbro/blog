@@ -41,6 +41,6 @@ export class BlogDAO {
 
     async findPhotolog(id) {
         const data = await this.findAllPhotolog();
-        return data.entries[id];
+        return { [id]: data.entries[id] };
     }
 }

@@ -82,7 +82,14 @@ export class PhotologController {
             this._BASE_PATH + key + '/' + value.contentUrl
         );
 
-        const photolog_item_detail_el = this.createPhotologItemDetail(type, value);
+        const db = await this.original_service.getPhotologRecord(key);
+
+        let photolog_item_detail_el = null;
+        if (type === 'curation-post') {
+            photolog_item_detail_el = this.createPhotologItemDetail(type, db.get(key));
+        } else {
+            photolog_item_detail_el = this.createPhotologItemDetail(type, value);
+        }        
 
         const photo_container = document.createElement('div');
         photo_container.className = 'photo-container';
@@ -107,20 +114,18 @@ export class PhotologController {
             this.syncPhotologCaption(photolog_item_detail_el, caption_el);
             this.syncPhotologCaption(photolog_item_detail_el, end_el);
         } else {
-            const db = await this.original_service.getPhotologRecord(key);
-
             Templates.openPost(
-                db.id,
+                db.get(key).id,
                 section_name,
                 this._ICON_PATH,
-                db.title,
-                db.orientation, 1.3, 0.7, 0, 0,
+                db.get(key).title,
+                db.get(key).orientation, 1.3, 0.7, 0, 0,
                 null,
                 photolog_item_detail_el,       
                 COMMON.COPYRIGHT  
             );
 
-            const el = document.getElementById(db.id);
+            const el = document.getElementById(db.get(key).id);
             el.className = section_name + '-' + 'curation' + '-' + 'viewer';
 
             const content_panel_el = el.querySelector('.content-panel');

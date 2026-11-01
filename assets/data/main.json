@@ -242,8 +242,8 @@
                 "type" : "Samsung XCover5",
                 "location" : "서울 용산 전쟁기념관",
                 "title" : "전쟁기념관",
-                "thumbnails" : "20260131_photolog.jpg",
-                "description" : "용산에 약속이 있어 오랜만에 전쟁기념관을 둘러 보았다.<br>행사도 많고 편의시설도 많아져서 시간을 보내기가 좋았다.<br>전쟁과 관련한 무기들도 꼼꼼하게 전시되어 있었다." ,
+                "thumbnails" : "20260131_photolog.webp",
+                "description" : "용산에 약속이 있어 오랜만에 전쟁기념관을 둘러 보았다. 행사도 많고 편의시설도 많아져서 무기 구경하며 시간을 보내기가 좋았다." ,
                 "tags" : ["전쟁기념관", "Samsung XCover5"],
                 "orientation" : "landscape",
                 "contentUrl" : "20260131A.html"
@@ -254,8 +254,8 @@
                 "type" : "Samsung XCover5",
                 "location" : "서울 충무로 한옥마을",
                 "title" : "남산골 한옥마을",
-                "thumbnails" : "20241127_photolog.jpg",
-                "description" :"직업상담사 자격증 관련하여 현장실습을 충무로로 가게 되었다.<br>충무로에는 남산골 한옥마을이 있는데, 불것도 많고 산책하기 좋은 곳이었다.<br>한옥마을을 산책하면서 사색에 잠겼던 하루였다.</pre>",
+                "thumbnails" : "20241127_photolog.webp",
+                "description" :"직업상담사 자격증 관련하여 현장실습을 충무로로 가게 되었다. 충무로에는 한옥마을이 있는데, 볼것도 많고 산책하기 좋은 곳이다.",
                 "tags" : ["남산골 한옥마을", "Samsung XCover5"],
                 "orientation" : "landscape",
                 "contentUrl" : "20241127A.html"
@@ -267,7 +267,7 @@
                 "location" : "한국",
                 "title" : "전국여행 feat. 오이도",
                 "thumbnails" : "20050101_photolog.webp",
-                "description" : "새해를 맞아서 전국여행을 계획하였다.<br>서울에서 출발하여 오이도를 거쳐 해안선을 따라서 왜목마을, 삽교, 해남, 부산, 정동진, 설악산등을 방문하였다.<br>지금 사진은 그 첫번째인 오이도 일몰 시간때 사진이다.",
+                "description" : "새해를 맞아서 전국여행을 계획하였다. 서울에서 출발하여 여러곳을 방문 하였으며, 그 첫번째인 오이도 일몰 시간때 사진이다.",
                 "tags" : ["전국여행", "Nikon Coolpix3100"],
                 "orientation" : "landscape",
                 "contentUrl" : "20050101A.html"
@@ -279,7 +279,7 @@
                 "location" : "강화도 마니산",
                 "title" : "강화도에 놀러갔다",
                 "thumbnails" : "20040405_photolog.webp",
-                "description" : "같이 일하던 친구들과 함께 강화도에 놀러갔다.<br>바닷가와 마니산을 방문하여 좋은 추억을 남겼다.<br>땀이 조금 날 정도의 봄날씨와 함께 행복한 시간 이었다.",
+                "description" : "같이 일하던 친구들과 함께 강화도에 놀러갔다. 바닷가와 마니산을 방문하여 좋은 추억을 남겼으며, 식목일의 봄날씨와 함께 행복한 시간 이었다.",
                 "tags" : ["강화도", "마니산", "여행", "Nikon Coolpix3100"],
                 "orientation" : "landscape",
                 "contentUrl" : "20040405A.html"
