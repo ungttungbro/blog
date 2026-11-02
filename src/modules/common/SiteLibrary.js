@@ -458,4 +458,18 @@ export class SiteLibrary {
         }
     };
   }
+
+  static syncElementHeight(parent_el, target_el) {
+      const resizeCaption = () => {
+          requestAnimationFrame(() => {
+              const height = parent_el.clientHeight;
+              target_el.style.height = `${height}px`;
+          });
+      };
+
+      resizeCaption();
+
+      const observer = new ResizeObserver(resizeCaption);
+      observer.observe(parent_el);
+  }
 }

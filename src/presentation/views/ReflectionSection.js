@@ -169,9 +169,9 @@ export class ReflectionSection {
         reflection_viewer_item.className = 'reflection-viewer-item-detail';
 
         const icon = SiteLibrary.createImgElement(
-            'reflection-icon', 
+            'site-emblem', 
             '', 
-            'assets/icons/reflection.png', 
+            '/assets/icons/emblem_white.png', 
             'reflection-welcome-icon'
         );
 

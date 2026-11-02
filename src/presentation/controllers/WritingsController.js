@@ -68,7 +68,7 @@ export class WritingsController {
             config.blogTypeName,
             config.sectionHeaderIcon,
             config.sectionListName,
-            'landscape', 1.25, 0.8, 0, 0,
+            'landscape', 1.3, 0.8, 0, 0,
             items,
             null,
             COMMON.COPYRIGHT
@@ -84,26 +84,39 @@ export class WritingsController {
         );
 
         const element = this.createWritingsItemDetail(type);
+        const header_caption_el = this.createHeaderCaption(value);
+        element.appendChild(header_caption_el);
+
+        const frag = document.createDocumentFragment();
+        const range = document.createRange();
+        const content_frag = range.createContextualFragment(data);
+
+        frag.appendChild(header_caption_el);
+        frag.appendChild(content_frag);
+        
         const writings_viewer_item_detail_el = document.getElementById('blog-post-list-all-viewer')
             ?.querySelector('.writings-viewer-item-detail');
-        
+
         if(writings_viewer_item_detail_el && type!=='curation-post') {
-            element.appendChild(Templates.createContentPanel('writings-section-item-panel', data));      
+            element.appendChild(Templates.createContentPanel('writings-section-item-panel', frag));
+            SiteLibrary.syncElementHeight(element, header_caption_el);            
         } else {
             Templates.openPost(
                 value.id,
                 config.blogTypeName,
                 config.sectionHeaderIcon,
                 value.title,
-                value.orientation, 1, 0.8, 0, 0,
+                value.orientation, 1.1, 0.8, 0, 0,
                 null, 
-                Templates.createContentPanel('writings-section-item-panel', data), 
+                Templates.createContentPanel('writings-section-item-panel', frag), 
                 COMMON.COPYRIGHT
             );
 
             const viewer_el = document.getElementById(value.id);
             viewer_el.className = config.blogTypeName + '-' + 'curation' + '-' + 'viewer';
-        }
+
+            SiteLibrary.syncElementHeight(viewer_el.querySelector('.content-panel'), header_caption_el);
+        }        
     }
 
     createWritingsItemDetail(type) {
@@ -119,6 +132,33 @@ export class WritingsController {
         }
 
         return writings_viewer_item;
+    }
+
+    createHeaderCaption(value) {
+        const writings_item_caption_el = document.createElement('div');
+        writings_item_caption_el.className = 'writings-item-caption';
+
+        const emblem_el = Templates.createSiteEmblem(
+            'site-emblem',
+            '/assets/icons/emblem_white.png', 
+            'site emblem'
+        );
+
+        writings_item_caption_el.appendChild(emblem_el);
+
+        const title_el = document.createElement('div');
+        title_el.className = 'title';
+        title_el.textContent = value.title;
+
+        writings_item_caption_el.appendChild(title_el);
+
+        const meta_el = document.createElement('div');
+        meta_el.className = 'meta';
+        meta_el.textContent = Templates.symbol(value.type) + 'Jonas' + ' · ' + value.date;
+
+        writings_item_caption_el.appendChild(meta_el);
+
+        return writings_item_caption_el;
     }
 
    async presentWritings(content_url) {

@@ -13,38 +13,7 @@
   color: var(--base-anchor-hover-color-B); 
 }
 
-.blog-post {
-  padding: 1rem;
-  line-height: 2;
 
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.blog-post-photo-container {
-  width: 40%;
-  float: left;
-
-  text-align: center;
- 
-  margin-right: 2rem;
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.blog-post-photo-medium {
-  width: 100%;
-  height:auto;
-
-  border-radius: var(--base-border-radius-large);
-
-  filter: drop-shadow(0 0 1.5rem rgba(96, 94, 87, 0.5));
-}
-
-.blog-post-photo-comment { 
-  font-size: 0.8rem; 
-  color: var(--base_font_color); 
-}
 
 /*.viewer {
   animation: fadeIn 250ms ease forwards;

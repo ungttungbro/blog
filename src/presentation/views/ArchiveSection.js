@@ -140,17 +140,6 @@ export class ArchiveSection {
         teaser.appendChild(element);
 
         const section_config = siteMeta.selectSectionConfig('archive');
-        /*this.generatePostEvent(
-            section_config.blogTypeName,
-            COMMON.VIEWER_PREFIX + value.id,
-            value.orientation,
-            teaser, 
-            section_config.sectionHeaderIcon, 
-            value.title, 
-            null,
-            this._BASE_PATH + key + '/' + value.contentUrl, 
-            COMMON.COPYRIGHT
-        ); section_name, id, orientation, element, section_icon, title, header, contents, footer*/
 
         this.generatePostEvent(teaser, key, value, section_config);
 
@@ -180,20 +169,56 @@ export class ArchiveSection {
     async presentPost(section_name, key, value) {
         const data = await SiteLibrary.loadText(this._BASE_PATH + key + '/' + value.contentUrl);
         const config = siteMeta.selectSectionConfig(section_name);
+        const archive_item_caption_el = this.createHeaderCaption(value);
 
+        const frag = document.createDocumentFragment();
+        const range = document.createRange();
+        const content_frag = range.createContextualFragment(data);
+
+        frag.appendChild(archive_item_caption_el);
+        frag.appendChild(content_frag);
+        
         Templates.openPost(
             value.id,
             section_name,                 
             config.sectionHeaderIcon,
             value.title,
-            value.orientation, 1.5, 1.2, 0, 0,
+            value.orientation, 1.7, 1.4, 0, 0,
             null, 
-            data, 
+            frag, 
             COMMON.COPYRIGHT
         );
 
         const viewer_el = document.getElementById(value.id);
         viewer_el.className = section_name + '-' + 'curation' + '-' + 'viewer';
 
+        SiteLibrary.syncElementHeight(viewer_el.querySelector('.content-panel'), archive_item_caption_el);
+    }
+
+    createHeaderCaption(value) {
+        const archive_item_caption_el = document.createElement('div');
+        archive_item_caption_el.className = 'archive-item-caption';
+
+        const emblem_el = Templates.createSiteEmblem(
+            'site-emblem',
+            '/assets/icons/emblem_white.png', 
+            'site emblem'
+        );
+
+        archive_item_caption_el.appendChild(emblem_el);
+
+        const title_el = document.createElement('div');
+        title_el.className = 'title';
+        title_el.textContent = value.title;
+
+        archive_item_caption_el.appendChild(title_el);
+
+        const meta_el = document.createElement('div');
+        meta_el.className = 'meta';
+        meta_el.textContent = 'Jonas' + ' · ' + value.date;
+
+        archive_item_caption_el.appendChild(meta_el);
+
+        return archive_item_caption_el;
     }
 }

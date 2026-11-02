@@ -264,8 +264,8 @@ export class Shell {
 
     toggleThemeMode() {
         const color_theme_data = localStorage.getItem('color-theme') || this.currentThemeMode;
-        const color_theme_element = document.createElement('div');
 
+        const color_theme_element = document.createElement('div');
         color_theme_element.id = 'color-theme';
 
         const updateThemeButton = (mode) => {

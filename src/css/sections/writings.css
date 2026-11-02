@@ -338,6 +338,15 @@
 }
 
 .writings-curation-viewer
+#content-area .content-panel .writings-section-item-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.writings-curation-viewer
 #content-area .content-panel .writings-content-panel {
     display: flex;
     flex-direction: column;

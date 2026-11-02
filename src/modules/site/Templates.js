@@ -174,6 +174,17 @@ export class Templates {
 
         return config;
     }
+
+    static createSiteEmblem(className, src, alt) {
+        const emblem_el = SiteLibrary.createImgElement(
+            className, 
+            null, 
+            src, 
+            alt
+        );
+
+        return emblem_el;
+    }
     
 
     static symbol(type) {

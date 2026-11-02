@@ -173,6 +173,10 @@ footer {
     background-color: var(--section-box-background-color);
 }
 
+.site-emblem {
+    content : var(--site-emblem);
+}
+
 .curation-post .meta, 
 .curation-post .title, 
 .curation-post .summary {
@@ -606,12 +610,18 @@ main #shade-panel {
 #photolog-post-list-all-viewer .photolog-viewer-item-detail { background-color: var(--viewer-background-color); }
 #photolog-post-list-all-viewer .photolog-viewer-item-detail .title { color: var(--font-color); }
 
+#content-area .reflection-content-panel,
+#content-area .archive-item-caption,
+#content-area .writings-item-caption {
+    background-color: var(--viewer-item-caption-background-color);
+}
+
 /*filter 기본상태*/
-#blog-post-list-all-viewer .writings-header-panel,
+#blog-post-list-all-viewer,
 #photolog-post-list-all-viewer,
 .photolog-curation-viewer,
-.writings-curation-viewer #content-area .writings-content-panel,
-.archive-curation-viewer #content-area .blog-post,
+.writings-curation-viewer,
+.archive-curation-viewer,
 #lifelog-post-list-all-viewer .lifelog-header-panel,
 #reflection-post-list-all-viewer .reflection-header-panel,
 .reflection-curation-viewer #content-area .reflection-content-panel,
@@ -621,11 +631,11 @@ main #shade-panel {
 
 /* 데스크톱: Hover 시 컬러 복원 */
 @media (hover: hover) {
-    #blog-post-list-all-viewer .writings-header-panel:hover,
+    #blog-post-list-all-viewer:hover,
     #photolog-post-list-all-viewer:hover,
     .photolog-curation-viewer:hover,
-    .writings-curation-viewer #content-area .writings-content-panel:hover,
-    .archive-curation-viewer #content-area .blog-post:hover,
+    .writings-curation-viewer:hover,
+    .archive-curation-viewer:hover,
     #lifelog-post-list-all-viewer .lifelog-header-panel:hover,
     #reflection-post-list-all-viewer .reflection-header-panel:hover,
     .reflection-curation-viewer #content-area .reflection-content-panel:hover,

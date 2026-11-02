@@ -99,7 +99,15 @@ export class PhotologController {
 
         const end_el = document.createElement('div');
         end_el.className = 'photolog-end-caption';
-        end_el.textContent = '끝.';
+
+        const emblem_el = SiteLibrary.createImgElement(
+            'site-emblem', 
+            null, 
+            '/assets/icons/emblem_white.png', 
+            'site emblem'
+        );
+
+        end_el.appendChild(emblem_el);
 
         photolog_item_detail_el.appendChild(end_el);
 

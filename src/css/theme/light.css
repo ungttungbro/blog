@@ -15,6 +15,7 @@
     --div-hover-color-D: #d3d5d7;
 
     --theme-toggle-button: url(/assets/icons/light-mode-img/dark-toggle.png);
+    --site-emblem: url(/assets/icons/emblem_black.png);
 
     --background-color: #fafcfe;
     --header-background-color: #eaecef;
@@ -30,12 +31,13 @@
     --taskbar-task-item-group-background-color: #fbfdff;
     --taskbar_task-item-close-background-hover-color: #111111;
 
-    --viewer-background-color: #f1f3f5;
+    --viewer-background-color: #f6f9fb;
     --viewer-header-color: #f6f8fa;
     --viewer-title-bar-background-color: #eaecee;
     --viewer-title-bar-active-background-color: #e1e3e5;
     --viewer-scrollbar-thumb-background-color: #9a9c9e;
     --viewer-scrollbar-track-background-color: #bbbbbb;
+    --viewer-item-caption-background-color: #fcfcfc;
     --viewer-footer-background-color: #e1e3e5;
     
     --footer-background-color: #eaecef;

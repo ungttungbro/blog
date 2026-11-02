@@ -216,9 +216,9 @@ export class WritingsSection {
         writings_viewer_item.className = 'writings-viewer-item-detail';
 
         const icon = SiteLibrary.createImgElement(
-            'writings-icon', 
+            'site-emblem', 
             '', 
-            'assets/icons/blog.png', 
+            '/assets/icons/emblem_white.png', 
             'writings-welcome-icon'
         );
 

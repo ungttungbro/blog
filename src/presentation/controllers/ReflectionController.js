@@ -84,11 +84,22 @@ export class ReflectionController {
         );
 
         const element = this.createReflectionItemDetail(type);
+        const header_caption_el = this.createHeaderCaption(value);
+        element.appendChild(header_caption_el);
+
+        const frag = document.createDocumentFragment();
+        const range = document.createRange();
+        const content_frag = range.createContextualFragment(data);
+
+        frag.appendChild(header_caption_el);
+        frag.appendChild(content_frag);
+
         const reflection_viewer_item_detail_el = document.getElementById('reflection-post-list-all-viewer')
             ?.querySelector('.reflection-viewer-item-detail');
         
         if(reflection_viewer_item_detail_el && type!=='curation-post') {
-            element.appendChild(Templates.createContentPanel('reflection-section-item-panel', data));      
+            element.appendChild(Templates.createContentPanel('reflection-section-item-panel', frag));   
+            SiteLibrary.syncElementHeight(element, header_caption_el);   
         } else {
             Templates.openPost(
                 value.id,
@@ -97,12 +108,14 @@ export class ReflectionController {
                 value.title,
                 value.orientation, 1.6, 1.3, 0, 0,
                 null, 
-                Templates.createContentPanel('reflection-section-item-panel', data), 
+                Templates.createContentPanel('reflection-section-item-panel', frag), 
                 COMMON.COPYRIGHT
             );
 
             const viewer_el = document.getElementById(value.id);
             viewer_el.className = config.blogTypeName + '-' + 'curation' + '-' + 'viewer';
+
+            SiteLibrary.syncElementHeight(viewer_el.querySelector('.content-panel'), header_caption_el);
         }
     }
 
@@ -119,6 +132,33 @@ export class ReflectionController {
         }
 
         return reflection_viewer_item;
+    }
+
+    createHeaderCaption(value) {
+        const reflection_item_caption_el = document.createElement('div');
+        reflection_item_caption_el.className = 'reflection-item-caption';
+
+        const emblem_el = Templates.createSiteEmblem(
+            'site-emblem',
+            '/assets/icons/emblem_white.png', 
+            'site emblem'
+        );
+
+        reflection_item_caption_el.appendChild(emblem_el);
+
+        const title_el = document.createElement('div');
+        title_el.className = 'title';
+        title_el.textContent = '「' + value.title + '」';
+
+        reflection_item_caption_el.appendChild(title_el);
+
+        const meta_el = document.createElement('div');
+        meta_el.className = 'meta';
+        meta_el.textContent = value.tags.map(tag => '#' + tag).join(" · ");
+
+        reflection_item_caption_el.appendChild(meta_el);
+
+        return reflection_item_caption_el;
     }
 
     async presentReflection(content_url) {

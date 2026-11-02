@@ -162,9 +162,9 @@ export class LifelogSection {
         lifelog_viewer_item.className = 'lifelog-viewer-item-detail';
 
         const icon = SiteLibrary.createImgElement(
-            'lifelog-icon', 
+            'site-emblem', 
             '', 
-            'assets/icons/lifelog.png', 
+            '/assets/icons/emblem_white.png', 
             'lifelog-welcome-icon'
         );
 

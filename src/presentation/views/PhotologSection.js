@@ -159,9 +159,9 @@ export class PhotologSection {
         photolog_viewer_item.className = 'photolog-viewer-item-detail';
 
         const photolog_icon = SiteLibrary.createImgElement(
-            'photograhper', 
+            'site-emblem', 
             '', 
-            'assets/icons/photographer.png', 
+            '/assets/icons/emblem_white.png', 
             'photographer'
         );
 
