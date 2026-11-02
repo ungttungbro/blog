@@ -269,12 +269,19 @@ footer {
     color: var(--font-color-anchor-color-B);
 }
 
-#taskbar .settings-dropdown,
 #taskbar .task-bar-item,
 #taskbar .task-bar-group {
-    background-color: var(--taskbar-task-item-background-color);
+    background-color: var(--taskbar-task-item-background-color);    
     border: var(--taskbar-task-item-border);
     color: var(--font-color);
+}
+
+#taskbar .settings-dropdown {
+    border: var(--taskbar-task-item-border);
+    color: var(--font-color);
+
+    background: var(--background-A);
+    backdrop-filter: var(--backdrop-filter-A);
 }
 
 #taskbar .task-group-items { 
@@ -645,6 +652,7 @@ main #shade-panel {
 
 /* 모바일: 활성화된 창에서 컬러 유지 */
 @media (hover: none) {
+    #about .about-photo,
     .reflection-curation-viewer,
     .archive-curation-viewer,
     .writings-curation-viewer,

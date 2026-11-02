@@ -163,10 +163,10 @@
 #taskbar .settings-toggle-button::before {
     content: "";
     display: inline-block;
-    width: 1rem;
-    height: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    width: 1.4rem;
+    height: 0.7rem;
+    border-bottom-left-radius: 0.7rem;
+    border-bottom-right-radius: 0.7rem;
     /*border-radius: 50%;*/
     background: currentColor;
 }

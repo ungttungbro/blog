@@ -58,7 +58,7 @@
 /* 세로 모드 2단 (portrait) */
 @media (orientation: portrait), (max-width: 1152px) {
   html {
-    font-size: 2.2vw;
+    font-size: 2.5vw;
   }
 
   main {
@@ -200,7 +200,7 @@
 /* 세로 모드 1단 (portrait) */
 @media (orientation: portrait) and (max-width: 541px) {
   html {
-    font-size: 4.3vw;
+    font-size: 4.8vw;
   }
 
   main {

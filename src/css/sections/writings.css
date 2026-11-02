@@ -34,6 +34,8 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
 
+    overflow: hidden;
+
     text-align: justify;
 
     line-height: 1.6;

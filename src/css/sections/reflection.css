@@ -17,10 +17,11 @@
 
     box-sizing: border-box;
     
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     
-    overflow: hidden;    
-    text-overflow: ellipsis;    
+    overflow: hidden;
 }
 
 #reflection a:hover .title {
