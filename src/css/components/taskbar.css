@@ -1,6 +1,6 @@
 #taskbar {
   display: grid;
-  grid-template-columns: 6rem 1fr 2rem;
+  grid-template-columns: 1.5rem 1fr 2rem;
   
   min-height: 2.6rem;
   box-sizing: border-box;
@@ -240,7 +240,7 @@
 }*/
 
 #logo {
-    width: 6rem;
+    width: 1.5rem;
     height: auto;
 
     margin-right: 0.75rem;

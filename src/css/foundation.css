@@ -146,6 +146,7 @@
   }
 
   #blog-post-list-all-viewer .writings-viewer-menu,
+  #reflection-post-list-all-viewer .reflection-viewer-menu,
   #lifelog-post-list-all-viewer .lifelog-viewer-menu {
     width: 100%;
   }

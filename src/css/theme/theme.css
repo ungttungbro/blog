@@ -173,9 +173,8 @@ footer {
     background-color: var(--section-box-background-color);
 }
 
-.site-emblem {
-    content : var(--site-emblem);
-}
+.site-emblem { content : var(--site-emblem); }
+.site-logo { content : var(--site-logo); }
 
 .curation-post .meta, 
 .curation-post .title, 
@@ -610,7 +609,7 @@ main #shade-panel {
 #photolog-post-list-all-viewer .photolog-viewer-item-detail { background-color: var(--viewer-background-color); }
 #photolog-post-list-all-viewer .photolog-viewer-item-detail .title { color: var(--font-color); }
 
-#content-area .reflection-content-panel,
+#content-area .reflection-item-caption,
 #content-area .archive-item-caption,
 #content-area .writings-item-caption {
     background-color: var(--viewer-item-caption-background-color);
@@ -622,10 +621,10 @@ main #shade-panel {
 .photolog-curation-viewer,
 .writings-curation-viewer,
 .archive-curation-viewer,
-#lifelog-post-list-all-viewer .lifelog-header-panel,
-#reflection-post-list-all-viewer .reflection-header-panel,
-.reflection-curation-viewer #content-area .reflection-content-panel,
-.lifelog-curation-viewer #content-area .lifelog-content-panel {
+#lifelog-post-list-all-viewer,
+#reflection-post-list-all-viewer,
+.reflection-curation-viewer,
+.lifelog-curation-viewer {
     filter: var(--lifelog-photo-filter);
 }
 
@@ -636,21 +635,22 @@ main #shade-panel {
     .photolog-curation-viewer:hover,
     .writings-curation-viewer:hover,
     .archive-curation-viewer:hover,
-    #lifelog-post-list-all-viewer .lifelog-header-panel:hover,
-    #reflection-post-list-all-viewer .reflection-header-panel:hover,
-    .reflection-curation-viewer #content-area .reflection-content-panel:hover,
-    .lifelog-curation-viewer #content-area .lifelog-content-panel:hover {
+    #lifelog-post-list-all-viewer:hover,
+    #reflection-post-list-all-viewer:hover,
+    .reflection-curation-viewer:hover,
+    .lifelog-curation-viewer:hover {
         filter: var(--lifelog-photo-hover-filter);
     }
 }
 
 /* 모바일: 활성화된 창에서 컬러 유지 */
 @media (hover: none) {
-    .archive-curation-viewer #content-area .blog-post,
-    .writings-curation-viewer #content-area .writings-content-panel,
-    .photolog-curation-viewer #content-area .photolog-content-panel,
-    .lifelog-curation-viewer #content-area .lifelog-content-panel {
-        filter: grayscale(0%) brightness(1.05);
+    .reflection-curation-viewer,
+    .archive-curation-viewer,
+    .writings-curation-viewer,
+    .photolog-curation-viewer,
+    .lifelog-curation-viewer {
+        filter: grayscale(0) brightness(1);
     }
 }
 

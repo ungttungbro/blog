@@ -13,7 +13,7 @@ import { Templates } from "../site/Templates.js";
 const TASKBAR_CONSTANTS = Object.freeze({
     TITLE_ICON_TYPE : 'medium_icon',
     CLOSE_BUTTON_ICON_PATH : './assets/icons/close.png',
-    LOGO_ICON_PATH: '/assets/icons/logo.png',
+    LOGO_ICON_PATH: '/assets/icons/logo_white.png',
 });
 
 const GROUP_CONFIG = {
@@ -137,7 +137,7 @@ export class Shell {
     }
 
     showTaskBar() {
-        const logo_element = SiteLibrary.createImgElement('', 'logo', TASKBAR_CONSTANTS.LOGO_ICON_PATH, 'logo'); 
+        const logo_element = SiteLibrary.createImgElement('site-logo', 'logo', TASKBAR_CONSTANTS.LOGO_ICON_PATH, 'logo'); 
                 
         taskbar.createLayout(
             this.toggleLogo(logo_element),

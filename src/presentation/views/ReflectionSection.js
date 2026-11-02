@@ -97,7 +97,8 @@ export class ReflectionSection {
 
         let index = 0;
         for (const [key ,value] of data) {
-            const sectionItemElement = this.createSectionItem(element.className,
+            const sectionItemElement = this.createSectionItem(
+                element.className,
                 key, 
                 value, 
                 onTeaserClick
@@ -121,7 +122,7 @@ export class ReflectionSection {
 
         const title = document.createElement('div');
         title.className = 'title';
-        title.textContent = '「' + value.title + '」' + ' ';
+        title.textContent = '「' + value.title + '」';
 
         element.appendChild(title);
 

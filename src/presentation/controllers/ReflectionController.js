@@ -56,7 +56,6 @@ export class ReflectionController {
             );
         } else {
             items = this.section_view.generateSectionItems(
-                config.blogTypeName,
                 data, 
                 config, 
                 this.section_view.getPostClickHandler()
