@@ -131,10 +131,14 @@
 
 .blog-post {
   padding: 1rem;
+  padding-top: 3rem;
+
   line-height: 2;
 
   font-weight: bold;
   font-size: 1rem;
+
+  border-top: 1px solid #2a2c2e;
 }
 
 .blog-post .code-block {

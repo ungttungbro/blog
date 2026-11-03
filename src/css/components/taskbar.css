@@ -6,7 +6,7 @@
   box-sizing: border-box;
 
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-right: 0;
   
   align-items: stretch;
 }
@@ -155,7 +155,7 @@
     line-height: 1;
 
     align-items: center;
-    justify-content: center;
+    justify-content: right;
 
     user-select: none;
 }
@@ -163,10 +163,10 @@
 #taskbar .settings-toggle-button::before {
     content: "";
     display: inline-block;
-    width: 1.4rem;
-    height: 0.7rem;
-    border-bottom-left-radius: 0.7rem;
-    border-bottom-right-radius: 0.7rem;
+    width: 0.5rem;
+    height: 1rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
     /*border-radius: 50%;*/
     background: currentColor;
 }
