@@ -74,17 +74,22 @@ export class Templates {
             if (viewer_element.isMaximized) viewer_element.isMaximized = false;
             else viewer_element.isMaximized = true;
 
-            history.pushState({ list: viewer_element.id }, '', '');
+            const currentList = history.state?.list ?? [];
+
+            history.pushState({
+                list: [...currentList, viewer_element.id]
+            }, '', '');
+            
             window.addEventListener('popstate', (e) => {
-                if (!e.state) return;
-                if (!e.state?.list) {
+                console.log(e.state?.list);
+                if (!e.state?.list?.includes(viewer_element.id)) {
                     ViewerWindowProcessRegistry.get('unmount', 'function')?.(
                         viewer_element.windowElement.dataset.group,
                         viewer_element.targetId,
                         viewer_element.id
                     );
                 }
-            });
+            });      
         }
     }
 

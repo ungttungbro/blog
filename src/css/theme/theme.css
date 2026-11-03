@@ -55,6 +55,8 @@
         .lifelog-viewer .lifelog-viewer-item-detail
     )::-webkit-scrollbar-track {
         background-color: transparent;
+    }:hover::-webkit-scrollbar-track {
+        cursor: default;
     }
 
     :is(

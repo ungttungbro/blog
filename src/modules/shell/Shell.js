@@ -58,8 +58,7 @@ export class Shell {
             this.toggleThemeMode();
         });
 
-        history.replaceState({ modal: null }, '', '');
-        history.replaceState({ list: null }, '', '');
+        history.replaceState({ list: [] }, '', '');
     }
 
     updateLayout() {
