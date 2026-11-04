@@ -3,6 +3,7 @@
 import { SiteLibrary } from "../common/SiteLibrary.js";
 import { TaskStateManager } from "./TaskStateManager.js";
 import { TaskBarProcessRegistry } from "./TaskBarProcessRegistry.js";
+import { ViewerStateManager } from "../viewerWindow/ViewerStateManager.js";
 
 const TASKBAR_CONSTANTS = Object.freeze({
     TITLE_ICON_TYPE : 'medium-icon',
@@ -147,8 +148,13 @@ export class TaskBar {
         const group_items = document.createElement('div');
         group_items.className = 'task-group-items';
 
+        let index = 0;
         for (const [key] of task_group_items) {
             group_items.appendChild(task_group_items.get(key).element);
+
+            if (++index < task_group_items.size) {
+                group_items.appendChild(document.createElement('hr'));
+            }   
         }
 
         return group_items;
@@ -166,6 +172,7 @@ export class TaskBar {
             if (group_items.style.visibility === 'visible') {
                 group_items.style.visibility = 'hidden';
             } else {
+                ViewerStateManager.zIndex++;
                 group_items.style.visibility = 'visible';
             }            
         });

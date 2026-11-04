@@ -212,6 +212,7 @@ footer {
     background-color: var(--section-box-background-color);
     border: var(--section-box-border);
 }
+
 #photolog .teaser-figure:hover { background-color: var(--section-box-background-hover-color); }
 #photolog .teaser-figure:hover .figure-title { color: var(--font-color-anchor-color-A);}
 #photolog .figure-content { color: var(--font-color-description); }
@@ -276,7 +277,9 @@ footer {
 }
 
 #taskbar .task-group-items { 
-    background-color: var(--taskbar-task-item-group-background-color);
+    /*background-color: var(--taskbar-task-item-group-background-color);*/
+    background: var(--background-A);
+    backdrop-filter: var(--backdrop-filter-A);
 }
 
 #taskbar .task-bar-group .task-group-items .task-bar-item { 
@@ -308,9 +311,12 @@ footer {
     color: var(--font-color-anchor-color-A);
 }
 
+#taskbar .task-group-items hr,
 #taskbar .settings-dropdown hr {
     width: 80%;
     border: var(--viewer-hr-B);
+    padding: 0;
+    margin: 0;
 }
 
 #taskbar #screen-shade-button:hover,
@@ -636,7 +642,7 @@ main #shade-panel {
 .reflection-curation-viewer,
 .lifelog-curation-viewer {
     filter: var(--lifelog-photo-filter);
-    transition: all 0.1s ease;
+    transition: all 0.075s ease;
 }
 
 /* 데스크톱: Hover 시 컬러 복원 */
@@ -664,6 +670,7 @@ main #shade-panel {
 
 /* 모바일: 활성화된 창에서 컬러 유지 */
 @media (hover: none) {
+    #taskbar,
     #writings,
     #photolog,
     #lifelog,

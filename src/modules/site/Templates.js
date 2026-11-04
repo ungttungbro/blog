@@ -81,7 +81,6 @@ export class Templates {
             }, '', '');
             
             window.addEventListener('popstate', (e) => {
-                console.log(e.state?.list);
                 if (!e.state?.list?.includes(viewer_element.id)) {
                     ViewerWindowProcessRegistry.get('unmount', 'function')?.(
                         viewer_element.windowElement.dataset.group,

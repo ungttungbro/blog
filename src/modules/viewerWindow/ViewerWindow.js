@@ -18,6 +18,7 @@
 
 import { ViewerStateManager } from "./ViewerStateManager.js";
 import { ViewerWindowProcessRegistry } from "./ViewerWindowProcessRegistry.js";
+import { taskbar } from "../taskbar/TaskBar.js"
 
 const CONSTANTS = Object.freeze({
     CLOSE_BUTTON_ICON_PATH: './assets/icons/close.png',
@@ -84,12 +85,11 @@ export class ViewerWindow {
         element.style.top = this.top;
         element.style.zIndex = ViewerStateManager.maxZIndex() + 1;
 
-        element.addEventListener('click', (e) => {
-            if (e.target !== e.currentTarget) return;
-
+        element.addEventListener('pointerdown', () => {
+            /*if (e.target !== e.currentTarget) return;*/
             element.style.zIndex = ViewerStateManager.maxZIndex() + 1;
             ViewerStateManager.stateLog(element);
-        });
+        }, true);
         
         element.addEventListener('pointerenter', () => {
             ViewerWindowProcessRegistry.get('enforceSingle', 'function')?.(
@@ -385,7 +385,7 @@ export class ViewerWindow {
             const window_element = this.windowElement;
             if (window_element.classList.contains(window_element.id)) return;
             
-            window_element.style.zIndex = ViewerStateManager.maxZIndex() + 1; 
+            window_element.style.zIndex = ViewerStateManager.maxZIndex() + 1;
             ViewerStateManager.stateLog(window_element);
 
             const style = window.getComputedStyle(window_element);
@@ -412,8 +412,23 @@ export class ViewerWindow {
             const dx = e.clientX - drag_state.startX;
             const dy = e.clientY - drag_state.startY;
 
-            window_element.style.transform = 
-                    `translate(${drag_state.startTranslateX + dx}px, ${drag_state.startTranslateY + dy}px)`;
+            const taskbar_bottom = taskbar.taskBarElement.getBoundingClientRect().bottom;
+
+            const current_top = window_element.getBoundingClientRect().top;
+
+            const nextY = drag_state.startTranslateY + dy;
+            const currentY = new DOMMatrix(window_element.style.transform).m42;
+
+            // 실제 이동 예정 위치
+            const next_top = current_top + (nextY - currentY);
+
+            // 태스크바 하단을 넘지 않도록 제한
+            const correctedY = next_top < taskbar_bottom
+                ? nextY + (taskbar_bottom - next_top)
+                : nextY;
+
+            window_element.style.transform =
+                `translate(${drag_state.startTranslateX + dx}px, ${correctedY}px)`;
         });
 
         document.addEventListener('pointerup', (e) => {

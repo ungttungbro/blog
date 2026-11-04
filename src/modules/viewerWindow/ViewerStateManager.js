@@ -3,7 +3,8 @@
 import { SiteLibrary } from "../common/SiteLibrary.js";
 
 export class ViewerStateManager {
-    static state = new Map(); 
+    static state = new Map();
+    static zIndex = 1;
 
     static set(groupKey, key, value) {
         if (!this.state.has(groupKey)) {
@@ -69,16 +70,17 @@ export class ViewerStateManager {
         this.setGroup(element.id, snapshot);
     }
 
+    /** maxindex 메서드를 조정함.. 임시로 코드를 주석처리했으며 반드시 구조변경요망... */
     static maxZIndex() {
-        let max = 0;
+        /*let max = 0;
         for (const [key] of this.state) {
             const zIndex = this.get(key,'zIndex');
             if (zIndex && !isNaN(zIndex)) {
                 max = Math.max(max, zIndex);
             }
-        }
+        }*/
         
-        return max;
+        return this.zIndex++;
     }
 
     static bringToFront(element) {
