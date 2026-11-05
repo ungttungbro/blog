@@ -58,6 +58,7 @@ export class ViewerStateManager {
 
     static stateLog(element) {
         const snapshot = {
+            ['element']: element,
             ['group']: element.dataset.group,
             ['className']: element.className,
             ['width']: element.getBoundingClientRect().width,

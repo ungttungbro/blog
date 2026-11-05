@@ -71,7 +71,19 @@ export class Shell {
             this.applyLayout(2);
         } else {
             this.applyLayout(3);
-        }    
+        }
+
+        this.applyDialog();
+    }
+
+    applyDialog() {
+        const dialogs = ViewerStateManager.state;
+        
+       for (const [,value] of dialogs) {
+            const element = value.get('element');
+            element.classList.remove('is-maximized');
+            SiteLibrary.toggleElementMaximize(element, 'taskbar');
+        }
     }
 
     initLayoutMemory() {
