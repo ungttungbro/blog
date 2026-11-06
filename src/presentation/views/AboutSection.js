@@ -3,7 +3,6 @@
 import { ELEMENT_TYPE } from "../../modules/common/Constants.js"
 import { siteMeta } from "../../modules/site/siteMeta.js";
 import { SiteLibrary } from "../../modules/common/SiteLibrary.js";
-import { taskbar } from "../../modules/taskbar/TaskBar.js";
 
 export class AboutSection {
   constructor(about_service) { 
@@ -74,7 +73,7 @@ export class AboutSection {
     specs_element.id = siteMeta.about.specsId;
 
     const data = this.aboutService.aboutData.specs;
-    for (const [key, value] of data) {
+    for (const [, value] of data) {
       const img = SiteLibrary.createImgElement('small-icon', '',  value[1], '');
       const figure = SiteLibrary.createImgCaption(img, null, value[0]);
       specs_element.appendChild(figure);
@@ -129,11 +128,8 @@ export class AboutSection {
         path, 
         siteMeta.about.thumbnailImgAlt
       );
-
-      //if (parseInt(taskbar.taskBarElement.dataset.column) > 2) {
-        this.generateThumbnailEvent(thumbnail_img, path);
-     // }
       
+      this.generateThumbnailEvent(thumbnail_img, path);
       frag.appendChild(thumbnail_img);
     }
 
@@ -168,7 +164,7 @@ export class AboutSection {
   onThumbnailLeave() {
     const el = document.getElementById('about').querySelector('.about-photo');
 
-    //el.style.setProperty('filter', 'var(--about-photo-image-filter)');
+    el.style.setProperty('filter', 'none');
     el.style.setProperty('transition-duration', '0.3');
   }
 }

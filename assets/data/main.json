@@ -5,16 +5,16 @@
         "title" : "about",
 
         "photos": [
-            "/assets/images/about/photo01.jpg",
-            "/assets/images/about/photo02.jpg",
-            "/assets/images/about/photo03.jpg",
-            "/assets/images/about/photo04.jpg",
-            "/assets/images/about/photo05.jpg",
-            "/assets/images/about/photo06.jpg",
-            "/assets/images/about/photo07.jpg",
-            "/assets/images/about/photo08.jpg",
-            "/assets/images/about/photo09.jpg",
-            "/assets/images/about/photo10.jpg"
+            "/assets/images/about/photo01.webp",
+            "/assets/images/about/photo02.webp",
+            "/assets/images/about/photo03.webp",
+            "/assets/images/about/photo04.webp",
+            "/assets/images/about/photo05.webp",
+            "/assets/images/about/photo06.webp",
+            "/assets/images/about/photo07.webp",
+            "/assets/images/about/photo08.webp",
+            "/assets/images/about/photo09.webp",
+            "/assets/images/about/photo10.webp"
         ],
 
         "specs": {
