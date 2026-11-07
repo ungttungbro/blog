@@ -642,7 +642,7 @@ main #shade-panel {
 .reflection-curation-viewer,
 .lifelog-curation-viewer {
     filter: var(--lifelog-photo-filter);
-    transition: all 0.075s ease;
+    transition: all 1s ease;
 }
 
 /* 데스크톱: Hover 시 컬러 복원 */

@@ -8,6 +8,12 @@
     line-height: 1.6;
 }
 
+#lifelog .meta {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;    
+}
+
 #lifelog a:hover .title {
     color: var(--base-anchor-hover-color-A);
 }
