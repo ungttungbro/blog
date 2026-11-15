@@ -172,6 +172,11 @@
 .lifelog-section-item-panel {
     display: inline-flex;
     flex-direction: column;
+
+    width: 100%;
+
+    justify-content: center;
+    
     margin:0;
     padding:0;
 }
@@ -196,6 +201,23 @@
     margin: 0;
     padding: 0;
     border: 0;
+}
+
+.lifelog-viewer #content-area
+.lifelog-viewer-item-detail
+.lifelog-section-item-panel
+.lifelog-video iframe,
+
+.lifelog-curation-viewer 
+#content-area
+.lifelog-content-panel
+.lifelog-video iframe {
+    display: block;
+
+    width: auto;
+    height: 100%;
+    
+    aspect-ratio: 16 / 8.75;
 }
 
 /*.lifelog-curation-viewer 

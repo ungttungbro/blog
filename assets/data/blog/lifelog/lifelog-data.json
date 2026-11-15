@@ -38,6 +38,15 @@
             "orientation" : "landscape"
         },
 
+        "20221107A": {
+            "date": "2022.11.07.",
+            "location": "서울 강남",
+            "type": "video",
+            "tags": ["SWAI수업콘서트", "한국과학창의재단"],
+            "contentUrl": "20221107A.html",
+            "orientation" : "landscape"
+        },
+
         "20220212A": {
             "date": "2022.02.12.",
             "location": "서울 성수동 예술회관",
@@ -180,6 +189,15 @@
             "tags": ["출렁다리", "연구실"],
             "contentUrl": "20140625A.html",
             "orientation" : "portrait"
+        },
+
+        "20130627B": {
+            "date": "2013.06.27.",
+            "location": "제주도 정보과학회",
+            "type": "video",
+            "tags": ["우수논문상", "시상식"],
+            "contentUrl": "20130627B.html",
+            "orientation" : "landscape"
         },
 
         "20130627A": {
