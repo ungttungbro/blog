@@ -206,16 +206,16 @@
 .lifelog-viewer #content-area
 .lifelog-viewer-item-detail
 .lifelog-section-item-panel
-.lifelog-video iframe,
+.lifelog-photo-medium iframe,
 
 .lifelog-curation-viewer 
 #content-area
 .lifelog-content-panel
-.lifelog-video iframe {
+.lifelog-photo-medium iframe {
     display: block;
 
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
     
     aspect-ratio: 16 / 8.75;
 }
